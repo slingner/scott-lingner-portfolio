@@ -1,15 +1,16 @@
 ---
-title: "Getting started"
-description: "Hit the ground running."
-date: "2024-03-22"
+title: "LinkedIn Featured Link Preview Images Not Showing Up?? Try this."
+description: "How to fix LinkedIn featured link preview images not showing up."
+date: "2020-04-30"
 ---
 
 ---
 
-## Install astro-micro
+Are you a React developer with a few projects that you want to show off on LinkedIn? Have you tried to simply type in your link and are met with this empty grey box?
 
-Clone the [Astro Micro repository](https://github.com/trevortylerlee/astro-micro.git).
 
+[Check out my Medium article here](https://medium.com/@Scotty_Lingner/linkedin-link-preview-images-not-showing-up-try-this-3cd80043b5bb).
+<!--
 ```sh
 git clone https://github.com/trevortylerlee/astro-micro.git my-astro-micro
 ```
@@ -39,7 +40,7 @@ To change the website metadata, edit `src/consts.ts`.
 
 export const SITE: Site = {
   NAME: "Astro Micro",
-  DESCRIPTION: "Astro Micro is an accessible theme for Astro.",
+  DESCRIPTION: "Hello",
   EMAIL: "trevortylerlee@gmail.com",
   NUM_POSTS_ON_HOMEPAGE: 3,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
@@ -177,4 +178,4 @@ const setGiscusTheme = () => {
     giscus.src = url.toString();
   }
 };
-```
+``` -->

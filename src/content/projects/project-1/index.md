@@ -1,18 +1,16 @@
 ---
-title: "Astro Sphere"
-description: "Portfolio and blog build with astro."
-date: "03/18/2024"
-demoURL: "https://astro-sphere-demo.vercel.app"
-repoURL: "https://github.com/markhorn-dev/astro-sphere"
+title: "Unexpected Frequency"
+description: "Portfolio and blog build with Next.js + Sanity"
+date: "2024-08-05"
+demoURL: "https://unexpectedfrequency.com/"
+repoURL: "https://github.com/slingner/unexpected"
 ---
 
-![Astro Sphere](/astro-sphere.jpg)
+![Unexpected Frequency](/unexpected-frequency-logo.png)
 
-Astro Sphere is a static, minimalist, lightweight, lightning fast portfolio and blog theme based on Mark Horn's personal website.
+Unexpected Frequency is a music website exploring all genres, all eras, and all parts of the world. We are a group of music lovers who are passionate about all things music. We love to talk about music, listen to music, and share our love of music with others. Whether you are a musician, a music lover, or just someone who enjoys listening to music, we invite you to join us in our love of music.
 
-It is primarily Astro, Tailwind and Typescript, with a very small amount of SolidJS for stateful components.
-
-## 🚀 Deploy your own
+<!-- ## 🚀 Deploy your own
 
 <div class="flex gap-2">
   <a target="_blank" aria-label="Deploy with Vercel" href="https://vercel.com/new/clone?repository-url=https://github.com/markhorn-dev/astro-sphere">
@@ -21,42 +19,45 @@ It is primarily Astro, Tailwind and Typescript, with a very small amount of Soli
   <a target="_blank" aria-label="Deploy with Netlify" href="https://app.netlify.com/start/deploy?repository=https://github.com/markhorn-dev/astro-sphere">
     <img src="/deploy_netlify.svg" />
   </a>
-</div>
+</div> -->
 
 ## 📋 Features
 
-- ✅ 100/100 Lighthouse performance
+- ✅ Webhook-triggered Incremental Static Revalidation
+- ✅ A performant, static blog with editable posts, authors, and site settings
 - ✅ Responsive
 - ✅ Accessible
 - ✅ SEO-friendly
 - ✅ Typesafe
 - ✅ Minimal style
-- ✅ Light/Dark Theme
-- ✅ Animated UI
 - ✅ Tailwind styling
-- ✅ Auto generated sitemap
-- ✅ Auto generated RSS Feed
-- ✅ Markdown support
-- ✅ MDX Support (components in your markdown)
-- ✅ Searchable content (posts and projects)
+<!-- - ✅ MDX Support (components in your markdown)
+- ✅ Searchable content (posts and projects) -->
+<!-- - ✅ Light/Dark Theme -->
+<!-- - ✅ Auto generated sitemap
+- ✅ Auto generated RSS Feed -->
+<!-- - ✅ Markdown support -->
+<!-- - ✅ Animated UI -->
 
-## 💯 Lighthouse score
 
-![Astro Sphere Lighthouse Score](/lighthouse-nano.jpg)
 
-## 🕊️ Lightweight
+<!-- ## 💯 Lighthouse score
 
-All pages under 100kb (including fonts)
+![Astro Sphere Lighthouse Score](/lighthouse-nano.jpg) -->
 
-## ⚡︎ Fast
+<!-- ## 🕊️ Lightweight
 
-Rendered in ~40ms on localhost
+All pages under 100kb (including fonts) -->
 
+<!-- ## ⚡︎ Fast
+
+Rendered in ~40ms on localhost -->
+<!--
 ## 📄 Configuration
 
-The blog posts on the demo serve as the documentation and configuration.
+The blog posts on the demo serve as the documentation and configuration. -->
 
-## 💻 Commands
+<!-- ## 💻 Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -72,8 +73,8 @@ Replace npm with your package manager of choice. `npm`, `pnpm`, `yarn`, `bun`, e
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check`  |
 | `npm run astro -- --help` | Get help using the Astro CLI                      |
 | `npm run lint`            | Run ESLint                                        |
-| `npm run lint:fix`        | Auto-fix ESLint issues                            |
+| `npm run lint:fix`        | Auto-fix ESLint issues                            | -->
 
-## 🏛️ License
+<!-- ## 🏛️ License
 
-MIT
+MIT -->

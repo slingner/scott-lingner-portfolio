@@ -30,7 +30,7 @@ In the above example, two project posts will be generated with the folder name r
 ```astro
 ---
 title: "Astro Micro";
-description: "Astro Micro is an accessible theme for Astro.";
+description: "Hello";
 date: "2024-03-20";
 draft: false;
 ---
@@ -57,6 +57,6 @@ date: "2024-03-20";
 draft: false;
 ---
 
-## Astro Micro 🔬
+## Astro Micro 🖖
 <!-- content -->
 ```

@@ -1,45 +1,68 @@
 ---
-title: "Astro Micro"
-description: "Astro Micro is an accessible and lightweight blog."
-date: "2024-05-26"
-demoURL: "https://astro-micro.vercel.app"
+title: "Prenda"
+description: "Prenda provides all you need to run a K-8 microschool."
+date: "2024-08-06"
+demoURL: "https://www.prenda.com/"
 repoURL: "https://github.com/trevortylerlee/astro-micro"
 ---
 
-![Astro Micro](/astro-micro.jpg)
+![Prenda](/prenda.png)
 
-Astro Micro is an accessible theme for Astro. It's a fork of Mark Horn's popular theme Astro Nano. Like Nano, Micro comes with zero frameworks installed.
+Prenda empowers learners with a child-centered microschool system, an effective learning model, and a supportive community.
 
-Micro adds features like [Pagefind](https://pagefind.app) for search, [Giscus](https://giscus.app) for comments, and more. For a full list of changes, see this [blog post](/blog/00-micro-changelog).
+My contributions to Prenda include:
 
-Micro still comes with everything great about Nano — full type safety, a sitemap, an RSS feed, and Markdown + MDX support. Styled with TailwindCSS and preconfigured with system, light, and dark themes.
+## 🔒 Checkr background check integrations
 
-Visit [Astro Micro on Github](https://github.com/trevortylerlee/astro-micro) to get started.
+![Checkr background check](/checkr-background-checks.png)
 
-## 🚀 Deploy your own
+I streamlined Prenda's onboarding process by integrating Checkr background checks using Checkr's API and webhooks. This allows Prenda to ensure the safety of its learners and guides. Due to the sensitive nature of background checks, I had to ensure that the process was secure and compliant with all relevant laws. The result was a 98% reduction in manual background check tracking by employees and a 75% improvement in the client onboarding process.
 
-<div class="flex gap-2">
-  <a target="_blank" aria-label="Deploy with Vercel" href="https://vercel.com/new/clone?repository-url=https://github.com/trevortylerlee/astro-micro">
-    <img src="/deploy_vercel.svg" />
-  </a>
-  <a target="_blank" aria-label="Deploy with Netlify" href="https://app.netlify.com/start/deploy?repository=https://github.com/trevortylerlee/astro-micro">
-    <img src="/deploy_netlify.svg" />
-  </a>
-</div>
 
-## 📋 Features
+## 📋 Memory Challenge
 
-Everything in [Astro Nano](https://github.com/markhorn-dev/astro-nano) plus:
+I took full ownership of the design and development of this innovative learning tool.
 
-- Pagefind search
-- Giscus comments
-- Callout component
-- Table of contents component
-- Pagination component
-- 404 page
+In collaboration with the product manager, curriculum manager, and another software engineer, we designed and developed Memory Challenge from the ground up. Memory Challenge leverages the concept of spaced repetition to enhance student memorization and is currently used by thousands of Prenda students.
 
-and [more](/blog/00-micro-changelog).
+The curriculum features engaging games and quizzes in both math and geography. Math quizzes cover addition, subtraction, multiplication, and division, while geography quizzes test knowledge of U.S. state capitals, U.S. states, countries around the world, continents, and oceans.
 
-## 💯 Lighthouse score
+![Memory Challenge Math](/memory-challenge-math.png)
+Interactive math quizzes for students to practice addition, subtraction, multiplication, and division.
 
-![Astro Nano Lighthouse Score](/astro-nano-lighthouse.jpg)
+![Memory Challenge Geography](/memory-challenge-geography.png)
+Custom-built SVG maps and interactive quizzes for students to learn geography.
+
+
+The tool captures detailed data on student learning progress, providing insights into:
+- Time taken to answer questions
+- Time spent using the tool
+- Student engagement (based on the number of badges earned)
+
+
+## 🏗️ Create projects
+
+![Create projects](/create.png)
+
+In collaboration with the product managers, UX designers, and curriculum designers, we completely revamped the “Create” learning experience for students and admins with:
+
+- Clear dashboards for students and admins, showing active and completed projects.
+- Simple cards to guide students' interest in new projects.
+- Easy-to-read lists for non-engineer admins to read, edit, or update all Create projects (currently 101!).
+- Improved navigation of all Create projects through a digestible tagging system.
+- A “Favorites” section for students to explore and create a list of favorite projects.
+- Utilization of Cloudinary and AWS for photo storage and editing.
+
+## 🎨 Student portfolios
+
+Through close collaboratation with the product managers, UX designers, we  created a student portfolio system that allows students to showcase their work and progress. The portfolio system includes:
+
+- A student dashboard that displays all completed projects.
+- A project detail page that showcases the student's work, including photos, videos, and written reflections.
+- A “Favorites” section for students to explore and create a list of favorite projects.
+
+![Student portfolios dashboard](/portfolio.png)
+Student portfolios dashboard for students to showcase their work and progress.
+
+![Student portfolios enlarged view](/portfolio-enlarged-view.png)
+A project detail page that showcases the student's work, including photos, videos, and written reflections.
