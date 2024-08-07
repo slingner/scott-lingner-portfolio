@@ -1,5 +1,5 @@
 ---
-title: "LinkedIn Featured Link Preview Images Not Showing Up?? Try this."
+title: "LinkedIn featured link preview images not showing up?? Try this."
 description: "How to fix LinkedIn featured link preview images not showing up."
 date: "2020-04-30"
 ---
