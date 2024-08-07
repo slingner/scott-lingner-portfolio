@@ -1,8 +1,8 @@
 # Scott Lingner's Portfolio + Blog
 
-These are some of my recent projects highlighting my skills building interactive web applications from the ground up.
+Showcasing recent projects and posts highlighting my skills in building interactive web applications from the ground up.
 
-Feel free to reach out if you'd like to collaborate on a project!
+Feel free to reach out if you'd like to collaborate on a project! 
 
 ## Deployed App:
 
