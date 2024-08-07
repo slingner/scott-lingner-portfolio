@@ -1,6 +1,6 @@
-# Scott Lingner's Portfolio + Blog
+# Scott Lingner's portfolio + blog
 
-Showcasing recent projects and posts that demonstrate my expertise in developing interactive web applications from the ground up.
+A website showcasing recent projects and posts demonstrating my expertise in developing interactive web applications from the ground up.
 
 Feel free to reach out if you'd like to collaborate on a project! 
 
