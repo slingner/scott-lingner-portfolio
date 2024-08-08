@@ -1,6 +1,7 @@
 ---
 title: "Unexpected Frequency"
 description: "Portfolio and blog build with Next.js + Sanity"
+banner: "/unexpected-frequency-logo.png"
 date: "2024-08-05"
 demoURL: "https://unexpectedfrequency.com/"
 repoURL: "https://github.com/slingner/unexpected"

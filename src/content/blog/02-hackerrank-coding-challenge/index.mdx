@@ -1,0 +1,212 @@
+---
+title: "HackerRank’s Counting Valleys Challenge Simple Javascript Solution"
+description: "A simple solution to HackerRank's Counting Valleys challenge using JavaScript."
+date: "2020-06-02"
+---
+
+import Callout from "@/components/Callout.astro";
+
+---
+
+[Here’s the challenge](https://www.hackerrank.com/challenges/counting-valleys/problem).
+
+## Parameters
+
+n: Gary’s number of steps taken on his hike.
+
+s: a single string showing each step (U(up) & D(down))
+
+## Constraints
+
+n: min = 2, max= 10^6 (1,000,000)
+s: will consist of the letters U or D
+
+## Output Format
+
+Print a single integer that denotes the number of valleys Gary walked through during his hike.
+
+## Sample Input
+8, UDDDUDUU
+
+```astro
+sealevel ____/\      ____  sealevel
+               \    /
+                \/\/
+```
+
+## Sample Output
+
+1
+
+---
+
+## Thought Process Breakdown
+
+<Callout>
+  I have been trying to train myself to not jump right into the code and to really wrap my mind around what the question is asking first.
+</Callout>
+
+1. We need to split the given string s to track each step.
+- create a variable for each step:steps and split it into an array of substrings
+2. We need a count of how many times Gary enters a valley during his hike.
+- create a variable for each valley entered:valleyCount
+3. We need to keep track of Gary’s current sea level status
+- create a variable for Gary’s current sea level:currentSeaLevel
+4. We need to know the sea level status so that we can tell when he has left one valley and entered another.
+- create a variable forvalleyStatus
+5. We need to look through each step in the substring steps and do some if/else statements depending on the currentSeaLevel and valleyStatus
+6. We need to return the valley count after analyzing each step:
+- return valleyCount
+-
+These are the first things I would write in my function in pseudocode:
+
+```astro
+function countingValleys(n, s) {
+  let steps = s.split("");
+  let valleyCount = 0;
+  let currentSeaLevel = 0;
+  let valleyStatus = false;
+  ***analyze each step
+  return valleyCount;
+}
+```
+
+Now thinking about how to analyze each step:
+- I am thinking that a forEach() method would be useful here.
+
+```astro
+steps.forEach(step => do something...)
+```
+
+- If the step is U(up), add one to the currentSeaLevel variable, and the opposite if D(down)
+- If the currentSeaLevelis less than 0 and if Gary’s valleyStatus is checked as false, we will add 1 to the currentSeaLevel and set the valleyStatus to true.
+- If the currentSeaLevelis greater than or equal to 0 and if Gary’s valleyStatus is checked as true, set the valleyStatus to false and continue
+
+---
+
+## Here's my solution without comments:
+
+```astro
+function countingValleys(n, s) {
+let steps = s.split("");
+let valleyCount = 0;
+let currentSeaLevel = 0;
+let valleyStatus = false;
+steps.forEach(step => {
+  step === 'U' ? currentSeaLevel++ : currentSeaLevel--;
+    if(currentSeaLevel < 0 && !valleyStatus) {
+      valleyCount++;
+      valleyStatus = true
+    } else if(currentLevel >= 0 && valleyStatus) {
+      valleyStatus= false
+    }
+  })
+  return valleyCount;
+}
+```
+---
+
+## Big O Notation
+
+It’s always important to consider the BigO of your solution. Big0 allows us to talk formally about how the runtime of an algorithm grows as the inputs grow.
+
+For this solution, the BigO would be linear, O(n). The runtime grows as the input grows.
+
+---
+
+## My solution with more comments
+
+<Callout>
+  Similar to my thought process breakdown above but with more comments to explain each step.
+</Callout>
+
+```astro
+function countingValleys(n, s) {
+```
+
+>
+ This splits the passed in string `s` into an array of substrings (Gary’s individual steps up and down).*
+>  Example: `steps=[U,D,D,D,U,D,U,U]` instead of `UDDDUDUU`.
+
+```astro
+let steps = s.split("");
+```
+
+>  Create a variable for valleys traversed
+
+```astro
+let valleyCount = 0;
+```
+
+>  Create a variable for Gary’s current sea level
+
+```astro
+let currentSeaLevel = 0;
+```
+
+>  Gary doesn't start any hikes already in a valley
+
+```astro
+let valleyStatus = false;
+```
+
+>  forEach() step in the steps array
+
+```astro
+steps.forEach(step => {
+```
+
+>   if the step is U(up), add one to the currentSeaLevel variable, and the opposite if D(down)
+>> [Learn more about conditional ternary operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator)
+
+```astro
+  step === 'U' ? currentSeaLevel++ : currentSeaLevel--;
+```
+
+>   if the currentSeaLevel is less than 0 (Gary is in a valley, since he started at sea level)
+>
+> && (*both of these statements need to be true for the following to occur)
+>
+> if Gary’s valleyStatus is checked as false
+
+```astro
+    if(currentSeaLevel < 0 && !valleyStatus) {
+      valleyCount++;
+      valleyStatus = true
+    }
+```
+
+>  else, if the sea level is 0 or above
+>
+> &&
+>
+> if the valleyStatus is true
+>
+> set the valleyStatus to false and continue
+
+
+```astro
+    else if(currentSeaLevel >= 0 && valleyStatus) {
+      valleyStatus = false
+    }
+  })
+}
+```
+
+> after each step in steps has been checked, return the # of valleys Gary hiked through
+
+```astro
+  return valleyCount;
+}
+```
+
+---
+
+I’m sure there are other potentially much better ways to solve this, but this is a nice simple way that made sense to me. I think simplicity is important in code. Feel free to leave comments!
+
+Make it so! 🚀🌀
+
+
+<Callout type='info'>
+  Want to read this article on Medium? [Here you go!](https://medium.com/swlh/hackerranks-counting-valleys-challenge-c21e51d6ce9d)
+</Callout>

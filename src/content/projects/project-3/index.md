@@ -2,6 +2,7 @@
 title: "Prenda"
 description: "Prenda provides all you need to run a K-8 microschool."
 date: "2024-08-06"
+banner: "/prenda.png"
 demoURL: "https://www.prenda.com/"
 repoURL: "https://github.com/trevortylerlee/astro-micro"
 ---
@@ -44,7 +45,7 @@ The tool captures detailed data on student learning progress, providing insights
 
 ![Create projects](/create.png)
 
-In collaboration with the product managers, UX designers, and curriculum designers, we completely revamped the “Create” learning experience for students and admins with:
+In collaboration with the product managers, UX designers, and curriculum designers, I completely revamped the “Create” learning experience for students and admins with:
 
 - Clear dashboards for students and admins, showing active and completed projects.
 - Simple cards to guide students' interest in new projects.
@@ -55,7 +56,7 @@ In collaboration with the product managers, UX designers, and curriculum designe
 
 ## 🎨 Student portfolios
 
-Through close collaboratation with the product managers, UX designers, we  created a student portfolio system that allows students to showcase their work and progress. The portfolio system includes:
+Through close collaboratation with the product managers, UX designers, I created a student portfolio system that allows students to showcase their work and progress. The portfolio system includes:
 
 - A student dashboard that displays all completed projects.
 - A project detail page that showcases the student's work, including photos, videos, and written reflections.
@@ -66,3 +67,6 @@ Student portfolios dashboard for students to showcase their work and progress.
 
 ![Student portfolios enlarged view](/portfolio-enlarged-view.png)
 A project detail page that showcases the student's work, including photos, videos, and written reflections.
+
+
+Want to read a more detailed account of my work at Prenda? [Check out my post here](/blog/02-working-at-an-education-startup).

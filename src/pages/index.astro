@@ -34,41 +34,28 @@ const projects: CollectionEntry<"projects">[] = (
                 My mission as a developer is to help companies grow with
                 impactful and efficient applications. I am a collaborative
                 developer with a strong background in designing and building
-                interactive web applications from the ground up. I bring a creative problem-solving mindset, honed over eight years of experience in photography at various companies like <Link
-                  href='https://www.andytownsf.com'
-                  >Andytown Coffee Roasters</Link
-                >,
-                <Link href='https://www.williams-sonoma.com/'>Williams Sonoma</Link>,
-                <Link href='https://www.berggruen.com/'>Berggruen Gallery</Link>, and more.
+                interactive web applications from the ground up.
+              </p>
+              <p>
+                I have
+                <span style='white-space: nowrap;'>
+                  <Link href='/projects/project-3'
+                    >five years of experience
+                  </Link>
+                </span> building impactful applications in a startup environment.
+                My background in design allows me to collaborate effectively with
+                designers and contribute to developing rapid prototypes.
               </p>
             </span>
             <span class='animate'>
               <p>
                 In my spare time, I illustrate paper goods under <Link
                   href='https://rocketboogie.com'>Rocket Boogie</Link
-                >. I'm always open to discussing development work or
-                collaborative opportunities.
+                > and take photos for Andytown Coffee Roasters. I'm always open to
+                discussing development work or collaborative opportunities.
               </p>
             </span>
           </article>
-        </section>
-
-        <section class='animate space-y-6'>
-          <div class='flex flex-wrap items-center justify-between gap-y-2'>
-            <h2 class='font-semibold text-black dark:text-white'>
-              Latest posts
-            </h2>
-            <Link href='/blog'> See all posts </Link>
-          </div>
-          <ul class='not-prose flex flex-col gap-4'>
-            {
-              blog.map((post) => (
-                <li>
-                  <ArrowCard entry={post} />
-                </li>
-              ))
-            }
-          </ul>
         </section>
 
         <section class='animate space-y-6'>
@@ -83,6 +70,23 @@ const projects: CollectionEntry<"projects">[] = (
               projects.map((project) => (
                 <li>
                   <ArrowCard entry={project} />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+        <section class='animate space-y-6'>
+          <div class='flex flex-wrap items-center justify-between gap-y-2'>
+            <h2 class='font-semibold text-black dark:text-white'>
+              Latest posts
+            </h2>
+            <Link href='/blog'> See all posts </Link>
+          </div>
+          <ul class='not-prose flex flex-col gap-4'>
+            {
+              blog.map((post) => (
+                <li>
+                  <ArrowCard entry={post} />
                 </li>
               ))
             }

@@ -1,7 +1,8 @@
 ---
 title: "Rocket Boogie Co."
 description: "Rocket Boogie Co. is a San Francisco-based studio specializing in whimsical art and lifestyle
-goods designed by illustrator and designer duo, Scott Lingner and Tammy T"
+goods designed by illustrator and designer duo, Scott Lingner and Tammy Tan"
+banner: "/rocket-boogie.png"
 date: "2020-02-14"
 demoURL: "https://www.rocketboogie.com/"
 # repoURL: "https://github.com/trevortylerlee/astro-micro"
