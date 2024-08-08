@@ -9,7 +9,8 @@ repoURL: "https://github.com/slingner/unexpected"
 
 ![Unexpected Frequency](/unexpected-frequency-logo.png)
 
-Unexpected Frequency is a music website exploring all genres, all eras, and all parts of the world. We are a group of music lovers who are passionate about all things music. We love to talk about music, listen to music, and share our love of music with others. Whether you are a musician, a music lover, or just someone who enjoys listening to music, we invite you to join us in our love of music.
+I worked on Unexpected Frequency, a music website dedicated to exploring all genres, eras, and regions of the world. As a passionate music lover, I am part of a group that loves discussing, listening to, and sharing our passion for music. Whether you're a musician, a music enthusiast, or someone who simply enjoys listening, Unexpected Frequency is the place for you.
+
 
 <!-- ## 🚀 Deploy your own
 
