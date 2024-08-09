@@ -26,9 +26,9 @@ One of the most rewarding aspects of working at a ed-tech startup was the opport
 
 The team faced significant challenges due to overwhelming technical debt. This burden made it difficult to make quick decisions and implement new features efficiently. One of the most frustrating aspects was the need to rebuild the onboarding flow almost every year. Each iteration felt like starting from scratch, which hindered progress and innovation.
 
-### Lack of leadership
+### Lack of direction
 
-The lack of clear leadership and direction within the company was a major obstacle. The absence of a strong product vision and roadmap made it challenging to prioritize tasks and make informed decisions. This lack of direction often led to conflicting priorities and wasted effort on low-impact features.
+The lack of direction within the company was a major obstacle. The absence of a strong product vision and roadmap made it challenging to prioritize tasks and make informed decisions. This often led to conflicting priorities and wasted effort on low-impact features.
 
 
 ## Final thoughts

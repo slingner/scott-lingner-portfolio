@@ -56,11 +56,12 @@ In collaboration with the product managers, UX designers, and curriculum designe
 
 ## 🎨 Student portfolios
 
-Through close collaboratation with the product managers, UX designers, I created a student portfolio system that allows students to showcase their work and progress. The portfolio system includes:
+Through close collaboration with product managers and UX designers while at Prenda, I developed a student portfolio dashboard that allows students to showcase their work and progress. This dashboard seamlessly integrates with Prenda's various learning tools and includes several key features, such as a project detail page where students can display their work through photos, videos, and written reflections. It also includes a "Favorites" section where students can explore and create a list of their favorite projects, along with filtering options by mode, subject, date, and more.
 
-- A student dashboard that displays all completed projects.
-- A project detail page that showcases the student's work, including photos, videos, and written reflections.
-- A “Favorites” section for students to explore and create a list of favorite projects.
+The tool is accessible not only to students but also to teachers, who can approve or reject portfolio submissions and leave comments, fostering a more interactive and supportive learning environment.
+
+This tool was built using React, with React Router for efficient page navigation, a customized Prenda design system for styling, and AWS for photo storage. Thousands of existing portfolio projects were stored in MongoDB before beginning this project, and we decided to retain the data there while migrating to an updated model to ensure a smooth transition.
+
 
 ![Student portfolios dashboard](/portfolio.png)
 Student portfolios dashboard for students to showcase their work and progress.
