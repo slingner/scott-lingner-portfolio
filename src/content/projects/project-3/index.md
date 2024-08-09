@@ -11,7 +11,7 @@ repoURL: "https://github.com/trevortylerlee/astro-micro"
 
 Prenda empowers learners with a child-centered microschool system, an effective learning model, and a supportive community.
 
-My contributions to Prenda include:
+During my 4+ years at Prenda, I had the opportunity to contribute to nearly every aspect of the company, from onboarding Guides to developing custom learning tools for students. Here are a few highlights from my time there:
 
 ## 🔒 Checkr background check integrations
 
