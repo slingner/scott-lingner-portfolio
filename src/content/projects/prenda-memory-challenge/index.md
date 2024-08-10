@@ -16,9 +16,9 @@ Here is a highlight of one of the projects I worked on:
 
 ## 🧠 Memory Challenge
 
-I took full ownership of the design and development of this innovative learning tool.
+In collaboration with the product manager, curriculum manager, and another software engineer, I took full ownership of the design and development of this innovative learning tool. Memory Challenge leverages the concept of spaced repetition to enhance student memorization and is currently used by thousands of Prenda students.
 
-In collaboration with the product manager, curriculum manager, and another software engineer, we designed and developed Memory Challenge from the ground up. Memory Challenge leverages the concept of spaced repetition to enhance student memorization and is currently used by thousands of Prenda students.
+### 🚀 Key features
 
 The curriculum features engaging games and quizzes in both math and geography. Math quizzes cover addition, subtraction, multiplication, and division, while geography quizzes test knowledge of U.S. state capitals, U.S. states, countries around the world, continents, and oceans.
 
@@ -33,5 +33,9 @@ The tool captures detailed data on student learning progress, providing insights
 - Time taken to answer questions
 - Time spent using the tool
 - Student engagement (based on the number of badges earned)
+
+### 🛠️ Tech stack
+
+I used React for the frontend and MongoDB for the backend.
 
 Want to read a more detailed account of my work at Prenda? [Check out my post here](/blog/02-working-at-an-education-startup).
