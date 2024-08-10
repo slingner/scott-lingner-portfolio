@@ -2,7 +2,7 @@
 # make sure to update this title in the image mapper on ArrowCard if changed
 title: "Checkr background check integrations - Prenda"
 description: "Integrated Checkr's API and webhooks to streamline Prenda's onboarding process."
-date: "2023-09-01"
+date: "2024-05-01"
 banner: "/prenda.png"
 demoURL: "https://www.prenda.com/"
 repoURL: "https://github.com/prenda-school/prendaworld"

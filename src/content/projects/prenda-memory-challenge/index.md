@@ -2,7 +2,7 @@
 # make sure to update this title in the image mapper on ArrowCard if changed
 title: "Memory Challenge - Prenda"
 description: "Developed an innovative learning tool for students to enhance memorization."
-date: "2022-03-14"
+date: "2020-03-14"
 banner: "/prenda.png"
 demoURL: "https://www.prenda.com/"
 repoURL: "https://github.com/prenda-school/prendaworld"

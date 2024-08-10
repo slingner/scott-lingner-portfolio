@@ -2,7 +2,7 @@
 # make sure to update this title in the image mapper on ArrowCard if changed
 title: "Create projects - Prenda"
 description: "Developed a new learning experience for students and admins to create projects."
-date: "2022-05-01"
+date: "2023-05-01"
 banner: "/prenda.png"
 demoURL: "https://www.prenda.com/"
 repoURL: "https://github.com/prenda-school/prendaworld"
