@@ -1,4 +1,5 @@
 ---
+# make sure to update this title in the image mapper on ArrowCard if changed
 title: "Unexpected Frequency"
 description: "Portfolio and blog built with Next.js + Sanity"
 banner: "/unexpected-frequency-logo.png"

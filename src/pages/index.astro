@@ -23,116 +23,124 @@ const projects: CollectionEntry<"projects">[] = (
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <aside data-pagefind-ignore>
-      <h1 class='animate font-semibold text-black dark:text-white'>
+      <h1 class="animate font-semibold text-black dark:text-white">
         {HOME.DESCRIPTION}
       </h1>
-      <div class='space-y-16'>
+      <div class="space-y-16">
         <section>
-          <article class='space-y-4'>
-            <span class='animate'>
+          <article class="space-y-4">
+            <span class="animate">
               <p>
-                My mission as a developer is to help companies grow with
-                impactful and efficient applications. I am a collaborative
-                developer with a strong background in designing and building
-                interactive web applications from the ground up.
+                I am dedicated to helping companies grow by developing impactful
+                and efficient applications. With a strong background in
+                designing and building interactive web applications from the
+                ground up, I thrive in collaborative environments.
               </p>
               <p>
-                I have
-                <span style='white-space: nowrap;'>
-                  <Link href='/projects/project-3'
-                    >five years of experience
-                  </Link>
-                </span> building impactful applications in a startup environment.
-                My background in design allows me to collaborate effectively with
-                designers and contribute to developing rapid prototypes.
-              </p>
-            </span>
-            <span class='animate'>
-              <p>
-                In my spare time, I illustrate paper goods under <Link
-                  href='https://rocketboogie.com'>Rocket Boogie</Link
-                > and take photos for Andytown Coffee Roasters. I'm always open to
-                discussing development work or collaborative opportunities.
-              </p>
-            </span>
-          </article>
-        </section>
-
-        <section class='animate space-y-6'>
-          <div class='flex flex-wrap items-center justify-between gap-y-2'>
-            <h2 class='font-semibold text-black dark:text-white'>
-              Recent projects
-            </h2>
-            <Link href='/projects'> See all projects </Link>
-          </div>
-          <ul class='not-prose flex flex-col gap-4'>
-            {
-              projects.map((project) => (
-                <li>
-                  <ArrowCard entry={project} />
-                </li>
-              ))
-            }
-          </ul>
-        </section>
-        <section class='animate space-y-6'>
-          <div class='flex flex-wrap items-center justify-between gap-y-2'>
-            <h2 class='font-semibold text-black dark:text-white'>
-              Latest posts
-            </h2>
-            <Link href='/blog'> See all posts </Link>
-          </div>
-          <ul class='not-prose flex flex-col gap-4'>
-            {
-              blog.map((post) => (
-                <li>
-                  <ArrowCard entry={post} />
-                </li>
-              ))
-            }
-          </ul>
-        </section>
-
-        <section class='animate space-y-4'>
-          <h2 class='font-semibold text-black dark:text-white'>
-            Let's Connect
-          </h2>
-          <article>
-            <p>
-              If you want to get in touch with me about something or just to say
-              hi, reach out on social media or send me an email.
-            </p>
-          </article>
-          <ul class='not-prose flex flex-wrap gap-2'>
-            {
-              SOCIALS.map((SOCIAL) => (
-                <li class='flex gap-x-2 text-nowrap'>
+                I have five years of experience building impactful applications
+                in an <span style="white-space: nowrap;">
                   <Link
-                    href={SOCIAL.HREF}
-                    external
-                    aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
+                    href="/projects/project-3"
+                    style="text-decoration: none; font-weight: 600;"
+                    >EdTech startup</Link
                   >
-                    {SOCIAL.NAME}
+                </span>. My background in design allows me to collaborate
+                effectively with designers and contribute to developing rapid
+                prototypes.
+
+                <span class="animate">
+                  <p>
+                    In my spare time, I illustrate paper goods under
+                    <Link
+                      href="https://www.etsy.com/shop/RocketBoogieCo"
+                      style="text-decoration: none; font-weight: 600;"
+                    >
+                      Rocket Boogie
+                    </Link>
+                    and take photos for Andytown Coffee Roasters. I'm always open
+                    to discussing development work or collaborative opportunities.
+                  </p>
+                </span>
+              </p>
+            </span>
+
+            <section class="animate space-y-6">
+              <div class="flex flex-wrap items-center justify-between gap-y-2">
+                <h2 class="text-2xl font-semibold text-black dark:text-white">
+                  Recent projects
+                </h2>
+                <Link href="/projects"> See all projects </Link>
+              </div>
+              <ul class="not-prose flex flex-col gap-4">
+                {
+                  projects.map((project) => (
+                    <li>
+                      <ArrowCard entry={project} />
+                    </li>
+                  ))
+                }
+              </ul>
+            </section>
+            <section class="animate space-y-6">
+              <div class="flex flex-wrap items-center justify-between gap-y-2">
+                <h2 class="text-2xl font-semibold text-black dark:text-white">
+                  Latest posts
+                </h2>
+                <Link href="/blog"> See all posts </Link>
+              </div>
+              <ul class="not-prose flex flex-col gap-4">
+                {
+                  blog.map((post) => (
+                    <li>
+                      <ArrowCard entry={post} />
+                    </li>
+                  ))
+                }
+              </ul>
+            </section>
+
+            <section class="animate space-y-4">
+              <h2 class="font-semibold text-black dark:text-white">
+                Let's Connect
+              </h2>
+              <article>
+                <p>
+                  If you want to get in touch with me about something or just to
+                  say hi, reach out on social media or send me an email.
+                </p>
+              </article>
+              <ul class="not-prose flex flex-wrap gap-2">
+                {
+                  SOCIALS.map((SOCIAL) => (
+                    <li class="flex gap-x-2 text-nowrap pb-4">
+                      <Link
+                        href={SOCIAL.HREF}
+                        external
+                        aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
+                      >
+                        {SOCIAL.NAME}
+                      </Link>
+                      {"/"}
+                    </li>
+                  ))
+                }
+                <li class="line-clamp-1">
+                  <Link
+                    href={`mailto:${SITE.EMAIL}`}
+                    aria-label={`Email ${SITE.TITLE}`}
+                  >
+                    {SITE.EMAIL}
                   </Link>
-                  {"/"}
                 </li>
-              ))
-            }
-            <li class='line-clamp-1'>
-              <Link
-                href={`mailto:${SITE.EMAIL}`}
-                aria-label={`Email ${SITE.TITLE}`}
-              >
-                {SITE.EMAIL}
-              </Link>
-            </li>
-            {"/"}
-            <li class='line-clamp-1'>
-              <Link href='/rss.xml' aria-label="Scott Lingner RSS feed">
-                RSS
-              </Link>
-            </li>
-          </ul>
+                {"/"}
+                <li class="line-clamp-1">
+                  <Link href="/rss.xml" aria-label="Scott Lingner RSS feed">
+                    RSS
+                  </Link>
+                </li>
+              </ul>
+            </section>
+          </article>
         </section>
       </div>
     </aside>

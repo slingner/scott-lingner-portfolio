@@ -1,4 +1,5 @@
 ---
+# make sure to update this title in the image mapper on ArrowCard if changed
 title: "Rocket Boogie Co."
 description: "Rocket Boogie Co. is a San Francisco-based studio specializing in whimsical art and lifestyle
 goods designed by illustrator and designer duo, Scott Lingner and Tammy Tan"
@@ -7,8 +8,6 @@ date: "2020-02-14"
 demoURL: "https://www.rocketboogie.com/"
 # repoURL: "https://github.com/trevortylerlee/astro-micro"
 ---
-
-
 
 ![Rocket Boogie Co.](/rocket-boogie.png)
 
@@ -31,7 +30,6 @@ Hundreds of happy customers have left 5-star reviews for Rocket Boogie Co. produ
 > Adorable sticker sets that were much loved by the recipient. Thank you!
 
 > Sooo beautiful! High quality too! Super excited to have it up in the wall ❤️
-
 
 ## Social
 
