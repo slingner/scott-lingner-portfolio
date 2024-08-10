@@ -2,7 +2,7 @@
 # make sure to update this title in the image mapper on ArrowCard if changed
 title: "Ghostmail.dev"
 description: "A simple mail server for developers"
-date: "2024-08-01"
+date: "2020-08-01"
 banner: "/ghostmail-dark.png"
 demoURL: "https://ghostmail.dev/"
 repoURL: "https://github.com/jb-1980/ghostmail"

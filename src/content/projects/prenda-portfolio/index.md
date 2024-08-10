@@ -2,7 +2,7 @@
 # make sure to update this title in the image mapper on ArrowCard if changed
 title: "Student portfolios - Prenda"
 description: "Developed a student portfolio dashboard for students to showcase their work and progress."
-date: "2024-08-06"
+date: "2023-08-06"
 banner: "/prenda.png"
 demoURL: "https://www.prenda.com/"
 repoURL: "https://github.com/prenda-school/prendaworld"

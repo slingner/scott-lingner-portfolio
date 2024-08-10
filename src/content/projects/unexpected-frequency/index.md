@@ -3,7 +3,7 @@
 title: "Unexpected Frequency"
 description: "Portfolio and blog built with Next.js + Sanity"
 banner: "/unexpected-frequency-logo.png"
-date: "2024-08-05"
+date: "2020-08-05"
 demoURL: "https://unexpectedfrequency.com/"
 repoURL: "https://github.com/slingner/unexpected"
 ---
@@ -11,7 +11,6 @@ repoURL: "https://github.com/slingner/unexpected"
 ![Unexpected Frequency](/unexpected-frequency-logo.png)
 
 I worked on Unexpected Frequency, a music website dedicated to exploring all genres, eras, and regions of the world. As a passionate music lover, I am part of a group that loves discussing, listening to, and sharing our passion for music. Whether you're a musician, a music enthusiast, or someone who simply enjoys listening, Unexpected Frequency is the place for you.
-
 
 <!-- ## 🚀 Deploy your own
 
@@ -36,13 +35,11 @@ I worked on Unexpected Frequency, a music website dedicated to exploring all gen
 - ✅ Tailwind styling
 <!-- - ✅ MDX Support (components in your markdown)
 - ✅ Searchable content (posts and projects) -->
-<!-- - ✅ Light/Dark Theme -->
-<!-- - ✅ Auto generated sitemap
+  <!-- - ✅ Light/Dark Theme -->
+  <!-- - ✅ Auto generated sitemap
 - ✅ Auto generated RSS Feed -->
-<!-- - ✅ Markdown support -->
-<!-- - ✅ Animated UI -->
-
-
+  <!-- - ✅ Markdown support -->
+  <!-- - ✅ Animated UI -->
 
 <!-- ## 💯 Lighthouse score
 

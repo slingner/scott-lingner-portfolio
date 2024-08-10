@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import FormattedDate from "./FormattedDate.astro";
 
 type Props = {
   entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
@@ -50,6 +51,9 @@ const imgUrl: { [key: string]: string } = {
       </div>
       <div class="text-sm">
         {entry.data.description}
+      </div>
+      <div class="text-xs text-gray-500">
+        <FormattedDate date={entry.data.date} />
       </div>
     </div>
   </div>
