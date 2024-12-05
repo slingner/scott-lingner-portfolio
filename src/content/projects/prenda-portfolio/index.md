@@ -12,11 +12,12 @@ repoURL: "https://github.com/prenda-school/prendaworld"
 
 I wanted to start with a little background into Prenda, the ed-tech company I’ve been working for for the last four years. Prenda helps adults create microschools in their homes, usually around 5-10 kids. The whole model behind Prenda is based on mastery-based learning, where kids can learn at their own pace and truly master a subject before moving on. There are four different modes in the Prenda curriculum that kids bounce around throughout their 4-hour school day, each one targeting a different aspect of learning. This approach empowers the students to want to learn.
 
-#### The problem
+## 📚 Student Portfolios Project
+### The problem
 
 Students' work had nowhere to live in Prenda. It was scattered between the four different learning modes (Connect, Conquer, Collaborate, Create), making it difficult to share their work with their teachers and parents.
 
-#### The solution
+### The solution
 
 The solution to this was to create a student portfolio that combined all of the modes into one location, where images, notes, and other stats could be stored and shared between students, guides, and parents.
 
@@ -32,11 +33,11 @@ Student portfolios dashboard for students to showcase their work and progress.
 ![Student portfolios enlarged view](/portfolio-enlarged-view.png)
 A project detail page that showcases the student's work, including photos, videos, and written reflections.
 
-### 🛠️ Tech stack
+## 🛠️ Tech stack
 
 This tool was built using React, with React Router for efficient page navigation, a customized Prenda design system for styling, and AWS for photo storage. Thousands of existing portfolio projects were stored in MongoDB before beginning this project, and we decided to retain the data there while migrating to an updated model to ensure a smooth transition.
 
-## Frontend
+### Frontend
 
 On the front end, we use React with Meteor. Meteor was initially chosen back in 2018 when Prenda was starting, and we were starting to see the site slow down due to Meteor’s monolithic structure. The team was considering switching to Next.js in the future, which could handle scaling much better and offer easier integrations to deployment tools like Vercel and for server-side rendering.
 
@@ -46,7 +47,7 @@ For managing state throughout the portfolio, we relied on React Context API. Thi
 
 We also had a custom design system that was designed by our UX team, which used Material UI as the base.
 
-## Backend
+### Backend
 
 The backend for this project, called "Hub," acts as the core API for managing Prenda’s data. It is a Node.js application that integrates with two databases: MongoDB and Postgres.
 
