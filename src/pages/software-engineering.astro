@@ -1,0 +1,60 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import { getCollection } from "astro:content";
+
+const blog = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const projects = (await getCollection("projects"))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title="Software Engineering" description="Software engineering projects and writing by Scott Lingner.">
+  <Container>
+    <aside data-pagefind-ignore>
+      <p class="animate text-lg text-stone-700 dark:text-stone-300 mb-12">
+        Building impactful applications with five years of experience in EdTech.
+      </p>
+
+      <div class="space-y-16">
+        <section class="animate space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-y-2">
+            <h2 class="text-3xl font-bold text-stone-800 dark:text-stone-200">
+              Projects
+            </h2>
+          </div>
+          <ul class="not-prose flex flex-col gap-4">
+            {
+              projects.map((project) => (
+                <li>
+                  <ArrowCard entry={project} />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section class="animate space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-y-2">
+            <h2 class="text-3xl font-bold text-stone-800 dark:text-stone-200">
+              Writing
+            </h2>
+          </div>
+          <ul class="not-prose flex flex-col gap-4">
+            {
+              blog.map((post) => (
+                <li>
+                  <ArrowCard entry={post} />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </div>
+    </aside>
+  </Container>
+</Layout>
