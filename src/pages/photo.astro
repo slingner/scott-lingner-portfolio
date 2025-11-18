@@ -1,0 +1,49 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import Link from "@components/Link.astro";
+---
+
+<Layout title="Photography" description="Scott Lingner's photography portfolio.">
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="space-y-8">
+        <section class="animate">
+          <div class="flex flex-col items-center gap-6 mb-8">
+            <div class="w-48 h-48 flex items-center justify-center">
+              <img
+                src="/atown.jpg"
+                alt="Photography"
+                class="w-full h-full object-cover rounded-lg shadow-lg"
+              />
+            </div>
+            <h1 class="text-4xl font-bold text-stone-900 dark:text-stone-100 text-center">
+              Photography
+            </h1>
+          </div>
+
+          <div class="space-y-6">
+            <p class="text-lg leading-relaxed text-stone-700 dark:text-stone-300">
+              Scott Lingner's photography captures moments and perspectives through a creative lens,
+              exploring visual storytelling across various subjects and environments.
+            </p>
+
+            <div class="bg-stone-200/50 dark:bg-stone-800/50 p-8 rounded-lg border border-stone-300/50 dark:border-stone-700/50 text-center">
+              <p class="text-base text-stone-700 dark:text-stone-300 mb-6">
+                View the complete photography portfolio on Cargo Collective to explore
+                the full collection of photographic work.
+              </p>
+              <Link
+                href="https://cargocollective.com/scottdavidlingner/Scott-Lingner"
+                external
+                class="inline-block bg-stone-700 dark:bg-stone-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-stone-800 dark:hover:bg-stone-700 transition-colors shadow-md hover:shadow-lg"
+              >
+                View Photography Portfolio →
+              </Link>
+            </div>
+          </div>
+        </section>
+      </div>
+    </aside>
+  </Container>
+</Layout>
