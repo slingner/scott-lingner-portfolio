@@ -8,9 +8,11 @@ import { SITE } from "@consts";
   <Container>
     <div class="flex flex-wrap justify-between items-center gap-y-2">
       <Link href="/" underline={false}>
-        <div class="text-4xl font-semibold text-stone-800 dark:text-stone-200">
-          {SITE.TITLE}
-        </div>
+        <img
+          src="/logo.png"
+          alt={SITE.TITLE}
+          class="h-12 w-auto object-contain transition-all dark:brightness-0 dark:invert dark:opacity-90"
+        />
       </Link>
       <button
         id="magnifying-glass"
