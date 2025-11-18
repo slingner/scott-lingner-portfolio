@@ -1,0 +1,49 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import Link from "@components/Link.astro";
+---
+
+<Layout title="Stationery - Rocket Boogie Co." description="Scott Lingner's stationery and design project, Rocket Boogie Co.">
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="space-y-8">
+        <section class="animate">
+          <div class="flex flex-col items-center gap-6 mb-8">
+            <div class="w-48 h-48 flex items-center justify-center">
+              <img
+                src="/rbc-logo.png"
+                alt="Rocket Boogie Co."
+                class="w-full h-full object-contain rounded-lg shadow-lg dark:brightness-0 dark:invert dark:opacity-90"
+              />
+            </div>
+            <h1 class="text-4xl font-bold text-stone-900 dark:text-stone-100 text-center">
+              Rocket Boogie Co.
+            </h1>
+          </div>
+
+          <div class="space-y-6">
+            <p class="text-lg leading-relaxed text-stone-700 dark:text-stone-300">
+              Rocket Boogie Co. is Scott Lingner's stationery and design project, creating
+              unique paper goods and creative products that combine functionality with artistic flair.
+            </p>
+
+            <div class="bg-stone-200/50 dark:bg-stone-800/50 p-8 rounded-lg border border-stone-300/50 dark:border-stone-700/50 text-center">
+              <p class="text-base text-stone-700 dark:text-stone-300 mb-6">
+                Visit the official Rocket Boogie Co. website to explore the full collection of
+                stationery, designs, and creative products.
+              </p>
+              <Link
+                href="https://rocketboogie.com"
+                external
+                class="inline-block bg-stone-700 dark:bg-stone-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-stone-800 dark:hover:bg-stone-700 transition-colors shadow-md hover:shadow-lg"
+              >
+                Visit rocketboogie.com →
+              </Link>
+            </div>
+          </div>
+        </section>
+      </div>
+    </aside>
+  </Container>
+</Layout>

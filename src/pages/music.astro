@@ -1,0 +1,49 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import Link from "@components/Link.astro";
+---
+
+<Layout title="Music - Plastic Jaguar" description="Scott Lingner's music project, Plastic Jaguar.">
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="space-y-8">
+        <section class="animate">
+          <div class="flex flex-col items-center gap-6 mb-8">
+            <div class="w-48 h-48 flex items-center justify-center">
+              <img
+                src="/plastic-jaguar-logo.png"
+                alt="Plastic Jaguar"
+                class="w-full h-full object-contain rounded-lg shadow-lg dark:brightness-0 dark:invert dark:opacity-90"
+              />
+            </div>
+            <h1 class="text-4xl font-bold text-stone-900 dark:text-stone-100 text-center">
+              Plastic Jaguar
+            </h1>
+          </div>
+
+          <div class="space-y-6">
+            <p class="text-lg leading-relaxed text-stone-700 dark:text-stone-300">
+              Plastic Jaguar is Scott Lingner's music project, exploring sounds and compositions
+              that blend creativity with technical craftsmanship.
+            </p>
+
+            <div class="bg-stone-200/50 dark:bg-stone-800/50 p-8 rounded-lg border border-stone-300/50 dark:border-stone-700/50 text-center">
+              <p class="text-base text-stone-700 dark:text-stone-300 mb-6">
+                Visit the official Plastic Jaguar website to listen to music, learn more about the project,
+                and explore upcoming releases.
+              </p>
+              <Link
+                href="https://plasticjaguar.com"
+                external
+                class="inline-block bg-stone-700 dark:bg-stone-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-stone-800 dark:hover:bg-stone-700 transition-colors shadow-md hover:shadow-lg"
+              >
+                Visit plasticjaguar.com →
+              </Link>
+            </div>
+          </div>
+        </section>
+      </div>
+    </aside>
+  </Container>
+</Layout>
