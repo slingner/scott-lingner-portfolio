@@ -6,94 +6,33 @@ import { SITE } from "@consts";
 
 <header transition:persist>
   <Container>
-    <div class="flex flex-col gap-4">
-      <div class="flex flex-wrap justify-between items-center gap-y-2">
-        <Link href="/" underline={false}>
-          <div class="text-4xl font-semibold text-stone-800 dark:text-stone-200">
-            {SITE.TITLE}
-          </div>
-        </Link>
-        <button
-          id="magnifying-glass"
-          aria-label="Search"
-          class="flex items-center rounded border border-stone-300/50 bg-stone-200/80 px-3 py-2 text-xs transition-all duration-300 ease-in-out hover:bg-stone-300/80 hover:text-stone-900 dark:border-stone-600/50 dark:bg-stone-700/80 dark:hover:bg-stone-600/50 dark:hover:text-stone-100"
+    <div class="flex flex-wrap justify-between items-center gap-y-2">
+      <Link href="/" underline={false}>
+        <img
+          src="/logo.png"
+          alt={SITE.TITLE}
+          class="h-16 w-auto object-contain transition-all dark:brightness-0 dark:invert dark:opacity-90"
+        />
+      </Link>
+      <button
+        id="magnifying-glass"
+        aria-label="Search"
+        class="flex items-center rounded border border-stone-300/50 bg-stone-200/80 px-3 py-2 text-xs transition-all duration-300 ease-in-out hover:bg-stone-300/80 hover:text-stone-900 dark:border-stone-600/50 dark:bg-stone-700/80 dark:hover:bg-stone-600/50 dark:hover:text-stone-100"
+      >
+        <svg
+          height="16"
+          stroke-linejoin="round"
+          viewBox="0 0 16 16"
+          width="16"
+          style="color: currentcolor;"
+          ><path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M3.5 7C3.5 5.067 5.067 3.5 7 3.5C8.933 3.5 10.5 5.067 10.5 7C10.5 7.88461 10.1718 8.69256 9.63058 9.30876L9.30876 9.63058C8.69256 10.1718 7.88461 10.5 7 10.5C5.067 10.5 3.5 8.933 3.5 7ZM9.96544 11.0261C9.13578 11.6382 8.11014 12 7 12C4.23858 12 2 9.76142 2 7C2 4.23858 4.23858 2 7 2C9.76142 2 12 4.23858 12 7C12 8.11014 11.6382 9.13578 11.0261 9.96544L14.0303 12.9697L14.5607 13.5L13.5 14.5607L12.9697 14.0303L9.96544 11.0261Z"
+            fill="currentColor"></path></svg
         >
-          <svg
-            height="16"
-            stroke-linejoin="round"
-            viewBox="0 0 16 16"
-            width="16"
-            style="color: currentcolor;"
-            ><path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M3.5 7C3.5 5.067 5.067 3.5 7 3.5C8.933 3.5 10.5 5.067 10.5 7C10.5 7.88461 10.1718 8.69256 9.63058 9.30876L9.30876 9.63058C8.69256 10.1718 7.88461 10.5 7 10.5C5.067 10.5 3.5 8.933 3.5 7ZM9.96544 11.0261C9.13578 11.6382 8.11014 12 7 12C4.23858 12 2 9.76142 2 7C2 4.23858 4.23858 2 7 2C9.76142 2 12 4.23858 12 7C12 8.11014 11.6382 9.13578 11.0261 9.96544L14.0303 12.9697L14.5607 13.5L13.5 14.5607L12.9697 14.0303L9.96544 11.0261Z"
-              fill="currentColor"></path></svg
-          >
-          &nbsp;Search
-        </button>
-      </div>
-
-      <nav class="flex items-center gap-6 text-sm flex-wrap">
-        <a
-          href="https://plasticjaguar.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group flex items-center gap-2 transition-all duration-300 hover:scale-105"
-          aria-label="Plastic Jaguar Band"
-        >
-          <img
-            src="/plastic-jaguar-logo.png"
-            alt="Plastic Jaguar"
-            class="w-8 h-8 object-contain rounded-lg transition-all dark:brightness-0 dark:invert dark:opacity-90"
-          />
-          <span class="text-stone-700 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">Music</span>
-        </a>
-
-        <a
-          href="https://rocketboogie.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group flex items-center gap-2 transition-all duration-300 hover:scale-105"
-          aria-label="Rocket Boogie Co."
-        >
-          <img
-            src="/rbc-logo.png"
-            alt="Rocket Boogie"
-            class="w-8 h-8 object-contain rounded-lg transition-all dark:brightness-0 dark:invert dark:opacity-90"
-          />
-          <span class="text-stone-700 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">Stationery</span>
-        </a>
-
-        <a
-          href="https://cargocollective.com/scottdavidlingner/Scott-Lingner"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group flex items-center gap-2 transition-all duration-300 hover:scale-105"
-          aria-label="Photography"
-        >
-          <img
-            src="/atown.jpg"
-            alt="Photography"
-            class="w-8 h-8 object-cover rounded-lg grayscale transition-all group-hover:grayscale-0"
-          />
-          <span class="text-stone-700 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">Photo</span>
-        </a>
-
-        <a
-          href="/software-engineering"
-          class="group flex items-center gap-2 transition-all duration-300 hover:scale-105"
-        >
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center text-stone-700 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-            </svg>
-          </div>
-          <span class="text-stone-700 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">Software Engineering</span>
-        </a>
-
-        <Link href="/news" class="text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 transition-colors">News</Link>
-      </nav>
+        &nbsp;Search
+      </button>
     </div>
   </Container>
 </header>
