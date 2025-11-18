@@ -2,153 +2,92 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import { SITE, HOME, SOCIALS } from "@consts";
-import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
-
-const blog = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
-
-const projects: CollectionEntry<"projects">[] = (
-  await getCollection("projects")
-)
-  .filter((project) => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <aside data-pagefind-ignore>
-      <h1 class="animate text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-700 via-blue-600 to-purple-600 dark:from-cyan-400 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-8">
-        Creator. Developer. Artist.
+      <h1 class="animate text-4xl md:text-5xl font-bold text-stone-900 dark:text-stone-100 mb-8">
+        Scott Lingner
       </h1>
-      <div class="space-y-16">
+      <div class="space-y-12">
         <section>
-          <article class="space-y-6">
-            <div class="animate bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-slate-800 dark:to-blue-900/30 p-6 rounded-2xl border border-cyan-200/50 dark:border-cyan-800/50 shadow-lg">
-              <p class="text-lg leading-relaxed">
-                I'm Scott Lingner, a multi-disciplinary creator based in California.
-                I bring ideas to life through <strong class="text-cyan-700 dark:text-cyan-400">software engineering</strong>,
-                <strong class="text-purple-600 dark:text-purple-400">music</strong>,
-                <strong class="text-orange-600 dark:text-orange-400">illustration</strong>, and
-                <strong class="text-pink-600 dark:text-pink-400">photography</strong>.
-              </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6 animate">
-              <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 p-6 rounded-xl border border-purple-200/50 dark:border-purple-800/50 shadow-md hover:shadow-xl transition-shadow">
-                <h3 class="text-xl font-semibold text-purple-700 dark:text-purple-400 mb-3 flex items-center gap-2">
-                  <span>🎸</span> Music
-                </h3>
-                <p>
-                  I'm a member of <Link
-                    href="https://plasticjaguar.com"
-                    style="text-decoration: none; font-weight: 600;"
-                    external
-                  >Plastic Jaguar</Link>, creating music that blends creativity with energy.
-                </p>
-              </div>
-
-              <div class="bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-950/30 dark:to-yellow-950/30 p-6 rounded-xl border border-orange-200/50 dark:border-orange-800/50 shadow-md hover:shadow-xl transition-shadow">
-                <h3 class="text-xl font-semibold text-orange-700 dark:text-orange-400 mb-3 flex items-center gap-2">
-                  <span>✏️</span> Illustration
-                </h3>
-                <p>
-                  Under <Link
-                    href="https://www.rocketboogie.com/"
-                    style="text-decoration: none; font-weight: 600;"
-                    external
-                  >Rocket Boogie</Link>, I design and illustrate paper goods that bring joy to everyday moments.
-                </p>
-              </div>
-
-              <div class="bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-950/30 dark:to-rose-950/30 p-6 rounded-xl border border-pink-200/50 dark:border-pink-800/50 shadow-md hover:shadow-xl transition-shadow">
-                <h3 class="text-xl font-semibold text-pink-700 dark:text-pink-400 mb-3 flex items-center gap-2">
-                  <span>📸</span> Photography
-                </h3>
-                <p>
-                  I capture moments through my lens for <Link
-                    href="https://www.andytownsf.com/"
-                    style="text-decoration: none; font-weight: 600;"
-                    external>Andytown Coffee Roasters</Link> and my personal <Link
-                    href="https://cargocollective.com/scottdavidlingner/Scott-Lingner"
-                    style="text-decoration: none; font-weight: 600;"
-                    external>art portfolio</Link>.
-                </p>
-              </div>
-
-              <div class="bg-gradient-to-br from-cyan-50 to-sky-50 dark:from-cyan-950/30 dark:to-sky-950/30 p-6 rounded-xl border border-cyan-200/50 dark:border-cyan-800/50 shadow-md hover:shadow-xl transition-shadow">
-                <h3 class="text-xl font-semibold text-cyan-700 dark:text-cyan-400 mb-3 flex items-center gap-2">
-                  <span>💻</span> Software Engineering
-                </h3>
-                <p>
-                  With five years of experience at an <Link
-                    href="/projects"
-                    style="text-decoration: none; font-weight: 600;"
-                  >EdTech startup</Link>, I build impactful applications and thrive in collaborative environments.
-                </p>
-              </div>
-            </div>
-
+          <article class="space-y-8">
             <div class="animate">
-              <p class="text-base leading-relaxed">
-                When I'm not creating, you'll find me hanging out with my wife and puppy,
-                exploring California's coast, or collaborating on new projects.
-                I'm always open to discussing creative work or collaborative opportunities.
+              <p class="text-lg leading-relaxed text-stone-700 dark:text-stone-300">
+                Multi-disciplinary creator based in California.
               </p>
             </div>
 
-            <section class="animate space-y-6">
-              <div class="flex flex-wrap items-center justify-between gap-y-2">
-                <h2 class="text-3xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
-                  Recent Projects
-                </h2>
-                <Link href="/projects" class="text-cyan-600 dark:text-cyan-400 hover:text-cyan-800 dark:hover:text-cyan-200 font-semibold transition-colors">
-                  See all projects →
-                </Link>
-              </div>
-              <ul class="not-prose flex flex-col gap-4">
-                {
-                  projects.map((project) => (
-                    <li>
-                      <ArrowCard entry={project} />
-                    </li>
-                  ))
-                }
-              </ul>
-            </section>
-            <section class="animate space-y-6">
-              <div class="flex flex-wrap items-center justify-between gap-y-2">
-                <h2 class="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                  Latest Posts
-                </h2>
-                <Link href="/blog" class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-200 font-semibold transition-colors">
-                  See all posts →
-                </Link>
-              </div>
-              <ul class="not-prose flex flex-col gap-4">
-                {
-                  blog.map((post) => (
-                    <li>
-                      <ArrowCard entry={post} />
-                    </li>
-                  ))
-                }
-              </ul>
-            </section>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 animate">
+              <a
+                href="https://plasticjaguar.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
+              >
+                <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+                  <img
+                    src="/plastic-jaguar-logo.png"
+                    alt="Plastic Jaguar"
+                    class="w-full h-full object-contain rounded-lg shadow-md group-hover:shadow-xl transition-shadow"
+                  />
+                </div>
+                <span class="text-sm md:text-base font-medium text-stone-700 dark:text-stone-300 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">Music</span>
+              </a>
 
-            <section class="animate space-y-4">
-              <h2 class="text-3xl font-bold bg-gradient-to-r from-orange-600 to-yellow-600 dark:from-orange-400 dark:to-yellow-400 bg-clip-text text-transparent mb-4">
-                Let's Connect
+              <a
+                href="https://rocketboogie.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
+              >
+                <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+                  <img
+                    src="/rbc-logo.png"
+                    alt="Rocket Boogie Co."
+                    class="w-full h-full object-contain rounded-lg shadow-md group-hover:shadow-xl transition-shadow"
+                  />
+                </div>
+                <span class="text-sm md:text-base font-medium text-stone-700 dark:text-stone-300 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">Stationery</span>
+              </a>
+
+              <a
+                href="https://cargocollective.com/scottdavidlingner/Scott-Lingner"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
+              >
+                <div class="w-24 h-24 md:w-32 md:h-32 rounded-lg bg-emerald-700 dark:bg-emerald-600 flex items-center justify-center shadow-md group-hover:shadow-xl transition-shadow">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 md:w-16 md:h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <span class="text-sm md:text-base font-medium text-stone-700 dark:text-stone-300 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">Photo</span>
+              </a>
+
+              <a
+                href="/software-engineering"
+                class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
+              >
+                <div class="w-24 h-24 md:w-32 md:h-32 rounded-lg bg-stone-700 dark:bg-stone-600 flex items-center justify-center shadow-md group-hover:shadow-xl transition-shadow">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 md:w-16 md:h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                </div>
+                <span class="text-sm md:text-base font-medium text-stone-700 dark:text-stone-300 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">Software</span>
+              </a>
+            </div>
+
+            <section class="animate space-y-4 mt-12">
+              <h2 class="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
+                Connect
               </h2>
-              <div class="bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-950/30 dark:to-yellow-950/30 p-6 rounded-xl border border-orange-200/50 dark:border-orange-800/50">
-                <p class="text-base leading-relaxed">
-                  If you want to get in touch with me about something or just to
-                  say hi, reach out on social media or send me an email.
+              <div class="bg-amber-100/50 dark:bg-stone-800/50 p-6 rounded-lg border border-amber-300/50 dark:border-stone-700/50">
+                <p class="text-base leading-relaxed text-stone-700 dark:text-stone-300">
+                  Get in touch about creative work or collaborative opportunities.
                 </p>
               </div>
               <ul class="not-prose flex flex-wrap gap-2">

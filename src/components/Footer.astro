@@ -4,7 +4,7 @@ import { SITE } from "@consts";
 import BackToTop from "@components/BackToTop.astro";
 ---
 
-<footer class="animate border-t border-cyan-200/50 dark:border-cyan-800/50 bg-gradient-to-b from-transparent to-cyan-50/30 dark:to-cyan-950/30">
+<footer class="animate border-t border-amber-300/50 dark:border-stone-700/50 bg-amber-100/30 dark:bg-stone-800/30">
   <Container>
     <div class="relative">
       <div class="absolute -top-12 right-0">
@@ -12,15 +12,15 @@ import BackToTop from "@components/BackToTop.astro";
       </div>
     </div>
     <div class="flex items-center justify-between">
-      <div class="text-slate-700 dark:text-slate-300">
-        &copy; {new Date().getFullYear()} • <span class="font-semibold bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">{SITE.TITLE}</span> 🌊
+      <div class="text-stone-700 dark:text-stone-300">
+        &copy; {new Date().getFullYear()} • <span class="font-semibold text-amber-800 dark:text-amber-200">{SITE.TITLE}</span> 🌲
       </div>
 
       <div class="flex flex-wrap items-center gap-1.5">
         <button
           id="light-theme-button"
           aria-label="Light theme"
-          class="group flex size-9 items-center justify-center rounded-full border border-cyan-300/50 hover:bg-cyan-100 focus-visible:bg-cyan-100 dark:border-cyan-700/50 dark:hover:bg-cyan-900/50 dark:focus-visible:bg-cyan-900/50 transition-all"
+          class="group flex size-9 items-center justify-center rounded border border-amber-300/50 hover:bg-amber-200 focus-visible:bg-amber-200 dark:border-stone-600/50 dark:hover:bg-stone-700/50 dark:focus-visible:bg-stone-700/50 transition-all"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +32,7 @@ import BackToTop from "@components/BackToTop.astro";
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="transition-colors duration-300 ease-in-out stroke-amber-500 dark:stroke-amber-400 group-hover:animate-pulse group-hover:scale-110"
+            class="transition-colors duration-300 ease-in-out stroke-amber-600 dark:stroke-amber-400"
           >
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -48,7 +48,7 @@ import BackToTop from "@components/BackToTop.astro";
         <button
           id="dark-theme-button"
           aria-label="Dark theme"
-          class="group flex size-9 items-center justify-center rounded-full border border-cyan-300/50 hover:bg-cyan-100 focus-visible:bg-cyan-100 dark:border-cyan-700/50 dark:hover:bg-cyan-900/50 dark:focus-visible:bg-cyan-900/50 transition-all"
+          class="group flex size-9 items-center justify-center rounded border border-amber-300/50 hover:bg-amber-200 focus-visible:bg-amber-200 dark:border-stone-600/50 dark:hover:bg-stone-700/50 dark:focus-visible:bg-stone-700/50 transition-all"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +60,7 @@ import BackToTop from "@components/BackToTop.astro";
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="transition-colors duration-300 ease-in-out stroke-indigo-600 dark:stroke-indigo-400 group-hover:animate-pulse group-hover:scale-110"
+            class="transition-colors duration-300 ease-in-out stroke-stone-700 dark:stroke-stone-300"
           >
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
@@ -68,7 +68,7 @@ import BackToTop from "@components/BackToTop.astro";
         <button
           id="system-theme-button"
           aria-label="System theme"
-          class="group flex size-9 items-center justify-center rounded-full border border-cyan-300/50 hover:bg-cyan-100 focus-visible:bg-cyan-100 dark:border-cyan-700/50 dark:hover:bg-cyan-900/50 dark:focus-visible:bg-cyan-900/50 transition-all"
+          class="group flex size-9 items-center justify-center rounded border border-amber-300/50 hover:bg-amber-200 focus-visible:bg-amber-200 dark:border-stone-600/50 dark:hover:bg-stone-700/50 dark:focus-visible:bg-stone-700/50 transition-all"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ import BackToTop from "@components/BackToTop.astro";
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="transition-colors duration-300 ease-in-out stroke-cyan-600 dark:stroke-cyan-400 group-hover:animate-pulse group-hover:scale-110"
+            class="transition-colors duration-300 ease-in-out stroke-stone-600 dark:stroke-stone-400"
           >
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
             <line x1="8" y1="21" x2="16" y2="21"></line>
