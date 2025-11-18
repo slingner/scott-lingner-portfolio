@@ -20,19 +20,19 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-gradient-to-br from-sky-50 via-blue-50 to-cyan-50 dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-950 dark:to-cyan-950;
-  @apply text-slate-800 dark:text-slate-100;
+  @apply bg-stone-100 dark:bg-stone-900;
+  @apply text-stone-800 dark:text-stone-100;
 }
 
 header {
   @apply fixed left-0 right-0 top-0 z-50 py-6;
-  @apply bg-gradient-to-r from-sky-100/90 via-blue-100/90 to-cyan-100/90 dark:bg-gradient-to-r dark:from-slate-900/90 dark:via-blue-950/90 dark:to-cyan-950/90;
-  @apply saturate-200 backdrop-blur-md;
-  @apply border-b border-cyan-200/50 dark:border-cyan-800/50;
+  @apply bg-stone-200/95 dark:bg-stone-800/95;
+  @apply backdrop-blur-md;
+  @apply border-b border-stone-300/50 dark:border-stone-700/50;
 }
 
 main {
-  @apply flex-1 py-24;
+  @apply flex-1 py-32 pt-36;
 }
 
 footer {
@@ -40,20 +40,20 @@ footer {
 }
 
 article {
-  @apply prose prose-sky max-w-full dark:prose-invert prose-img:mx-auto prose-img:my-auto;
+  @apply prose prose-stone max-w-full dark:prose-invert prose-img:mx-auto prose-img:my-auto;
   @apply prose-headings:font-semibold;
-  @apply prose-headings:text-cyan-900 prose-headings:dark:text-cyan-100;
+  @apply prose-headings:text-stone-900 prose-headings:dark:text-stone-100;
 }
 
 @layer utilities {
   article a {
-    @apply font-sans text-cyan-700 dark:text-cyan-300 underline underline-offset-[3px];
-    @apply decoration-cyan-500/40 dark:decoration-cyan-400/40;
+    @apply font-sans text-stone-700 dark:text-stone-300 underline underline-offset-[3px];
+    @apply decoration-stone-600/40 dark:decoration-stone-500/40;
     @apply transition-colors duration-300 ease-in-out;
   }
   article a:hover {
-    @apply text-cyan-900 dark:text-cyan-100;
-    @apply decoration-cyan-600/60 dark:decoration-cyan-300/60;
+    @apply text-stone-900 dark:text-stone-100;
+    @apply decoration-stone-700/60 dark:decoration-stone-400/60;
   }
 }
 
@@ -80,40 +80,40 @@ pre {
 }
 
 :root {
-  --astro-code-color-text: #0f172a;
-  --astro-code-color-background: #f0f9ff;
-  --astro-code-token-comment: #94a3b8;
-  --astro-code-token-keyword: #f472b6;
-  --astro-code-token-string: #06b6d4;
-  --astro-code-token-function: #0891b2;
-  --astro-code-token-constant: #0284c7;
-  --astro-code-token-parameter: #0ea5e9;
-  --astro-code-token-string-expression: #d946ef;
-  --astro-code-token-punctuation: #64748b;
-  --astro-code-token-link: #3b82f6;
+  --astro-code-color-text: #1c1917;
+  --astro-code-color-background: #fef3c7;
+  --astro-code-token-comment: #78716c;
+  --astro-code-token-keyword: #b45309;
+  --astro-code-token-string: #15803d;
+  --astro-code-token-function: #92400e;
+  --astro-code-token-constant: #a16207;
+  --astro-code-token-parameter: #b45309;
+  --astro-code-token-string-expression: #92400e;
+  --astro-code-token-punctuation: #57534e;
+  --astro-code-token-link: #a16207;
 }
 
 .dark {
-  --astro-code-color-text: #e0f2fe;
-  --astro-code-color-background: #0c4a6e;
-  --astro-code-token-comment: #94a3b8;
-  --astro-code-token-keyword: #f9a8d4;
-  --astro-code-token-string: #22d3ee;
-  --astro-code-token-function: #67e8f9;
-  --astro-code-token-constant: #7dd3fc;
-  --astro-code-token-parameter: #38bdf8;
-  --astro-code-token-string-expression: #e879f9;
-  --astro-code-token-punctuation: #cbd5e1;
-  --astro-code-token-link: #60a5fa;
+  --astro-code-color-text: #fef3c7;
+  --astro-code-color-background: #292524;
+  --astro-code-token-comment: #a8a29e;
+  --astro-code-token-keyword: #fbbf24;
+  --astro-code-token-string: #84cc16;
+  --astro-code-token-function: #fcd34d;
+  --astro-code-token-constant: #fbbf24;
+  --astro-code-token-parameter: #facc15;
+  --astro-code-token-string-expression: #fde047;
+  --astro-code-token-punctuation: #d6d3d1;
+  --astro-code-token-link: #fbbf24;
 }
 
 /* copy code button on codeblocks */
 .copy-code {
-  @apply absolute right-3 top-3 grid size-9 place-content-center rounded border border-cyan-300/30 bg-sky-100 text-center duration-300 ease-in-out dark:border-cyan-700/30 dark:bg-slate-800;
+  @apply absolute right-3 top-3 grid size-9 place-content-center rounded border border-stone-300/30 bg-stone-200 text-center duration-300 ease-in-out dark:border-stone-700/30 dark:bg-stone-800;
 }
 
 .copy-code:hover {
-  @apply bg-sky-200 transition-colors dark:bg-slate-700;
+  @apply bg-stone-300 transition-colors dark:bg-stone-700;
 }
 
 .copy-code:active {
