@@ -81,11 +81,59 @@ import Link from "@components/Link.astro";
 
             <section class="animate space-y-4 mt-12">
               <h2 class="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
+                News
+              </h2>
+              <div class="bg-stone-200/50 dark:bg-stone-800/50 p-6 rounded-lg border border-stone-300/50 dark:border-stone-700/50 space-y-4">
+                <ul class="space-y-3">
+                  <li>
+                    <Link href="/news" class="block group">
+                      <h3 class="font-semibold text-stone-900 dark:text-stone-100 group-hover:text-stone-700 dark:group-hover:text-stone-300 transition-colors">
+                        Nothing Happens Gallery - Art Rejection Project
+                      </h3>
+                      <p class="text-sm text-stone-600 dark:text-stone-400 mt-1">
+                        An artistic exploration of rejection through the Nothing Happens Gallery project.
+                      </p>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/news" class="block group">
+                      <h3 class="font-semibold text-stone-900 dark:text-stone-100 group-hover:text-stone-700 dark:group-hover:text-stone-300 transition-colors">
+                        Fibonacci Snail Guitar
+                      </h3>
+                      <p class="text-sm text-stone-600 dark:text-stone-400 mt-1">
+                        A unique musical instrument combining mathematical precision with organic design.
+                      </p>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/news" class="block group">
+                      <h3 class="font-semibold text-stone-900 dark:text-stone-100 group-hover:text-stone-700 dark:group-hover:text-stone-300 transition-colors">
+                        Spiral Pigeon Bird House - San Diego Art Project
+                      </h3>
+                      <p class="text-sm text-stone-600 dark:text-stone-400 mt-1">
+                        A sculptural house for pigeons built in San Diego, featuring hollow rectangular cubes in a spiral formation.
+                      </p>
+                    </Link>
+                  </li>
+                </ul>
+                <Link href="/news" class="inline-block text-stone-900 dark:text-stone-100 font-semibold hover:text-stone-700 dark:hover:text-stone-300 transition-colors mt-4">
+                  View all news →
+                </Link>
+              </div>
+            </section>
+
+            <section class="animate space-y-4 mt-12">
+              <h2 class="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
                 Connect
               </h2>
               <div class="bg-stone-200/50 dark:bg-stone-800/50 p-6 rounded-lg border border-stone-300/50 dark:border-stone-700/50">
-                <p class="text-base leading-relaxed text-stone-700 dark:text-stone-300">
+                <p class="text-base leading-relaxed text-stone-700 dark:text-stone-300 mb-4">
                   Get in touch about creative work or collaborative opportunities.
+                </p>
+                <p class="text-base font-semibold text-stone-900 dark:text-stone-100">
+                  <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.TITLE}`}>
+                    {SITE.EMAIL}
+                  </Link>
                 </p>
               </div>
               <ul class="not-prose flex flex-wrap gap-2">
@@ -103,15 +151,6 @@ import Link from "@components/Link.astro";
                     </li>
                   ))
                 }
-                <li class="line-clamp-1">
-                  <Link
-                    href={`mailto:${SITE.EMAIL}`}
-                    aria-label={`Email ${SITE.TITLE}`}
-                  >
-                    {SITE.EMAIL}
-                  </Link>
-                </li>
-                {"/"}
                 <li class="line-clamp-1">
                   <Link href="/rss.xml" aria-label="Scott Lingner RSS feed">
                     RSS
