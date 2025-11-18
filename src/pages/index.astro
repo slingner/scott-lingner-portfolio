@@ -83,11 +83,30 @@ import Link from "@components/Link.astro";
               <h2 class="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
                 News
               </h2>
-              <div class="bg-stone-200/50 dark:bg-stone-800/50 p-6 rounded-lg border border-stone-300/50 dark:border-stone-700/50">
-                <p class="text-base leading-relaxed text-stone-700 dark:text-stone-300 mb-4">
-                  Features and highlights from across my creative work.
-                </p>
-                <Link href="/news" class="text-stone-900 dark:text-stone-100 font-semibold hover:text-stone-700 dark:hover:text-stone-300 transition-colors">
+              <div class="bg-stone-200/50 dark:bg-stone-800/50 p-6 rounded-lg border border-stone-300/50 dark:border-stone-700/50 space-y-4">
+                <ul class="space-y-3">
+                  <li>
+                    <Link href="/news" class="block group">
+                      <h3 class="font-semibold text-stone-900 dark:text-stone-100 group-hover:text-stone-700 dark:group-hover:text-stone-300 transition-colors">
+                        Spiral Pigeon Bird House - San Diego Art Project
+                      </h3>
+                      <p class="text-sm text-stone-600 dark:text-stone-400 mt-1">
+                        A sculptural house for pigeons built in San Diego, featuring hollow rectangular cubes in a spiral formation.
+                      </p>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/news" class="block group">
+                      <h3 class="font-semibold text-stone-900 dark:text-stone-100 group-hover:text-stone-700 dark:group-hover:text-stone-300 transition-colors">
+                        Homemade Instruments & Musical Creations
+                      </h3>
+                      <p class="text-sm text-stone-600 dark:text-stone-400 mt-1">
+                        Featured on CNET and BOOOOOOOM for unique homemade musical instruments.
+                      </p>
+                    </Link>
+                  </li>
+                </ul>
+                <Link href="/news" class="inline-block text-stone-900 dark:text-stone-100 font-semibold hover:text-stone-700 dark:hover:text-stone-300 transition-colors mt-4">
                   View all news →
                 </Link>
               </div>
