@@ -2,7 +2,7 @@ import type { Metadata, Site, Socials } from "@types";
 
 export const SITE: Site = {
   TITLE: "Scott Lingner",
-  DESCRIPTION: "A portfolio site for Scott Lingner.",
+  DESCRIPTION: "Multi-disciplinary creator, software engineer, musician, illustrator, and photographer based in California.",
   EMAIL: "slingner@gmail.com",
   NUM_POSTS_ON_HOMEPAGE: 5,
   NUM_PROJECTS_ON_HOMEPAGE: 3,

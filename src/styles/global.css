@@ -20,14 +20,15 @@ body {
 body {
   @apply font-sans antialiased;
   @apply flex flex-col;
-  @apply bg-neutral-100 dark:bg-neutral-900;
-  @apply text-black/75 dark:text-white/75;
+  @apply bg-gradient-to-br from-sky-50 via-blue-50 to-cyan-50 dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-950 dark:to-cyan-950;
+  @apply text-slate-800 dark:text-slate-100;
 }
 
 header {
   @apply fixed left-0 right-0 top-0 z-50 py-6;
-  @apply bg-neutral-100/75 dark:bg-neutral-900/75;
-  @apply saturate-200 backdrop-blur-sm;
+  @apply bg-gradient-to-r from-sky-100/90 via-blue-100/90 to-cyan-100/90 dark:bg-gradient-to-r dark:from-slate-900/90 dark:via-blue-950/90 dark:to-cyan-950/90;
+  @apply saturate-200 backdrop-blur-md;
+  @apply border-b border-cyan-200/50 dark:border-cyan-800/50;
 }
 
 main {
@@ -39,20 +40,20 @@ footer {
 }
 
 article {
-  @apply prose prose-neutral max-w-full dark:prose-invert prose-img:mx-auto prose-img:my-auto;
+  @apply prose prose-sky max-w-full dark:prose-invert prose-img:mx-auto prose-img:my-auto;
   @apply prose-headings:font-semibold;
-  @apply prose-headings:text-black prose-headings:dark:text-white;
+  @apply prose-headings:text-cyan-900 prose-headings:dark:text-cyan-100;
 }
 
 @layer utilities {
   article a {
-    @apply font-sans text-current underline underline-offset-[3px];
-    @apply decoration-black/30 dark:decoration-white/30;
+    @apply font-sans text-cyan-700 dark:text-cyan-300 underline underline-offset-[3px];
+    @apply decoration-cyan-500/40 dark:decoration-cyan-400/40;
     @apply transition-colors duration-300 ease-in-out;
   }
   article a:hover {
-    @apply text-black dark:text-white;
-    @apply decoration-black/50 dark:decoration-white/50;
+    @apply text-cyan-900 dark:text-cyan-100;
+    @apply decoration-cyan-600/60 dark:decoration-cyan-300/60;
   }
 }
 
@@ -79,40 +80,40 @@ pre {
 }
 
 :root {
-  --astro-code-color-text: #09090b;
-  --astro-code-color-background: #fafafa;
-  --astro-code-token-comment: #a19595;
-  --astro-code-token-keyword: #f47067;
-  --astro-code-token-string: #00a99a;
-  --astro-code-token-function: #429996;
-  --astro-code-token-constant: #2b70c5;
-  --astro-code-token-parameter: #4e8fdf;
-  --astro-code-token-string-expression: #ae42a0;
-  --astro-code-token-punctuation: #8996a3;
-  --astro-code-token-link: #8d85ff;
+  --astro-code-color-text: #0f172a;
+  --astro-code-color-background: #f0f9ff;
+  --astro-code-token-comment: #94a3b8;
+  --astro-code-token-keyword: #f472b6;
+  --astro-code-token-string: #06b6d4;
+  --astro-code-token-function: #0891b2;
+  --astro-code-token-constant: #0284c7;
+  --astro-code-token-parameter: #0ea5e9;
+  --astro-code-token-string-expression: #d946ef;
+  --astro-code-token-punctuation: #64748b;
+  --astro-code-token-link: #3b82f6;
 }
 
 .dark {
-  --astro-code-color-text: #fafafa;
-  --astro-code-color-background: #09090b;
-  --astro-code-token-comment: #a19595;
-  --astro-code-token-keyword: #f47067;
-  --astro-code-token-string: #00a99a;
-  --astro-code-token-function: #6eafad;
-  --astro-code-token-constant: #b3cceb;
-  --astro-code-token-parameter: #4e8fdf;
-  --astro-code-token-string-expression: #bf7db6;
-  --astro-code-token-punctuation: #8996a3;
-  --astro-code-token-link: #8d85ff;
+  --astro-code-color-text: #e0f2fe;
+  --astro-code-color-background: #0c4a6e;
+  --astro-code-token-comment: #94a3b8;
+  --astro-code-token-keyword: #f9a8d4;
+  --astro-code-token-string: #22d3ee;
+  --astro-code-token-function: #67e8f9;
+  --astro-code-token-constant: #7dd3fc;
+  --astro-code-token-parameter: #38bdf8;
+  --astro-code-token-string-expression: #e879f9;
+  --astro-code-token-punctuation: #cbd5e1;
+  --astro-code-token-link: #60a5fa;
 }
 
 /* copy code button on codeblocks */
 .copy-code {
-  @apply absolute right-3 top-3 grid size-9 place-content-center rounded border border-black/15 bg-neutral-100 text-center duration-300 ease-in-out dark:border-white/20 dark:bg-neutral-900;
+  @apply absolute right-3 top-3 grid size-9 place-content-center rounded border border-cyan-300/30 bg-sky-100 text-center duration-300 ease-in-out dark:border-cyan-700/30 dark:bg-slate-800;
 }
 
 .copy-code:hover {
-  @apply bg-[#E9E9E9] transition-colors dark:bg-[#232323];
+  @apply bg-sky-200 transition-colors dark:bg-slate-700;
 }
 
 .copy-code:active {
