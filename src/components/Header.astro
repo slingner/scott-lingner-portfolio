@@ -6,25 +6,17 @@ import { SITE } from "@consts";
 
 <header transition:persist>
   <Container>
-    <div class="flex flex-wrap justify-between gap-y-2">
-      <Link href="/" underline={false}>
-        <div class="text-4xl font-semibold">
-          {SITE.TITLE}
-        </div>
-      </Link>
-      <nav class="flex items-center gap-1 text-sm">
-        <Link href="/blog">blog</Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/projects">projects</Link>
-        <span>
-          {`/`}
-        </span>
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-wrap justify-between items-center gap-y-2">
+        <Link href="/" underline={false}>
+          <div class="text-4xl font-semibold bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
+            {SITE.TITLE}
+          </div>
+        </Link>
         <button
           id="magnifying-glass"
           aria-label="Search"
-          class="flex items-center rounded border border-black/15 bg-neutral-100 px-2 py-1 text-xs transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:bg-neutral-900 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+          class="flex items-center rounded-full border border-cyan-300/50 bg-sky-100/80 px-3 py-2 text-xs transition-all duration-300 ease-in-out hover:bg-cyan-200/80 hover:text-cyan-900 hover:scale-105 focus-visible:bg-cyan-200/80 focus-visible:text-cyan-900 dark:border-cyan-700/50 dark:bg-slate-800/80 dark:hover:bg-cyan-900/50 dark:hover:text-cyan-100 dark:focus-visible:bg-cyan-900/50 dark:focus-visible:text-cyan-100"
         >
           <svg
             height="16"
@@ -40,6 +32,60 @@ import { SITE } from "@consts";
           >
           &nbsp;Search
         </button>
+      </div>
+
+      <nav class="flex items-center gap-6 text-sm flex-wrap">
+        <a
+          href="https://plasticjaguar.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-center gap-2 transition-all duration-300 hover:scale-105"
+          aria-label="Plastic Jaguar Band"
+        >
+          <img
+            src="/plastic-jaguar-logo.png"
+            alt="Plastic Jaguar"
+            class="w-8 h-8 object-contain rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+          />
+          <span class="text-slate-700 dark:text-slate-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">Music</span>
+        </a>
+
+        <a
+          href="https://rocketboogie.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-center gap-2 transition-all duration-300 hover:scale-105"
+          aria-label="Rocket Boogie Co."
+        >
+          <img
+            src="/rocket-boogie.png"
+            alt="Rocket Boogie"
+            class="w-8 h-8 object-contain rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
+          />
+          <span class="text-slate-700 dark:text-slate-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">Stationery</span>
+        </a>
+
+        <a
+          href="https://cargocollective.com/scottdavidlingner/Scott-Lingner"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-center gap-2 transition-all duration-300 hover:scale-105"
+          aria-label="Photography & Art"
+        >
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white shadow-md group-hover:shadow-lg transition-shadow">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <span class="text-slate-700 dark:text-slate-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">Photo & Art</span>
+        </a>
+
+        <span class="text-slate-400 dark:text-slate-600">/</span>
+
+        <Link href="/blog" class="text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Blog</Link>
+
+        <Link href="/projects" class="text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Projects</Link>
       </nav>
     </div>
   </Container>
