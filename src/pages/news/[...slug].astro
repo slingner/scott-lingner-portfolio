@@ -1,0 +1,44 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+
+export async function getStaticPaths() {
+  const newsItems = (await getCollection("news"))
+    .filter((item) => !item.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return newsItems.map((item) => ({
+    params: { slug: item.slug },
+    props: item,
+  }));
+}
+type Props = CollectionEntry<"news">;
+
+const newsItem = Astro.props;
+const { Content } = await newsItem.render();
+---
+
+<Layout title={newsItem.data.title} description={newsItem.data.description}>
+  <Container>
+    <div class="animate">
+      <BackToPrevious href="/news">Back to news</BackToPrevious>
+    </div>
+    <div class="my-10 space-y-1">
+      <div class="animate flex items-center gap-1.5">
+        <div class="font-base text-sm">
+          <FormattedDate date={newsItem.data.date} />
+        </div>
+      </div>
+      <h1 class="animate text-3xl font-semibold text-black dark:text-white">
+        {newsItem.data.title}
+      </h1>
+    </div>
+    <article class="animate">
+      <div class="prose prose-stone dark:prose-invert max-w-none">
+        <Content />
+      </div>
+    </article>
+  </Container>
+</Layout>
