@@ -22,10 +22,24 @@ const { Content } = await newsItem.render();
 
 <Layout title={newsItem.data.title} description={newsItem.data.description}>
   <Container>
-    <div class="animate flex flex-wrap items-center gap-3">
-      <BackToPrevious href="/">Back to home</BackToPrevious>
-      <BackToPrevious href="/news">Back to news</BackToPrevious>
-    </div>
+    <nav class="animate flex items-center text-sm" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li>
+          <BackToPrevious href="/">Home</BackToPrevious>
+        </li>
+        <li aria-hidden="true" class="mx-1 text-stone-400">/</li>
+        <li>
+          <BackToPrevious href="/news">News</BackToPrevious>
+        </li>
+        <li aria-hidden="true" class="mx-1 text-stone-400">/</li>
+        <li
+          class="truncate font-medium text-stone-700 dark:text-stone-200"
+          aria-current="page"
+        >
+          {newsItem.data.title}
+        </li>
+      </ol>
+    </nav>
     <div class="my-10 space-y-1">
       <div class="animate flex items-center gap-1.5">
         <div class="font-base text-sm">
@@ -37,7 +51,7 @@ const { Content } = await newsItem.render();
       </h1>
     </div>
     <article class="animate">
-      <div class="prose prose-stone dark:prose-invert max-w-none">
+      <div class="prose prose-stone max-w-none dark:prose-invert">
         <Content />
       </div>
     </article>

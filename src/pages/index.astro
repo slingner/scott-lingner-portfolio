@@ -18,115 +18,170 @@ const newsItems = (await getCollection("news"))
         <section>
           <article class="space-y-8">
             <div class="animate">
-              <p class="text-lg leading-relaxed text-stone-700 dark:text-stone-300">
+              <p
+                class="text-lg leading-relaxed text-stone-700 dark:text-stone-300"
+              >
                 Multi-disciplinary creator based in California.
               </p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 animate">
+            <div
+              class="animate grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12"
+            >
               <a
                 href="/music"
                 class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
               >
-                <div class="w-24 h-24 md:w-32 md:h-32 p-4 flex items-center justify-center">
+                <div
+                  class="flex h-24 w-24 items-center justify-center p-4 md:h-32 md:w-32"
+                >
                   <img
                     src="/plastic-jaguar-logo.png"
                     alt="Plastic Jaguar"
-                    class="w-full h-full object-contain rounded-lg shadow-md group-hover:shadow-xl transition-all grayscale group-hover:grayscale-0 dark:brightness-0 dark:invert dark:opacity-90"
+                    class="h-full w-full rounded-lg object-contain shadow-md grayscale transition-all group-hover:shadow-xl group-hover:grayscale-0 dark:opacity-90 dark:brightness-0 dark:invert"
                   />
                 </div>
-                <span class="text-sm md:text-base font-medium text-stone-700 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">Music</span>
+                <span
+                  class="text-sm font-medium text-stone-700 transition-colors group-hover:text-stone-900 dark:text-stone-300 dark:group-hover:text-stone-100 md:text-base"
+                  >Music</span
+                >
               </a>
 
               <a
                 href="/stationery"
                 class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
               >
-                <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+                <div
+                  class="flex h-24 w-24 items-center justify-center md:h-32 md:w-32"
+                >
                   <img
                     src="/rbc-logo.png"
                     alt="Rocket Boogie Co."
-                    class="w-full h-full object-contain rounded-lg shadow-md group-hover:shadow-xl transition-all grayscale group-hover:grayscale-0 dark:brightness-0 dark:invert dark:opacity-90"
+                    class="h-full w-full rounded-lg object-contain shadow-md grayscale transition-all group-hover:shadow-xl group-hover:grayscale-0 dark:opacity-90 dark:brightness-0 dark:invert"
                   />
                 </div>
-                <span class="text-sm md:text-base font-medium text-stone-700 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">Stationery</span>
+                <span
+                  class="text-sm font-medium text-stone-700 transition-colors group-hover:text-stone-900 dark:text-stone-300 dark:group-hover:text-stone-100 md:text-base"
+                  >Stationery</span
+                >
               </a>
 
               <a
                 href="/photo"
                 class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
               >
-                <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+                <div
+                  class="flex h-24 w-24 items-center justify-center md:h-32 md:w-32"
+                >
                   <img
                     src="/atown.jpg"
                     alt="Photography"
-                    class="w-full h-full object-cover rounded-lg shadow-md group-hover:shadow-xl transition-all grayscale group-hover:grayscale-0"
+                    class="h-full w-full rounded-lg object-cover shadow-md grayscale transition-all group-hover:shadow-xl group-hover:grayscale-0"
                   />
                 </div>
-                <span class="text-sm md:text-base font-medium text-stone-700 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">Photo</span>
+                <span
+                  class="text-sm font-medium text-stone-700 transition-colors group-hover:text-stone-900 dark:text-stone-300 dark:group-hover:text-stone-100 md:text-base"
+                  >Photo</span
+                >
               </a>
 
               <a
                 href="/software-engineering"
                 class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
               >
-                <div class="w-24 h-24 md:w-32 md:h-32 rounded-lg bg-stone-700 dark:bg-stone-600 flex items-center justify-center shadow-md group-hover:shadow-xl transition-shadow">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 md:w-16 md:h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                <div
+                  class="flex h-24 w-24 items-center justify-center rounded-lg bg-stone-700 shadow-md transition-shadow group-hover:shadow-xl dark:bg-stone-600 md:h-32 md:w-32"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-12 w-12 text-white md:h-16 md:w-16"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                   </svg>
                 </div>
-                <span class="text-sm md:text-base font-medium text-stone-700 dark:text-stone-300 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">Software</span>
+                <span
+                  class="text-sm font-medium text-stone-700 transition-colors group-hover:text-amber-700 dark:text-stone-300 dark:group-hover:text-amber-400 md:text-base"
+                  >Software</span
+                >
               </a>
             </div>
 
-            <section class="animate space-y-4 mt-12">
-              <h2 class="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
+            <section class="animate mt-12 space-y-4">
+              <h2
+                class="mb-4 text-2xl font-bold text-stone-900 dark:text-stone-100"
+              >
                 News
               </h2>
-              <div class="bg-stone-200/50 dark:bg-stone-800/50 p-6 rounded-lg border border-stone-300/50 dark:border-stone-700/50 space-y-4">
+              <div
+                class="space-y-4 rounded-lg border border-stone-300/50 bg-stone-200/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50"
+              >
                 <ul class="space-y-3">
-                  {newsItems.map((item) => (
-                    <li>
-                      <Link href={`/news/${item.slug}`} class="block group">
-                        <div class="flex gap-4">
-                          {item.data.thumbnail && (
-                            <div class="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden shadow-md group-hover:shadow-lg transition-all grayscale group-hover:grayscale-0">
-                              <img
-                                src={item.data.thumbnail}
-                                alt={item.data.title}
-                                class="w-full h-full object-cover"
-                              />
+                  {
+                    newsItems.map((item) => (
+                      <li>
+                        <Link href={`/news/${item.slug}`} class="group block">
+                          <div class="flex gap-4">
+                            {item.data.thumbnail && (
+                              <div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg shadow-md grayscale transition-all group-hover:shadow-lg group-hover:grayscale-0">
+                                <img
+                                  src={item.data.thumbnail}
+                                  alt={item.data.title}
+                                  class="h-full w-full object-cover"
+                                />
+                              </div>
+                            )}
+                            <div class="flex-1">
+                              <h3 class="font-semibold text-stone-900 transition-colors group-hover:text-stone-700 dark:text-stone-100 dark:group-hover:text-stone-300">
+                                {item.data.title}
+                              </h3>
+                              <p class="mt-1 text-sm text-stone-600 dark:text-stone-400">
+                                {item.data.description}
+                              </p>
                             </div>
-                          )}
-                          <div class="flex-1">
-                            <h3 class="font-semibold text-stone-900 dark:text-stone-100 group-hover:text-stone-700 dark:group-hover:text-stone-300 transition-colors">
-                              {item.data.title}
-                            </h3>
-                            <p class="text-sm text-stone-600 dark:text-stone-400 mt-1">
-                              {item.data.description}
-                            </p>
                           </div>
-                        </div>
-                      </Link>
-                    </li>
-                  ))}
+                        </Link>
+                      </li>
+                    ))
+                  }
                 </ul>
-                <Link href="/news" class="inline-block text-stone-900 dark:text-stone-100 font-semibold hover:text-stone-700 dark:hover:text-stone-300 transition-colors mt-4">
+                <Link
+                  href="/news"
+                  class="mt-4 inline-block font-semibold text-stone-900 transition-colors hover:text-stone-700 dark:text-stone-100 dark:hover:text-stone-300"
+                >
                   View all news →
                 </Link>
               </div>
             </section>
 
-            <section class="animate space-y-4 mt-12">
-              <h2 class="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
+            <section class="animate mt-12 space-y-4">
+              <h2
+                class="mb-4 text-2xl font-bold text-stone-900 dark:text-stone-100"
+              >
                 Connect
               </h2>
-              <div class="bg-stone-200/50 dark:bg-stone-800/50 p-6 rounded-lg border border-stone-300/50 dark:border-stone-700/50">
-                <p class="text-base leading-relaxed text-stone-700 dark:text-stone-300 mb-4">
-                  Get in touch about creative work or collaborative opportunities.
+              <div
+                class="rounded-lg border border-stone-300/50 bg-stone-200/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50"
+              >
+                <p
+                  class="mb-4 text-base leading-relaxed text-stone-700 dark:text-stone-300"
+                >
+                  Get in touch about creative work or collaborative
+                  opportunities.
                 </p>
-                <p class="text-base font-semibold text-stone-900 dark:text-stone-100">
-                  <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.TITLE}`}>
+                <p
+                  class="text-base font-semibold text-stone-900 dark:text-stone-100"
+                >
+                  <Link
+                    href={`mailto:${SITE.EMAIL}`}
+                    aria-label={`Email ${SITE.TITLE}`}
+                  >
                     {SITE.EMAIL}
                   </Link>
                 </p>

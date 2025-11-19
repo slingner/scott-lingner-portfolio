@@ -25,9 +25,24 @@ const { Content, headings } = await project.render();
 
 <Layout title={project.data.title} description={project.data.description}>
   <Container>
-    <div class="animate">
-      <BackToPrevious href="/software-engineering">Back to software</BackToPrevious>
-    </div>
+    <nav class="animate mb-2 flex items-center text-sm" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li>
+          <BackToPrevious href="/">Home</BackToPrevious>
+        </li>
+        <li aria-hidden="true" class="mx-1 text-stone-400">/</li>
+        <li>
+          <BackToPrevious href="/software-engineering">Software</BackToPrevious>
+        </li>
+        <li aria-hidden="true" class="mx-1 text-stone-400">/</li>
+        <li
+          class="truncate font-medium text-stone-700 dark:text-stone-200"
+          aria-current="page"
+        >
+          {project.data.title}
+        </li>
+      </ol>
+    </nav>
     <div class="animate my-10 space-y-1">
       <div class="flex items-center gap-1.5">
         <div class="font-base text-sm">
