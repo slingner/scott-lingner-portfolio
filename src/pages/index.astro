@@ -88,12 +88,25 @@ const newsItems = (await getCollection("news"))
                   {newsItems.map((item) => (
                     <li>
                       <Link href={`/news/${item.slug}`} class="block group">
-                        <h3 class="font-semibold text-stone-900 dark:text-stone-100 group-hover:text-stone-700 dark:group-hover:text-stone-300 transition-colors">
-                          {item.data.title}
-                        </h3>
-                        <p class="text-sm text-stone-600 dark:text-stone-400 mt-1">
-                          {item.data.description}
-                        </p>
+                        <div class="flex gap-4">
+                          {item.data.thumbnail && (
+                            <div class="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden shadow-md group-hover:shadow-lg transition-all grayscale group-hover:grayscale-0">
+                              <img
+                                src={item.data.thumbnail}
+                                alt={item.data.title}
+                                class="w-full h-full object-cover"
+                              />
+                            </div>
+                          )}
+                          <div class="flex-1">
+                            <h3 class="font-semibold text-stone-900 dark:text-stone-100 group-hover:text-stone-700 dark:group-hover:text-stone-300 transition-colors">
+                              {item.data.title}
+                            </h3>
+                            <p class="text-sm text-stone-600 dark:text-stone-400 mt-1">
+                              {item.data.description}
+                            </p>
+                          </div>
+                        </div>
                       </Link>
                     </li>
                   ))}
