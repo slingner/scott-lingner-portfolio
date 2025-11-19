@@ -5,7 +5,10 @@ import Link from "@components/Link.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 ---
 
-<Layout title="Photography" description="Scott Lingner's photography portfolio.">
+<Layout
+  title="Photography"
+  description="Scott Lingner's photography portfolio."
+>
   <Container>
     <div class="animate">
       <BackToPrevious href="/">Back to home</BackToPrevious>
@@ -13,34 +16,41 @@ import BackToPrevious from "@components/BackToPrevious.astro";
     <aside data-pagefind-ignore>
       <div class="space-y-8">
         <section class="animate">
-          <div class="flex flex-col items-center gap-6 mb-8 mt-10">
-            <div class="w-48 h-48 flex items-center justify-center">
+          <div class="mb-8 mt-10 flex flex-col items-center gap-6">
+            <div class="flex h-48 w-48 items-center justify-center">
               <img
                 src="/atown.jpg"
                 alt="Photography"
-                class="w-full h-full object-cover rounded-lg shadow-lg"
+                class="h-full w-full rounded-lg object-cover shadow-lg"
               />
             </div>
-            <h1 class="text-4xl font-bold text-stone-900 dark:text-stone-100 text-center">
+            <h1
+              class="text-center text-4xl font-bold text-stone-900 dark:text-stone-100"
+            >
               Photography
             </h1>
           </div>
 
           <div class="space-y-6">
-            <p class="text-lg leading-relaxed text-stone-700 dark:text-stone-300">
-              Scott Lingner's photography captures moments and perspectives through a creative lens,
-              exploring visual storytelling across various subjects and environments.
+            <p
+              class="text-lg leading-relaxed text-stone-700 dark:text-stone-300"
+            >
+              Scott Lingner's photography captures moments and perspectives
+              through a creative lens, exploring visual storytelling across
+              various subjects and environments.
             </p>
 
-            <div class="bg-stone-200/50 dark:bg-stone-800/50 p-8 rounded-lg border border-stone-300/50 dark:border-stone-700/50 text-center">
-              <p class="text-base text-stone-700 dark:text-stone-300 mb-6">
-                View the complete photography portfolio on Cargo Collective to explore
-                the full collection of photographic work.
+            <div
+              class="rounded-lg border border-stone-300/50 bg-stone-200/50 p-8 text-center dark:border-stone-700/50 dark:bg-stone-800/50"
+            >
+              <p class="mb-6 text-base text-stone-700 dark:text-stone-300">
+                View the complete photography portfolio on Cargo Collective to
+                explore the full collection of photographic work.
               </p>
               <Link
                 href="https://cargocollective.com/scottdavidlingner/Scott-Lingner"
                 external
-                class="inline-block bg-stone-700 dark:bg-stone-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-stone-800 dark:hover:bg-stone-700 transition-colors shadow-md hover:shadow-lg"
+                class="inline-block rounded-lg bg-stone-700 px-8 py-3 font-semibold text-white shadow-md transition-colors hover:bg-stone-800 hover:shadow-lg dark:bg-stone-600 dark:hover:bg-stone-700"
               >
                 View Photography Portfolio →
               </Link>
@@ -49,5 +59,106 @@ import BackToPrevious from "@components/BackToPrevious.astro";
         </section>
       </div>
     </aside>
+
+    <h3 class="mt-8 text-xl font-semibold text-stone-800 dark:text-stone-200">
+      Featured In
+    </h3>
+
+    <div class="space-y-4">
+      <Link
+        href="https://www.sfgate.com/food/article/andytown-coffee-its-it-affogato-17633145.php"
+        external
+        class="block rounded-lg border border-stone-300/50 p-4 transition-colors hover:bg-stone-300/50 dark:border-stone-700/50 dark:hover:bg-stone-700/50"
+      >
+        <div
+          class="flex items-center gap-3 font-semibold text-stone-900 dark:text-stone-100"
+        >
+          <img
+            src="/sfgate-logo.png"
+            alt="SFGate logo"
+            class="h-8 w-16 object-contain"
+            loading="lazy"
+          />
+          <span>
+            SFGate: "Andytown Coffee Roasters is serving an It’s-It affogato
+            this summer"
+          </span>
+        </div>
+        <div class="mt-1 text-sm text-stone-600 dark:text-stone-400">
+          Photography featured in an article about Andytown Coffee Roasters'
+          expansion in San Francisco
+        </div>
+      </Link>
+      <Link
+        href="https://sf.eater.com/2022/12/1/23488351/andytown-coffee-open-richmond-ocean-beach"
+        external
+        class="block rounded-lg border border-stone-300/50 p-4 transition-colors hover:bg-stone-300/50 dark:border-stone-700/50 dark:hover:bg-stone-700/50"
+      >
+        <div
+          class="flex items-center gap-3 font-semibold text-stone-900 dark:text-stone-100"
+        >
+          <img
+            src="/eater-logo.png"
+            alt="Eater SF logo"
+            class="h-8 w-16 object-contain"
+            loading="lazy"
+          />
+          <span>
+            Eater SF: "Inside Andytown Coffee Roasters' New Richmond District
+            Location"
+          </span>
+        </div>
+        <div class="mt-1 text-sm text-stone-600 dark:text-stone-400">
+          Photography featured in an article about Andytown Coffee Roasters'
+          expansion in San Francisco
+        </div>
+      </Link>
+      <Link
+        href="https://www.sfchronicle.com/food/article/Andytown-Coffee-Roasters-opens-new-Richmond-17605899.php"
+        external
+        class="block rounded-lg border border-stone-300/50 p-4 transition-colors hover:bg-stone-300/50 dark:border-stone-700/50 dark:hover:bg-stone-700/50"
+      >
+        <div
+          class="flex items-center gap-3 font-semibold text-stone-900 dark:text-stone-100"
+        >
+          <img
+            src="/sfchronicle-logo.png"
+            alt="SF Chronicle logo"
+            class="h-8 w-16 object-contain"
+            loading="lazy"
+          />
+          <span>
+            SF Chronicle: "Andytown Coffee Roasters opens new Richmond District
+            location"
+          </span>
+        </div>
+        <div class="dark:text-stone -400 mt-1 text-sm
+text-stone-600">
+          Photography featured in an article about Andytown Coffee Roasters'
+          expansion in San Francisco
+        </div>
+      </Link>
+      <Link
+        href="https://www.theinfatuation.com/san-francisco/reviews/andytown-outer-richmond"
+        external
+        class="block rounded-lg border border-stone-300/50 p-4 transition-colors hover:bg-stone-300/50 dark:border-stone-700/50 dark:hover:bg-stone-700/50"
+      >
+        <div
+          class="flex items-center gap-3 font-semibold text-stone-900 dark:text-stone-100"
+        >
+          <img
+            src="/infatuation-logo.png"
+            alt="The Infatuation logo"
+            class="h-8 w-16 object-contain"
+            loading="lazy"
+          />
+          <span> The Infatuation: "Andytown Coffee Roasters" </span>
+        </div>
+        <div class="mt-1 text-sm text-stone-600 dark:text-stone-400">
+          Photography featured in an article about Andytown Coffee Roasters'
+          expansion in San Francisco
+        </div>
+      </Link>
+    </div>
   </Container>
 </Layout>
