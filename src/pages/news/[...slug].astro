@@ -22,7 +22,8 @@ const { Content } = await newsItem.render();
 
 <Layout title={newsItem.data.title} description={newsItem.data.description}>
   <Container>
-    <div class="animate">
+    <div class="animate flex flex-wrap items-center gap-3">
+      <BackToPrevious href="/">Back to home</BackToPrevious>
       <BackToPrevious href="/news">Back to news</BackToPrevious>
     </div>
     <div class="my-10 space-y-1">

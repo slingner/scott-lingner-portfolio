@@ -2,14 +2,18 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
 ---
 
 <Layout title="Stationery - Rocket Boogie Co." description="Scott Lingner's stationery and design project, Rocket Boogie Co.">
   <Container>
+    <div class="animate">
+      <BackToPrevious href="/">Back to home</BackToPrevious>
+    </div>
     <aside data-pagefind-ignore>
       <div class="space-y-8">
         <section class="animate">
-          <div class="flex flex-col items-center gap-6 mb-8">
+          <div class="flex flex-col items-center gap-6 mb-8 mt-10">
             <div class="w-48 h-48 flex items-center justify-center">
               <img
                 src="/rbc-logo.png"

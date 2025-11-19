@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
 import { getCollection } from "astro:content";
 
 const blog = (await getCollection("blog"))
@@ -15,8 +16,11 @@ const projects = (await getCollection("projects"))
 
 <Layout title="Software Engineering" description="Software engineering projects and writing by Scott Lingner.">
   <Container>
+    <div class="animate">
+      <BackToPrevious href="/">Back to home</BackToPrevious>
+    </div>
     <aside data-pagefind-ignore>
-      <p class="animate text-lg text-stone-700 dark:text-stone-300 mb-12">
+      <p class="animate text-lg text-stone-700 dark:text-stone-300 mb-12 mt-10">
         Building impactful applications with five years of experience in EdTech.
       </p>
 
