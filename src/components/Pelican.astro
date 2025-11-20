@@ -403,6 +403,11 @@
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
     pointer-events: none;
+    display: none;
+  }
+
+  .catch-counter.visible {
+    display: block;
   }
 
   .visually-hidden {
@@ -464,7 +469,7 @@
 
     if (!pelicanContainer || !pelicanSvg || !fallingFishContainer || !fishermanContainer) return;
 
-    let pelicanX = 50;
+    let pelicanX = 80;
     let pelicanY = 30;
     let targetX = pelicanX;
     let targetY = pelicanY;
@@ -515,6 +520,11 @@
       isFlying = true;
       const viewportWidth = window.innerWidth;
 
+      // Reset fish drop tracking and schedule 2 random drops
+      fishDroppedCount = 0;
+      nextDropTime1 = Date.now() + 1000 + Math.random() * 3000; // 1-4 seconds
+      nextDropTime2 = Date.now() + 2000 + Math.random() * 4000; // 2-6 seconds
+
       // First flight: take off from seated position and fly off screen
       if (isFirstFlight) {
         isFirstFlight = false;
@@ -545,13 +555,10 @@
       pelicanSvg.classList.add('flapping');
     };
 
-    // Click pelican to drop fish (only when flying)
-    pelicanContainer.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (isFlying) {
-        dropFish();
-      }
-    });
+    // Track fish drops during current flight
+    let fishDroppedCount = 0;
+    let nextDropTime1 = 0;
+    let nextDropTime2 = 0;
 
     // Drop fish from pelican
     const dropFish = () => {
@@ -642,7 +649,7 @@
         isFirstFlight = true;
         pelicanSvg.classList.remove('flapping');
         pelicanContainer.classList.remove('flying');
-        pelicanX = 50;
+        pelicanX = 80;
         pelicanY = 30;
         pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
 
@@ -656,6 +663,13 @@
         if (activeFish) {
           activeFish.remove();
           activeFish = null;
+        }
+
+        // Reset catch count and hide counter
+        catchCount = 0;
+        if (catchCounter) {
+          catchCounter.textContent = 'Catches: 0';
+          catchCounter.classList.remove('visible');
         }
 
         if (gameStatus) {
@@ -712,6 +726,10 @@
           catchCount++;
           if (catchCounter) {
             catchCounter.textContent = `Catches: ${catchCount}`;
+            // Show counter after first catch
+            if (catchCount >= 1) {
+              catchCounter.classList.add('visible');
+            }
           }
           if (gameStatus) {
             gameStatus.textContent = `Fish caught! Total catches: ${catchCount}`;
@@ -835,6 +853,18 @@
           pelicanY += (dy / distance) * speed;
 
           pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
+
+          // Auto-drop fish at scheduled times
+          const now = Date.now();
+          if (fishDroppedCount < 2) {
+            if (fishDroppedCount === 0 && now >= nextDropTime1 && !activeFish) {
+              dropFish();
+              fishDroppedCount++;
+            } else if (fishDroppedCount === 1 && now >= nextDropTime2 && !activeFish) {
+              dropFish();
+              fishDroppedCount++;
+            }
+          }
         } else {
           pelicanX = targetX;
           pelicanY = targetY;
