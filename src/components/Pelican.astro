@@ -1113,7 +1113,7 @@
       }
     };
 
-    // Simple fireworks next to fisherman
+    // Simple fireworks next to fisherman - each burst in different spot
     const triggerConfetti = () => {
       if (!confettiContainer || !fishermanContainer) {
         console.error('Confetti or fisherman container not found!');
@@ -1127,18 +1127,24 @@
 
       const colors = ['#FCD34D', '#60A5FA', '#F87171', '#34D399', '#A78BFA', '#F472B6'];
 
-      // Create 4 bursts, 1 second apart
+      // Create 4 bursts, each at a different location around the fisherman
       for (let burst = 0; burst < 4; burst++) {
         setTimeout(() => {
+          // Random offset for this burst's starting position (within 40-60px of fisherman)
+          const burstAngle = (Math.PI * 2 * burst) / 4 + (Math.random() * 0.5 - 0.25);
+          const burstDistance = 40 + Math.random() * 20;
+          const burstStartX = centerX + Math.cos(burstAngle) * burstDistance;
+          const burstStartY = centerY + Math.sin(burstAngle) * burstDistance;
+
           // Each burst: 30 pieces in a circle
           for (let i = 0; i < 30; i++) {
             const confetti = document.createElement('div');
             confetti.className = 'confetti';
 
-            // Start position - right at fisherman's center
-            confetti.style.position = 'fixed'; // Use fixed positioning
-            confetti.style.left = `${centerX}px`;
-            confetti.style.top = `${centerY}px`;
+            // Start position - different for each burst!
+            confetti.style.position = 'fixed';
+            confetti.style.left = `${burstStartX}px`;
+            confetti.style.top = `${burstStartY}px`;
 
             // Random bright color
             confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
