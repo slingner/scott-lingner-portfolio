@@ -484,7 +484,7 @@
     // Game state
     let fishermanActive = false;
     let fishermanX = 0;
-    let activeFish = null;
+    let activeFish = []; // Array to hold multiple falling fish
     let catchCount = 0;
     const catchCounter = document.getElementById('catch-counter');
     const gameStatus = document.getElementById('game-status');
@@ -520,12 +520,12 @@
       isFlying = true;
       const viewportWidth = window.innerWidth;
 
-      // Reset fish drop tracking and schedule 4 random drops
+      // Reset fish drop tracking and schedule 4 drops at faster intervals
       fishDroppedCount = 0;
-      nextDropTime1 = Date.now() + 500 + Math.random() * 1500; // 0.5-2 seconds
-      nextDropTime2 = Date.now() + 1500 + Math.random() * 2000; // 1.5-3.5 seconds
-      nextDropTime3 = Date.now() + 2500 + Math.random() * 2000; // 2.5-4.5 seconds
-      nextDropTime4 = Date.now() + 3500 + Math.random() * 2000; // 3.5-5.5 seconds
+      nextDropTime1 = Date.now() + 300 + Math.random() * 500; // 0.3-0.8 seconds
+      nextDropTime2 = Date.now() + 1000 + Math.random() * 500; // 1-1.5 seconds
+      nextDropTime3 = Date.now() + 1800 + Math.random() * 500; // 1.8-2.3 seconds
+      nextDropTime4 = Date.now() + 2600 + Math.random() * 500; // 2.6-3.1 seconds
 
       // First flight: take off from seated position and fly off screen
       if (isFirstFlight) {
@@ -566,8 +566,6 @@
 
     // Drop fish from pelican
     const dropFish = () => {
-      if (activeFish) return;
-
       const pelicanRect = pelicanContainer.getBoundingClientRect();
       const currentPelicanX = pelicanRect.left + 40;
       const currentPelicanY = pelicanRect.top + 40;
@@ -599,7 +597,7 @@
       `;
 
       document.body.appendChild(fish);
-      activeFish = fish;
+      activeFish.push(fish);
 
       fish.offsetHeight;
       fish.style.animation = 'fallDown 5s linear forwards';
@@ -607,7 +605,10 @@
       setTimeout(() => {
         if (fish.parentElement) {
           fish.remove();
-          activeFish = null;
+          const index = activeFish.indexOf(fish);
+          if (index > -1) {
+            activeFish.splice(index, 1);
+          }
         }
       }, 5000);
     };
@@ -663,11 +664,13 @@
         fishermanContainer.style.right = '40px';
         fishermanContainer.style.left = 'auto';
 
-        // Remove any active fish
-        if (activeFish) {
-          activeFish.remove();
-          activeFish = null;
-        }
+        // Remove all active fish
+        activeFish.forEach(fish => {
+          if (fish.parentElement) {
+            fish.remove();
+          }
+        });
+        activeFish = [];
 
         // Reset catch count and hide counter
         catchCount = 0;
@@ -703,19 +706,20 @@
 
     // Check for fish collision with round net
     const checkFishCatch = () => {
-      if (!activeFish) return;
+      if (!fishermanActive || activeFish.length === 0) return;
 
-      const fishRect = activeFish.getBoundingClientRect();
+      const fishermanRect = fishermanContainer.getBoundingClientRect();
 
-      if (fishermanActive) {
-        const fishermanRect = fishermanContainer.getBoundingClientRect();
+      // Round net area - ellipse centered at (24, 21) with rx=15, ry=7 in 100x140 viewBox
+      const netCenterX = fishermanRect.left + (fishermanRect.width * 0.24);
+      const netCenterY = fishermanRect.top + (fishermanRect.height * 0.15);
+      const netRadiusX = fishermanRect.width * 0.15;
+      const netRadiusY = fishermanRect.height * 0.05;
 
-        // Round net area - ellipse centered at (24, 21) with rx=15, ry=7 in 100x140 viewBox
-        const netCenterX = fishermanRect.left + (fishermanRect.width * 0.24);
-        const netCenterY = fishermanRect.top + (fishermanRect.height * 0.15);
-        const netRadiusX = fishermanRect.width * 0.15;
-        const netRadiusY = fishermanRect.height * 0.05;
-
+      // Check each fish for collision
+      for (let i = activeFish.length - 1; i >= 0; i--) {
+        const fish = activeFish[i];
+        const fishRect = fish.getBoundingClientRect();
         const fishCenterX = fishRect.left + fishRect.width / 2;
         const fishCenterY = fishRect.top + fishRect.height / 2;
 
@@ -725,8 +729,8 @@
         const inEllipse = (normalizedX * normalizedX + normalizedY * normalizedY) <= 1;
 
         if (inEllipse) {
-          activeFish.remove();
-          activeFish = null;
+          fish.remove();
+          activeFish.splice(i, 1);
           catchCount++;
           if (catchCounter) {
             catchCounter.textContent = `Catches: ${catchCount}`;
@@ -858,19 +862,19 @@
 
           pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
 
-          // Auto-drop fish at scheduled times
+          // Auto-drop fish at scheduled times (multiple can drop simultaneously)
           const now = Date.now();
           if (fishDroppedCount < 4) {
-            if (fishDroppedCount === 0 && now >= nextDropTime1 && !activeFish) {
+            if (fishDroppedCount === 0 && now >= nextDropTime1) {
               dropFish();
               fishDroppedCount++;
-            } else if (fishDroppedCount === 1 && now >= nextDropTime2 && !activeFish) {
+            } else if (fishDroppedCount === 1 && now >= nextDropTime2) {
               dropFish();
               fishDroppedCount++;
-            } else if (fishDroppedCount === 2 && now >= nextDropTime3 && !activeFish) {
+            } else if (fishDroppedCount === 2 && now >= nextDropTime3) {
               dropFish();
               fishDroppedCount++;
-            } else if (fishDroppedCount === 3 && now >= nextDropTime4 && !activeFish) {
+            } else if (fishDroppedCount === 3 && now >= nextDropTime4) {
               dropFish();
               fishDroppedCount++;
             }
