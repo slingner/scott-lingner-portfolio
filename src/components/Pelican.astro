@@ -520,10 +520,12 @@
       isFlying = true;
       const viewportWidth = window.innerWidth;
 
-      // Reset fish drop tracking and schedule 2 random drops
+      // Reset fish drop tracking and schedule 4 random drops
       fishDroppedCount = 0;
-      nextDropTime1 = Date.now() + 1000 + Math.random() * 3000; // 1-4 seconds
-      nextDropTime2 = Date.now() + 2000 + Math.random() * 4000; // 2-6 seconds
+      nextDropTime1 = Date.now() + 500 + Math.random() * 1500; // 0.5-2 seconds
+      nextDropTime2 = Date.now() + 1500 + Math.random() * 2000; // 1.5-3.5 seconds
+      nextDropTime3 = Date.now() + 2500 + Math.random() * 2000; // 2.5-4.5 seconds
+      nextDropTime4 = Date.now() + 3500 + Math.random() * 2000; // 3.5-5.5 seconds
 
       // First flight: take off from seated position and fly off screen
       if (isFirstFlight) {
@@ -559,6 +561,8 @@
     let fishDroppedCount = 0;
     let nextDropTime1 = 0;
     let nextDropTime2 = 0;
+    let nextDropTime3 = 0;
+    let nextDropTime4 = 0;
 
     // Drop fish from pelican
     const dropFish = () => {
@@ -856,11 +860,17 @@
 
           // Auto-drop fish at scheduled times
           const now = Date.now();
-          if (fishDroppedCount < 2) {
+          if (fishDroppedCount < 4) {
             if (fishDroppedCount === 0 && now >= nextDropTime1 && !activeFish) {
               dropFish();
               fishDroppedCount++;
             } else if (fishDroppedCount === 1 && now >= nextDropTime2 && !activeFish) {
+              dropFish();
+              fishDroppedCount++;
+            } else if (fishDroppedCount === 2 && now >= nextDropTime3 && !activeFish) {
+              dropFish();
+              fishDroppedCount++;
+            } else if (fishDroppedCount === 3 && now >= nextDropTime4 && !activeFish) {
               dropFish();
               fishDroppedCount++;
             }
