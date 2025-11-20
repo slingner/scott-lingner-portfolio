@@ -605,19 +605,16 @@
 <script is:inline>
   // Use is:inline to persist across page transitions
   (function() {
-    const pelicanContainer = document.getElementById('pelican-container');
-    const pelicanSvg = document.getElementById('pelican-svg');
-    const fallingFishContainer = document.getElementById('falling-fish-container');
-    const fishermanContainer = document.getElementById('fisherman-container');
-    const confettiContainer = document.getElementById('confetti-container');
-    const escMessage = document.getElementById('esc-message');
-
-    if (!pelicanContainer || !pelicanSvg || !fallingFishContainer || !fishermanContainer) return;
-
-    // Get all game elements
-    const catchCounter = document.getElementById('catch-counter');
-    const gameStatus = document.getElementById('game-status');
-    const fishIcons = document.getElementById('fish-icons');
+    // DOM element references - will be refreshed on each page load
+    let pelicanContainer;
+    let pelicanSvg;
+    let fallingFishContainer;
+    let fishermanContainer;
+    let confettiContainer;
+    let escMessage;
+    let catchCounter;
+    let gameStatus;
+    let fishIcons;
 
     // Game state variables
     let pelicanX = 80;
@@ -635,6 +632,65 @@
     let fishermanX = 0;
     let activeFish = []; // Array to hold multiple falling fish
     let catchCount = 0;
+
+    // Fisherman click handler - defined early so it can be referenced
+    const handleFishermanClick = (e) => {
+      if (!fishermanActive) {
+        fishermanActive = true;
+        fishermanContainer.classList.add('active');
+        const rect = fishermanContainer.getBoundingClientRect();
+        fishermanX = rect.left;
+
+        // Show ESC message
+        if (escMessage) {
+          escMessage.classList.add('visible');
+        }
+
+        // Also activate pelican flight
+        if (!isActivated) {
+          isActivated = true;
+          pelicanContainer.classList.add('flying');
+          startRandomFlight();
+        }
+
+        if (gameStatus) {
+          gameStatus.textContent = 'Game started! Use left and right arrow keys to move and catch fish. Press ESC to stop.';
+        }
+      }
+    };
+
+    // Fisherman keydown handler for accessibility - defined early
+    const handleFishermanKeydown = (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && !fishermanActive) {
+        e.preventDefault();
+        fishermanContainer.click();
+      }
+    };
+
+    // Function to refresh DOM element references
+    const refreshDOMReferences = () => {
+      pelicanContainer = document.getElementById('pelican-container');
+      pelicanSvg = document.getElementById('pelican-svg');
+      fallingFishContainer = document.getElementById('falling-fish-container');
+      fishermanContainer = document.getElementById('fisherman-container');
+      confettiContainer = document.getElementById('confetti-container');
+      escMessage = document.getElementById('esc-message');
+      catchCounter = document.getElementById('catch-counter');
+      gameStatus = document.getElementById('game-status');
+      fishIcons = document.getElementById('fish-icons');
+
+      // Re-attach event listeners after getting new references
+      if (fishermanContainer && !fishermanContainer.hasAttribute('data-listeners-attached')) {
+        fishermanContainer.setAttribute('data-listeners-attached', 'true');
+        fishermanContainer.addEventListener('click', handleFishermanClick);
+        fishermanContainer.addEventListener('keydown', handleFishermanKeydown);
+      }
+    };
+
+    // Initial DOM reference capture
+    refreshDOMReferences();
+
+    if (!pelicanContainer || !pelicanSvg || !fallingFishContainer || !fishermanContainer) return;
 
     // Check if we should show the game (only on /software-engineering page)
     const checkAndShowGame = () => {
@@ -833,40 +889,6 @@
         }
       }, fallDuration);
     };
-
-    // Fisherman controls - Click to activate game (fisherman + pelican)
-    fishermanContainer.addEventListener('click', (e) => {
-      if (!fishermanActive) {
-        fishermanActive = true;
-        fishermanContainer.classList.add('active');
-        const rect = fishermanContainer.getBoundingClientRect();
-        fishermanX = rect.left;
-
-        // Show ESC message
-        if (escMessage) {
-          escMessage.classList.add('visible');
-        }
-
-        // Also activate pelican flight
-        if (!isActivated) {
-          isActivated = true;
-          pelicanContainer.classList.add('flying');
-          startRandomFlight();
-        }
-
-        if (gameStatus) {
-          gameStatus.textContent = 'Game started! Use left and right arrow keys to move and catch fish. Press ESC to stop.';
-        }
-      }
-    });
-
-    // Also support Enter/Space for accessibility
-    fishermanContainer.addEventListener('keydown', (e) => {
-      if ((e.key === 'Enter' || e.key === ' ') && !fishermanActive) {
-        e.preventDefault();
-        fishermanContainer.click();
-      }
-    });
 
     // Keyboard controls for fisherman and pelican
     document.addEventListener('keydown', (e) => {
@@ -1166,6 +1188,9 @@
 
     // Handle Astro page transitions - check path and reset game state
     document.addEventListener('astro:page-load', () => {
+      // Refresh DOM references first - critical for fixing stale references!
+      refreshDOMReferences();
+
       // Always reset game state on page change
       isFlying = false;
       isActivated = false;
@@ -1227,6 +1252,9 @@
 
     // Also listen to after-swap to ensure visibility is set correctly
     document.addEventListener('astro:after-swap', () => {
+      // Refresh DOM references on swap too
+      refreshDOMReferences();
+
       requestAnimationFrame(() => {
         checkAndShowGame();
       });
