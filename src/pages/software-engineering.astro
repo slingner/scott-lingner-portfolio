@@ -319,9 +319,9 @@ const experiences = [
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
 
-  function setActiveLink(activeId) {
+  function setActiveLink(activeId: string) {
     navLinks.forEach(link => {
-      const underline = link.querySelector('.nav-underline');
+      const underline = link.querySelector('.nav-underline') as HTMLElement;
       if (link.getAttribute('data-nav-link') === activeId) {
         link.classList.add('text-stone-900', 'dark:text-stone-100');
         link.classList.remove('text-stone-700', 'dark:text-stone-300');
