@@ -103,27 +103,33 @@ const experiences = [
   </header>
 
   <Container>
-    <!-- Navigation -->
-    <nav class="animate sticky top-0 z-10 -mx-3 mb-12 mt-8 flex gap-8 border-b border-stone-300/30 px-3 pb-4 backdrop-blur-md dark:border-stone-700/30 md:-mx-6 md:gap-12 md:px-6">
-      <a href="#about" class="group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
-        About
-        <span class="absolute -bottom-4 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 group-hover:w-full dark:bg-stone-100"></span>
-      </a>
-      <a href="#experience" class="group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
-        Experience
-        <span class="absolute -bottom-4 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 group-hover:w-full dark:bg-stone-100"></span>
-      </a>
-      <a href="#projects" class="group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
-        Projects
-        <span class="absolute -bottom-4 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 group-hover:w-full dark:bg-stone-100"></span>
-      </a>
-      <a href="#writing" class="group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
-        Writing
-        <span class="absolute -bottom-4 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 group-hover:w-full dark:bg-stone-100"></span>
-      </a>
-    </nav>
+    <div class="flex gap-12 mt-8">
+      <!-- Fixed Sidebar Navigation -->
+      <nav class="animate hidden lg:block w-48 flex-shrink-0">
+        <div class="sticky top-24">
+          <div class="flex flex-col gap-4">
+            <a href="#about" data-nav-link="about" class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
+              About
+              <span class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"></span>
+            </a>
+            <a href="#experience" data-nav-link="experience" class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
+              Experience
+              <span class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"></span>
+            </a>
+            <a href="#projects" data-nav-link="projects" class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
+              Projects
+              <span class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"></span>
+            </a>
+            <a href="#writing" data-nav-link="writing" class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
+              Writing
+              <span class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"></span>
+            </a>
+          </div>
+        </div>
+      </nav>
 
-    <aside data-pagefind-ignore>
+      <!-- Main Content -->
+      <aside data-pagefind-ignore class="flex-1 min-w-0">
       <!-- About Section -->
       <section id="about" class="animate mb-24 scroll-mt-24">
         <h2 class="mb-6 text-3xl font-bold text-stone-900 dark:text-stone-100">
@@ -228,7 +234,8 @@ const experiences = [
           }
         </ul>
       </section>
-    </aside>
+      </aside>
+    </div>
   </Container>
 </SoftwareLayout>
 
@@ -307,4 +314,51 @@ const experiences = [
     requestAnimationFrame(updateHaloPosition);
   }
   updateHaloPosition();
+
+  // Scroll spy for navigation
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function setActiveLink(activeId) {
+    navLinks.forEach(link => {
+      const underline = link.querySelector('.nav-underline');
+      if (link.getAttribute('data-nav-link') === activeId) {
+        link.classList.add('text-stone-900', 'dark:text-stone-100');
+        link.classList.remove('text-stone-700', 'dark:text-stone-300');
+        if (underline) {
+          underline.style.width = '100%';
+        }
+      } else {
+        link.classList.remove('text-stone-900', 'dark:text-stone-100');
+        link.classList.add('text-stone-700', 'dark:text-stone-300');
+        if (underline) {
+          underline.style.width = '0';
+        }
+      }
+    });
+  }
+
+  // Intersection Observer for scroll spy
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setActiveLink(entry.target.id);
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  // Set initial active state
+  if (sections.length > 0) {
+    setActiveLink(sections[0].id);
+  }
 </script>
