@@ -5,7 +5,10 @@ import Link from "@components/Link.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 ---
 
-<Layout title="Music - Plastic Jaguar" description="Scott Lingner's music project, Plastic Jaguar.">
+<Layout
+  title="Music - Plastic Jaguar"
+  description="Scott Lingner's music project, Plastic Jaguar."
+>
   <Container>
     <div class="animate">
       <BackToPrevious href="/">Back to home</BackToPrevious>
@@ -13,34 +16,39 @@ import BackToPrevious from "@components/BackToPrevious.astro";
     <aside data-pagefind-ignore>
       <div class="space-y-8">
         <section class="animate">
-          <div class="flex flex-col items-center gap-6 mb-8 mt-10">
-            <div class="w-48 h-48 flex items-center justify-center">
+          <div class="mb-8 mt-10 flex flex-col items-center gap-6">
+            <div class="flex h-48 w-48 items-center justify-center">
               <img
                 src="/plastic-jaguar-logo.png"
                 alt="Plastic Jaguar"
-                class="w-full h-full object-contain rounded-lg shadow-lg dark:brightness-0 dark:invert dark:opacity-90"
+                class="h-full w-full rounded-lg object-contain shadow-lg dark:opacity-90 dark:brightness-0 dark:invert"
               />
             </div>
-            <h1 class="text-4xl font-bold text-stone-900 dark:text-stone-100 text-center">
+            <h1
+              class="text-center text-4xl font-bold text-stone-900 dark:text-stone-100"
+            >
               Plastic Jaguar
             </h1>
           </div>
 
           <div class="space-y-6">
-            <p class="text-lg leading-relaxed text-stone-700 dark:text-stone-300">
-              Plastic Jaguar is Scott Lingner's music project, exploring sounds and compositions
-              that blend creativity with technical craftsmanship.
+            <p
+              class="text-lg leading-relaxed text-stone-700 dark:text-stone-300"
+            >
+              Plastic Jaguar is Scott Lingner & Jordan Olberg's music project .
             </p>
 
-            <div class="bg-stone-200/50 dark:bg-stone-800/50 p-8 rounded-lg border border-stone-300/50 dark:border-stone-700/50 text-center">
-              <p class="text-base text-stone-700 dark:text-stone-300 mb-6">
-                Visit the official Plastic Jaguar website to listen to music, learn more about the project,
-                and explore upcoming releases.
+            <div
+              class="rounded-lg border border-stone-300/50 bg-stone-200/50 p-8 text-center dark:border-stone-700/50 dark:bg-stone-800/50"
+            >
+              <p class="mb-6 text-base text-stone-700 dark:text-stone-300">
+                Visit the official Plastic Jaguar website to listen to music,
+                learn more about the band, and explore upcoming releases.
               </p>
               <Link
                 href="https://plasticjaguar.com"
                 external
-                class="inline-block bg-stone-700 dark:bg-stone-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-stone-800 dark:hover:bg-stone-700 transition-colors shadow-md hover:shadow-lg"
+                class="inline-block rounded-lg bg-stone-700 px-8 py-3 font-semibold text-white shadow-md transition-colors hover:bg-stone-800 hover:shadow-lg dark:bg-stone-600 dark:hover:bg-stone-700"
               >
                 Visit plasticjaguar.com →
               </Link>

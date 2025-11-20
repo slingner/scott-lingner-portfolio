@@ -6,14 +6,70 @@ import { SITE } from "@consts";
 
 <header transition:persist>
   <Container>
-    <div class="flex flex-wrap justify-between items-center gap-y-2">
+    <div class="flex flex-wrap items-center justify-between gap-y-2">
       <Link href="/" underline={false}>
         <img
           src="/logo.png"
           alt={SITE.TITLE}
-          class="h-16 w-auto object-contain transition-all dark:brightness-0 dark:invert dark:opacity-90"
+          class="h-16 w-auto object-contain transition-all dark:opacity-90 dark:brightness-0 dark:invert"
         />
       </Link>
+
+      <nav class="hidden items-center gap-6 md:flex">
+        <Link href="/" underline={false} class="text-sm font-medium">
+          Home
+        </Link>
+        <Link href="/news" underline={false} class="text-sm font-medium">
+          News
+        </Link>
+        <div class="dropdown-wrapper group relative">
+          <button
+            class="text-sm font-medium text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+          >
+            Projects ▾
+          </button>
+          <div
+            class="dropdown-menu invisible absolute left-0 top-full pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100"
+          >
+            <div
+              class="w-48 rounded-lg border border-stone-300/50 bg-white shadow-lg dark:border-stone-700/50 dark:bg-stone-800"
+            >
+              <Link
+                href="/software-engineering"
+                underline={false}
+                class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+              >
+                Software
+              </Link>
+              <Link
+                href="/music"
+                underline={false}
+                class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+              >
+                Music
+              </Link>
+              <Link
+                href="/stationery"
+                underline={false}
+                class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+              >
+                Art
+              </Link>
+              <Link
+                href="/photo"
+                underline={false}
+                class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+              >
+                Photography
+              </Link>
+            </div>
+          </div>
+        </div>
+        <Link href="/about" underline={false} class="text-sm font-medium">
+          About
+        </Link>
+      </nav>
+
       <button
         id="magnifying-glass"
         aria-label="Search"
@@ -36,3 +92,13 @@ import { SITE } from "@consts";
     </div>
   </Container>
 </header>
+
+<style>
+  .dropdown-wrapper {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    z-index: 50;
+  }
+</style>

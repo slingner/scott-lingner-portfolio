@@ -1,0 +1,109 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import { SITE } from "@consts";
+import BackToPrevious from "@components/BackToPrevious.astro";
+---
+
+<Layout
+  title="About"
+  description="About Scott Lingner - Multi-disciplinary creator"
+>
+  <Container>
+    <div class="animate">
+      <BackToPrevious href="/">Back to home</BackToPrevious>
+    </div>
+
+    <div class="animate mt-10">
+      <h1
+        class="mb-8 text-4xl font-bold text-stone-900 dark:text-stone-100 md:text-5xl"
+      >
+        About Me
+      </h1>
+
+      <div class="grid gap-12 md:grid-cols-2 md:gap-16">
+        <div class="space-y-6">
+          <div class="prose prose-stone max-w-none dark:prose-invert">
+            <p
+              class="text-lg leading-relaxed text-stone-700 dark:text-stone-300"
+            >
+              I'm a multi-disciplinary creator based in California, working at
+              the intersection of technology, music, design, and craftsmanship.
+            </p>
+
+            <p
+              class="text-base leading-relaxed text-stone-700 dark:text-stone-300"
+            >
+              As a musician and instrument builder, I've created experimental
+              homemade instruments that have been featured on CNET and
+              BOOOOOOOM. My work explores the relationship between mathematics,
+              nature, and sound—from Fibonacci spiral guitars to sculptural
+              pigeon habitats.
+            </p>
+
+            <p
+              class="text-base leading-relaxed text-stone-700 dark:text-stone-300"
+            >
+              Through Rocket Boogie Co., <a
+                href="https://www.tammyanntan.com/"
+                target="_blank"
+                rel="noopener noreferrer">Tammy Ann Tan</a
+              > and I design and illustrate greeting cards and prints, bringing folk
+              art aesthetics to contemporary art and design. Each project, whether
+              digital or physical, reflects my belief that craft and creativity can
+              bridge traditional techniques with modern innovation. traditional techniques
+              with modern innovation.
+            </p>
+
+            <p
+              class="text-base leading-relaxed text-stone-700 dark:text-stone-300"
+            >
+              Jordan Olberg and I also make music together as Plastic Jaguar,
+              with our debut album Afterparty releasing in 2026, mixed and
+              mastered by <a
+                href="https://www.benetter.com/"
+                target="_blank"
+                rel="noopener noreferrer">Ben Etter</a
+              >.
+
+              <p
+                class="text-base leading-relaxed text-stone-700 dark:text-stone-300"
+              >
+                I'm always interested in collaborative projects that blend
+                different disciplines and push creative boundaries.
+              </p>
+            </p>
+
+            <div class="pt-4">
+              <h2
+                class="mb-4 text-2xl font-bold text-stone-900 dark:text-stone-100"
+              >
+                Get in Touch
+              </h2>
+              <p
+                class="text-base font-semibold text-stone-900 dark:text-stone-100"
+              >
+                <a
+                  href={`mailto:${SITE.EMAIL}`}
+                  class="transition-colors hover:text-stone-700 dark:hover:text-stone-300"
+                >
+                  {SITE.EMAIL}
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div class="overflow-hidden rounded-xl shadow-xl">
+              <img
+                src="/scott-lingner-fibonacci-3.webp"
+                alt="Scott Lingner working on guitar"
+                class="h-auto w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</Layout>

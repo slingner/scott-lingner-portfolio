@@ -18,102 +18,208 @@ const newsItems = (await getCollection("news"))
         <section>
           <article class="space-y-8">
             <div class="animate">
-              <p class="text-lg leading-relaxed text-stone-700 dark:text-stone-300">
+              <p
+                class="text-lg leading-relaxed text-stone-700 dark:text-stone-300"
+              >
                 Multi-disciplinary creator based in California.
               </p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 animate">
+            <div
+              class="animate grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12"
+            >
               <a
                 href="/music"
-                class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
+                class="group flex flex-col items-center gap-3 transition-all duration-300 hover:scale-110"
               >
-                <div class="w-24 h-24 md:w-32 md:h-32 p-4 flex items-center justify-center">
+                <div
+                  class="flex h-32 w-32 items-center justify-center rounded-xl border-2 border-stone-300 bg-stone-100 p-4 shadow-lg transition-all group-hover:border-stone-400 group-hover:shadow-2xl dark:border-stone-700 dark:bg-stone-800 md:h-40 md:w-40"
+                >
                   <img
                     src="/plastic-jaguar-logo.png"
                     alt="Plastic Jaguar"
-                    class="w-full h-full object-contain rounded-lg shadow-md group-hover:shadow-xl transition-shadow dark:brightness-0 dark:invert dark:opacity-90"
+                    class="h-full w-full rounded-lg object-contain grayscale transition-all group-hover:grayscale-0 dark:opacity-90 dark:brightness-0 dark:invert"
                   />
                 </div>
-                <span class="text-sm md:text-base font-medium text-stone-700 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">Music</span>
+                <span
+                  class="text-base font-semibold text-stone-700 transition-colors group-hover:text-stone-900 dark:text-stone-300 dark:group-hover:text-stone-100 md:text-lg"
+                  >Music</span
+                >
               </a>
 
               <a
                 href="/stationery"
-                class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
+                class="group flex flex-col items-center gap-3 transition-all duration-300 hover:scale-110"
               >
-                <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+                <div
+                  class="flex h-32 w-32 items-center justify-center rounded-xl border-2 border-stone-300 bg-stone-100 shadow-lg transition-all group-hover:border-stone-400 group-hover:shadow-2xl dark:border-stone-700 dark:bg-stone-800 md:h-40 md:w-40"
+                >
                   <img
                     src="/rbc-logo.png"
-                    alt="Rocket Boogie Co."
-                    class="w-full h-full object-contain rounded-lg shadow-md group-hover:shadow-xl transition-shadow dark:brightness-0 dark:invert dark:opacity-90"
+                    alt="Art"
+                    class="h-full w-full rounded-lg object-contain grayscale transition-all group-hover:grayscale-0 dark:opacity-90 dark:brightness-0 dark:invert"
                   />
                 </div>
-                <span class="text-sm md:text-base font-medium text-stone-700 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">Stationery</span>
+                <span
+                  class="text-base font-semibold text-stone-700 transition-colors group-hover:text-stone-900 dark:text-stone-300 dark:group-hover:text-stone-100 md:text-lg"
+                  >Art</span
+                >
               </a>
 
               <a
                 href="/photo"
-                class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
+                class="group flex flex-col items-center gap-3 transition-all duration-300 hover:scale-110"
               >
-                <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+                <div
+                  class="flex h-32 w-32 items-center justify-center rounded-xl border-2 border-stone-300 bg-stone-100 shadow-lg transition-all group-hover:border-stone-400 group-hover:shadow-2xl dark:border-stone-700 dark:bg-stone-800 md:h-40 md:w-40"
+                >
                   <img
                     src="/atown.jpg"
                     alt="Photography"
-                    class="w-full h-full object-cover rounded-lg shadow-md group-hover:shadow-xl transition-shadow"
+                    class="h-full w-full rounded-lg object-cover grayscale transition-all group-hover:grayscale-0"
                   />
                 </div>
-                <span class="text-sm md:text-base font-medium text-stone-700 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-stone-100 transition-colors">Photo</span>
+                <span
+                  class="text-base font-semibold text-stone-700 transition-colors group-hover:text-stone-900 dark:text-stone-300 dark:group-hover:text-stone-100 md:text-lg"
+                  >Photo</span
+                >
               </a>
 
               <a
                 href="/software-engineering"
-                class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
+                class="group flex flex-col items-center gap-3 transition-all duration-300 hover:scale-110"
               >
-                <div class="w-24 h-24 md:w-32 md:h-32 rounded-lg bg-stone-700 dark:bg-stone-600 flex items-center justify-center shadow-md group-hover:shadow-xl transition-shadow">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 md:w-16 md:h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                <div
+                  class="flex h-32 w-32 items-center justify-center rounded-xl border-2 border-stone-300 bg-stone-700 shadow-lg transition-all group-hover:border-stone-500 group-hover:shadow-2xl dark:border-stone-600 dark:bg-stone-600 md:h-40 md:w-40"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-12 w-12 text-white md:h-16 md:w-16"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                   </svg>
                 </div>
-                <span class="text-sm md:text-base font-medium text-stone-700 dark:text-stone-300 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">Software</span>
+                <span
+                  class="text-base font-semibold text-stone-700 transition-colors group-hover:text-amber-700 dark:text-stone-300 dark:group-hover:text-amber-400 md:text-lg"
+                  >Software</span
+                >
               </a>
             </div>
 
-            <section class="animate space-y-4 mt-12">
-              <h2 class="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
-                News
+            <!-- News Section - Editorial Style -->
+            <section class="animate mt-12 space-y-6">
+              <h2
+                class="text-2xl font-bold text-stone-900 dark:text-stone-100"
+              >
+                Latest News
               </h2>
-              <div class="bg-stone-200/50 dark:bg-stone-800/50 p-6 rounded-lg border border-stone-300/50 dark:border-stone-700/50 space-y-4">
-                <ul class="space-y-3">
-                  {newsItems.map((item) => (
-                    <li>
-                      <Link href={`/news/${item.slug}`} class="block group">
-                        <h3 class="font-semibold text-stone-900 dark:text-stone-100 group-hover:text-stone-700 dark:group-hover:text-stone-300 transition-colors">
-                          {item.data.title}
-                        </h3>
-                        <p class="text-sm text-stone-600 dark:text-stone-400 mt-1">
-                          {item.data.description}
-                        </p>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-                <Link href="/news" class="inline-block text-stone-900 dark:text-stone-100 font-semibold hover:text-stone-700 dark:hover:text-stone-300 transition-colors mt-4">
-                  View all news →
+
+              <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+                {
+                  newsItems.map((item) => (
+                    <Link href={`/news/${item.slug}`} class="group block h-full">
+                      <article class="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-500 hover:shadow-2xl dark:bg-stone-900">
+                        {item.data.thumbnail && (
+                          <div class="relative aspect-[16/10] overflow-hidden bg-stone-200 dark:bg-stone-800">
+                            <img
+                              src={item.data.thumbnail}
+                              alt={item.data.title}
+                              class="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                            />
+                            <div class="absolute left-4 top-4">
+                              <span class="inline-block rounded-full bg-stone-900/80 px-3 py-1 font-mono text-xs text-white backdrop-blur-sm dark:bg-stone-100/80 dark:text-stone-900">
+                                {new Date(item.data.date).toLocaleDateString(
+                                  "en-US",
+                                  {
+                                    month: "short",
+                                    year: "numeric",
+                                  },
+                                )}
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                        <div class="flex flex-1 flex-col p-6 md:p-8">
+                          <h3 class="mb-3 text-xl font-bold leading-tight text-stone-900 transition-colors group-hover:text-stone-700 dark:text-stone-100 dark:group-hover:text-stone-300 md:text-2xl">
+                            {item.data.title}
+                          </h3>
+                          <p class="mb-4 flex-1 text-sm leading-relaxed text-stone-600 dark:text-stone-400 md:text-base">
+                            {item.data.description}
+                          </p>
+                          <div class="flex items-center text-sm font-medium text-stone-700 transition-transform duration-300 group-hover:translate-x-2 dark:text-stone-300">
+                            <span>Read more</span>
+                            <svg
+                              class="ml-2 h-4 w-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </article>
+                    </Link>
+                  ))
+                }
+              </div>
+
+              <div class="mt-8">
+                <Link
+                  href="/news"
+                  class="inline-flex items-center gap-2 rounded-full bg-stone-900 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-stone-800 hover:shadow-xl dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-200"
+                >
+                  View all news
+                  <svg
+                    class="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
                 </Link>
               </div>
             </section>
 
-            <section class="animate space-y-4 mt-12">
-              <h2 class="text-2xl font-bold text-stone-900 dark:text-stone-100 mb-4">
+            <section class="animate mt-12 space-y-4">
+              <h2
+                class="mb-4 text-2xl font-bold text-stone-900 dark:text-stone-100"
+              >
                 Connect
               </h2>
-              <div class="bg-stone-200/50 dark:bg-stone-800/50 p-6 rounded-lg border border-stone-300/50 dark:border-stone-700/50">
-                <p class="text-base leading-relaxed text-stone-700 dark:text-stone-300 mb-4">
-                  Get in touch about creative work or collaborative opportunities.
+              <div
+                class="rounded-lg border border-stone-300/50 bg-stone-200/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50"
+              >
+                <p
+                  class="mb-4 text-base leading-relaxed text-stone-700 dark:text-stone-300"
+                >
+                  Get in touch about creative work or collaborative
+                  opportunities.
                 </p>
-                <p class="text-base font-semibold text-stone-900 dark:text-stone-100">
-                  <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.TITLE}`}>
+                <p
+                  class="text-base font-semibold text-stone-900 dark:text-stone-100"
+                >
+                  <Link
+                    href={`mailto:${SITE.EMAIL}`}
+                    aria-label={`Email ${SITE.TITLE}`}
+                  >
                     {SITE.EMAIL}
                   </Link>
                 </p>
