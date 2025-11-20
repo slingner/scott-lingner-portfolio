@@ -399,11 +399,11 @@
 
   .catch-counter {
     position: absolute;
-    top: 145px;
+    top: 142px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Courier New', monospace;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     color: #1F2937;
     text-shadow: 2px 2px 0px #FCD34D;
@@ -1009,9 +1009,6 @@
 
     // Handle Astro page transitions - check path and reset game state
     document.addEventListener('astro:page-load', () => {
-      // Check if we should show/hide the game
-      const shouldShow = checkAndShowGame();
-
       // Always reset game state on page change
       isFlying = false;
       isActivated = false;
@@ -1056,6 +1053,11 @@
 
       // Re-measure header for new page
       findHeader();
+
+      // Check if we should show/hide the game AFTER cleanup
+      setTimeout(() => {
+        checkAndShowGame();
+      }, 0);
     });
 
     // Also handle before swap to ensure clean state
