@@ -5,6 +5,7 @@ import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import Link from "@components/Link.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
+import TagBadge from "@components/TagBadge.astro";
 
 const newsItems = (await getCollection("news"))
   .filter((item) => !item.data.draft)
@@ -42,10 +43,17 @@ const newsItems = (await getCollection("news"))
                         alt={item.data.title}
                         class="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
                       />
-                      <div class="absolute left-4 top-4">
+                      <div class="absolute left-4 top-4 flex flex-col gap-2">
                         <span class="inline-block rounded-full bg-stone-900/80 px-3 py-1 font-mono text-xs text-white backdrop-blur-sm dark:bg-stone-100/80 dark:text-stone-900">
                           <FormattedDate date={item.data.date} />
                         </span>
+                        {item.data.tags && item.data.tags.length > 0 && (
+                          <div class="flex flex-wrap gap-1">
+                            {item.data.tags.map((tag) => (
+                              <TagBadge tag={tag} />
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}
