@@ -259,8 +259,9 @@
   }
 
   .falling-fish {
-    position: absolute;
+    position: fixed;
     animation: fallDown 3s linear forwards;
+    will-change: transform;
   }
 
   .falling-fish svg {
@@ -270,11 +271,13 @@
   }
 
   @keyframes fallDown {
-    from {
+    0% {
       transform: translateY(0) rotate(0deg);
+      opacity: 1;
     }
-    to {
-      transform: translateY(100vh) rotate(360deg);
+    100% {
+      transform: translateY(calc(100vh + 50px)) rotate(360deg);
+      opacity: 1;
     }
   }
 
@@ -447,10 +450,12 @@
     const dropFish = () => {
       if (activeFish) return; // Only one fish at a time
 
+      // Get current pelican position
+      const currentPelicanX = pelicanX + 40;
+      const currentPelicanY = pelicanY + 40;
+
       const fish = document.createElement('div');
       fish.className = 'falling-fish';
-      fish.style.left = `${pelicanX + 40}px`;
-      fish.style.top = `${pelicanY + 40}px`;
 
       fish.innerHTML = `
         <svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -471,6 +476,10 @@
 
       fallingFishContainer.appendChild(fish);
       activeFish = fish;
+
+      // Set position after adding to DOM
+      fish.style.left = `${currentPelicanX}px`;
+      fish.style.top = `${currentPelicanY}px`;
 
       // Remove fish after animation or if caught
       setTimeout(() => {
