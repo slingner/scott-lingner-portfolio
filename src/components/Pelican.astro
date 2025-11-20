@@ -587,17 +587,25 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    animation: confettiFall 3s linear forwards;
+    animation: confettiFall 3s ease-in forwards;
+    opacity: 1;
+    will-change: transform, opacity;
   }
 
   @keyframes confettiFall {
-    from {
-      transform: translateY(0) rotate(0deg);
+    0% {
+      transform: translateY(0) rotate(0deg) translateX(0);
       opacity: 1;
     }
-    to {
-      transform: translateY(100vh) rotate(720deg);
-      opacity: 0;
+    10% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(720deg) translateX(100px);
+      opacity: 0.8;
     }
   }
 </style>
@@ -1112,24 +1120,50 @@
 
     // Confetti animation - 5 seconds
     const triggerConfetti = () => {
+      // Make sure confettiContainer exists
+      if (!confettiContainer) {
+        console.error('Confetti container not found!');
+        return;
+      }
+
       const colors = ['#FCD34D', '#60A5FA', '#F87171', '#34D399', '#A78BFA', '#F472B6'];
 
-      for (let i = 0; i < 150; i++) {
+      // Create confetti pieces in batches for better visual effect
+      for (let i = 0; i < 200; i++) {
         setTimeout(() => {
           const confetti = document.createElement('div');
           confetti.className = 'confetti';
+
+          // Random horizontal position
           confetti.style.left = `${Math.random() * 100}%`;
-          confetti.style.top = '-10px';
+          confetti.style.top = '-20px';
+
+          // Random color from our palette
           confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+          // Varied animation timing for more natural effect
           confetti.style.animationDelay = `${Math.random() * 0.5}s`;
-          confetti.style.animationDuration = `${2 + Math.random() * 3}s`;
+          confetti.style.animationDuration = `${2.5 + Math.random() * 2}s`;
+
+          // Random size for variety (8-16px)
+          const size = 8 + Math.random() * 8;
+          confetti.style.width = `${size}px`;
+          confetti.style.height = `${size}px`;
+
+          // Add some variety to shapes - some square, some rectangular
+          if (Math.random() > 0.5) {
+            confetti.style.borderRadius = '50%';
+          }
 
           confettiContainer.appendChild(confetti);
 
+          // Remove after animation completes
           setTimeout(() => {
-            confetti.remove();
+            if (confetti.parentElement) {
+              confetti.remove();
+            }
           }, 5000);
-        }, i * 30);
+        }, i * 25); // Stagger creation every 25ms
       }
     };
 
