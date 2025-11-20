@@ -110,7 +110,7 @@
 
 <!-- Fisherman at bottom right -->
 <div id="fisherman-container" class="fisherman-wrapper" role="button" tabindex="0" aria-label="Click to start pelican fishing game. Use left and right arrow keys to move and catch fish. Press ESC to stop.">
-  <div id="catch-counter" class="catch-counter" aria-live="polite" aria-atomic="true">Catches: 0</div>
+  <div id="catch-counter" class="catch-counter" aria-live="polite" aria-atomic="true">0/10 catches</div>
   <div id="game-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
   <svg id="fisherman-svg" width="100" height="140" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
     <!-- Hat -->
@@ -675,7 +675,7 @@
         // Reset catch count and hide counter
         catchCount = 0;
         if (catchCounter) {
-          catchCounter.textContent = 'Catches: 0';
+          catchCounter.textContent = '0/10 catches';
           catchCounter.classList.remove('visible');
         }
 
@@ -687,7 +687,7 @@
 
       if (!fishermanActive) return;
 
-      const moveSpeed = 15;
+      const moveSpeed = 25;
       const minX = 0;
       const maxX = window.innerWidth - 100;
 
@@ -733,23 +733,65 @@
           activeFish.splice(i, 1);
           catchCount++;
           if (catchCounter) {
-            catchCounter.textContent = `Catches: ${catchCount}`;
+            catchCounter.textContent = `${catchCount}/10 catches`;
             // Show counter after first catch
             if (catchCount >= 1) {
               catchCounter.classList.add('visible');
             }
           }
           if (gameStatus) {
-            gameStatus.textContent = `Fish caught! Total catches: ${catchCount}`;
+            gameStatus.textContent = `Fish caught! Total catches: ${catchCount}/10`;
           }
 
-          // Special fireworks at 10 catches
+          // Special fireworks at 10 catches, then reset game
           if (catchCount === 10) {
             triggerPixelatedFireworks();
+            // Reset game after fireworks display
+            setTimeout(() => {
+              resetGame();
+            }, 5000);
           } else {
             triggerConfetti();
           }
         }
+      }
+    };
+
+    // Reset game after 10 catches
+    const resetGame = () => {
+      // Stop pelican
+      isFlying = false;
+      isActivated = false;
+      isFirstFlight = true;
+      pelicanSvg.classList.remove('flapping');
+      pelicanContainer.classList.remove('flying');
+      pelicanX = 80;
+      pelicanY = 30;
+      pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
+
+      // Stop fisherman
+      fishermanActive = false;
+      fishermanContainer.classList.remove('active');
+      fishermanContainer.style.right = '40px';
+      fishermanContainer.style.left = 'auto';
+
+      // Remove all active fish
+      activeFish.forEach(fish => {
+        if (fish.parentElement) {
+          fish.remove();
+        }
+      });
+      activeFish = [];
+
+      // Reset catch count and hide counter
+      catchCount = 0;
+      if (catchCounter) {
+        catchCounter.textContent = '0/10 catches';
+        catchCounter.classList.remove('visible');
+      }
+
+      if (gameStatus) {
+        gameStatus.textContent = 'Game complete! Click fisherman to play again.';
       }
     };
 
