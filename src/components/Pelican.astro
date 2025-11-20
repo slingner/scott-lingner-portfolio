@@ -3,75 +3,104 @@
 ---
 
 <div id="pelican-container" class="pelican-wrapper">
-  <svg id="pelican-svg" width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <svg id="pelican-svg" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <!-- Tail -->
+    <g id="pelican-tail">
+      <rect x="12" y="38" width="4" height="4" fill="#D1D5DB"/>
+      <rect x="16" y="38" width="4" height="4" fill="#D1D5DB"/>
+      <rect x="8" y="40" width="4" height="2" fill="#D1D5DB"/>
+      <rect x="4" y="40" width="4" height="2" fill="#9CA3AF"/>
+    </g>
+
+    <!-- Large Wings - Behind body -->
+    <g id="pelican-wings-back">
+      <g id="wing-back">
+        <!-- Wing span -->
+        <rect x="16" y="44" width="4" height="4" fill="#9CA3AF"/>
+        <rect x="20" y="44" width="4" height="4" fill="#9CA3AF"/>
+        <rect x="24" y="46" width="4" height="4" fill="#9CA3AF"/>
+        <rect x="12" y="46" width="4" height="4" fill="#9CA3AF"/>
+        <rect x="8" y="48" width="4" height="4" fill="#9CA3AF"/>
+        <rect x="28" y="48" width="4" height="4" fill="#9CA3AF"/>
+        <rect x="4" y="50" width="4" height="2" fill="#78716C"/>
+        <rect x="32" y="50" width="4" height="2" fill="#78716C"/>
+      </g>
+    </g>
+
     <!-- Body -->
     <g id="pelican-body">
-      <rect x="20" y="28" width="4" height="4" fill="#E5E7EB"/>
-      <rect x="24" y="28" width="4" height="4" fill="#E5E7EB"/>
-      <rect x="28" y="28" width="4" height="4" fill="#E5E7EB"/>
-      <rect x="32" y="28" width="4" height="4" fill="#E5E7EB"/>
-      <rect x="20" y="32" width="4" height="4" fill="#E5E7EB"/>
-      <rect x="24" y="32" width="4" height="4" fill="#E5E7EB"/>
-      <rect x="28" y="32" width="4" height="4" fill="#E5E7EB"/>
-      <rect x="32" y="32" width="4" height="4" fill="#E5E7EB"/>
-      <rect x="36" y="32" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="20" y="34" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="24" y="34" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="28" y="34" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="32" y="34" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="20" y="38" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="24" y="38" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="28" y="38" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="32" y="38" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="36" y="38" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="20" y="42" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="24" y="42" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="28" y="42" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="32" y="42" width="4" height="4" fill="#E5E7EB"/>
+    </g>
+
+    <!-- Large Wings - In front of body -->
+    <g id="pelican-wings-front">
+      <g id="wing-front">
+        <rect x="24" y="46" width="4" height="4" fill="#D1D5DB"/>
+        <rect x="28" y="46" width="4" height="4" fill="#D1D5DB"/>
+        <rect x="32" y="46" width="4" height="4" fill="#D1D5DB"/>
+        <rect x="36" y="48" width="4" height="4" fill="#D1D5DB"/>
+        <rect x="40" y="50" width="4" height="4" fill="#D1D5DB"/>
+        <rect x="44" y="50" width="4" height="2" fill="#9CA3AF"/>
+        <rect x="20" y="48" width="4" height="2" fill="#D1D5DB"/>
+      </g>
     </g>
 
     <!-- Head -->
     <g id="pelican-head">
-      <rect x="36" y="24" width="4" height="4" fill="#E5E7EB"/>
-      <rect x="36" y="28" width="4" height="4" fill="#E5E7EB"/>
-      <rect x="40" y="24" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="36" y="30" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="36" y="34" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="40" y="30" width="4" height="4" fill="#E5E7EB"/>
+      <rect x="40" y="34" width="4" height="4" fill="#E5E7EB"/>
       <!-- Eye -->
-      <rect x="40" y="26" width="2" height="2" fill="#1F2937"/>
+      <rect x="42" y="32" width="2" height="2" fill="#1F2937"/>
     </g>
 
     <!-- Large Beak - Upper -->
     <g id="pelican-beak">
-      <rect x="44" y="24" width="4" height="4" fill="#FFA500"/>
-      <rect x="48" y="24" width="4" height="4" fill="#FFA500"/>
-      <rect x="52" y="26" width="4" height="2" fill="#FFA500"/>
+      <rect x="44" y="30" width="4" height="4" fill="#FFA500"/>
+      <rect x="48" y="30" width="4" height="4" fill="#FFA500"/>
+      <rect x="52" y="30" width="4" height="4" fill="#FFA500"/>
+      <rect x="56" y="32" width="4" height="2" fill="#FFA500"/>
+      <rect x="60" y="32" width="4" height="2" fill="#FF8C00"/>
     </g>
 
     <!-- Large Pouch - Lower Beak -->
     <g id="pelican-pouch">
-      <rect x="44" y="28" width="4" height="4" fill="#FF8C00"/>
-      <rect x="48" y="28" width="4" height="4" fill="#FF8C00"/>
-      <rect x="52" y="28" width="4" height="4" fill="#FF8C00"/>
-      <rect x="44" y="32" width="4" height="4" fill="#FF8C00"/>
-      <rect x="48" y="32" width="4" height="4" fill="#FF8C00"/>
-      <rect x="52" y="32" width="4" height="2" fill="#FF8C00"/>
-      <rect x="40" y="32" width="4" height="4" fill="#FF8C00"/>
-      <rect x="40" y="36" width="4" height="2" fill="#FF8C00"/>
-      <rect x="44" y="36" width="4" height="2" fill="#FF8C00"/>
-    </g>
-
-    <!-- Animated Wings -->
-    <g id="pelican-wings">
-      <g id="wing-left">
-        <rect x="24" y="36" width="4" height="4" fill="#D1D5DB"/>
-        <rect x="28" y="36" width="4" height="4" fill="#D1D5DB"/>
-        <rect x="20" y="38" width="4" height="2" fill="#D1D5DB"/>
-      </g>
-      <g id="wing-right">
-        <rect x="32" y="36" width="4" height="4" fill="#D1D5DB"/>
-        <rect x="36" y="38" width="4" height="2" fill="#D1D5DB"/>
-      </g>
-    </g>
-
-    <!-- Tail -->
-    <g id="pelican-tail">
-      <rect x="16" y="32" width="4" height="4" fill="#D1D5DB"/>
-      <rect x="12" y="34" width="4" height="2" fill="#D1D5DB"/>
+      <rect x="44" y="34" width="4" height="4" fill="#FF8C00"/>
+      <rect x="48" y="34" width="4" height="4" fill="#FF8C00"/>
+      <rect x="52" y="34" width="4" height="4" fill="#FF8C00"/>
+      <rect x="56" y="34" width="4" height="4" fill="#FF8C00"/>
+      <rect x="44" y="38" width="4" height="4" fill="#FF8C00"/>
+      <rect x="48" y="38" width="4" height="4" fill="#FF8C00"/>
+      <rect x="52" y="38" width="4" height="4" fill="#FF8C00"/>
+      <rect x="56" y="36" width="4" height="4" fill="#FF8C00"/>
+      <rect x="40" y="38" width="4" height="4" fill="#FF8C00"/>
+      <rect x="40" y="42" width="4" height="4" fill="#FF8C00"/>
+      <rect x="44" y="42" width="4" height="4" fill="#FF8C00"/>
+      <rect x="48" y="42" width="4" height="4" fill="#FF8C00"/>
+      <rect x="40" y="46" width="4" height="2" fill="#FF8C00"/>
+      <rect x="44" y="46" width="4" height="2" fill="#FF8C00"/>
     </g>
 
     <!-- Legs -->
     <g id="pelican-legs">
-      <rect x="26" y="40" width="2" height="4" fill="#FFA500"/>
-      <rect x="32" y="40" width="2" height="4" fill="#FFA500"/>
+      <rect x="26" y="50" width="2" height="4" fill="#FFA500"/>
+      <rect x="32" y="50" width="2" height="4" fill="#FFA500"/>
       <!-- Feet -->
-      <rect x="24" y="44" width="6" height="2" fill="#FFA500"/>
-      <rect x="30" y="44" width="6" height="2" fill="#FFA500"/>
+      <rect x="24" y="54" width="6" height="2" fill="#FFA500"/>
+      <rect x="30" y="54" width="6" height="2" fill="#FFA500"/>
     </g>
   </svg>
 </div>
@@ -126,27 +155,37 @@
     image-rendering: crisp-edges;
   }
 
-  /* Wing flap animation - visible up and down movement */
+  /* Wing flap animation - slower, more visible movement */
   @keyframes flapWings {
     0% {
       transform: translateY(0) rotate(0deg);
     }
     50% {
-      transform: translateY(-6px) rotate(-10deg);
+      transform: translateY(-8px) rotate(-15deg);
     }
     100% {
       transform: translateY(0) rotate(0deg);
     }
   }
 
-  .flapping #wing-left {
-    animation: flapWings 0.2s ease-in-out infinite;
-    transform-origin: center;
+  .flapping #wing-front {
+    animation: flapWings 0.6s ease-in-out infinite;
+    transform-origin: 30% 50%;
   }
 
-  .flapping #wing-right {
-    animation: flapWings 0.2s ease-in-out infinite 0.1s;
-    transform-origin: center;
+  .flapping #wing-back {
+    animation: flapWings 0.6s ease-in-out infinite 0.15s;
+    transform-origin: 30% 50%;
+  }
+
+  /* Scale effect for depth illusion */
+  .pelican-wrapper.in-front {
+    z-index: 10000;
+  }
+
+  .pelican-wrapper.behind {
+    z-index: 9997;
+    opacity: 0.7;
   }
 </style>
 
@@ -156,16 +195,23 @@
   const fishCursor = document.getElementById('fish-cursor');
 
   if (pelicanContainer && pelicanSvg && fishCursor) {
-    let pelicanX = -80;
+    let pelicanX = -100;
     let pelicanY = 30;
     let targetX = pelicanX;
     let targetY = pelicanY;
     let isFlying = false;
     let facingRight = true;
-    let isEating = false;
+    let isCircling = false;
     let headerElement: HTMLElement | null = null;
     let headerHeight = 100;
     let headerTop = 0;
+
+    // Circling animation state
+    let circleAngle = 0;
+    let circleRadius = 80;
+    let circleCenterX = 0;
+    let circleCenterY = 0;
+    let circleSpeed = 0.05; // Slower circle speed
 
     // Find and measure the header element
     const findHeader = () => {
@@ -204,44 +250,104 @@
       const wasInHeader = cursorInHeader;
       cursorInHeader = checkCursorInHeader(mouseX, mouseY);
 
-      // If cursor just entered header and pelican isn't already eating
-      if (cursorInHeader && !isEating) {
-        // Fly to cursor
-        isFlying = true;
-        isEating = true;
+      // If cursor just entered header and pelican isn't already circling
+      if (cursorInHeader && !isCircling) {
+        // Start circling around cursor
+        isCircling = true;
+        isFlying = false;
         pelicanSvg.classList.add('flapping');
 
-        // Face the cursor
-        if (mouseX > pelicanX) {
-          facingRight = true;
-          pelicanSvg.style.transform = 'scaleX(1)';
-        } else {
-          facingRight = false;
-          pelicanSvg.style.transform = 'scaleX(-1)';
-        }
+        circleCenterX = mouseX;
+        circleCenterY = mouseY;
+        circleAngle = 0;
+      }
 
-        targetX = mouseX - 40;
-        targetY = mouseY - 30;
+      // Update circle center while cursor is in header
+      if (cursorInHeader && isCircling) {
+        // Smoothly follow cursor
+        circleCenterX += (mouseX - circleCenterX) * 0.1;
+        circleCenterY += (mouseY - circleCenterY) * 0.1;
+      }
+
+      // If cursor left header, stop circling
+      if (!cursorInHeader && wasInHeader && isCircling) {
+        // Show fish cursor momentarily before pelican flies away
+        document.body.style.cursor = 'none';
+        fishCursor.style.display = 'block';
+        fishCursor.style.left = `${mouseX}px`;
+        fishCursor.style.top = `${mouseY}px`;
+
+        // Chomp animation
+        let chompCount = 0;
+        const chompInterval = setInterval(() => {
+          if (chompCount % 2 === 0) {
+            pelicanSvg.style.transform = facingRight ? 'scaleX(1) scaleY(0.9)' : 'scaleX(-1) scaleY(0.9)';
+          } else {
+            pelicanSvg.style.transform = facingRight ? 'scaleX(1) scaleY(1.1)' : 'scaleX(-1) scaleY(1.1)';
+          }
+          chompCount++;
+
+          if (chompCount >= 2) {
+            clearInterval(chompInterval);
+
+            // Spit out cursor
+            setTimeout(() => {
+              fishCursor.style.display = 'none';
+              document.body.style.cursor = 'auto';
+
+              // Reset pelican
+              pelicanSvg.style.transform = facingRight ? 'scaleX(1)' : 'scaleX(-1)';
+              pelicanContainer.classList.remove('in-front', 'behind');
+
+              // Fly away
+              isCircling = false;
+              isFlying = true;
+
+              if (facingRight) {
+                targetX = window.innerWidth + 100;
+              } else {
+                targetX = -100;
+              }
+              targetY = headerTop + 30;
+
+              setTimeout(() => {
+                // Reset and schedule next flight
+                facingRight = !facingRight;
+                pelicanSvg.style.transform = facingRight ? 'scaleX(1)' : 'scaleX(-1)';
+
+                if (facingRight) {
+                  pelicanX = -100;
+                } else {
+                  pelicanX = window.innerWidth + 100;
+                }
+                pelicanY = headerTop + 30;
+                pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
+
+                startRandomFlight();
+              }, 2000);
+            }, 150);
+          }
+        }, 100);
       }
     });
 
     // Random flight pattern
     const startRandomFlight = () => {
-      if (isEating) return;
+      if (isCircling) return;
 
       isFlying = true;
       const viewportWidth = window.innerWidth;
 
       // Constrain Y to header area
       const minY = headerTop + 10;
-      const maxY = headerTop + headerHeight - 80;
+      const maxY = headerTop + headerHeight - 100;
 
       // Fly across screen within header bounds
       if (facingRight) {
-        targetX = viewportWidth + 80;
+        targetX = viewportWidth + 100;
         targetY = minY + Math.random() * Math.max(0, maxY - minY);
       } else {
-        targetX = -80;
+        targetX = -100;
         targetY = minY + Math.random() * Math.max(0, maxY - minY);
       }
 
@@ -249,83 +355,49 @@
       pelicanSvg.classList.add('flapping');
     };
 
-    // Eating animation sequence
-    const performEatingAnimation = () => {
-      // Hide normal cursor, show fish
-      document.body.style.cursor = 'none';
-      fishCursor.style.display = 'block';
-      fishCursor.style.left = `${mouseX}px`;
-      fishCursor.style.top = `${mouseY}px`;
-
-      // Fast chomp animation (open/close beak)
-      let chompCount = 0;
-      const chompInterval = setInterval(() => {
-        if (chompCount % 2 === 0) {
-          // Beak closed
-          pelicanSvg.style.transform = facingRight ? 'scaleX(1) scaleY(0.9)' : 'scaleX(-1) scaleY(0.9)';
-        } else {
-          // Beak open
-          pelicanSvg.style.transform = facingRight ? 'scaleX(1) scaleY(1.1)' : 'scaleX(-1) scaleY(1.1)';
-        }
-        chompCount++;
-
-        if (chompCount >= 3) {
-          clearInterval(chompInterval);
-
-          // Spit out cursor quickly
-          setTimeout(() => {
-            fishCursor.style.display = 'none';
-            document.body.style.cursor = 'auto';
-
-            // Reset pelican
-            pelicanSvg.style.transform = facingRight ? 'scaleX(1)' : 'scaleX(-1)';
-            pelicanSvg.classList.remove('flapping');
-
-            // Fly away off screen
-            isFlying = true;
-            pelicanSvg.classList.add('flapping');
-
-            if (facingRight) {
-              targetX = window.innerWidth + 80;
-            } else {
-              targetX = -80;
-            }
-
-            // After flying away, reset and schedule next flight
-            setTimeout(() => {
-              isEating = false;
-
-              // Wait a bit, then start new random flight from opposite side
-              setTimeout(() => {
-                facingRight = !facingRight;
-                pelicanSvg.style.transform = facingRight ? 'scaleX(1)' : 'scaleX(-1)';
-
-                // Reset position to off-screen on the opposite side
-                if (facingRight) {
-                  pelicanX = -80;
-                } else {
-                  pelicanX = window.innerWidth + 80;
-                }
-                pelicanY = headerTop + 30;
-                pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
-
-                startRandomFlight();
-              }, 2000 + Math.random() * 3000);
-            }, 1500);
-          }, 100);
-        }
-      }, 80);
-    };
-
     // Animation loop
     const animate = () => {
-      if (isFlying) {
+      if (isCircling) {
+        // Circular motion around cursor
+        circleAngle += circleSpeed;
+
+        // Calculate position on circle
+        pelicanX = circleCenterX + Math.cos(circleAngle) * circleRadius;
+        pelicanY = circleCenterY + Math.sin(circleAngle) * circleRadius;
+
+        // Face direction of movement
+        const prevAngle = circleAngle - circleSpeed;
+        const prevX = circleCenterX + Math.cos(prevAngle) * circleRadius;
+
+        if (pelicanX > prevX) {
+          facingRight = true;
+          pelicanSvg.style.transform = 'scaleX(1)';
+        } else {
+          facingRight = false;
+          pelicanSvg.style.transform = 'scaleX(-1)';
+        }
+
+        // Create depth illusion - pelican appears behind cursor at bottom of circle
+        const normalizedAngle = ((circleAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+        if (normalizedAngle > Math.PI * 0.5 && normalizedAngle < Math.PI * 1.5) {
+          // Bottom half of circle - behind cursor
+          pelicanContainer.classList.remove('in-front');
+          pelicanContainer.classList.add('behind');
+        } else {
+          // Top half of circle - in front of cursor
+          pelicanContainer.classList.remove('behind');
+          pelicanContainer.classList.add('in-front');
+        }
+
+        pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
+
+      } else if (isFlying) {
         const dx = targetX - pelicanX;
         const dy = targetY - pelicanY;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance > 3) {
-          const speed = isEating ? 12 : 5;
+          const speed = 2; // Much slower flight speed
           pelicanX += (dx / distance) * speed;
           pelicanY += (dy / distance) * speed;
 
@@ -335,20 +407,15 @@
           pelicanY = targetY;
           pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
 
-          if (isEating && !fishCursor.style.display.includes('block')) {
-            // Reached cursor, perform eating animation
-            performEatingAnimation();
-          } else if (!isEating) {
-            isFlying = false;
-            pelicanSvg.classList.remove('flapping');
+          isFlying = false;
+          pelicanSvg.classList.remove('flapping');
 
-            // Schedule next flight
-            setTimeout(() => {
-              facingRight = !facingRight;
-              pelicanSvg.style.transform = facingRight ? 'scaleX(1)' : 'scaleX(-1)';
-              startRandomFlight();
-            }, 3000 + Math.random() * 5000);
-          }
+          // Schedule next flight
+          setTimeout(() => {
+            facingRight = !facingRight;
+            pelicanSvg.style.transform = facingRight ? 'scaleX(1)' : 'scaleX(-1)';
+            startRandomFlight();
+          }, 4000 + Math.random() * 6000); // Longer pause between flights
         }
       }
 
@@ -362,6 +429,6 @@
     animate();
     setTimeout(() => {
       startRandomFlight();
-    }, 1500);
+    }, 2000);
   }
 </script>
