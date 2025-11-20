@@ -199,19 +199,29 @@
       <rect x="26" y="62" width="2" height="2" fill="#9CA3AF"/>
     </g>
   </svg>
-  <div id="fisherman-hint" class="fisherman-hint">Click me!</div>
+  <div id="fisherman-hint" class="fisherman-hint">
+    <div class="hint-line">Press <kbd>SPACE</kbd> to activate</div>
+    <div class="hint-line"><kbd>←</kbd> <kbd>→</kbd> to move</div>
+  </div>
 </div>
 
 <!-- Confetti container -->
 <div id="confetti-container"></div>
 
 <style>
+  /* Pelican - Desktop only */
   .pelican-wrapper {
     position: fixed;
     z-index: 9999;
     pointer-events: auto;
     will-change: transform;
     cursor: pointer;
+  }
+
+  @media (max-width: 1024px) {
+    .pelican-wrapper {
+      display: none;
+    }
   }
 
   #pelican-svg {
@@ -248,7 +258,7 @@
     transform-origin: 30% 50%;
   }
 
-  /* Falling fish */
+  /* Falling fish - Desktop only */
   #falling-fish-container {
     position: fixed;
     top: 0;
@@ -257,6 +267,12 @@
     height: 100%;
     pointer-events: none;
     z-index: 9998;
+  }
+
+  @media (max-width: 1024px) {
+    #falling-fish-container {
+      display: none;
+    }
   }
 
   .falling-fish {
@@ -282,7 +298,7 @@
     }
   }
 
-  /* Fisherman */
+  /* Fisherman - Desktop only */
   .fisherman-wrapper {
     position: fixed;
     bottom: 20px;
@@ -290,6 +306,12 @@
     z-index: 9999;
     cursor: pointer;
     transition: transform 0.1s ease-out;
+  }
+
+  @media (max-width: 1024px) {
+    .fisherman-wrapper {
+      display: none;
+    }
   }
 
   .fisherman-wrapper.active {
@@ -309,18 +331,35 @@
 
   .fisherman-hint {
     position: absolute;
-    top: -30px;
+    top: -70px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9);
     color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
+    padding: 8px 12px;
+    border-radius: 6px;
     font-size: 12px;
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
+    font-family: 'Courier New', monospace;
+  }
+
+  .hint-line {
+    text-align: center;
+    margin: 2px 0;
+  }
+
+  .fisherman-hint kbd {
+    display: inline-block;
+    padding: 2px 6px;
+    background: #374151;
+    border: 1px solid #4B5563;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    box-shadow: 0 2px 0 #1F2937;
   }
 
   .fisherman-wrapper:hover .fisherman-hint {
@@ -347,7 +386,7 @@
     pointer-events: none;
   }
 
-  /* Confetti */
+  /* Confetti - Desktop only */
   #confetti-container {
     position: fixed;
     top: 0;
@@ -356,6 +395,12 @@
     height: 100%;
     pointer-events: none;
     z-index: 10000;
+  }
+
+  @media (max-width: 1024px) {
+    #confetti-container {
+      display: none;
+    }
   }
 
   .confetti {
@@ -521,18 +566,19 @@
       }, 5000);
     };
 
-    // Fisherman controls
-    fishermanContainer.addEventListener('click', () => {
-      if (!fishermanActive) {
+    // Fisherman controls - Activate with spacebar
+    document.addEventListener('keydown', (e) => {
+      // Spacebar to activate fisherman
+      if (e.code === 'Space' && !fishermanActive) {
+        e.preventDefault();
         fishermanActive = true;
         fishermanContainer.classList.add('active');
         const rect = fishermanContainer.getBoundingClientRect();
         fishermanX = rect.left;
+        return;
       }
-    });
 
-    // Keyboard controls for fisherman
-    document.addEventListener('keydown', (e) => {
+      // Arrow keys to move (only when active)
       if (!fishermanActive) return;
 
       const moveSpeed = 15;
@@ -540,10 +586,12 @@
       const maxX = window.innerWidth - 100;
 
       if (e.key === 'ArrowLeft') {
+        e.preventDefault();
         fishermanX = Math.max(minX, fishermanX - moveSpeed);
         fishermanContainer.style.right = 'auto';
         fishermanContainer.style.left = `${fishermanX}px`;
       } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
         fishermanX = Math.min(maxX, fishermanX + moveSpeed);
         fishermanContainer.style.right = 'auto';
         fishermanContainer.style.left = `${fishermanX}px`;
