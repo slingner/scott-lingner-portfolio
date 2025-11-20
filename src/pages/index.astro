@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import { SITE, HOME, SOCIALS } from "@consts";
 import Link from "@components/Link.astro";
+import TagBadge from "@components/TagBadge.astro";
 import { getCollection } from "astro:content";
 
 const newsItems = (await getCollection("news"))
@@ -133,7 +134,7 @@ const newsItems = (await getCollection("news"))
                               alt={item.data.title}
                               class="h-full w-full object-cover transition-all duration-700 group-hover:scale-105"
                             />
-                            <div class="absolute left-4 top-4">
+                            <div class="absolute left-4 top-4 flex flex-col gap-2">
                               <span class="inline-block rounded-full bg-stone-900/80 px-3 py-1 font-mono text-xs text-white backdrop-blur-sm dark:bg-stone-100/80 dark:text-stone-900">
                                 {new Date(item.data.date).toLocaleDateString(
                                   "en-US",
@@ -143,6 +144,13 @@ const newsItems = (await getCollection("news"))
                                   },
                                 )}
                               </span>
+                              {item.data.tags && item.data.tags.length > 0 && (
+                                <div class="flex flex-wrap gap-1">
+                                  {item.data.tags.map((tag) => (
+                                    <TagBadge tag={tag} />
+                                  ))}
+                                </div>
+                              )}
                             </div>
                           </div>
                         )}

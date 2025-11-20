@@ -30,6 +30,7 @@ const news = defineCollection({
     date: z.coerce.date(),
     draft: z.boolean().optional(),
     thumbnail: z.string().optional(),
+    tags: z.array(z.string()).optional(),
   }),
 });
 

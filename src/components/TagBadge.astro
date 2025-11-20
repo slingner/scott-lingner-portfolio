@@ -1,0 +1,39 @@
+---
+interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+
+// Define colors for different tag types
+const tagColors: Record<string, { bg: string; text: string; border: string }> = {
+  music: {
+    bg: "bg-purple-500/20",
+    text: "text-purple-300",
+    border: "border-purple-500/40",
+  },
+  art: {
+    bg: "bg-blue-500/20",
+    text: "text-blue-300",
+    border: "border-blue-500/40",
+  },
+  photo: {
+    bg: "bg-green-500/20",
+    text: "text-green-300",
+    border: "border-green-500/40",
+  },
+};
+
+// Get color scheme for the tag, default to a neutral color if not defined
+const colors = tagColors[tag.toLowerCase()] || {
+  bg: "bg-gray-500/20",
+  text: "text-gray-300",
+  border: "border-gray-500/40",
+};
+---
+
+<span
+  class={`inline-flex items-center px-2 py-0.5 text-xs font-medium rounded border ${colors.bg} ${colors.text} ${colors.border}`}
+>
+  {tag}
+</span>
