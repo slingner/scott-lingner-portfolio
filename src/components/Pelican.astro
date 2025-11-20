@@ -276,7 +276,7 @@
       opacity: 1;
     }
     100% {
-      transform: translateY(calc(100vh + 50px)) rotate(360deg);
+      transform: translateY(calc(100vh + 100px)) rotate(360deg);
       opacity: 1;
     }
   }
@@ -484,7 +484,7 @@
 
       // Trigger animation on next frame
       requestAnimationFrame(() => {
-        fish.style.animation = 'fallDown 3s linear forwards';
+        fish.style.animation = 'fallDown 5s linear forwards';
       });
 
       // Remove fish after animation or if caught
@@ -493,7 +493,7 @@
           fish.remove();
           activeFish = null;
         }
-      }, 3000);
+      }, 5000);
     };
 
     // Fisherman controls
@@ -527,32 +527,36 @@
 
     // Check for fish collision with net
     const checkFishCatch = () => {
-      if (!fishermanActive || !activeFish) return;
+      if (!activeFish) return;
 
       const fishRect = activeFish.getBoundingClientRect();
-      const fishermanRect = fishermanContainer.getBoundingClientRect();
 
-      // Check if fish is in net area (top part of fisherman)
-      const netLeft = fishermanRect.left + 16;
-      const netRight = fishermanRect.left + 50;
-      const netTop = fishermanRect.top + 56;
-      const netBottom = fishermanRect.top + 80;
+      // If fisherman is active, check for collision
+      if (fishermanActive) {
+        const fishermanRect = fishermanContainer.getBoundingClientRect();
 
-      const fishCenterX = fishRect.left + fishRect.width / 2;
-      const fishCenterY = fishRect.top + fishRect.height / 2;
+        // Check if fish is in net area (top part of fisherman)
+        const netLeft = fishermanRect.left + 16;
+        const netRight = fishermanRect.left + 50;
+        const netTop = fishermanRect.top + 56;
+        const netBottom = fishermanRect.top + 80;
 
-      if (
-        fishCenterX >= netLeft &&
-        fishCenterX <= netRight &&
-        fishCenterY >= netTop &&
-        fishCenterY <= netBottom
-      ) {
-        // Fish caught!
-        activeFish.remove();
-        activeFish = null;
-        triggerConfetti();
-        fishermanActive = false;
-        fishermanContainer.classList.remove('active');
+        const fishCenterX = fishRect.left + fishRect.width / 2;
+        const fishCenterY = fishRect.top + fishRect.height / 2;
+
+        if (
+          fishCenterX >= netLeft &&
+          fishCenterX <= netRight &&
+          fishCenterY >= netTop &&
+          fishCenterY <= netBottom
+        ) {
+          // Fish caught!
+          activeFish.remove();
+          activeFish = null;
+          triggerConfetti();
+          fishermanActive = false;
+          fishermanContainer.classList.remove('active');
+        }
       }
     };
 
