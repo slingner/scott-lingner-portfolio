@@ -113,105 +113,120 @@
   <div id="catch-counter" class="catch-counter" aria-live="polite" aria-atomic="true">0/100 catches</div>
   <div id="level-display" class="level-display">Level 1</div>
   <div id="game-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
-  <svg id="shark-svg" width="140" height="100" viewBox="0 0 140 100" xmlns="http://www.w3.org/2000/svg">
-    <!-- Shark Side Profile - Classic V-shaped open mouth -->
+  <svg id="shark-svg" width="140" height="110" viewBox="0 0 140 110" xmlns="http://www.w3.org/2000/svg">
+    <!-- Shark with Open Mouth - Side Profile -->
 
-    <!-- Dorsal fin (back) -->
+    <!-- Dorsal fin -->
     <g id="dorsal-fin">
-      <rect x="8" y="28" width="6" height="6" fill="#5B7C99"/>
-      <rect x="14" y="22" width="6" height="6" fill="#5B7C99"/>
-      <rect x="20" y="18" width="6" height="6" fill="#5B7C99"/>
-      <rect x="26" y="16" width="6" height="6" fill="#5B7C99"/>
-      <rect x="32" y="18" width="6" height="6" fill="#4A6B8A"/>
-      <rect x="38" y="22" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="24" y="12" width="6" height="6" fill="#5B7C99"/>
+      <rect x="30" y="8" width="6" height="6" fill="#5B7C99"/>
+      <rect x="36" y="6" width="6" height="6" fill="#5B7C99"/>
+      <rect x="42" y="8" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="48" y="12" width="6" height="6" fill="#4A6B8A"/>
     </g>
 
-    <!-- Body (back portion) -->
-    <g id="shark-body">
-      <rect x="8" y="34" width="6" height="6" fill="#5B7C99"/>
-      <rect x="8" y="40" width="6" height="6" fill="#5B7C99"/>
-      <rect x="14" y="28" width="6" height="6" fill="#5B7C99"/>
-      <rect x="14" y="34" width="6" height="6" fill="#4A6B8A"/>
-      <rect x="14" y="40" width="6" height="6" fill="#4A6B8A"/>
-      <rect x="14" y="46" width="6" height="6" fill="#5B7C99"/>
-      <rect x="20" y="24" width="6" height="6" fill="#5B7C99"/>
-      <rect x="20" y="30" width="6" height="6" fill="#4A6B8A"/>
-      <rect x="20" y="36" width="6" height="6" fill="#4A6B8A"/>
-      <rect x="20" y="42" width="6" height="6" fill="#4A6B8A"/>
-      <rect x="20" y="48" width="6" height="6" fill="#5B7C99"/>
-      <rect x="26" y="22" width="6" height="6" fill="#5B7C99"/>
-      <rect x="26" y="28" width="6" height="6" fill="#4A6B8A"/>
-      <rect x="26" y="34" width="6" height="6" fill="#4A6B8A"/>
-      <rect x="26" y="40" width="6" height="6" fill="#4A6B8A"/>
-      <rect x="26" y="46" width="6" height="6" fill="#5B7C99"/>
-      <rect x="32" y="24" width="6" height="6" fill="#5B7C99"/>
-      <rect x="32" y="30" width="6" height="6" fill="#4A6B8A"/>
-      <rect x="32" y="36" width="6" height="6" fill="#4A6B8A"/>
-      <rect x="32" y="42" width="6" height="6" fill="#5B7C99"/>
+    <!-- Back body -->
+    <g id="shark-back-body">
+      <rect x="12" y="24" width="6" height="6" fill="#5B7C99"/>
+      <rect x="12" y="30" width="6" height="6" fill="#5B7C99"/>
+      <rect x="18" y="18" width="6" height="6" fill="#5B7C99"/>
+      <rect x="18" y="24" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="18" y="30" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="18" y="36" width="6" height="6" fill="#5B7C99"/>
+      <rect x="24" y="18" width="6" height="6" fill="#5B7C99"/>
+      <rect x="24" y="24" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="24" y="30" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="24" y="36" width="6" height="6" fill="#5B7C99"/>
+      <rect x="30" y="14" width="6" height="6" fill="#5B7C99"/>
+      <rect x="30" y="20" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="30" y="26" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="30" y="32" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="30" y="38" width="6" height="6" fill="#5B7C99"/>
     </g>
 
-    <!-- Head/snout extending forward -->
-    <g id="shark-head">
-      <rect x="38" y="28" width="6" height="6" fill="#5B7C99"/>
-      <rect x="38" y="34" width="6" height="6" fill="#4A6B8A"/>
-      <rect x="44" y="30" width="6" height="6" fill="#5B7C99"/>
-      <rect x="44" y="36" width="6" height="6" fill="#4A6B8A"/>
-      <rect x="50" y="32" width="6" height="6" fill="#5B7C99"/>
+    <!-- Mid body -->
+    <g id="shark-mid-body">
+      <rect x="36" y="12" width="6" height="6" fill="#5B7C99"/>
+      <rect x="36" y="18" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="36" y="24" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="36" y="30" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="36" y="36" width="6" height="6" fill="#5B7C99"/>
+      <rect x="42" y="14" width="6" height="6" fill="#5B7C99"/>
+      <rect x="42" y="20" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="42" y="26" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="42" y="32" width="6" height="6" fill="#5B7C99"/>
+      <rect x="48" y="18" width="6" height="6" fill="#5B7C99"/>
+      <rect x="48" y="24" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="48" y="30" width="6" height="6" fill="#5B7C99"/>
+    </g>
+
+    <!-- Head top -->
+    <g id="shark-head-top">
+      <rect x="54" y="20" width="6" height="6" fill="#5B7C99"/>
+      <rect x="54" y="26" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="60" y="22" width="6" height="6" fill="#5B7C99"/>
+      <rect x="60" y="28" width="6" height="6" fill="#4A6B8A"/>
+      <rect x="66" y="24" width="6" height="6" fill="#5B7C99"/>
+      <rect x="72" y="26" width="6" height="6" fill="#5B7C99"/>
 
       <!-- Eye -->
-      <rect x="42" y="32" width="4" height="3" fill="#1F2937"/>
+      <rect x="56" y="24" width="4" height="3" fill="#1F2937"/>
     </g>
 
-    <!-- Upper jaw forming V-shape -->
+    <!-- Upper jaw with sharp teeth -->
     <g id="upper-jaw">
-      <rect x="56" y="34" width="6" height="6" fill="#5B7C99"/>
-      <rect x="62" y="36" width="6" height="6" fill="#5B7C99"/>
-      <rect x="68" y="38" width="6" height="6" fill="#5B7C99"/>
-      <rect x="74" y="40" width="6" height="6" fill="#5B7C99"/>
-      <rect x="80" y="42" width="6" height="6" fill="#5B7C99"/>
-      <rect x="86" y="44" width="6" height="6" fill="#5B7C99"/>
-      <rect x="92" y="46" width="6" height="6" fill="#5B7C99"/>
-      <rect x="98" y="48" width="6" height="6" fill="#5B7C99"/>
+      <rect x="78" y="28" width="6" height="6" fill="#5B7C99"/>
+      <rect x="84" y="30" width="6" height="6" fill="#5B7C99"/>
+      <rect x="90" y="32" width="6" height="6" fill="#5B7C99"/>
+      <rect x="96" y="34" width="6" height="6" fill="#5B7C99"/>
+      <rect x="102" y="36" width="6" height="6" fill="#5B7C99"/>
+      <rect x="108" y="38" width="6" height="6" fill="#5B7C99"/>
 
-      <!-- Upper teeth pointing down into mouth -->
-      <rect x="64" y="42" width="3" height="6" fill="#F8F9FA"/>
-      <rect x="72" y="46" width="3" height="6" fill="#F8F9FA"/>
-      <rect x="80" y="48" width="3" height="6" fill="#F8F9FA"/>
-      <rect x="88" y="50" width="3" height="6" fill="#F8F9FA"/>
-      <rect x="96" y="54" width="3" height="6" fill="#F8F9FA"/>
+      <!-- Sharp teeth pointing down -->
+      <rect x="82" y="36" width="3" height="8" fill="#F8F9FA"/>
+      <rect x="90" y="38" width="3" height="8" fill="#F8F9FA"/>
+      <rect x="98" y="40" width="3" height="8" fill="#F8F9FA"/>
+      <rect x="106" y="44" width="3" height="8" fill="#F8F9FA"/>
     </g>
 
-    <!-- Mouth interior (dark V-shape) -->
+    <!-- Mouth interior (dark) -->
     <g id="mouth-interior">
-      <rect x="56" y="40" width="6" height="6" fill="#2D1B2E"/>
-      <rect x="62" y="42" width="6" height="6" fill="#2D1B2E"/>
-      <rect x="68" y="44" width="6" height="6" fill="#2D1B2E"/>
-      <rect x="74" y="46" width="6" height="6" fill="#2D1B2E"/>
-      <rect x="80" y="48" width="6" height="6" fill="#2D1B2E"/>
-      <rect x="86" y="50" width="6" height="6" fill="#2D1B2E"/>
-      <rect x="92" y="52" width="6" height="6" fill="#2D1B2E"/>
+      <rect x="78" y="34" width="6" height="8" fill="#2D1B2E"/>
+      <rect x="84" y="36" width="6" height="8" fill="#2D1B2E"/>
+      <rect x="90" y="38" width="6" height="8" fill="#2D1B2E"/>
+      <rect x="96" y="40" width="6" height="8" fill="#2D1B2E"/>
+      <rect x="102" y="42" width="6" height="8" fill="#2D1B2E"/>
+      <rect x="108" y="44" width="6" height="8" fill="#2D1B2E"/>
     </g>
 
-    <!-- Lower jaw forming V-shape -->
+    <!-- Lower jaw with sharp teeth -->
     <g id="lower-jaw">
-      <rect x="38" y="40" width="6" height="6" fill="#5B7C99"/>
-      <rect x="44" y="42" width="6" height="6" fill="#5B7C99"/>
-      <rect x="50" y="44" width="6" height="6" fill="#5B7C99"/>
-      <rect x="56" y="46" width="6" height="6" fill="#5B7C99"/>
-      <rect x="62" y="48" width="6" height="6" fill="#5B7C99"/>
-      <rect x="68" y="50" width="6" height="6" fill="#5B7C99"/>
-      <rect x="74" y="52" width="6" height="6" fill="#5B7C99"/>
-      <rect x="80" y="54" width="6" height="6" fill="#5B7C99"/>
-      <rect x="86" y="56" width="6" height="6" fill="#5B7C99"/>
-      <rect x="92" y="58" width="6" height="6" fill="#5B7C99"/>
+      <rect x="54" y="32" width="6" height="6" fill="#5B7C99"/>
+      <rect x="60" y="34" width="6" height="6" fill="#5B7C99"/>
+      <rect x="66" y="36" width="6" height="6" fill="#5B7C99"/>
+      <rect x="72" y="38" width="6" height="6" fill="#5B7C99"/>
+      <rect x="78" y="42" width="6" height="6" fill="#5B7C99"/>
+      <rect x="84" y="44" width="6" height="6" fill="#5B7C99"/>
+      <rect x="90" y="46" width="6" height="6" fill="#5B7C99"/>
+      <rect x="96" y="50" width="6" height="6" fill="#5B7C99"/>
+      <rect x="102" y="52" width="6" height="6" fill="#5B7C99"/>
+      <rect x="108" y="54" width="6" height="6" fill="#5B7C99"/>
 
-      <!-- Lower teeth pointing up into mouth -->
-      <rect x="52" y="42" width="3" height="6" fill="#F8F9FA"/>
-      <rect x="60" y="44" width="3" height="6" fill="#F8F9FA"/>
-      <rect x="68" y="46" width="3" height="6" fill="#F8F9FA"/>
-      <rect x="76" y="48" width="3" height="6" fill="#F8F9FA"/>
-      <rect x="84" y="50" width="3" height="6" fill="#F8F9FA"/>
-      <rect x="92" y="52" width="3" height="6" fill="#F8F9FA"/>
+      <!-- Sharp teeth pointing up -->
+      <rect x="62" y="30" width="3" height="8" fill="#F8F9FA"/>
+      <rect x="70" y="32" width="3" height="8" fill="#F8F9FA"/>
+      <rect x="78" y="36" width="3" height="8" fill="#F8F9FA"/>
+      <rect x="86" y="38" width="3" height="8" fill="#F8F9FA"/>
+      <rect x="94" y="42" width="3" height="8" fill="#F8F9FA"/>
+      <rect x="102" y="46" width="3" height="8" fill="#F8F9FA"/>
+    </g>
+
+    <!-- Belly/underside -->
+    <g id="shark-belly">
+      <rect x="48" y="36" width="6" height="6" fill="#8BA4BA"/>
+      <rect x="42" y="38" width="6" height="6" fill="#8BA4BA"/>
+      <rect x="36" y="42" width="6" height="6" fill="#8BA4BA"/>
+      <rect x="30" y="44" width="6" height="6" fill="#8BA4BA"/>
     </g>
   </svg>
   <div id="shark-hint" class="shark-hint">
@@ -394,11 +409,11 @@
 
   .catch-counter {
     position: absolute;
-    top: 35px;
+    top: 30px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Courier New', monospace;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: #1F2937;
     text-shadow: 2px 2px 0px #FCD34D;
@@ -422,7 +437,7 @@
 
   .level-display {
     position: absolute;
-    top: 65px;
+    top: 60px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Courier New', monospace;
@@ -831,12 +846,12 @@
 
       const sharkRect = sharkContainer.getBoundingClientRect();
 
-      // Shark mouth area - V-shaped open mouth (side profile)
-      // Mouth opening is from x=56 to x=98, y=40 to y=58 in viewBox 140x100
-      const mouthCenterX = sharkRect.left + (sharkRect.width * 0.54);  // Center of V-shaped mouth (around x=75)
-      const mouthCenterY = sharkRect.top + (sharkRect.height * 0.48);  // Center of mouth opening (around y=48)
-      const mouthRadiusX = sharkRect.width * 0.25;  // Wide V-mouth
-      const mouthRadiusY = sharkRect.height * 0.12; // Mouth opening height
+      // Shark mouth area - Open jaw (side profile)
+      // Mouth opening is from x=78 to x=114, y=34 to y=54 in viewBox 140x110
+      const mouthCenterX = sharkRect.left + (sharkRect.width * 0.68);  // Center of open mouth (around x=95)
+      const mouthCenterY = sharkRect.top + (sharkRect.height * 0.40);  // Center of mouth opening (around y=44)
+      const mouthRadiusX = sharkRect.width * 0.20;  // Wide open mouth
+      const mouthRadiusY = sharkRect.height * 0.14; // Mouth opening height
 
       // Check each fish for collision
       for (let i = activeFish.length - 1; i >= 0; i--) {
@@ -1092,31 +1107,5 @@
         // Don't auto-start, user must click to activate
       }
     });
-
-    // Reset game when navigating to a different page
-    let currentPath = window.location.pathname;
-
-    // Listen for Astro page navigation
-    document.addEventListener('astro:page-load', () => {
-      const newPath = window.location.pathname;
-      if (newPath !== currentPath) {
-        currentPath = newPath;
-        // Fully reset the game to initial state
-        resetGame();
-      }
-    });
-
-    // Also listen for regular navigation events (fallback)
-    const checkNavigation = () => {
-      const newPath = window.location.pathname;
-      if (newPath !== currentPath) {
-        currentPath = newPath;
-        resetGame();
-      }
-    };
-
-    // Check on various navigation events
-    window.addEventListener('popstate', checkNavigation);
-    window.addEventListener('hashchange', checkNavigation);
   })();
 </script>
