@@ -18,45 +18,61 @@ const experiences = [
     title: "Software Engineer",
     company: "Prenda",
     period: "Aug 2020 - Sep 2024",
-    description: "Built and maintained web applications for EdTech platform serving thousands of microschools.",
-    skills: ["React", "TypeScript", "Next.js", "GraphQL", "Node.js", "Tailwind"],
-    url: "https://prenda.com"
+    description:
+      "Built and maintained web applications for EdTech platform serving thousands of microschools.",
+    skills: [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "GraphQL",
+      "Node.js",
+      "Tailwind",
+    ],
+    url: "https://prenda.com",
   },
   {
     title: "Frontend Engineer Intern",
     company: "untitled.stream",
     period: "Jun 2020 - Aug 2020",
-    description: "Developed frontend features for streaming platform using modern web technologies.",
+    description:
+      "Developed frontend features for streaming platform using modern web technologies.",
     skills: ["React", "JavaScript", "CSS", "HTML"],
-    url: "https://untitled.stream"
+    url: "https://untitled.stream",
   },
   {
     title: "Photography Consultant for Google AI",
     company: "Filter, A Merkle Company",
     period: "Feb 2017 - May 2020",
-    description: "Provided expertise on AI training data and quality assurance for Google's machine learning initiatives.",
+    description:
+      "Provided expertise on AI training data and quality assurance for Google's machine learning initiatives.",
     skills: ["AI/ML", "Data Analysis", "Quality Assurance"],
-    url: "https://research.google/blog/using-deep-learning-to-create-professional-level-photographs/"
+    url: "https://research.google/blog/using-deep-learning-to-create-professional-level-photographs/",
   },
   {
     title: "Designer/Co Founder",
     company: "Rocket Boogie Co",
     period: "2014 - Present",
-    description: "Design and develop e-commerce platform for greeting cards and art prints.",
+    description:
+      "Design and develop e-commerce platform for greeting cards and art prints.",
     skills: ["Design", "E-commerce", "Brand Development"],
-    url: "https://rocketboogie.com"
-  }
+    url: "https://rocketboogie.com",
+  },
 ];
 ---
 
-<SoftwareLayout title="Software Engineering" description="Software engineering projects and writing by Scott Lingner.">
+<SoftwareLayout
+  title="Software Engineering"
+  description="Software engineering projects and writing by Scott Lingner."
+>
   <!-- Custom Software Header -->
   <header class="border-b border-stone-300/50 dark:border-stone-700/50">
     <Container>
       <div class="flex flex-wrap items-center justify-between gap-y-4 py-6">
         <div class="flex items-center gap-4">
           <div class="flex items-center gap-3">
-            <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-stone-700 dark:bg-stone-600">
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-lg bg-stone-700 dark:bg-stone-600"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-6 w-6 text-white"
@@ -72,8 +88,12 @@ const experiences = [
               </svg>
             </div>
             <div>
-              <h1 class="text-xl font-bold text-stone-900 dark:text-stone-100">Scott Lingner</h1>
-              <p class="text-sm text-stone-600 dark:text-stone-400">Software Engineering</p>
+              <h1 class="text-xl font-bold text-stone-900 dark:text-stone-100">
+                Scott Lingner
+              </h1>
+              <p class="text-sm text-stone-600 dark:text-stone-400">
+                Software Engineering
+              </p>
             </div>
           </div>
         </div>
@@ -81,7 +101,9 @@ const experiences = [
           href="/"
           class="group relative flex items-center gap-2 overflow-hidden rounded-lg border border-stone-300/70 px-4 py-2 text-sm font-semibold text-stone-700 transition-all duration-300 hover:border-stone-900 hover:text-stone-900 dark:border-stone-600/70 dark:text-stone-300 dark:hover:border-stone-100 dark:hover:text-stone-100"
         >
-          <span class="absolute bottom-0 left-0 h-[1px] w-0 bg-stone-900 transition-all duration-300 group-hover:w-full dark:bg-stone-100"></span>
+          <span
+            class="absolute bottom-0 left-0 h-[1px] w-0 bg-stone-900 transition-all duration-300 group-hover:w-full dark:bg-stone-100"
+          ></span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1"
@@ -93,8 +115,7 @@ const experiences = [
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"
-            ></path>
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
           </svg>
           Back to scottlingner.com
         </a>
@@ -103,132 +124,209 @@ const experiences = [
   </header>
 
   <Container>
-    <!-- Navigation -->
-    <nav class="animate sticky top-0 z-10 -mx-3 mb-12 mt-8 flex gap-8 border-b border-stone-300/30 px-3 pb-4 backdrop-blur-md dark:border-stone-700/30 md:-mx-6 md:gap-12 md:px-6">
-      <a href="#about" class="group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
-        About
-        <span class="absolute -bottom-4 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 group-hover:w-full dark:bg-stone-100"></span>
-      </a>
-      <a href="#experience" class="group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
-        Experience
-        <span class="absolute -bottom-4 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 group-hover:w-full dark:bg-stone-100"></span>
-      </a>
-      <a href="#projects" class="group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
-        Projects
-        <span class="absolute -bottom-4 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 group-hover:w-full dark:bg-stone-100"></span>
-      </a>
-      <a href="#writing" class="group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
-        Writing
-        <span class="absolute -bottom-4 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 group-hover:w-full dark:bg-stone-100"></span>
-      </a>
-    </nav>
-
-    <aside data-pagefind-ignore>
-      <!-- About Section -->
-      <section id="about" class="animate mb-24 scroll-mt-24">
-        <h2 class="mb-6 text-3xl font-bold text-stone-900 dark:text-stone-100">
-          About
-        </h2>
-        <div class="space-y-4 text-base leading-relaxed text-stone-700 dark:text-stone-300">
-          <p>
-            I'm a software engineer with five years of experience building impactful applications in the EdTech space. I specialize in frontend development with React and TypeScript, creating intuitive user experiences that scale.
-          </p>
-          <p>
-            My work at Prenda helped thousands of microschools deliver personalized education through technology. I'm passionate about clean code, thoughtful design, and building products that make a difference.
-          </p>
-          <p>
-            When I'm not coding, I'm exploring the intersection of technology and creativity through music, instrument building, and design.
-          </p>
-          <div class="mt-6">
-            <h3 class="mb-3 text-lg font-semibold text-stone-900 dark:text-stone-100">Skills</h3>
-            <div class="flex flex-wrap gap-2">
-              {["JavaScript ES2015", "TypeScript", "HTML", "CSS", "GraphQL", "React", "Next.js", "Node.js", "Tailwind", "Git"].map((skill) => (
-                <span class="rounded-full bg-stone-200 px-3 py-1 text-sm font-medium text-stone-700 dark:bg-stone-800 dark:text-stone-300">
-                  {skill}
-                </span>
-              ))}
-            </div>
+    <div class="mt-8 flex gap-12">
+      <!-- Fixed Sidebar Navigation -->
+      <nav class="animate hidden w-48 flex-shrink-0 lg:block">
+        <div class="sticky top-24">
+          <div class="flex flex-col gap-4">
+            <a
+              href="#about"
+              data-nav-link="about"
+              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            >
+              About
+              <span
+                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
+              ></span>
+            </a>
+            <a
+              href="#experience"
+              data-nav-link="experience"
+              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            >
+              Experience
+              <span
+                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
+              ></span>
+            </a>
+            <a
+              href="#projects"
+              data-nav-link="projects"
+              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            >
+              Projects
+              <span
+                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
+              ></span>
+            </a>
+            <a
+              href="#writing"
+              data-nav-link="writing"
+              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            >
+              Writing
+              <span
+                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
+              ></span>
+            </a>
           </div>
         </div>
-      </section>
+      </nav>
 
-      <!-- Experience Section -->
-      <section id="experience" class="animate mb-24 scroll-mt-24">
-        <h2 class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100">
-          Experience
-        </h2>
-        <div class="space-y-8">
-          {experiences.map((exp) => (
-            <a
-              href={exp.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group relative block rounded-lg border border-stone-300/50 bg-stone-100/50 p-6 transition-all duration-300 hover:border-stone-400/50 hover:bg-stone-200/50 hover:shadow-lg dark:border-stone-700/50 dark:bg-stone-800/50 dark:hover:border-stone-600/50 dark:hover:bg-stone-700/50"
-            >
-              <div class="absolute right-6 top-6 text-stone-400 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-stone-900 dark:text-stone-600 dark:group-hover:text-stone-100">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M7 17L17 7"></path>
-                  <path d="M7 7h10v10"></path>
-                </svg>
-              </div>
-              <div class="mb-2 flex flex-wrap items-baseline justify-between gap-2 pr-8">
-                <h3 class="text-xl font-bold text-stone-900 dark:text-stone-100">
-                  {exp.title}
-                </h3>
-                <span class="font-mono text-sm text-stone-600 dark:text-stone-400">
-                  {exp.period}
-                </span>
-              </div>
-              <p class="mb-3 text-base font-semibold text-stone-700 dark:text-stone-300">
-                {exp.company}
-              </p>
-              <p class="mb-4 text-base leading-relaxed text-stone-600 dark:text-stone-400">
-                {exp.description}
-              </p>
+      <!-- Main Content -->
+      <aside data-pagefind-ignore class="min-w-0 flex-1">
+        <!-- About Section -->
+        <section id="about" class="animate mb-24 scroll-mt-56">
+          <h2
+            class="mb-6 text-3xl font-bold text-stone-900 dark:text-stone-100"
+          >
+            About
+          </h2>
+          <div
+            class="space-y-4 text-base leading-relaxed text-stone-700 dark:text-stone-300"
+          >
+            <p>
+              I'm a software engineer with five years of experience building
+              impactful applications in the EdTech space. I specialize in
+              frontend development with React and TypeScript, creating intuitive
+              user experiences that scale.
+            </p>
+            <p>
+              My work at Prenda helped thousands of microschools deliver
+              personalized education through technology. I'm passionate about
+              clean code, thoughtful design, and building products that make a
+              difference.
+            </p>
+            <p>
+              When I'm not coding, I'm exploring the intersection of technology
+              and creativity through music, instrument building, and design.
+            </p>
+            <div class="mt-6">
+              <h3
+                class="mb-3 text-lg font-semibold text-stone-900 dark:text-stone-100"
+              >
+                Skills
+              </h3>
               <div class="flex flex-wrap gap-2">
-                {exp.skills.map((skill) => (
-                  <span class="rounded bg-stone-300/50 px-2 py-1 text-xs font-medium text-stone-700 dark:bg-stone-700/50 dark:text-stone-300">
-                    {skill}
-                  </span>
-                ))}
+                {
+                  [
+                    "JavaScript ES2015",
+                    "TypeScript",
+                    "HTML",
+                    "CSS",
+                    "GraphQL",
+                    "React",
+                    "Next.js",
+                    "Node.js",
+                    "Tailwind",
+                    "Git",
+                  ].map((skill) => (
+                    <span class="rounded-full bg-stone-200 px-3 py-1 text-sm font-medium text-stone-700 dark:bg-stone-800 dark:text-stone-300">
+                      {skill}
+                    </span>
+                  ))
+                }
               </div>
-            </a>
-          ))}
-        </div>
-      </section>
+            </div>
+          </div>
+        </section>
 
-      <!-- Projects Section -->
-      <section id="projects" class="animate mb-24 scroll-mt-24">
-        <h2 class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100">
-          Software Projects
-        </h2>
-        <ul class="not-prose flex flex-col gap-4">
-          {
-            projects.map((project) => (
-              <li>
-                <ArrowCard entry={project} />
-              </li>
-            ))
-          }
-        </ul>
-      </section>
+        <!-- Experience Section -->
+        <section id="experience" class="animate mb-24 scroll-mt-56">
+          <h2
+            class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
+          >
+            Experience
+          </h2>
+          <div class="space-y-8">
+            {
+              experiences.map((exp) => (
+                <a
+                  href={exp.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group relative block rounded-lg border border-stone-300/50 bg-stone-100/50 p-6 transition-all duration-300 hover:border-stone-400/50 hover:bg-stone-200/50 hover:shadow-lg dark:border-stone-700/50 dark:bg-stone-800/50 dark:hover:border-stone-600/50 dark:hover:bg-stone-700/50"
+                >
+                  <div class="absolute right-6 top-6 text-stone-400 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-stone-900 dark:text-stone-600 dark:group-hover:text-stone-100">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M7 17L17 7" />
+                      <path d="M7 7h10v10" />
+                    </svg>
+                  </div>
+                  <div class="mb-2 flex flex-wrap items-baseline justify-between gap-2 pr-8">
+                    <h3 class="text-xl font-bold text-stone-900 dark:text-stone-100">
+                      {exp.title}
+                    </h3>
+                    <span class="font-mono text-sm text-stone-600 dark:text-stone-400">
+                      {exp.period}
+                    </span>
+                  </div>
+                  <p class="mb-3 text-base font-semibold text-stone-700 dark:text-stone-300">
+                    {exp.company}
+                  </p>
+                  <p class="mb-4 text-base leading-relaxed text-stone-600 dark:text-stone-400">
+                    {exp.description}
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    {exp.skills.map((skill) => (
+                      <span class="rounded bg-stone-300/50 px-2 py-1 text-xs font-medium text-stone-700 dark:bg-stone-700/50 dark:text-stone-300">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+        </section>
 
-      <!-- Writing Section -->
-      <section id="writing" class="animate mb-24 scroll-mt-24">
-        <h2 class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100">
-          Software Writing
-        </h2>
-        <ul class="not-prose flex flex-col gap-4">
-          {
-            blog.map((post) => (
-              <li>
-                <ArrowCard entry={post} />
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-    </aside>
+        <!-- Projects Section -->
+        <section id="projects" class="animate mb-24 scroll-mt-56">
+          <h2
+            class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
+          >
+            Software Projects
+          </h2>
+          <ul class="not-prose flex flex-col gap-4">
+            {
+              projects.map((project) => (
+                <li>
+                  <ArrowCard entry={project} />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <!-- Writing Section -->
+        <section id="writing" class="animate mb-24 scroll-mt-56">
+          <h2
+            class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
+          >
+            Software Writing
+          </h2>
+          <ul class="not-prose flex flex-col gap-4">
+            {
+              blog.map((post) => (
+                <li>
+                  <ArrowCard entry={post} />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </aside>
+    </div>
   </Container>
 </SoftwareLayout>
 
@@ -248,7 +346,12 @@ const experiences = [
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.5s ease;
-    background: radial-gradient(circle, rgba(120, 113, 108, 0.15) 0%, rgba(120, 113, 108, 0.08) 30%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(120, 113, 108, 0.15) 0%,
+      rgba(120, 113, 108, 0.08) 30%,
+      transparent 70%
+    );
     transform: translate(-50%, -50%);
     z-index: 9999;
     mix-blend-mode: multiply;
@@ -256,7 +359,12 @@ const experiences = [
 
   @media (prefers-color-scheme: dark) {
     #cursor-halo {
-      background: radial-gradient(circle, rgba(245, 245, 244, 0.12) 0%, rgba(245, 245, 244, 0.06) 30%, transparent 70%);
+      background: radial-gradient(
+        circle,
+        rgba(245, 245, 244, 0.12) 0%,
+        rgba(245, 245, 244, 0.06) 30%,
+        transparent 70%
+      );
       mix-blend-mode: screen;
     }
   }
@@ -269,26 +377,26 @@ const experiences = [
 <div id="cursor-halo"></div>
 
 <script>
-  const halo = document.getElementById('cursor-halo');
+  const halo = document.getElementById("cursor-halo");
   let mouseX = 0;
   let mouseY = 0;
   let currentX = 0;
   let currentY = 0;
   let isMouseActive = false;
 
-  document.addEventListener('mousemove', (e) => {
+  document.addEventListener("mousemove", (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
 
     if (!isMouseActive && halo) {
-      halo.classList.add('active');
+      halo.classList.add("active");
       isMouseActive = true;
     }
   });
 
-  document.addEventListener('mouseleave', () => {
+  document.addEventListener("mouseleave", () => {
     if (halo) {
-      halo.classList.remove('active');
+      halo.classList.remove("active");
       isMouseActive = false;
     }
   });
@@ -307,4 +415,66 @@ const experiences = [
     requestAnimationFrame(updateHaloPosition);
   }
   updateHaloPosition();
+
+  // Scroll spy for navigation
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  function setActiveLink(activeId: string) {
+    navLinks.forEach((link) => {
+      const underline = link.querySelector(".nav-underline") as HTMLElement;
+      if (link.getAttribute("data-nav-link") === activeId) {
+        link.classList.add("text-stone-900", "dark:text-stone-100");
+        link.classList.remove("text-stone-700", "dark:text-stone-300");
+        if (underline) {
+          underline.style.width = "100%";
+        }
+      } else {
+        link.classList.remove("text-stone-900", "dark:text-stone-100");
+        link.classList.add("text-stone-700", "dark:text-stone-300");
+        if (underline) {
+          underline.style.width = "0";
+        }
+      }
+    });
+  }
+
+  // Intersection Observer for scroll spy
+  const observerOptions = {
+    root: null,
+    rootMargin: "-20% 0px -70% 0px",
+    threshold: 0,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setActiveLink(entry.target.id);
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach((section) => {
+    observer.observe(section);
+  });
+
+  // Set initial active state
+  if (sections.length > 0) {
+    setActiveLink(sections[0].id);
+  }
+
+  // Add padding to sticky nav when scrolling to prevent header cutoff
+  const stickyNav = document.querySelector(".sticky.top-24") as HTMLElement;
+  if (stickyNav) {
+    stickyNav.style.transition = "padding-top 0.35s cubic-bezier(0.4,0,0.2,1)";
+  }
+  window.addEventListener("scroll", () => {
+    if (stickyNav) {
+      if (window.scrollY > 42) {
+        stickyNav.style.paddingTop = "88px";
+      } else {
+        stickyNav.style.paddingTop = "0";
+      }
+    }
+  });
 </script>
