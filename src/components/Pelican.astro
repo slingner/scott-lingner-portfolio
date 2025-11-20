@@ -2,7 +2,7 @@
 // Pelican component with flying animation and fish game
 ---
 
-<div id="pelican-container" class="pelican-wrapper">
+<div id="pelican-container" class="pelican-wrapper" style="display: none;">
   <svg id="pelican-svg" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
     <!-- Tail -->
     <g id="pelican-tail">
@@ -106,10 +106,10 @@
 </div>
 
 <!-- Falling fish container -->
-<div id="falling-fish-container"></div>
+<div id="falling-fish-container" style="display: none;"></div>
 
 <!-- Fisherman at bottom right -->
-<div id="fisherman-container" class="fisherman-wrapper" role="button" tabindex="0" aria-label="Click to start pelican fishing game. Use left and right arrow keys to move and catch fish. Press ESC to stop.">
+<div id="fisherman-container" class="fisherman-wrapper" role="button" tabindex="0" aria-label="Click to start pelican fishing game. Use left and right arrow keys to move and catch fish. Press ESC to stop." style="display: none;">
   <div id="catch-counter" class="catch-counter" aria-live="polite" aria-atomic="true">0/10</div>
   <div id="game-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
   <svg id="fisherman-svg" width="100" height="140" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
@@ -226,10 +226,10 @@
 </div>
 
 <!-- Persistent ESC message -->
-<div id="esc-message" class="esc-message">Press <kbd>ESC</kbd> to exit game</div>
+<div id="esc-message" class="esc-message" style="display: none;">Press <kbd>ESC</kbd> to exit game</div>
 
 <!-- Confetti container -->
-<div id="confetti-container"></div>
+<div id="confetti-container" style="display: none;"></div>
 
 <style>
   /* Pelican - Desktop only */
@@ -399,7 +399,7 @@
 
   .catch-counter {
     position: absolute;
-    top: 150px;
+    top: 145px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Courier New', monospace;
@@ -568,15 +568,12 @@
       if (fishermanContainer) fishermanContainer.style.display = shouldShow ? 'block' : 'none';
       if (fallingFishContainer) fallingFishContainer.style.display = shouldShow ? 'block' : 'none';
       if (confettiContainer) confettiContainer.style.display = shouldShow ? 'block' : 'none';
-      if (escMessage) escMessage.style.display = shouldShow ? 'block' : 'none';
 
       return shouldShow;
     };
 
-    // Initial check
-    if (!checkAndShowGame()) {
-      return; // Don't initialize game if not on the right page
-    }
+    // Initial check - always initialize, just hide if not on right page
+    checkAndShowGame();
 
     let pelicanX = 80;
     let pelicanY = 30;
