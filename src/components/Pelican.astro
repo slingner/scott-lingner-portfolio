@@ -109,9 +109,10 @@
 <div id="falling-fish-container"></div>
 
 <!-- Fisherman at bottom right -->
-<div id="fisherman-container" class="fisherman-wrapper">
-  <div id="catch-counter" class="catch-counter">0</div>
-  <svg id="fisherman-svg" width="100" height="120" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+<div id="fisherman-container" class="fisherman-wrapper" role="button" tabindex="0" aria-label="Click fisherman to activate fishing game. Use left and right arrow keys to move and catch falling fish.">
+  <div id="catch-counter" class="catch-counter" aria-live="polite" aria-atomic="true">Catches: 0</div>
+  <div id="game-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+  <svg id="fisherman-svg" width="100" height="140" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
     <!-- Hat -->
     <g id="hat">
       <rect x="38" y="20" width="4" height="4" fill="#FCD34D"/>
@@ -182,25 +183,48 @@
       <rect x="48" y="52" width="8" height="4" fill="#1F2937"/>
     </g>
 
-    <!-- Fishing Net -->
+    <!-- Fishing Net - Held Up -->
     <g id="net">
-      <!-- Handle -->
-      <rect x="26" y="40" width="2" height="16" fill="#78716C"/>
-      <!-- Net rim -->
-      <rect x="16" y="56" width="16" height="2" fill="#78716C"/>
-      <!-- Net mesh -->
-      <rect x="18" y="58" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="22" y="58" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="26" y="58" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="20" y="60" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="24" y="60" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="18" y="62" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="22" y="62" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="26" y="62" width="2" height="2" fill="#9CA3AF"/>
+      <!-- Handle going up from hand -->
+      <rect x="26" y="28" width="2" height="12" fill="#78716C"/>
+      <rect x="28" y="28" width="2" height="12" fill="#78716C"/>
+
+      <!-- Larger Net rim held above -->
+      <rect x="10" y="16" width="28" height="2" fill="#78716C"/>
+      <rect x="10" y="16" width="2" height="12" fill="#78716C"/>
+      <rect x="36" y="16" width="2" height="12" fill="#78716C"/>
+      <rect x="10" y="26" width="28" height="2" fill="#78716C"/>
+
+      <!-- Net mesh pattern - more detailed -->
+      <rect x="14" y="18" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="18" y="18" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="22" y="18" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="26" y="18" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="30" y="18" width="2" height="2" fill="#9CA3AF"/>
+
+      <rect x="12" y="20" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="16" y="20" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="20" y="20" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="24" y="20" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="28" y="20" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="32" y="20" width="2" height="2" fill="#9CA3AF"/>
+
+      <rect x="14" y="22" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="18" y="22" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="22" y="22" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="26" y="22" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="30" y="22" width="2" height="2" fill="#9CA3AF"/>
+
+      <rect x="12" y="24" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="16" y="24" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="20" y="24" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="24" y="24" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="28" y="24" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="32" y="24" width="2" height="2" fill="#9CA3AF"/>
     </g>
   </svg>
   <div id="fisherman-hint" class="fisherman-hint">
-    <div class="hint-line">Press <kbd>SPACE</kbd> to activate</div>
+    <div class="hint-line">Click to activate</div>
     <div class="hint-line"><kbd>←</kbd> <kbd>→</kbd> to move</div>
   </div>
 </div>
@@ -316,6 +340,16 @@
 
   .fisherman-wrapper.active {
     cursor: default;
+    animation: activeGlow 0.5s ease-in-out;
+  }
+
+  @keyframes activeGlow {
+    0%, 100% {
+      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+    }
+    50% {
+      filter: drop-shadow(0 0 12px rgba(252, 211, 77, 0.8));
+    }
   }
 
   #fisherman-svg {
@@ -331,7 +365,7 @@
 
   .fisherman-hint {
     position: absolute;
-    top: -70px;
+    top: -190px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.9);
@@ -370,13 +404,18 @@
     opacity: 0;
   }
 
+  .fisherman-wrapper:focus {
+    outline: 2px solid #FCD34D;
+    outline-offset: 4px;
+  }
+
   .catch-counter {
     position: absolute;
-    top: -50px;
+    top: -170px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Courier New', monospace;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: #1F2937;
     text-shadow: 2px 2px 0px #FCD34D;
@@ -384,6 +423,18 @@
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
     pointer-events: none;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
   }
 
   /* Confetti - Desktop only */
@@ -422,29 +473,34 @@
   }
 </style>
 
-<script>
-  const pelicanContainer = document.getElementById('pelican-container');
-  const pelicanSvg = document.getElementById('pelican-svg');
-  const fallingFishContainer = document.getElementById('falling-fish-container');
-  const fishermanContainer = document.getElementById('fisherman-container');
-  const fishermanSvg = document.getElementById('fisherman-svg');
-  const confettiContainer = document.getElementById('confetti-container');
+<script is:inline>
+  // Use is:inline to persist across page transitions
+  (function() {
+    const pelicanContainer = document.getElementById('pelican-container');
+    const pelicanSvg = document.getElementById('pelican-svg');
+    const fallingFishContainer = document.getElementById('falling-fish-container');
+    const fishermanContainer = document.getElementById('fisherman-container');
+    const confettiContainer = document.getElementById('confetti-container');
 
-  if (pelicanContainer && pelicanSvg && fallingFishContainer && fishermanContainer) {
+    if (!pelicanContainer || !pelicanSvg || !fallingFishContainer || !fishermanContainer) return;
+
     let pelicanX = -100;
     let pelicanY = 30;
     let targetX = pelicanX;
     let targetY = pelicanY;
     let isFlying = false;
     let facingRight = true;
-    let headerElement: HTMLElement | null = null;
+    let headerElement = null;
     let headerHeight = 100;
     let headerTop = 0;
 
     // Game state
     let fishermanActive = false;
     let fishermanX = 0;
-    let activeFish: HTMLElement | null = null;
+    let activeFish = null;
+    let catchCount = 0;
+    const catchCounter = document.getElementById('catch-counter');
+    const gameStatus = document.getElementById('game-status');
 
     // Find and measure the header element
     const findHeader = () => {
@@ -462,14 +518,14 @@
 
     // Flight patterns - varied angles through header
     const flightPatterns = [
-      { startX: -100, startY: 0.8, endX: 1.2, endY: 0.2 }, // Bottom left to top right
-      { startX: -100, startY: 0.5, endX: 1.2, endY: 0.3 }, // Middle left to middle-top right
-      { startX: -100, startY: 0.3, endX: 1.2, endY: 0.7 }, // Top left to middle-bottom right
-      { startX: -100, startY: 0.6, endX: 1.2, endY: 0.4 }, // Mid-low left to mid-high right
-      { startX: 1.2, startY: 0.8, endX: -100, endY: 0.2 }, // Bottom right to top left
-      { startX: 1.2, startY: 0.5, endX: -100, endY: 0.3 }, // Middle right to middle-top left
-      { startX: 1.2, startY: 0.3, endX: -100, endY: 0.7 }, // Top right to middle-bottom left
-      { startX: 1.2, startY: 0.6, endX: -100, endY: 0.4 }, // Mid-low right to mid-high left
+      { startX: -100, startY: 0.8, endX: 1.2, endY: 0.2 },
+      { startX: -100, startY: 0.5, endX: 1.2, endY: 0.3 },
+      { startX: -100, startY: 0.3, endX: 1.2, endY: 0.7 },
+      { startX: -100, startY: 0.6, endX: 1.2, endY: 0.4 },
+      { startX: 1.2, startY: 0.8, endX: -100, endY: 0.2 },
+      { startX: 1.2, startY: 0.5, endX: -100, endY: 0.3 },
+      { startX: 1.2, startY: 0.3, endX: -100, endY: 0.7 },
+      { startX: 1.2, startY: 0.6, endX: -100, endY: 0.4 },
     ];
 
     // Random flight pattern
@@ -477,28 +533,22 @@
       isFlying = true;
       const viewportWidth = window.innerWidth;
 
-      // Pick random flight pattern
       const pattern = flightPatterns[Math.floor(Math.random() * flightPatterns.length)];
 
-      // Calculate start and end positions
       const startXPos = pattern.startX < 0 ? pattern.startX : viewportWidth * pattern.startX;
       const endXPos = pattern.endX < 0 ? pattern.endX : viewportWidth * pattern.endX;
       const startYPos = headerTop + (headerHeight * pattern.startY);
       const endYPos = headerTop + (headerHeight * pattern.endY);
 
-      // Set position
       pelicanX = startXPos;
       pelicanY = startYPos;
       targetX = endXPos;
       targetY = endYPos;
 
-      // Face direction
       facingRight = endXPos > startXPos;
       pelicanSvg.style.transform = facingRight ? 'scaleX(1)' : 'scaleX(-1)';
 
-      // Add flapping animation
       pelicanSvg.classList.add('flapping');
-
       pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
     };
 
@@ -508,15 +558,10 @@
       dropFish();
     });
 
-    // Catch counter
-    let catchCount = 0;
-    const catchCounter = document.getElementById('catch-counter');
-
     // Drop fish from pelican
     const dropFish = () => {
-      if (activeFish) return; // Only one fish at a time
+      if (activeFish) return;
 
-      // Get current pelican screen position
       const pelicanRect = pelicanContainer.getBoundingClientRect();
       const currentPelicanX = pelicanRect.left + 40;
       const currentPelicanY = pelicanRect.top + 40;
@@ -524,7 +569,6 @@
       const fish = document.createElement('div');
       fish.className = 'falling-fish';
 
-      // Set all styles explicitly
       fish.style.position = 'fixed';
       fish.style.left = `${currentPelicanX}px`;
       fish.style.top = `${currentPelicanY}px`;
@@ -551,13 +595,9 @@
       document.body.appendChild(fish);
       activeFish = fish;
 
-      // Force reflow before animation
       fish.offsetHeight;
-
-      // Start animation
       fish.style.animation = 'fallDown 5s linear forwards';
 
-      // Remove fish after animation or if caught
       setTimeout(() => {
         if (fish.parentElement) {
           fish.remove();
@@ -566,19 +606,30 @@
       }, 5000);
     };
 
-    // Fisherman controls - Activate with spacebar
-    document.addEventListener('keydown', (e) => {
-      // Spacebar to activate fisherman
-      if (e.code === 'Space' && !fishermanActive) {
-        e.preventDefault();
+    // Fisherman controls - Click to activate
+    fishermanContainer.addEventListener('click', (e) => {
+      if (!fishermanActive) {
         fishermanActive = true;
         fishermanContainer.classList.add('active');
         const rect = fishermanContainer.getBoundingClientRect();
         fishermanX = rect.left;
-        return;
-      }
 
-      // Arrow keys to move (only when active)
+        if (gameStatus) {
+          gameStatus.textContent = 'Fisherman activated! Use left and right arrow keys to move and catch fish.';
+        }
+      }
+    });
+
+    // Also support Enter/Space for accessibility
+    fishermanContainer.addEventListener('keydown', (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && !fishermanActive) {
+        e.preventDefault();
+        fishermanContainer.click();
+      }
+    });
+
+    // Keyboard controls for fisherman
+    document.addEventListener('keydown', (e) => {
       if (!fishermanActive) return;
 
       const moveSpeed = 15;
@@ -598,21 +649,20 @@
       }
     });
 
-    // Check for fish collision with net
+    // Check for fish collision with net (larger net area at top)
     const checkFishCatch = () => {
       if (!activeFish) return;
 
       const fishRect = activeFish.getBoundingClientRect();
 
-      // If fisherman is active, check for collision
       if (fishermanActive) {
         const fishermanRect = fishermanContainer.getBoundingClientRect();
 
-        // Check if fish is in net area (top part of fisherman)
-        const netLeft = fishermanRect.left + 16;
-        const netRight = fishermanRect.left + 50;
-        const netTop = fishermanRect.top + 56;
-        const netBottom = fishermanRect.top + 80;
+        // Larger net area at the top (where net is held)
+        const netLeft = fishermanRect.left + 10;
+        const netRight = fishermanRect.left + 38;
+        const netTop = fishermanRect.top + 16;
+        const netBottom = fishermanRect.top + 28;
 
         const fishCenterX = fishRect.left + fishRect.width / 2;
         const fishCenterY = fishRect.top + fishRect.height / 2;
@@ -623,12 +673,14 @@
           fishCenterY >= netTop &&
           fishCenterY <= netBottom
         ) {
-          // Fish caught!
           activeFish.remove();
           activeFish = null;
           catchCount++;
           if (catchCounter) {
-            catchCounter.textContent = catchCount.toString();
+            catchCounter.textContent = `Catches: ${catchCount}`;
+          }
+          if (gameStatus) {
+            gameStatus.textContent = `Fish caught! Total catches: ${catchCount}`;
           }
           triggerConfetti();
           fishermanActive = false;
@@ -681,16 +733,13 @@
           isFlying = false;
           pelicanSvg.classList.remove('flapping');
 
-          // Schedule next flight
           setTimeout(() => {
             startRandomFlight();
           }, 4000 + Math.random() * 6000);
         }
       }
 
-      // Check fish collision every frame
       checkFishCatch();
-
       requestAnimationFrame(animate);
     };
 
@@ -701,6 +750,16 @@
     animate();
     setTimeout(() => {
       startRandomFlight();
-    }, 2000);
-  }
+    }, 1500);
+
+    // Re-initialize on page show (for back/forward navigation)
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted) {
+        findHeader();
+        if (!isFlying) {
+          setTimeout(startRandomFlight, 500);
+        }
+      }
+    });
+  })();
 </script>
