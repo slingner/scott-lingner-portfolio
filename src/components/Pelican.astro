@@ -582,6 +582,27 @@
 
     if (!pelicanContainer || !pelicanSvg || !fallingFishContainer || !fishermanContainer) return;
 
+    // Get all game elements
+    const catchCounter = document.getElementById('catch-counter');
+    const gameStatus = document.getElementById('game-status');
+
+    // Game state variables
+    let pelicanX = 80;
+    let pelicanY = 30;
+    let targetX = pelicanX;
+    let targetY = pelicanY;
+    let isFlying = false;
+    let isActivated = false;
+    let isFirstFlight = true;
+    let facingRight = true;
+    let headerElement = null;
+    let headerHeight = 100;
+    let headerTop = 0;
+    let fishermanActive = false;
+    let fishermanX = 0;
+    let activeFish = []; // Array to hold multiple falling fish
+    let catchCount = 0;
+
     // Check if we should show the game (only on /software-engineering page)
     const checkAndShowGame = () => {
       const currentPath = window.location.pathname;
@@ -635,26 +656,6 @@
 
     // Initial check - always initialize, just hide if not on right page
     checkAndShowGame();
-
-    let pelicanX = 80;
-    let pelicanY = 30;
-    let targetX = pelicanX;
-    let targetY = pelicanY;
-    let isFlying = false;
-    let isActivated = false;
-    let isFirstFlight = true;
-    let facingRight = true;
-    let headerElement = null;
-    let headerHeight = 100;
-    let headerTop = 0;
-
-    // Game state
-    let fishermanActive = false;
-    let fishermanX = 0;
-    let activeFish = []; // Array to hold multiple falling fish
-    let catchCount = 0;
-    const catchCounter = document.getElementById('catch-counter');
-    const gameStatus = document.getElementById('game-status');
 
     // Find and measure the header element
     const findHeader = () => {
