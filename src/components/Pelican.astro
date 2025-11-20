@@ -108,118 +108,105 @@
 <!-- Falling fish container -->
 <div id="falling-fish-container"></div>
 
-<!-- Fisherman at bottom right -->
-<div id="fisherman-container" class="fisherman-wrapper" role="button" tabindex="0" aria-label="Click to start pelican fishing game. Use left and right arrow keys to move and catch fish. Press ESC to stop.">
+<!-- Shark at bottom right -->
+<div id="shark-container" class="shark-wrapper" role="button" tabindex="0" aria-label="Click to start pelican fishing game. Use left and right arrow keys to move and catch fish. Press ESC to stop.">
+  <div id="catch-counter" class="catch-counter" aria-live="polite" aria-atomic="true">0/100 catches</div>
   <div id="level-display" class="level-display">Level 1</div>
-  <div id="catch-counter" class="catch-counter" aria-live="polite" aria-atomic="true">0/10 catches</div>
   <div id="game-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
-  <svg id="fisherman-svg" width="100" height="140" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
-    <!-- Hat -->
-    <g id="hat">
-      <rect x="38" y="20" width="4" height="4" fill="#FCD34D"/>
-      <rect x="42" y="16" width="4" height="4" fill="#FCD34D"/>
-      <rect x="46" y="16" width="4" height="4" fill="#FCD34D"/>
-      <rect x="50" y="16" width="4" height="4" fill="#FCD34D"/>
-      <rect x="54" y="20" width="4" height="4" fill="#FCD34D"/>
-      <rect x="42" y="20" width="4" height="4" fill="#FCD34D"/>
-      <rect x="46" y="20" width="4" height="4" fill="#FCD34D"/>
-      <rect x="50" y="20" width="4" height="4" fill="#FCD34D"/>
+  <svg id="shark-svg" width="120" height="100" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+    <!-- Shark Head - Big open mouth facing up -->
+
+    <!-- Top of head/snout -->
+    <g id="shark-top">
+      <rect x="40" y="10" width="8" height="6" fill="#5B7C99"/>
+      <rect x="48" y="10" width="8" height="6" fill="#5B7C99"/>
+      <rect x="56" y="10" width="8" height="6" fill="#5B7C99"/>
+      <rect x="64" y="10" width="8" height="6" fill="#5B7C99"/>
+      <rect x="32" y="16" width="8" height="6" fill="#5B7C99"/>
+      <rect x="40" y="16" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="48" y="16" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="56" y="16" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="64" y="16" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="72" y="16" width="8" height="6" fill="#5B7C99"/>
     </g>
 
-    <!-- Head -->
-    <g id="head">
-      <rect x="42" y="24" width="4" height="4" fill="#FBBF24"/>
-      <rect x="46" y="24" width="4" height="4" fill="#FBBF24"/>
-      <rect x="50" y="24" width="4" height="4" fill="#FBBF24"/>
-      <!-- Eyes -->
-      <rect x="44" y="26" width="2" height="2" fill="#1F2937"/>
-      <rect x="50" y="26" width="2" height="2" fill="#1F2937"/>
+    <!-- Eyes -->
+    <g id="eyes">
+      <rect x="34" y="18" width="6" height="4" fill="#1F2937"/>
+      <rect x="74" y="18" width="6" height="4" fill="#1F2937"/>
     </g>
 
-    <!-- Yellow Raincoat -->
-    <g id="raincoat">
-      <!-- Shoulders -->
-      <rect x="38" y="28" width="4" height="4" fill="#FCD34D"/>
-      <rect x="42" y="28" width="4" height="4" fill="#FCD34D"/>
-      <rect x="46" y="28" width="4" height="4" fill="#FCD34D"/>
-      <rect x="50" y="28" width="4" height="4" fill="#FCD34D"/>
-      <rect x="54" y="28" width="4" height="4" fill="#FCD34D"/>
-      <!-- Body -->
-      <rect x="38" y="32" width="4" height="4" fill="#FCD34D"/>
-      <rect x="42" y="32" width="4" height="4" fill="#FCD34D"/>
-      <rect x="46" y="32" width="4" height="4" fill="#FCD34D"/>
-      <rect x="50" y="32" width="4" height="4" fill="#FCD34D"/>
-      <rect x="54" y="32" width="4" height="4" fill="#FCD34D"/>
-      <rect x="38" y="36" width="4" height="4" fill="#FCD34D"/>
-      <rect x="42" y="36" width="4" height="4" fill="#FCD34D"/>
-      <rect x="46" y="36" width="4" height="4" fill="#FCD34D"/>
-      <rect x="50" y="36" width="4" height="4" fill="#FCD34D"/>
-      <rect x="54" y="36" width="4" height="4" fill="#FCD34D"/>
-      <rect x="38" y="40" width="4" height="4" fill="#FCD34D"/>
-      <rect x="42" y="40" width="4" height="4" fill="#FCD34D"/>
-      <rect x="46" y="40" width="4" height="4" fill="#FCD34D"/>
-      <rect x="50" y="40" width="4" height="4" fill="#FCD34D"/>
-      <rect x="54" y="40" width="4" height="4" fill="#FCD34D"/>
-      <!-- Buttons -->
-      <rect x="46" y="34" width="2" height="2" fill="#F59E0B"/>
-      <rect x="46" y="38" width="2" height="2" fill="#F59E0B"/>
+    <!-- Upper jaw with teeth -->
+    <g id="upper-jaw">
+      <rect x="24" y="22" width="8" height="6" fill="#5B7C99"/>
+      <rect x="32" y="22" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="40" y="22" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="48" y="22" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="56" y="22" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="64" y="22" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="72" y="22" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="80" y="22" width="8" height="6" fill="#5B7C99"/>
+
+      <!-- Upper teeth pointing down -->
+      <rect x="32" y="28" width="4" height="6" fill="#F8F9FA"/>
+      <rect x="40" y="28" width="4" height="6" fill="#F8F9FA"/>
+      <rect x="48" y="28" width="4" height="6" fill="#F8F9FA"/>
+      <rect x="56" y="28" width="4" height="6" fill="#F8F9FA"/>
+      <rect x="64" y="28" width="4" height="6" fill="#F8F9FA"/>
+      <rect x="72" y="28" width="4" height="6" fill="#F8F9FA"/>
     </g>
 
-    <!-- Arms -->
-    <g id="arms">
-      <rect x="34" y="32" width="4" height="4" fill="#FCD34D"/>
-      <rect x="30" y="36" width="4" height="4" fill="#FCD34D"/>
-      <rect x="58" y="32" width="4" height="4" fill="#FCD34D"/>
-      <rect x="62" y="36" width="4" height="4" fill="#FCD34D"/>
+    <!-- Open mouth interior (dark) -->
+    <g id="mouth-interior">
+      <rect x="24" y="34" width="8" height="12" fill="#2D1B2E"/>
+      <rect x="32" y="34" width="8" height="12" fill="#2D1B2E"/>
+      <rect x="40" y="34" width="8" height="12" fill="#2D1B2E"/>
+      <rect x="48" y="34" width="8" height="12" fill="#2D1B2E"/>
+      <rect x="56" y="34" width="8" height="12" fill="#2D1B2E"/>
+      <rect x="64" y="34" width="8" height="12" fill="#2D1B2E"/>
+      <rect x="72" y="34" width="8" height="12" fill="#2D1B2E"/>
+      <rect x="80" y="34" width="8" height="12" fill="#2D1B2E"/>
     </g>
 
-    <!-- Legs -->
-    <g id="legs">
-      <rect x="42" y="44" width="4" height="4" fill="#92400E"/>
-      <rect x="50" y="44" width="4" height="4" fill="#92400E"/>
-      <rect x="42" y="48" width="4" height="4" fill="#92400E"/>
-      <rect x="50" y="48" width="4" height="4" fill="#92400E"/>
-      <!-- Boots -->
-      <rect x="40" y="52" width="8" height="4" fill="#1F2937"/>
-      <rect x="48" y="52" width="8" height="4" fill="#1F2937"/>
+    <!-- Lower jaw with teeth -->
+    <g id="lower-jaw">
+      <!-- Lower teeth pointing up -->
+      <rect x="28" y="46" width="4" height="6" fill="#F8F9FA"/>
+      <rect x="36" y="46" width="4" height="6" fill="#F8F9FA"/>
+      <rect x="44" y="46" width="4" height="6" fill="#F8F9FA"/>
+      <rect x="52" y="46" width="4" height="6" fill="#F8F9FA"/>
+      <rect x="60" y="46" width="4" height="6" fill="#F8F9FA"/>
+      <rect x="68" y="46" width="4" height="6" fill="#F8F9FA"/>
+      <rect x="76" y="46" width="4" height="6" fill="#F8F9FA"/>
+
+      <rect x="24" y="52" width="8" height="6" fill="#5B7C99"/>
+      <rect x="32" y="52" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="40" y="52" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="48" y="52" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="56" y="52" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="64" y="52" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="72" y="52" width="8" height="6" fill="#4A6B8A"/>
+      <rect x="80" y="52" width="8" height="6" fill="#5B7C99"/>
     </g>
 
-    <!-- Fishing Net - Held Up with Round Hoop -->
-    <g id="net">
-      <!-- Handle going up from hand -->
-      <rect x="26" y="28" width="2" height="12" fill="#78716C"/>
-      <rect x="28" y="28" width="2" height="12" fill="#78716C"/>
-
-      <!-- Round net hoop using ellipse -->
-      <ellipse cx="24" cy="21" rx="15" ry="7" fill="none" stroke="#78716C" stroke-width="2"/>
-
-      <!-- Inner circle for depth -->
-      <ellipse cx="24" cy="21" rx="13" ry="5.5" fill="none" stroke="#57534E" stroke-width="1" opacity="0.5"/>
-
-      <!-- Net mesh pattern inside circle - arranged in circular pattern -->
-      <rect x="16" y="19" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="20" y="18" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="24" y="18" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="28" y="19" width="2" height="2" fill="#9CA3AF"/>
-
-      <rect x="14" y="21" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="18" y="20" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="22" y="20" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="26" y="20" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="30" y="21" width="2" height="2" fill="#9CA3AF"/>
-
-      <rect x="16" y="22" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="20" y="22" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="24" y="22" width="2" height="2" fill="#9CA3AF"/>
-      <rect x="28" y="22" width="2" height="2" fill="#9CA3AF"/>
+    <!-- Bottom jaw -->
+    <g id="jaw-bottom">
+      <rect x="32" y="58" width="8" height="6" fill="#5B7C99"/>
+      <rect x="40" y="58" width="8" height="6" fill="#5B7C99"/>
+      <rect x="48" y="58" width="8" height="6" fill="#5B7C99"/>
+      <rect x="56" y="58" width="8" height="6" fill="#5B7C99"/>
+      <rect x="64" y="58" width="8" height="6" fill="#5B7C99"/>
+      <rect x="72" y="58" width="8" height="6" fill="#5B7C99"/>
     </g>
   </svg>
-  <div id="fisherman-hint" class="fisherman-hint">
+  <div id="shark-hint" class="shark-hint">
     <div class="hint-line">Click to start game</div>
     <div class="hint-line"><kbd>←</kbd> <kbd>→</kbd> to move</div>
-    <div class="hint-line"><kbd>ESC</kbd> to stop</div>
   </div>
 </div>
+
+<!-- Persistent ESC message -->
+<div id="esc-message" class="esc-message">Press <kbd>ESC</kbd> to exit game</div>
 
 <!-- Confetti container -->
 <div id="confetti-container"></div>
@@ -314,8 +301,8 @@
     }
   }
 
-  /* Fisherman - Desktop only */
-  .fisherman-wrapper {
+  /* Shark - Desktop only */
+  .shark-wrapper {
     position: fixed;
     bottom: 20px;
     right: 40px;
@@ -325,29 +312,29 @@
   }
 
   @media (max-width: 1024px) {
-    .fisherman-wrapper {
+    .shark-wrapper {
       display: none;
     }
   }
 
-  .fisherman-wrapper.active {
+  .shark-wrapper.active {
     cursor: default;
   }
 
-  #fisherman-svg {
+  #shark-svg {
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
   }
 
-  #fisherman-svg:hover {
+  #shark-svg:hover {
     filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.4));
   }
 
-  .fisherman-hint {
+  .shark-hint {
     position: absolute;
-    top: -190px;
+    top: -120px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.9);
@@ -367,7 +354,7 @@
     margin: 2px 0;
   }
 
-  .fisherman-hint kbd {
+  .shark-hint kbd {
     display: inline-block;
     padding: 2px 6px;
     background: #374151;
@@ -378,49 +365,21 @@
     box-shadow: 0 2px 0 #1F2937;
   }
 
-  .fisherman-wrapper:hover .fisherman-hint {
+  .shark-wrapper:hover .shark-hint {
     opacity: 1;
   }
 
-  .fisherman-wrapper.active .fisherman-hint {
+  .shark-wrapper.active .shark-hint {
     opacity: 0;
   }
 
-  .fisherman-wrapper:focus {
+  .shark-wrapper:focus {
     outline: none;
-  }
-
-  .level-display {
-    position: absolute;
-    top: 35px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Courier New', monospace;
-    font-size: 16px;
-    font-weight: bold;
-    color: #1F2937;
-    text-shadow: 1px 1px 0px #FCD34D;
-    image-rendering: pixelated;
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: grayscale;
-    pointer-events: none;
-    display: none;
-  }
-
-  .level-display.visible {
-    display: block;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .level-display {
-      color: #F3F4F6;
-      text-shadow: 1px 1px 0px #1F2937;
-    }
   }
 
   .catch-counter {
     position: absolute;
-    top: 60px;
+    top: 35px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Courier New', monospace;
@@ -446,6 +405,41 @@
     }
   }
 
+  .level-display {
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 4px;
+    image-rendering: pixelated;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    pointer-events: none;
+    display: none;
+    color: white;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  .level-display.visible {
+    display: block;
+  }
+
+  /* Cool to warm gradient based on level - using data attributes set via JS */
+  .level-display[data-level="1"] { background: linear-gradient(135deg, #3B82F6, #60A5FA); }
+  .level-display[data-level="2"] { background: linear-gradient(135deg, #06B6D4, #22D3EE); }
+  .level-display[data-level="3"] { background: linear-gradient(135deg, #10B981, #34D399); }
+  .level-display[data-level="4"] { background: linear-gradient(135deg, #84CC16, #A3E635); }
+  .level-display[data-level="5"] { background: linear-gradient(135deg, #EAB308, #FCD34D); }
+  .level-display[data-level="6"] { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
+  .level-display[data-level="7"] { background: linear-gradient(135deg, #F97316, #FB923C); }
+  .level-display[data-level="8"] { background: linear-gradient(135deg, #EF4444, #F87171); }
+  .level-display[data-level="9"] { background: linear-gradient(135deg, #DC2626, #EF4444); }
+  .level-display[data-level="10"] { background: linear-gradient(135deg, #991B1B, #DC2626); }
+
   .visually-hidden {
     position: absolute;
     width: 1px;
@@ -456,6 +450,45 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
+  }
+
+  .esc-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: 'Courier New', monospace;
+    pointer-events: none;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .esc-message.visible {
+    display: block;
+    opacity: 1;
+  }
+
+  .esc-message kbd {
+    display: inline-block;
+    padding: 2px 6px;
+    background: #374151;
+    border: 1px solid #4B5563;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    box-shadow: 0 2px 0 #1F2937;
+  }
+
+  @media (max-width: 1024px) {
+    .esc-message {
+      display: none;
+    }
   }
 
   /* Confetti - Desktop only */
@@ -500,10 +533,11 @@
     const pelicanContainer = document.getElementById('pelican-container');
     const pelicanSvg = document.getElementById('pelican-svg');
     const fallingFishContainer = document.getElementById('falling-fish-container');
-    const fishermanContainer = document.getElementById('fisherman-container');
+    const sharkContainer = document.getElementById('shark-container');
     const confettiContainer = document.getElementById('confetti-container');
+    const escMessage = document.getElementById('esc-message');
 
-    if (!pelicanContainer || !pelicanSvg || !fallingFishContainer || !fishermanContainer) return;
+    if (!pelicanContainer || !pelicanSvg || !fallingFishContainer || !sharkContainer) return;
 
     let pelicanX = 80;
     let pelicanY = 30;
@@ -518,11 +552,12 @@
     let headerTop = 0;
 
     // Game state
-    let fishermanActive = false;
-    let fishermanX = 0;
+    let sharkActive = false;
+    let sharkX = 0;
     let activeFish = []; // Array to hold multiple falling fish
     let catchCount = 0;
     let currentLevel = 1;
+    let previousLevel = 1;
     const catchCounter = document.getElementById('catch-counter');
     const levelDisplay = document.getElementById('level-display');
     const gameStatus = document.getElementById('game-status');
@@ -667,13 +702,18 @@
       }, fallDuration);
     };
 
-    // Fisherman controls - Click to activate game (fisherman + pelican)
-    fishermanContainer.addEventListener('click', (e) => {
-      if (!fishermanActive) {
-        fishermanActive = true;
-        fishermanContainer.classList.add('active');
-        const rect = fishermanContainer.getBoundingClientRect();
-        fishermanX = rect.left;
+    // Shark controls - Click to activate game (shark + pelican)
+    sharkContainer.addEventListener('click', (e) => {
+      if (!sharkActive) {
+        sharkActive = true;
+        sharkContainer.classList.add('active');
+        const rect = sharkContainer.getBoundingClientRect();
+        sharkX = rect.left;
+
+        // Show ESC message
+        if (escMessage) {
+          escMessage.classList.add('visible');
+        }
 
         // Also activate pelican flight
         if (!isActivated) {
@@ -689,17 +729,17 @@
     });
 
     // Also support Enter/Space for accessibility
-    fishermanContainer.addEventListener('keydown', (e) => {
-      if ((e.key === 'Enter' || e.key === ' ') && !fishermanActive) {
+    sharkContainer.addEventListener('keydown', (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && !sharkActive) {
         e.preventDefault();
-        fishermanContainer.click();
+        sharkContainer.click();
       }
     });
 
-    // Keyboard controls for fisherman and pelican
+    // Keyboard controls for shark and pelican
     document.addEventListener('keydown', (e) => {
       // ESC to stop game completely
-      if (e.key === 'Escape' && (isFlying || fishermanActive)) {
+      if (e.key === 'Escape' && (isFlying || sharkActive)) {
         e.preventDefault();
 
         // Stop pelican
@@ -712,11 +752,16 @@
         pelicanY = 30;
         pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
 
-        // Stop fisherman
-        fishermanActive = false;
-        fishermanContainer.classList.remove('active');
-        fishermanContainer.style.right = '40px';
-        fishermanContainer.style.left = 'auto';
+        // Stop shark
+        sharkActive = false;
+        sharkContainer.classList.remove('active');
+        sharkContainer.style.right = '40px';
+        sharkContainer.style.left = 'auto';
+
+        // Hide ESC message
+        if (escMessage) {
+          escMessage.classList.remove('visible');
+        }
 
         // Remove all active fish
         activeFish.forEach(fish => {
@@ -726,49 +771,57 @@
         });
         activeFish = [];
 
-        // Reset catch count and hide counter
+        // Reset catch count and hide counters
         catchCount = 0;
+        currentLevel = 1;
+        previousLevel = 1;
         if (catchCounter) {
-          catchCounter.textContent = '0/10 catches';
+          catchCounter.textContent = '0/100 catches';
           catchCounter.classList.remove('visible');
+        }
+        if (levelDisplay) {
+          levelDisplay.textContent = 'Level 1';
+          levelDisplay.setAttribute('data-level', '1');
+          levelDisplay.classList.remove('visible');
         }
 
         if (gameStatus) {
-          gameStatus.textContent = 'Game stopped. Click fisherman to start again.';
+          gameStatus.textContent = 'Game stopped. Click shark to start again.';
         }
         return;
       }
 
-      if (!fishermanActive) return;
+      if (!sharkActive) return;
 
       const moveSpeed = 35;
       const minX = 0;
-      const maxX = window.innerWidth - 100;
+      const maxX = window.innerWidth - 120;
 
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        fishermanX = Math.max(minX, fishermanX - moveSpeed);
-        fishermanContainer.style.right = 'auto';
-        fishermanContainer.style.left = `${fishermanX}px`;
+        sharkX = Math.max(minX, sharkX - moveSpeed);
+        sharkContainer.style.right = 'auto';
+        sharkContainer.style.left = `${sharkX}px`;
       } else if (e.key === 'ArrowRight') {
         e.preventDefault();
-        fishermanX = Math.min(maxX, fishermanX + moveSpeed);
-        fishermanContainer.style.right = 'auto';
-        fishermanContainer.style.left = `${fishermanX}px`;
+        sharkX = Math.min(maxX, sharkX + moveSpeed);
+        sharkContainer.style.right = 'auto';
+        sharkContainer.style.left = `${sharkX}px`;
       }
     });
 
-    // Check for fish collision with round net
+    // Check for fish collision with shark mouth
     const checkFishCatch = () => {
-      if (!fishermanActive || activeFish.length === 0) return;
+      if (!sharkActive || activeFish.length === 0) return;
 
-      const fishermanRect = fishermanContainer.getBoundingClientRect();
+      const sharkRect = sharkContainer.getBoundingClientRect();
 
-      // Round net area - ellipse centered at (24, 21) with rx=15, ry=7 in 100x140 viewBox
-      const netCenterX = fishermanRect.left + (fishermanRect.width * 0.24);
-      const netCenterY = fishermanRect.top + (fishermanRect.height * 0.15);
-      const netRadiusX = fishermanRect.width * 0.15;
-      const netRadiusY = fishermanRect.height * 0.05;
+      // Shark mouth area - large ellipse for the open mouth (centered around mouth interior)
+      // Mouth interior is from y=34 to y=46 in viewBox 120x100
+      const mouthCenterX = sharkRect.left + (sharkRect.width * 0.5);  // Center of shark
+      const mouthCenterY = sharkRect.top + (sharkRect.height * 0.4);  // Center of mouth opening
+      const mouthRadiusX = sharkRect.width * 0.35;  // Wide mouth
+      const mouthRadiusY = sharkRect.height * 0.15; // Tall mouth opening
 
       // Check each fish for collision
       for (let i = activeFish.length - 1; i >= 0; i--) {
@@ -778,22 +831,23 @@
         const fishCenterY = fishRect.top + fishRect.height / 2;
 
         // Ellipse collision detection
-        const normalizedX = (fishCenterX - netCenterX) / netRadiusX;
-        const normalizedY = (fishCenterY - netCenterY) / netRadiusY;
+        const normalizedX = (fishCenterX - mouthCenterX) / mouthRadiusX;
+        const normalizedY = (fishCenterY - mouthCenterY) / mouthRadiusY;
         const inEllipse = (normalizedX * normalizedX + normalizedY * normalizedY) <= 1;
 
         if (inEllipse) {
           fish.remove();
           activeFish.splice(i, 1);
+
+          // Store previous level before incrementing catch count
+          previousLevel = currentLevel;
           catchCount++;
 
           // Calculate current level (1-10) based on catches
           currentLevel = Math.min(10, Math.floor(catchCount / 10) + 1);
-          const levelProgress = catchCount % 10;
-          const nextLevelAt = currentLevel * 10;
 
           if (catchCounter) {
-            catchCounter.textContent = `${levelProgress}/10 catches`;
+            catchCounter.textContent = `${catchCount}/100 catches`;
             // Show counter after first catch
             if (catchCount >= 1) {
               catchCounter.classList.add('visible');
@@ -802,6 +856,7 @@
 
           if (levelDisplay) {
             levelDisplay.textContent = `Level ${currentLevel}`;
+            levelDisplay.setAttribute('data-level', currentLevel.toString());
             if (catchCount >= 1) {
               levelDisplay.classList.add('visible');
             }
@@ -818,7 +873,8 @@
             setTimeout(() => {
               resetGame();
             }, 5000);
-          } else {
+          } else if (currentLevel > previousLevel) {
+            // Only trigger confetti when passing to a new level
             triggerConfetti();
           }
         }
@@ -837,11 +893,16 @@
       pelicanY = 30;
       pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
 
-      // Stop fisherman
-      fishermanActive = false;
-      fishermanContainer.classList.remove('active');
-      fishermanContainer.style.right = '40px';
-      fishermanContainer.style.left = 'auto';
+      // Stop shark
+      sharkActive = false;
+      sharkContainer.classList.remove('active');
+      sharkContainer.style.right = '40px';
+      sharkContainer.style.left = 'auto';
+
+      // Hide ESC message
+      if (escMessage) {
+        escMessage.classList.remove('visible');
+      }
 
       // Remove all active fish
       activeFish.forEach(fish => {
@@ -854,17 +915,19 @@
       // Reset catch count, level, and hide counters
       catchCount = 0;
       currentLevel = 1;
+      previousLevel = 1;
       if (catchCounter) {
-        catchCounter.textContent = '0/10 catches';
+        catchCounter.textContent = '0/100 catches';
         catchCounter.classList.remove('visible');
       }
       if (levelDisplay) {
         levelDisplay.textContent = 'Level 1';
+        levelDisplay.setAttribute('data-level', '1');
         levelDisplay.classList.remove('visible');
       }
 
       if (gameStatus) {
-        gameStatus.textContent = 'Game complete! Click fisherman to play again.';
+        gameStatus.textContent = 'Game complete! Click shark to play again.';
       }
     };
 
@@ -891,12 +954,12 @@
       }
     };
 
-    // Pixelated fireworks at 10 catches
+    // Pixelated fireworks at 100 catches
     const triggerPixelatedFireworks = () => {
       const colors = ['#FCD34D', '#60A5FA', '#F87171', '#34D399', '#A78BFA', '#F472B6', '#FBBF24', '#93C5FD'];
-      const fishermanRect = fishermanContainer.getBoundingClientRect();
-      const centerX = fishermanRect.left + fishermanRect.width / 2;
-      const centerY = fishermanRect.top + fishermanRect.height / 2;
+      const sharkRect = sharkContainer.getBoundingClientRect();
+      const centerX = sharkRect.left + sharkRect.width / 2;
+      const centerY = sharkRect.top + sharkRect.height / 2;
 
       // Create multiple firework bursts over 5 seconds
       const duration = 5000;
@@ -959,7 +1022,7 @@
       }
 
       if (gameStatus) {
-        gameStatus.textContent = '🎉 10 CATCHES! SPECTACULAR FIREWORKS! 🎉';
+        gameStatus.textContent = '🎉 100 CATCHES! SPECTACULAR FIREWORKS! 🎉';
       }
     };
 
