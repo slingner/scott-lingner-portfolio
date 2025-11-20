@@ -413,31 +413,29 @@
   }
 
   .catch-counter {
-    position: absolute;
-    top: 138px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: fixed;
+    top: 60px;
+    right: 20px;
     font-family: 'Courier New', monospace;
     font-size: 14px;
     font-weight: bold;
-    color: #1F2937;
-    text-shadow: 2px 2px 0px #FCD34D;
-    image-rendering: pixelated;
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: grayscale;
+    color: white;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 8px 16px;
+    border-radius: 6px;
+    z-index: 9999;
     pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
     display: none;
   }
 
-  .catch-counter.visible {
+  .catch-counter.game-visible {
     display: block;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .catch-counter {
-      color: #F3F4F6;
-      text-shadow: 2px 2px 0px #1F2937;
-    }
+  .catch-counter.visible {
+    opacity: 1;
   }
 
   .level-display {
@@ -620,6 +618,13 @@
           escMessage.classList.add('game-visible');
         } else {
           escMessage.classList.remove('game-visible');
+        }
+      }
+      if (catchCounter) {
+        if (shouldShow) {
+          catchCounter.classList.add('game-visible');
+        } else {
+          catchCounter.classList.remove('game-visible');
         }
       }
 
@@ -930,13 +935,29 @@
             gameStatus.textContent = `Fish caught! ${catchCount}/10`;
           }
 
-          // Confetti and reset at 10 catches
+          // Stop game, confetti, and reset at 10 catches
           if (catchCount === 10) {
+            // Stop the game immediately
+            isFlying = false;
+            isActivated = false;
+            fishermanActive = false;
+            fishermanContainer.classList.remove('active');
+
+            // Remove all remaining fish
+            activeFish.forEach(fish => {
+              if (fish.parentElement) {
+                fish.remove();
+              }
+            });
+            activeFish = [];
+
+            // Show confetti for 5 seconds
             triggerConfetti();
+
             // Reset game after confetti display
             setTimeout(() => {
               resetGame();
-            }, 3000);
+            }, 5000);
           }
         }
       }
@@ -985,11 +1006,11 @@
       }
     };
 
-    // Confetti animation
+    // Confetti animation - 5 seconds
     const triggerConfetti = () => {
       const colors = ['#FCD34D', '#60A5FA', '#F87171', '#34D399', '#A78BFA', '#F472B6'];
 
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 150; i++) {
         setTimeout(() => {
           const confetti = document.createElement('div');
           confetti.className = 'confetti';
@@ -997,14 +1018,14 @@
           confetti.style.top = '-10px';
           confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
           confetti.style.animationDelay = `${Math.random() * 0.5}s`;
-          confetti.style.animationDuration = `${2 + Math.random() * 2}s`;
+          confetti.style.animationDuration = `${2 + Math.random() * 3}s`;
 
           confettiContainer.appendChild(confetti);
 
           setTimeout(() => {
             confetti.remove();
-          }, 4000);
-        }, i * 20);
+          }, 5000);
+        }, i * 30);
       }
     };
 
@@ -1086,9 +1107,12 @@
         fishermanContainer.style.left = 'auto';
       }
 
-      // Hide ESC message
+      // Hide ESC message and counter
       if (escMessage) {
         escMessage.classList.remove('visible');
+      }
+      if (catchCounter) {
+        catchCounter.classList.remove('visible');
       }
 
       // Remove all active fish
@@ -1099,17 +1123,25 @@
       });
       activeFish = [];
 
-      // Reset catch counter
+      // Reset catch counter text
       if (catchCounter) {
         catchCounter.textContent = '0/10';
-        catchCounter.classList.remove('visible');
       }
 
       // Re-measure header for new page
       findHeader();
 
-      // Check if we should show/hide the game
-      checkAndShowGame();
+      // Check if we should show/hide the game - use requestAnimationFrame to ensure DOM is ready
+      requestAnimationFrame(() => {
+        checkAndShowGame();
+      });
+    });
+
+    // Also listen to after-swap to ensure visibility is set correctly
+    document.addEventListener('astro:after-swap', () => {
+      requestAnimationFrame(() => {
+        checkAndShowGame();
+      });
     });
 
     // Also handle before swap to ensure clean state
