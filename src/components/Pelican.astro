@@ -2,7 +2,11 @@
 // Pelican component with flying animation and fish game
 ---
 
-<div id="pelican-container" class="pelican-wrapper">
+<div id="pelican-container" class="pelican-wrapper" role="button" tabindex="0" aria-label="Click to start pelican flying. Click pelican while flying to drop fish.">
+  <div id="pelican-hint" class="pelican-hint">
+    <div class="hint-line">Click to start flying</div>
+    <div class="hint-line">Click while flying to drop fish</div>
+  </div>
   <svg id="pelican-svg" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
     <!-- Tail -->
     <g id="pelican-tail">
@@ -259,6 +263,36 @@
     filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.4));
   }
 
+  .pelican-hint {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    font-family: 'Courier New', monospace;
+    z-index: 10000;
+  }
+
+  .pelican-wrapper:hover .pelican-hint {
+    opacity: 1;
+  }
+
+  .pelican-wrapper.flying .pelican-hint {
+    opacity: 0;
+  }
+
+  .pelican-wrapper:focus {
+    outline: none;
+  }
+
   /* Wing flap animation */
   @keyframes flapWings {
     0% {
@@ -395,13 +429,12 @@
   }
 
   .fisherman-wrapper:focus {
-    outline: 2px solid #FCD34D;
-    outline-offset: 4px;
+    outline: none;
   }
 
   .catch-counter {
     position: absolute;
-    top: 150px;
+    top: 60px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Courier New', monospace;
@@ -474,11 +507,12 @@
 
     if (!pelicanContainer || !pelicanSvg || !fallingFishContainer || !fishermanContainer) return;
 
-    let pelicanX = -100;
-    let pelicanY = 30;
+    let pelicanX = 20;
+    let pelicanY = 20;
     let targetX = pelicanX;
     let targetY = pelicanY;
     let isFlying = false;
+    let isActivated = false;
     let facingRight = true;
     let headerElement = null;
     let headerHeight = 100;
@@ -542,10 +576,24 @@
       pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
     };
 
-    // Click pelican to drop fish
+    // Click pelican to activate or drop fish
     pelicanContainer.addEventListener('click', (e) => {
       e.stopPropagation();
-      dropFish();
+      if (!isActivated) {
+        isActivated = true;
+        pelicanContainer.classList.add('flying');
+        startRandomFlight();
+      } else if (isFlying) {
+        dropFish();
+      }
+    });
+
+    // Also support Enter/Space for accessibility
+    pelicanContainer.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        pelicanContainer.click();
+      }
     });
 
     // Drop fish from pelican
@@ -809,22 +857,17 @@
       requestAnimationFrame(animate);
     };
 
-    // Initialize position
+    // Initialize position to left of logo
     pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
 
-    // Start animations
+    // Start animation loop (but don't start flying until clicked)
     animate();
-    setTimeout(() => {
-      startRandomFlight();
-    }, 1500);
 
     // Re-initialize on page show (for back/forward navigation)
     window.addEventListener('pageshow', (event) => {
       if (event.persisted) {
         findHeader();
-        if (!isFlying) {
-          setTimeout(startRandomFlight, 500);
-        }
+        // Don't auto-start, user must click to activate
       }
     });
   })();
