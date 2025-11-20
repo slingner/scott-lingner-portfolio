@@ -410,6 +410,13 @@
     display: block;
   }
 
+  @media (prefers-color-scheme: dark) {
+    .catch-counter {
+      color: #F3F4F6;
+      text-shadow: 2px 2px 0px #1F2937;
+    }
+  }
+
   .visually-hidden {
     position: absolute;
     width: 1px;
@@ -520,15 +527,16 @@
       isFlying = true;
       const viewportWidth = window.innerWidth;
 
-      // Reset fish drop tracking and schedule 10-12 drops at staggered intervals
+      // Reset fish drop tracking and schedule 15-18 drops with clustering
       fishDroppedCount = 0;
       dropTimes = [];
-      const numDrops = 10 + Math.floor(Math.random() * 3); // 10-12 fish per flight
+      const numDrops = 15 + Math.floor(Math.random() * 4); // 15-18 fish per flight
 
       for (let i = 0; i < numDrops; i++) {
-        // Spread drops over 4 seconds with some randomness
-        const baseTime = (i / numDrops) * 4000;
-        const randomOffset = Math.random() * 400 - 200; // +/- 200ms
+        // Spread drops over 5 seconds with clustering for catching multiples
+        const baseTime = (i / numDrops) * 5000;
+        // Smaller random offset so fish cluster closer together
+        const randomOffset = Math.random() * 200 - 100; // +/- 100ms for tighter clustering
         dropTimes.push(Date.now() + baseTime + randomOffset);
       }
 
@@ -610,7 +618,7 @@
       activeFish.push(fish);
 
       fish.offsetHeight;
-      fish.style.animation = 'fallDown 7s linear forwards';
+      fish.style.animation = 'fallDown 9s linear forwards';
 
       setTimeout(() => {
         if (fish.parentElement) {
@@ -620,7 +628,7 @@
             activeFish.splice(index, 1);
           }
         }
-      }, 7000);
+      }, 9000);
     };
 
     // Fisherman controls - Click to activate game (fisherman + pelican)
