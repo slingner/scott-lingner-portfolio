@@ -564,10 +564,18 @@
     let nextDropTime3 = 0;
     let nextDropTime4 = 0;
 
-    // Drop fish from pelican
+    // Drop fish from pelican (only if pelican is in visible screen area)
     const dropFish = () => {
+      const viewportWidth = window.innerWidth;
       const pelicanRect = pelicanContainer.getBoundingClientRect();
       const currentPelicanX = pelicanRect.left + 40;
+
+      // Only drop fish if pelican is between 15% and 85% of screen width
+      const pelicanScreenPercent = currentPelicanX / viewportWidth;
+      if (pelicanScreenPercent < 0.15 || pelicanScreenPercent > 0.85) {
+        return; // Skip this drop, pelican is too far to the edge
+      }
+
       const currentPelicanY = pelicanRect.top + 40;
 
       const fish = document.createElement('div');
@@ -600,7 +608,7 @@
       activeFish.push(fish);
 
       fish.offsetHeight;
-      fish.style.animation = 'fallDown 5s linear forwards';
+      fish.style.animation = 'fallDown 7s linear forwards';
 
       setTimeout(() => {
         if (fish.parentElement) {
@@ -610,7 +618,7 @@
             activeFish.splice(index, 1);
           }
         }
-      }, 5000);
+      }, 7000);
     };
 
     // Fisherman controls - Click to activate game (fisherman + pelican)
