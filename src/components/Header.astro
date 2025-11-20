@@ -16,49 +16,53 @@ import { SITE } from "@consts";
       </Link>
 
       <nav class="hidden items-center gap-6 md:flex">
-        <Link href="/home" underline={false} class="text-sm font-medium">
+        <Link href="/" underline={false} class="text-sm font-medium">
           Home
         </Link>
         <Link href="/news" underline={false} class="text-sm font-medium">
           News
         </Link>
-        <div class="dropdown relative">
+        <div class="dropdown-wrapper group relative">
           <button
             class="text-sm font-medium text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
           >
             Projects ▾
           </button>
           <div
-            class="dropdown-menu absolute left-0 top-full mt-2 hidden w-48 rounded-lg border border-stone-300/50 bg-white shadow-lg dark:border-stone-700/50 dark:bg-stone-800"
+            class="dropdown-menu invisible absolute left-0 top-full pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100"
           >
-            <Link
-              href="/software-engineering"
-              underline={false}
-              class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+            <div
+              class="w-48 rounded-lg border border-stone-300/50 bg-white shadow-lg dark:border-stone-700/50 dark:bg-stone-800"
             >
-              Software Projects
-            </Link>
-            <Link
-              href="/music"
-              underline={false}
-              class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
-            >
-              Music
-            </Link>
-            <Link
-              href="/stationery"
-              underline={false}
-              class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
-            >
-              Stationery
-            </Link>
-            <Link
-              href="/photo"
-              underline={false}
-              class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
-            >
-              Photography
-            </Link>
+              <Link
+                href="/software-engineering"
+                underline={false}
+                class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+              >
+                Software Projects
+              </Link>
+              <Link
+                href="/music"
+                underline={false}
+                class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+              >
+                Music
+              </Link>
+              <Link
+                href="/stationery"
+                underline={false}
+                class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+              >
+                Art
+              </Link>
+              <Link
+                href="/photo"
+                underline={false}
+                class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+              >
+                Photography
+              </Link>
+            </div>
           </div>
         </div>
         <Link href="/about" underline={false} class="text-sm font-medium">
@@ -90,8 +94,8 @@ import { SITE } from "@consts";
 </header>
 
 <style>
-  .dropdown:hover .dropdown-menu {
-    display: block;
+  .dropdown-wrapper {
+    position: relative;
   }
 
   .dropdown-menu {

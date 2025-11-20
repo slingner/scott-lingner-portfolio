@@ -1,186 +1,254 @@
 ---
-import { SITE, HOME } from "@consts";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import { SITE, HOME, SOCIALS } from "@consts";
+import Link from "@components/Link.astro";
+import { getCollection } from "astro:content";
 
-// Array of background photos that rotate
-const photos = [
-  "/atown.jpg",
-  "/guitar-1.webp",
-  "/pigeon-4.jpg",
-];
-
-// Pick a random photo on each page load
-const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
+const newsItems = (await getCollection("news"))
+  .filter((item) => !item.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 4);
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{SITE.TITLE}</title>
-    <meta name="description" content={HOME.DESCRIPTION} />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+<Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="space-y-12">
+        <section>
+          <article class="space-y-8">
+            <div class="animate">
+              <p
+                class="text-lg leading-relaxed text-stone-700 dark:text-stone-300"
+              >
+                Multi-disciplinary creator based in California.
+              </p>
+            </div>
 
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        overflow: hidden;
-        height: 100vh;
-      }
+            <div
+              class="animate grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12"
+            >
+              <a
+                href="/music"
+                class="group flex flex-col items-center gap-3 transition-all duration-300 hover:scale-110"
+              >
+                <div
+                  class="flex h-32 w-32 items-center justify-center rounded-xl border-2 border-stone-300 bg-stone-100 p-4 shadow-lg transition-all group-hover:border-stone-400 group-hover:shadow-2xl dark:border-stone-700 dark:bg-stone-800 md:h-40 md:w-40"
+                >
+                  <img
+                    src="/plastic-jaguar-logo.png"
+                    alt="Plastic Jaguar"
+                    class="h-full w-full rounded-lg object-contain grayscale transition-all group-hover:grayscale-0 dark:opacity-90 dark:brightness-0 dark:invert"
+                  />
+                </div>
+                <span
+                  class="text-base font-semibold text-stone-700 transition-colors group-hover:text-stone-900 dark:text-stone-300 dark:group-hover:text-stone-100 md:text-lg"
+                  >Music</span
+                >
+              </a>
 
-      .landing-container {
-        position: relative;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding-left: 4rem;
-      }
+              <a
+                href="/stationery"
+                class="group flex flex-col items-center gap-3 transition-all duration-300 hover:scale-110"
+              >
+                <div
+                  class="flex h-32 w-32 items-center justify-center rounded-xl border-2 border-stone-300 bg-stone-100 shadow-lg transition-all group-hover:border-stone-400 group-hover:shadow-2xl dark:border-stone-700 dark:bg-stone-800 md:h-40 md:w-40"
+                >
+                  <img
+                    src="/rbc-logo.png"
+                    alt="Art"
+                    class="h-full w-full rounded-lg object-contain grayscale transition-all group-hover:grayscale-0 dark:opacity-90 dark:brightness-0 dark:invert"
+                  />
+                </div>
+                <span
+                  class="text-base font-semibold text-stone-700 transition-colors group-hover:text-stone-900 dark:text-stone-300 dark:group-hover:text-stone-100 md:text-lg"
+                  >Art</span
+                >
+              </a>
 
-      .background-image {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: brightness(0.6) grayscale(20%);
-      }
+              <a
+                href="/photo"
+                class="group flex flex-col items-center gap-3 transition-all duration-300 hover:scale-110"
+              >
+                <div
+                  class="flex h-32 w-32 items-center justify-center rounded-xl border-2 border-stone-300 bg-stone-100 shadow-lg transition-all group-hover:border-stone-400 group-hover:shadow-2xl dark:border-stone-700 dark:bg-stone-800 md:h-40 md:w-40"
+                >
+                  <img
+                    src="/atown.jpg"
+                    alt="Photography"
+                    class="h-full w-full rounded-lg object-cover grayscale transition-all group-hover:grayscale-0"
+                  />
+                </div>
+                <span
+                  class="text-base font-semibold text-stone-700 transition-colors group-hover:text-stone-900 dark:text-stone-300 dark:group-hover:text-stone-100 md:text-lg"
+                  >Photo</span
+                >
+              </a>
 
-      .content {
-        position: relative;
-        z-index: 10;
-        max-width: 600px;
-        width: 100%;
-      }
+              <a
+                href="/software-engineering"
+                class="group flex flex-col items-center gap-3 transition-all duration-300 hover:scale-110"
+              >
+                <div
+                  class="flex h-32 w-32 items-center justify-center rounded-xl border-2 border-stone-300 bg-stone-700 shadow-lg transition-all group-hover:border-stone-500 group-hover:shadow-2xl dark:border-stone-600 dark:bg-stone-600 md:h-40 md:w-40"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-12 w-12 text-white md:h-16 md:w-16"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+                </div>
+                <span
+                  class="text-base font-semibold text-stone-700 transition-colors group-hover:text-amber-700 dark:text-stone-300 dark:group-hover:text-amber-400 md:text-lg"
+                  >Software</span
+                >
+              </a>
+            </div>
 
-      .header {
-        text-align: left;
-        margin-bottom: 3rem;
-        animation: fadeInDown 1s ease-out;
-      }
+            <!-- News Section - Editorial Style -->
+            <section class="animate mt-12 space-y-6">
+              <h2
+                class="text-2xl font-bold text-stone-900 dark:text-stone-100"
+              >
+                Latest News
+              </h2>
 
-      .title {
-        font-size: clamp(2.5rem, 8vw, 5rem);
-        font-weight: 700;
-        color: white;
-        margin-bottom: 1rem;
-        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        letter-spacing: -0.02em;
-        text-align: left;
-      }
+              <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+                {
+                  newsItems.map((item) => (
+                    <Link href={`/news/${item.slug}`} class="group block h-full">
+                      <article class="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-500 hover:shadow-2xl dark:bg-stone-900">
+                        {item.data.thumbnail && (
+                          <div class="relative aspect-[16/10] overflow-hidden bg-stone-200 dark:bg-stone-800">
+                            <img
+                              src={item.data.thumbnail}
+                              alt={item.data.title}
+                              class="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                            />
+                            <div class="absolute left-4 top-4">
+                              <span class="inline-block rounded-full bg-stone-900/80 px-3 py-1 font-mono text-xs text-white backdrop-blur-sm dark:bg-stone-100/80 dark:text-stone-900">
+                                {new Date(item.data.date).toLocaleDateString(
+                                  "en-US",
+                                  {
+                                    month: "short",
+                                    year: "numeric",
+                                  },
+                                )}
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                        <div class="flex flex-1 flex-col p-6 md:p-8">
+                          <h3 class="mb-3 text-xl font-bold leading-tight text-stone-900 transition-colors group-hover:text-stone-700 dark:text-stone-100 dark:group-hover:text-stone-300 md:text-2xl">
+                            {item.data.title}
+                          </h3>
+                          <p class="mb-4 flex-1 text-sm leading-relaxed text-stone-600 dark:text-stone-400 md:text-base">
+                            {item.data.description}
+                          </p>
+                          <div class="flex items-center text-sm font-medium text-stone-700 transition-transform duration-300 group-hover:translate-x-2 dark:text-stone-300">
+                            <span>Read more</span>
+                            <svg
+                              class="ml-2 h-4 w-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </article>
+                    </Link>
+                  ))
+                }
+              </div>
 
-      .subtitle {
-        font-size: clamp(1rem, 2vw, 1.25rem);
-        color: rgba(255, 255, 255, 0.9);
-        font-weight: 300;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-        text-align: left;
-      }
+              <div class="mt-8">
+                <Link
+                  href="/news"
+                  class="inline-flex items-center gap-2 rounded-full bg-stone-900 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-stone-800 hover:shadow-xl dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-200"
+                >
+                  View all news
+                  <svg
+                    class="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </Link>
+              </div>
+            </section>
 
-      .nav-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .category-link {
-        display: block;
-        text-decoration: none;
-        color: white;
-        font-size: clamp(2rem, 4vw, 3.5rem);
-        font-weight: 700;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-        transition: all 0.3s ease;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-        animation: fadeInUp 1s ease-out;
-        animation-fill-mode: both;
-        text-align: left;
-        line-height: 1.2;
-      }
-
-      .category-link:nth-child(1) { animation-delay: 0.1s; }
-      .category-link:nth-child(2) { animation-delay: 0.2s; }
-      .category-link:nth-child(3) { animation-delay: 0.3s; }
-      .category-link:nth-child(4) { animation-delay: 0.4s; }
-      .category-link:nth-child(5) { animation-delay: 0.5s; }
-
-      .category-link:hover {
-        transform: translateX(10px);
-        text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
-      }
-
-      @keyframes fadeInDown {
-        from {
-          opacity: 0;
-          transform: translateY(-30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @media (max-width: 768px) {
-        .landing-container {
-          padding-left: 2rem;
-          padding-right: 2rem;
-        }
-
-        .category-link {
-          font-size: clamp(1.5rem, 6vw, 2.5rem);
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="landing-container">
-      <img
-        src={randomPhoto}
-        alt="Background"
-        class="background-image"
-      />
-
-      <div class="content">
-        <div class="header">
-          <h1 class="title">Scott Lingner</h1>
-          <p class="subtitle">Multi-disciplinary creator based in California</p>
-        </div>
-
-        <nav class="nav-list">
-          <a href="/music" class="category-link">
-            Music
-          </a>
-          <a href="/stationery" class="category-link">
-            Stationery
-          </a>
-          <a href="/photo" class="category-link">
-            Photography
-          </a>
-          <a href="/software-engineering" class="category-link">
-            Software
-          </a>
-          <a href="/home" class="category-link">
-            All Work
-          </a>
-        </nav>
+            <section class="animate mt-12 space-y-4">
+              <h2
+                class="mb-4 text-2xl font-bold text-stone-900 dark:text-stone-100"
+              >
+                Connect
+              </h2>
+              <div
+                class="rounded-lg border border-stone-300/50 bg-stone-200/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50"
+              >
+                <p
+                  class="mb-4 text-base leading-relaxed text-stone-700 dark:text-stone-300"
+                >
+                  Get in touch about creative work or collaborative
+                  opportunities.
+                </p>
+                <p
+                  class="text-base font-semibold text-stone-900 dark:text-stone-100"
+                >
+                  <Link
+                    href={`mailto:${SITE.EMAIL}`}
+                    aria-label={`Email ${SITE.TITLE}`}
+                  >
+                    {SITE.EMAIL}
+                  </Link>
+                </p>
+              </div>
+              <ul class="not-prose flex flex-wrap gap-2">
+                {
+                  SOCIALS.map((SOCIAL) => (
+                    <li class="flex gap-x-2 text-nowrap pb-4">
+                      <Link
+                        href={SOCIAL.HREF}
+                        external
+                        aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
+                      >
+                        {SOCIAL.NAME}
+                      </Link>
+                      {"/"}
+                    </li>
+                  ))
+                }
+                <li class="line-clamp-1">
+                  <Link href="/rss.xml" aria-label="Scott Lingner RSS feed">
+                    RSS
+                  </Link>
+                </li>
+              </ul>
+            </section>
+          </article>
+        </section>
       </div>
-    </div>
-  </body>
-</html>
+    </aside>
+  </Container>
+</Layout>
