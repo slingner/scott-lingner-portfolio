@@ -587,16 +587,19 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    animation: confettiFall 3s linear forwards;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    opacity: 1;
+    will-change: transform, opacity;
   }
 
-  @keyframes confettiFall {
-    from {
-      transform: translateY(0) rotate(0deg);
+  @keyframes fireworkBurst {
+    0% {
+      transform: translate(0, 0) scale(1);
       opacity: 1;
     }
-    to {
-      transform: translateY(100vh) rotate(720deg);
+    100% {
+      transform: translate(var(--tx), var(--ty)) scale(0.3);
       opacity: 0;
     }
   }
@@ -605,19 +608,16 @@
 <script is:inline>
   // Use is:inline to persist across page transitions
   (function() {
-    const pelicanContainer = document.getElementById('pelican-container');
-    const pelicanSvg = document.getElementById('pelican-svg');
-    const fallingFishContainer = document.getElementById('falling-fish-container');
-    const fishermanContainer = document.getElementById('fisherman-container');
-    const confettiContainer = document.getElementById('confetti-container');
-    const escMessage = document.getElementById('esc-message');
-
-    if (!pelicanContainer || !pelicanSvg || !fallingFishContainer || !fishermanContainer) return;
-
-    // Get all game elements
-    const catchCounter = document.getElementById('catch-counter');
-    const gameStatus = document.getElementById('game-status');
-    const fishIcons = document.getElementById('fish-icons');
+    // DOM element references - will be refreshed on each page load
+    let pelicanContainer;
+    let pelicanSvg;
+    let fallingFishContainer;
+    let fishermanContainer;
+    let confettiContainer;
+    let escMessage;
+    let catchCounter;
+    let gameStatus;
+    let fishIcons;
 
     // Game state variables
     let pelicanX = 80;
@@ -635,6 +635,65 @@
     let fishermanX = 0;
     let activeFish = []; // Array to hold multiple falling fish
     let catchCount = 0;
+
+    // Fisherman click handler - defined early so it can be referenced
+    const handleFishermanClick = (e) => {
+      if (!fishermanActive) {
+        fishermanActive = true;
+        fishermanContainer.classList.add('active');
+        const rect = fishermanContainer.getBoundingClientRect();
+        fishermanX = rect.left;
+
+        // Show ESC message
+        if (escMessage) {
+          escMessage.classList.add('visible');
+        }
+
+        // Also activate pelican flight
+        if (!isActivated) {
+          isActivated = true;
+          pelicanContainer.classList.add('flying');
+          startRandomFlight();
+        }
+
+        if (gameStatus) {
+          gameStatus.textContent = 'Game started! Use left and right arrow keys to move and catch fish. Press ESC to stop.';
+        }
+      }
+    };
+
+    // Fisherman keydown handler for accessibility - defined early
+    const handleFishermanKeydown = (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && !fishermanActive) {
+        e.preventDefault();
+        fishermanContainer.click();
+      }
+    };
+
+    // Function to refresh DOM element references
+    const refreshDOMReferences = () => {
+      pelicanContainer = document.getElementById('pelican-container');
+      pelicanSvg = document.getElementById('pelican-svg');
+      fallingFishContainer = document.getElementById('falling-fish-container');
+      fishermanContainer = document.getElementById('fisherman-container');
+      confettiContainer = document.getElementById('confetti-container');
+      escMessage = document.getElementById('esc-message');
+      catchCounter = document.getElementById('catch-counter');
+      gameStatus = document.getElementById('game-status');
+      fishIcons = document.getElementById('fish-icons');
+
+      // Re-attach event listeners after getting new references
+      if (fishermanContainer && !fishermanContainer.hasAttribute('data-listeners-attached')) {
+        fishermanContainer.setAttribute('data-listeners-attached', 'true');
+        fishermanContainer.addEventListener('click', handleFishermanClick);
+        fishermanContainer.addEventListener('keydown', handleFishermanKeydown);
+      }
+    };
+
+    // Initial DOM reference capture
+    refreshDOMReferences();
+
+    if (!pelicanContainer || !pelicanSvg || !fallingFishContainer || !fishermanContainer) return;
 
     // Check if we should show the game (only on /software-engineering page)
     const checkAndShowGame = () => {
@@ -728,10 +787,10 @@
       isFlying = true;
       const viewportWidth = window.innerWidth;
 
-      // Calculate fish drops - fewer fish, simpler game
+      // Calculate fish drops - more fish for faster gameplay
       fishDroppedCount = 0;
       dropTimes = [];
-      const numDrops = 4; // Drop 4 fish each time
+      const numDrops = 8; // Drop 8 fish each time for faster gameplay
 
       for (let i = 0; i < numDrops; i++) {
         // Stagger drops across the flight
@@ -833,40 +892,6 @@
         }
       }, fallDuration);
     };
-
-    // Fisherman controls - Click to activate game (fisherman + pelican)
-    fishermanContainer.addEventListener('click', (e) => {
-      if (!fishermanActive) {
-        fishermanActive = true;
-        fishermanContainer.classList.add('active');
-        const rect = fishermanContainer.getBoundingClientRect();
-        fishermanX = rect.left;
-
-        // Show ESC message
-        if (escMessage) {
-          escMessage.classList.add('visible');
-        }
-
-        // Also activate pelican flight
-        if (!isActivated) {
-          isActivated = true;
-          pelicanContainer.classList.add('flying');
-          startRandomFlight();
-        }
-
-        if (gameStatus) {
-          gameStatus.textContent = 'Game started! Use left and right arrow keys to move and catch fish. Press ESC to stop.';
-        }
-      }
-    });
-
-    // Also support Enter/Space for accessibility
-    fishermanContainer.addEventListener('keydown', (e) => {
-      if ((e.key === 'Enter' || e.key === ' ') && !fishermanActive) {
-        e.preventDefault();
-        fishermanContainer.click();
-      }
-    });
 
     // Keyboard controls for fisherman and pelican
     document.addEventListener('keydown', (e) => {
@@ -1088,26 +1113,73 @@
       }
     };
 
-    // Confetti animation - 5 seconds
+    // Simple fireworks next to fisherman - each burst in different spot
     const triggerConfetti = () => {
+      if (!confettiContainer || !fishermanContainer) {
+        console.error('Confetti or fisherman container not found!');
+        return;
+      }
+
+      // Get fisherman's current position
+      const fishermanRect = fishermanContainer.getBoundingClientRect();
+      const centerX = fishermanRect.left + (fishermanRect.width / 2);
+      const centerY = fishermanRect.top + (fishermanRect.height / 2);
+
       const colors = ['#FCD34D', '#60A5FA', '#F87171', '#34D399', '#A78BFA', '#F472B6'];
 
-      for (let i = 0; i < 150; i++) {
+      // Create 4 bursts, each at a different location around the fisherman
+      for (let burst = 0; burst < 4; burst++) {
         setTimeout(() => {
-          const confetti = document.createElement('div');
-          confetti.className = 'confetti';
-          confetti.style.left = `${Math.random() * 100}%`;
-          confetti.style.top = '-10px';
-          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-          confetti.style.animationDelay = `${Math.random() * 0.5}s`;
-          confetti.style.animationDuration = `${2 + Math.random() * 3}s`;
+          // Random offset for this burst's starting position (within 40-60px of fisherman)
+          const burstAngle = (Math.PI * 2 * burst) / 4 + (Math.random() * 0.5 - 0.25);
+          const burstDistance = 40 + Math.random() * 20;
+          const burstStartX = centerX + Math.cos(burstAngle) * burstDistance;
+          const burstStartY = centerY + Math.sin(burstAngle) * burstDistance;
 
-          confettiContainer.appendChild(confetti);
+          // Each burst: 30 pieces in a circle
+          for (let i = 0; i < 30; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
 
-          setTimeout(() => {
-            confetti.remove();
-          }, 5000);
-        }, i * 30);
+            // Start position - different for each burst!
+            confetti.style.position = 'fixed';
+            confetti.style.left = `${burstStartX}px`;
+            confetti.style.top = `${burstStartY}px`;
+
+            // Random bright color
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+            // Size: 15-20px for visibility
+            const size = 15 + Math.random() * 5;
+            confetti.style.width = `${size}px`;
+            confetti.style.height = `${size}px`;
+
+            // Random circle or square
+            if (Math.random() > 0.5) {
+              confetti.style.borderRadius = '50%';
+            }
+
+            // Calculate burst direction - small radius (60-80px)
+            const angle = (Math.PI * 2 * i) / 30;
+            const distance = 60 + Math.random() * 20;
+            const tx = Math.cos(angle) * distance;
+            const ty = Math.sin(angle) * distance;
+
+            // Set animation variables
+            confetti.style.setProperty('--tx', `${tx}px`);
+            confetti.style.setProperty('--ty', `${ty}px`);
+            confetti.style.animation = 'fireworkBurst 1.2s ease-out forwards';
+
+            confettiContainer.appendChild(confetti);
+
+            // Clean up
+            setTimeout(() => {
+              if (confetti.parentElement) {
+                confetti.remove();
+              }
+            }, 1500);
+          }
+        }, burst * 1250); // Burst every 1.25 seconds
       }
     };
 
@@ -1142,7 +1214,7 @@
 
           setTimeout(() => {
             startRandomFlight();
-          }, 4000 + Math.random() * 6000);
+          }, 2000 + Math.random() * 3000); // Reduced wait time: 2-5 seconds instead of 4-10 seconds
         }
       }
 
@@ -1166,6 +1238,9 @@
 
     // Handle Astro page transitions - check path and reset game state
     document.addEventListener('astro:page-load', () => {
+      // Refresh DOM references first - critical for fixing stale references!
+      refreshDOMReferences();
+
       // Always reset game state on page change
       isFlying = false;
       isActivated = false;
@@ -1227,6 +1302,9 @@
 
     // Also listen to after-swap to ensure visibility is set correctly
     document.addEventListener('astro:after-swap', () => {
+      // Refresh DOM references on swap too
+      refreshDOMReferences();
+
       requestAnimationFrame(() => {
         checkAndShowGame();
       });
