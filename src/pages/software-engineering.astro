@@ -103,7 +103,7 @@ const experiences = [
 
   <Container>
     <!-- Navigation -->
-    <nav class="animate sticky top-0 z-10 -mx-3 mb-12 mt-8 flex gap-8 border-b border-stone-300/50 bg-white/80 px-3 pb-4 backdrop-blur-sm dark:border-stone-700/50 dark:bg-stone-900/80 md:-mx-6 md:gap-12 md:px-6">
+    <nav class="animate sticky top-0 z-10 -mx-3 mb-12 mt-8 flex gap-8 border-b border-stone-300/30 px-3 pb-4 backdrop-blur-md dark:border-stone-700/30 md:-mx-6 md:gap-12 md:px-6">
       <a href="#about" class="group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
         About
         <span class="absolute -bottom-4 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 group-hover:w-full dark:bg-stone-100"></span>
@@ -237,81 +237,71 @@ const experiences = [
   }
 
   /* Mouse halo effect */
-  body {
-    position: relative;
-  }
-
-  body::before {
-    content: '';
+  #cursor-halo {
     position: fixed;
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     border-radius: 50%;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.3s ease;
-    background: radial-gradient(circle, rgba(120, 113, 108, 0.08) 0%, transparent 70%);
+    transition: opacity 0.5s ease;
+    background: radial-gradient(circle, rgba(120, 113, 108, 0.15) 0%, rgba(120, 113, 108, 0.08) 30%, transparent 70%);
     transform: translate(-50%, -50%);
     z-index: 9999;
+    mix-blend-mode: multiply;
   }
 
   @media (prefers-color-scheme: dark) {
-    body::before {
-      background: radial-gradient(circle, rgba(245, 245, 244, 0.06) 0%, transparent 70%);
+    #cursor-halo {
+      background: radial-gradient(circle, rgba(245, 245, 244, 0.12) 0%, rgba(245, 245, 244, 0.06) 30%, transparent 70%);
+      mix-blend-mode: screen;
     }
   }
 
-  body.mouse-active::before {
+  #cursor-halo.active {
     opacity: 1;
   }
 </style>
 
+<div id="cursor-halo"></div>
+
 <script>
-  const halo = document.querySelector('body');
+  const halo = document.getElementById('cursor-halo');
   let mouseX = 0;
   let mouseY = 0;
+  let currentX = 0;
+  let currentY = 0;
   let isMouseActive = false;
 
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
 
-    if (!isMouseActive) {
-      halo?.classList.add('mouse-active');
+    if (!isMouseActive && halo) {
+      halo.classList.add('active');
       isMouseActive = true;
     }
-
-    const haloElement = document.querySelector('body::before') as HTMLElement;
-    if (halo) {
-      halo.style.setProperty('--mouse-x', `${mouseX}px`);
-      halo.style.setProperty('--mouse-y', `${mouseY}px`);
-    }
-
-    // Update the pseudo-element position
-    document.documentElement.style.setProperty('--mouse-x', `${mouseX}px`);
-    document.documentElement.style.setProperty('--mouse-y', `${mouseY}px`);
   });
 
   document.addEventListener('mouseleave', () => {
-    halo?.classList.remove('mouse-active');
-    isMouseActive = false;
+    if (halo) {
+      halo.classList.remove('active');
+      isMouseActive = false;
+    }
   });
 
-  // Update position continuously
+  // Smooth animation with easing
   function updateHaloPosition() {
-    const styleEl = document.querySelector('body::before') as any;
-    if (styleEl && isMouseActive) {
-      document.documentElement.style.setProperty('--mouse-x', `${mouseX}px`);
-      document.documentElement.style.setProperty('--mouse-y', `${mouseY}px`);
+    if (halo && isMouseActive) {
+      // Easing for smooth follow
+      const ease = 0.15;
+      currentX += (mouseX - currentX) * ease;
+      currentY += (mouseY - currentY) * ease;
+
+      halo.style.left = `${currentX}px`;
+      halo.style.top = `${currentY}px`;
     }
     requestAnimationFrame(updateHaloPosition);
   }
   updateHaloPosition();
 </script>
-
-<style is:inline>
-  body::before {
-    left: var(--mouse-x, -9999px);
-    top: var(--mouse-y, -9999px);
-  }
-</style>
