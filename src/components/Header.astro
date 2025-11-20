@@ -6,7 +6,7 @@ import { SITE } from "@consts";
 
 <header transition:persist>
   <Container>
-    <div class="flex flex-wrap justify-between items-center gap-y-2">
+    <div class="flex flex-wrap items-center justify-between gap-y-2">
       <Link href="/" underline={false}>
         <img
           src="/logo.png"
@@ -14,6 +14,26 @@ import { SITE } from "@consts";
           class="h-16 w-auto object-contain transition-all dark:brightness-0 dark:invert dark:opacity-90"
         />
       </Link>
+
+      <nav class="hidden items-center gap-6 md:flex">
+        <Link href="/home" underline={false} class="text-sm font-medium">
+          Home
+        </Link>
+        <Link href="/news" underline={false} class="text-sm font-medium">
+          News
+        </Link>
+        <Link href="/blog" underline={false} class="text-sm font-medium">
+          Blog
+        </Link>
+        <Link
+          href="/software-engineering"
+          underline={false}
+          class="text-sm font-medium"
+        >
+          Projects
+        </Link>
+      </nav>
+
       <button
         id="magnifying-glass"
         aria-label="Search"

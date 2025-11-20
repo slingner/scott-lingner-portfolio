@@ -1,0 +1,254 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import { SITE, HOME, SOCIALS } from "@consts";
+import Link from "@components/Link.astro";
+import { getCollection } from "astro:content";
+
+const newsItems = (await getCollection("news"))
+  .filter((item) => !item.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 4);
+---
+
+<Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="space-y-12">
+        <section>
+          <article class="space-y-8">
+            <div class="animate">
+              <p
+                class="text-lg leading-relaxed text-stone-700 dark:text-stone-300"
+              >
+                Multi-disciplinary creator based in California.
+              </p>
+            </div>
+
+            <div
+              class="animate grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12"
+            >
+              <a
+                href="/music"
+                class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
+              >
+                <div
+                  class="flex h-24 w-24 items-center justify-center p-4 md:h-32 md:w-32"
+                >
+                  <img
+                    src="/plastic-jaguar-logo.png"
+                    alt="Plastic Jaguar"
+                    class="h-full w-full rounded-lg object-contain shadow-md grayscale transition-all group-hover:shadow-xl group-hover:grayscale-0 dark:opacity-90 dark:brightness-0 dark:invert"
+                  />
+                </div>
+                <span
+                  class="text-sm font-medium text-stone-700 transition-colors group-hover:text-stone-900 dark:text-stone-300 dark:group-hover:text-stone-100 md:text-base"
+                  >Music</span
+                >
+              </a>
+
+              <a
+                href="/stationery"
+                class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
+              >
+                <div
+                  class="flex h-24 w-24 items-center justify-center md:h-32 md:w-32"
+                >
+                  <img
+                    src="/rbc-logo.png"
+                    alt="Rocket Boogie Co."
+                    class="h-full w-full rounded-lg object-contain shadow-md grayscale transition-all group-hover:shadow-xl group-hover:grayscale-0 dark:opacity-90 dark:brightness-0 dark:invert"
+                  />
+                </div>
+                <span
+                  class="text-sm font-medium text-stone-700 transition-colors group-hover:text-stone-900 dark:text-stone-300 dark:group-hover:text-stone-100 md:text-base"
+                  >Stationery</span
+                >
+              </a>
+
+              <a
+                href="/photo"
+                class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
+              >
+                <div
+                  class="flex h-24 w-24 items-center justify-center md:h-32 md:w-32"
+                >
+                  <img
+                    src="/atown.jpg"
+                    alt="Photography"
+                    class="h-full w-full rounded-lg object-cover shadow-md grayscale transition-all group-hover:shadow-xl group-hover:grayscale-0"
+                  />
+                </div>
+                <span
+                  class="text-sm font-medium text-stone-700 transition-colors group-hover:text-stone-900 dark:text-stone-300 dark:group-hover:text-stone-100 md:text-base"
+                  >Photo</span
+                >
+              </a>
+
+              <a
+                href="/software-engineering"
+                class="group flex flex-col items-center gap-3 transition-transform duration-300 hover:scale-105"
+              >
+                <div
+                  class="flex h-24 w-24 items-center justify-center rounded-lg bg-stone-700 shadow-md transition-shadow group-hover:shadow-xl dark:bg-stone-600 md:h-32 md:w-32"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-12 w-12 text-white md:h-16 md:w-16"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                  </svg>
+                </div>
+                <span
+                  class="text-sm font-medium text-stone-700 transition-colors group-hover:text-amber-700 dark:text-stone-300 dark:group-hover:text-amber-400 md:text-base"
+                  >Software</span
+                >
+              </a>
+            </div>
+
+            <!-- News Section - Editorial Style -->
+            <section class="animate mt-12 space-y-6">
+              <h2
+                class="text-2xl font-bold text-stone-900 dark:text-stone-100"
+              >
+                Latest News
+              </h2>
+
+              <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+                {
+                  newsItems.map((item) => (
+                    <Link href={`/news/${item.slug}`} class="group block h-full">
+                      <article class="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-500 hover:shadow-2xl dark:bg-stone-900">
+                        {item.data.thumbnail && (
+                          <div class="relative aspect-[16/10] overflow-hidden bg-stone-200 dark:bg-stone-800">
+                            <img
+                              src={item.data.thumbnail}
+                              alt={item.data.title}
+                              class="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                            />
+                            <div class="absolute left-4 top-4">
+                              <span class="inline-block rounded-full bg-stone-900/80 px-3 py-1 font-mono text-xs text-white backdrop-blur-sm dark:bg-stone-100/80 dark:text-stone-900">
+                                {new Date(item.data.date).toLocaleDateString(
+                                  "en-US",
+                                  {
+                                    month: "short",
+                                    year: "numeric",
+                                  },
+                                )}
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                        <div class="flex flex-1 flex-col p-6 md:p-8">
+                          <h3 class="mb-3 text-xl font-bold leading-tight text-stone-900 transition-colors group-hover:text-stone-700 dark:text-stone-100 dark:group-hover:text-stone-300 md:text-2xl">
+                            {item.data.title}
+                          </h3>
+                          <p class="mb-4 flex-1 text-sm leading-relaxed text-stone-600 dark:text-stone-400 md:text-base">
+                            {item.data.description}
+                          </p>
+                          <div class="flex items-center text-sm font-medium text-stone-700 transition-transform duration-300 group-hover:translate-x-2 dark:text-stone-300">
+                            <span>Read more</span>
+                            <svg
+                              class="ml-2 h-4 w-4"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </article>
+                    </Link>
+                  ))
+                }
+              </div>
+
+              <div class="mt-8">
+                <Link
+                  href="/news"
+                  class="inline-flex items-center gap-2 rounded-full bg-stone-900 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-stone-800 hover:shadow-xl dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-200"
+                >
+                  View all news
+                  <svg
+                    class="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </Link>
+              </div>
+            </section>
+
+            <section class="animate mt-12 space-y-4">
+              <h2
+                class="mb-4 text-2xl font-bold text-stone-900 dark:text-stone-100"
+              >
+                Connect
+              </h2>
+              <div
+                class="rounded-lg border border-stone-300/50 bg-stone-200/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50"
+              >
+                <p
+                  class="mb-4 text-base leading-relaxed text-stone-700 dark:text-stone-300"
+                >
+                  Get in touch about creative work or collaborative
+                  opportunities.
+                </p>
+                <p
+                  class="text-base font-semibold text-stone-900 dark:text-stone-100"
+                >
+                  <Link
+                    href={`mailto:${SITE.EMAIL}`}
+                    aria-label={`Email ${SITE.TITLE}`}
+                  >
+                    {SITE.EMAIL}
+                  </Link>
+                </p>
+              </div>
+              <ul class="not-prose flex flex-wrap gap-2">
+                {
+                  SOCIALS.map((SOCIAL) => (
+                    <li class="flex gap-x-2 text-nowrap pb-4">
+                      <Link
+                        href={SOCIAL.HREF}
+                        external
+                        aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
+                      >
+                        {SOCIAL.NAME}
+                      </Link>
+                      {"/"}
+                    </li>
+                  ))
+                }
+                <li class="line-clamp-1">
+                  <Link href="/rss.xml" aria-label="Scott Lingner RSS feed">
+                    RSS
+                  </Link>
+                </li>
+              </ul>
+            </section>
+          </article>
+        </section>
+      </div>
+    </aside>
+  </Container>
+</Layout>
