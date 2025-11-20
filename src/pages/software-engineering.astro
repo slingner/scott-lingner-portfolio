@@ -361,4 +361,17 @@ const experiences = [
   if (sections.length > 0) {
     setActiveLink(sections[0].id);
   }
+
+  // Add padding to sticky nav when scrolling to prevent header cutoff
+  const stickyNav = document.querySelector('.sticky.top-24') as HTMLElement;
+
+  window.addEventListener('scroll', () => {
+    if (stickyNav) {
+      if (window.scrollY > 100) {
+        stickyNav.style.paddingTop = '48px';
+      } else {
+        stickyNav.style.paddingTop = '0';
+      }
+    }
+  });
 </script>
