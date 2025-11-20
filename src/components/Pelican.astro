@@ -110,7 +110,6 @@
 
 <!-- Fisherman at bottom right -->
 <div id="fisherman-container" class="fisherman-wrapper" role="button" tabindex="0" aria-label="Click to start pelican fishing game. Use left and right arrow keys to move and catch fish. Press ESC to stop.">
-  <div id="catch-counter" class="catch-counter" aria-live="polite" aria-atomic="true">0/10</div>
   <div id="game-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
   <svg id="fisherman-svg" width="100" height="140" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
     <!-- Hat -->
@@ -227,6 +226,9 @@
 
 <!-- Persistent ESC message -->
 <div id="esc-message" class="esc-message">Press <kbd>ESC</kbd> to exit game</div>
+
+<!-- Catch counter -->
+<div id="catch-counter" class="catch-counter" aria-live="polite" aria-atomic="true">0/10</div>
 
 <!-- Confetti container -->
 <div id="confetti-container"></div>
