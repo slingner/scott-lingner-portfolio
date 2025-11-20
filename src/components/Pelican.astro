@@ -399,7 +399,7 @@
 
   .catch-counter {
     position: absolute;
-    top: 30px;
+    top: 150px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Courier New', monospace;
@@ -558,6 +558,25 @@
     const escMessage = document.getElementById('esc-message');
 
     if (!pelicanContainer || !pelicanSvg || !fallingFishContainer || !fishermanContainer) return;
+
+    // Check if we should show the game (only on /software-engineering page)
+    const checkAndShowGame = () => {
+      const currentPath = window.location.pathname;
+      const shouldShow = currentPath === '/software-engineering' || currentPath === '/software-engineering/';
+
+      if (pelicanContainer) pelicanContainer.style.display = shouldShow ? 'block' : 'none';
+      if (fishermanContainer) fishermanContainer.style.display = shouldShow ? 'block' : 'none';
+      if (fallingFishContainer) fallingFishContainer.style.display = shouldShow ? 'block' : 'none';
+      if (confettiContainer) confettiContainer.style.display = shouldShow ? 'block' : 'none';
+      if (escMessage) escMessage.style.display = shouldShow ? 'block' : 'none';
+
+      return shouldShow;
+    };
+
+    // Initial check
+    if (!checkAndShowGame()) {
+      return; // Don't initialize game if not on the right page
+    }
 
     let pelicanX = 80;
     let pelicanY = 30;
@@ -991,8 +1010,11 @@
       }
     });
 
-    // Handle Astro page transitions - always reset game state completely
+    // Handle Astro page transitions - check path and reset game state
     document.addEventListener('astro:page-load', () => {
+      // Check if we should show/hide the game
+      const shouldShow = checkAndShowGame();
+
       // Always reset game state on page change
       isFlying = false;
       isActivated = false;
@@ -1037,6 +1059,29 @@
 
       // Re-measure header for new page
       findHeader();
+    });
+
+    // Also handle before swap to ensure clean state
+    document.addEventListener('astro:before-swap', () => {
+      // Force stop all game activity before page swap
+      isFlying = false;
+      isActivated = false;
+      fishermanActive = false;
+
+      // Remove all fish immediately
+      activeFish.forEach(fish => {
+        if (fish && fish.parentElement) {
+          fish.remove();
+        }
+      });
+      activeFish = [];
+
+      // Clean up all visual states
+      if (pelicanSvg) pelicanSvg.classList.remove('flapping');
+      if (pelicanContainer) pelicanContainer.classList.remove('flying');
+      if (fishermanContainer) fishermanContainer.classList.remove('active');
+      if (escMessage) escMessage.classList.remove('visible');
+      if (catchCounter) catchCounter.classList.remove('visible');
     });
   })();
 </script>
