@@ -587,24 +587,41 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    animation: confettiFall 3s ease-in forwards;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
     opacity: 1;
     will-change: transform, opacity;
   }
 
-  @keyframes confettiFall {
+  @keyframes confettiFallLeft {
     0% {
       transform: translateY(0) rotate(0deg) translateX(0);
       opacity: 1;
     }
-    10% {
-      opacity: 1;
+    100% {
+      transform: translateY(100vh) rotate(720deg) translateX(-50px);
+      opacity: 0.8;
     }
-    50% {
+  }
+
+  @keyframes confettiFallRight {
+    0% {
+      transform: translateY(0) rotate(0deg) translateX(0);
       opacity: 1;
     }
     100% {
-      transform: translateY(100vh) rotate(720deg) translateX(100px);
+      transform: translateY(100vh) rotate(720deg) translateX(50px);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes confettiFallStraight {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(720deg);
       opacity: 0.8;
     }
   }
@@ -792,10 +809,10 @@
       isFlying = true;
       const viewportWidth = window.innerWidth;
 
-      // Calculate fish drops - fewer fish, simpler game
+      // Calculate fish drops - more fish for faster gameplay
       fishDroppedCount = 0;
       dropTimes = [];
-      const numDrops = 4; // Drop 4 fish each time
+      const numDrops = 8; // Drop 8 fish each time for faster gameplay
 
       for (let i = 0; i < numDrops; i++) {
         // Stagger drops across the flight
@@ -1127,30 +1144,35 @@
       }
 
       const colors = ['#FCD34D', '#60A5FA', '#F87171', '#34D399', '#A78BFA', '#F472B6'];
+      const animations = ['confettiFallLeft', 'confettiFallRight', 'confettiFallStraight'];
 
       // Create confetti pieces in batches for better visual effect
-      for (let i = 0; i < 200; i++) {
+      for (let i = 0; i < 250; i++) {
         setTimeout(() => {
           const confetti = document.createElement('div');
           confetti.className = 'confetti';
 
-          // Random horizontal position
+          // Random horizontal position across full screen width
           confetti.style.left = `${Math.random() * 100}%`;
           confetti.style.top = '-20px';
 
           // Random color from our palette
           confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 
-          // Varied animation timing for more natural effect
-          confetti.style.animationDelay = `${Math.random() * 0.5}s`;
-          confetti.style.animationDuration = `${2.5 + Math.random() * 2}s`;
+          // Random animation direction (left, right, or straight)
+          const animationName = animations[Math.floor(Math.random() * animations.length)];
+          confetti.style.animationName = animationName;
 
-          // Random size for variety (8-16px)
-          const size = 8 + Math.random() * 8;
+          // Varied animation timing for more natural effect
+          confetti.style.animationDelay = `${Math.random() * 0.3}s`;
+          confetti.style.animationDuration = `${2.5 + Math.random() * 1.5}s`;
+
+          // Random size for variety (10-20px for better visibility)
+          const size = 10 + Math.random() * 10;
           confetti.style.width = `${size}px`;
           confetti.style.height = `${size}px`;
 
-          // Add some variety to shapes - some square, some rectangular
+          // Add some variety to shapes - some square, some circular
           if (Math.random() > 0.5) {
             confetti.style.borderRadius = '50%';
           }
@@ -1163,7 +1185,7 @@
               confetti.remove();
             }
           }, 5000);
-        }, i * 25); // Stagger creation every 25ms
+        }, i * 20); // Stagger creation every 20ms for faster burst
       }
     };
 
@@ -1198,7 +1220,7 @@
 
           setTimeout(() => {
             startRandomFlight();
-          }, 4000 + Math.random() * 6000);
+          }, 2000 + Math.random() * 3000); // Reduced wait time: 2-5 seconds instead of 4-10 seconds
         }
       }
 
