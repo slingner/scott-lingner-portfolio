@@ -2,6 +2,7 @@
 import SoftwareLayout from "@layouts/SoftwareLayout.astro";
 import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
+import Pelican from "@components/Pelican.astro";
 import { getCollection } from "astro:content";
 
 const blog = (await getCollection("blog"))
@@ -230,6 +231,8 @@ const experiences = [
     </aside>
   </Container>
 </SoftwareLayout>
+
+<Pelican />
 
 <style>
   html {
