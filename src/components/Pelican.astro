@@ -230,6 +230,9 @@
 <!-- Catch counter -->
 <div id="catch-counter" class="catch-counter" aria-live="polite" aria-atomic="true">0/10</div>
 
+<!-- Fish icons display -->
+<div id="fish-icons" class="fish-icons"></div>
+
 <!-- Confetti container -->
 <div id="confetti-container"></div>
 
@@ -440,6 +443,35 @@
     opacity: 1;
   }
 
+  .fish-icons {
+    position: fixed;
+    top: 92px;
+    right: 20px;
+    display: flex;
+    gap: 4px;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: none;
+  }
+
+  .fish-icons.game-visible {
+    display: flex;
+  }
+
+  .fish-icons.visible {
+    opacity: 1;
+  }
+
+  .fish-icon {
+    width: 16px;
+    height: 16px;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
   .level-display {
     position: absolute;
     top: 60px;
@@ -585,6 +617,7 @@
     // Get all game elements
     const catchCounter = document.getElementById('catch-counter');
     const gameStatus = document.getElementById('game-status');
+    const fishIcons = document.getElementById('fish-icons');
 
     // Game state variables
     let pelicanX = 80;
@@ -648,6 +681,13 @@
           catchCounter.classList.add('game-visible');
         } else {
           catchCounter.classList.remove('game-visible');
+        }
+      }
+      if (fishIcons) {
+        if (shouldShow) {
+          fishIcons.classList.add('game-visible');
+        } else {
+          fishIcons.classList.remove('game-visible');
         }
       }
 
@@ -870,6 +910,12 @@
           catchCounter.classList.remove('visible');
         }
 
+        // Clear fish icons
+        if (fishIcons) {
+          fishIcons.innerHTML = '';
+          fishIcons.classList.remove('visible');
+        }
+
         if (gameStatus) {
           gameStatus.textContent = 'Game stopped. Click fisherman to start again.';
         }
@@ -934,6 +980,33 @@
             }
           }
 
+          // Add fish icon to display
+          if (fishIcons) {
+            const fishIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            fishIcon.setAttribute('class', 'fish-icon');
+            fishIcon.setAttribute('width', '16');
+            fishIcon.setAttribute('height', '16');
+            fishIcon.setAttribute('viewBox', '0 0 16 16');
+            fishIcon.innerHTML = `
+              <rect x="4" y="6" width="2" height="2" fill="#60A5FA"/>
+              <rect x="6" y="4" width="2" height="2" fill="#60A5FA"/>
+              <rect x="8" y="4" width="2" height="2" fill="#60A5FA"/>
+              <rect x="10" y="6" width="2" height="2" fill="#60A5FA"/>
+              <rect x="6" y="8" width="2" height="2" fill="#60A5FA"/>
+              <rect x="8" y="8" width="2" height="2" fill="#60A5FA"/>
+              <rect x="4" y="8" width="2" height="2" fill="#60A5FA"/>
+              <rect x="10" y="8" width="2" height="2" fill="#60A5FA"/>
+              <rect x="2" y="8" width="2" height="2" fill="#60A5FA"/>
+              <rect x="12" y="7" width="1" height="1" fill="#1F2937"/>
+            `;
+            fishIcons.appendChild(fishIcon);
+
+            // Show fish icons after first catch
+            if (catchCount >= 1) {
+              fishIcons.classList.add('visible');
+            }
+          }
+
           if (gameStatus) {
             gameStatus.textContent = `Fish caught! ${catchCount}/10`;
           }
@@ -978,11 +1051,11 @@
       pelicanY = 30;
       pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
 
-      // Stop shark
-      sharkActive = false;
-      sharkContainer.classList.remove('active');
-      sharkContainer.style.right = '40px';
-      sharkContainer.style.left = 'auto';
+      // Stop fisherman and reset position
+      fishermanActive = false;
+      fishermanContainer.classList.remove('active');
+      fishermanContainer.style.right = '40px';
+      fishermanContainer.style.left = 'auto';
 
       // Hide ESC message
       if (escMessage) {
@@ -1002,6 +1075,12 @@
       if (catchCounter) {
         catchCounter.textContent = '0/10';
         catchCounter.classList.remove('visible');
+      }
+
+      // Clear fish icons
+      if (fishIcons) {
+        fishIcons.innerHTML = '';
+        fishIcons.classList.remove('visible');
       }
 
       if (gameStatus) {
@@ -1131,6 +1210,12 @@
         catchCounter.textContent = '0/10';
       }
 
+      // Clear fish icons
+      if (fishIcons) {
+        fishIcons.innerHTML = '';
+        fishIcons.classList.remove('visible');
+      }
+
       // Re-measure header for new page
       findHeader();
 
@@ -1168,6 +1253,10 @@
       if (fishermanContainer) fishermanContainer.classList.remove('active');
       if (escMessage) escMessage.classList.remove('visible');
       if (catchCounter) catchCounter.classList.remove('visible');
+      if (fishIcons) {
+        fishIcons.innerHTML = '';
+        fishIcons.classList.remove('visible');
+      }
     });
   })();
 </script>
