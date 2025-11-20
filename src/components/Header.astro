@@ -22,15 +22,47 @@ import { SITE } from "@consts";
         <Link href="/news" underline={false} class="text-sm font-medium">
           News
         </Link>
-        <Link href="/blog" underline={false} class="text-sm font-medium">
-          Blog
-        </Link>
-        <Link
-          href="/software-engineering"
-          underline={false}
-          class="text-sm font-medium"
-        >
-          Projects
+        <div class="dropdown relative">
+          <button
+            class="text-sm font-medium text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+          >
+            Projects ▾
+          </button>
+          <div
+            class="dropdown-menu absolute left-0 top-full mt-2 hidden w-48 rounded-lg border border-stone-300/50 bg-white shadow-lg dark:border-stone-700/50 dark:bg-stone-800"
+          >
+            <Link
+              href="/software-engineering"
+              underline={false}
+              class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+            >
+              Software Projects
+            </Link>
+            <Link
+              href="/music"
+              underline={false}
+              class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+            >
+              Music
+            </Link>
+            <Link
+              href="/stationery"
+              underline={false}
+              class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+            >
+              Stationery
+            </Link>
+            <Link
+              href="/photo"
+              underline={false}
+              class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+            >
+              Photography
+            </Link>
+          </div>
+        </div>
+        <Link href="/about" underline={false} class="text-sm font-medium">
+          About
         </Link>
       </nav>
 
@@ -56,3 +88,13 @@ import { SITE } from "@consts";
     </div>
   </Container>
 </header>
+
+<style>
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu {
+    z-index: 50;
+  }
+</style>

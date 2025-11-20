@@ -38,7 +38,8 @@ const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
         height: 100vh;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        padding-left: 4rem;
       }
 
       .background-image {
@@ -47,20 +48,19 @@ const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: brightness(0.7) grayscale(20%);
+        filter: brightness(0.6) grayscale(20%);
       }
 
       .content {
         position: relative;
         z-index: 10;
-        max-width: 1200px;
+        max-width: 600px;
         width: 100%;
-        padding: 2rem;
       }
 
       .header {
-        text-align: center;
-        margin-bottom: 4rem;
+        text-align: left;
+        margin-bottom: 3rem;
         animation: fadeInDown 1s ease-out;
       }
 
@@ -71,42 +71,37 @@ const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
         margin-bottom: 1rem;
         text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         letter-spacing: -0.02em;
+        text-align: left;
       }
 
       .subtitle {
-        font-size: clamp(1rem, 2vw, 1.5rem);
+        font-size: clamp(1rem, 2vw, 1.25rem);
         color: rgba(255, 255, 255, 0.9);
         font-weight: 300;
         text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        text-align: left;
       }
 
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        max-width: 900px;
-        margin: 0 auto;
+      .nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
       }
 
       .category-link {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 3rem 2rem;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 12px;
+        display: block;
         text-decoration: none;
         color: white;
-        font-size: 1.5rem;
-        font-weight: 600;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
         transition: all 0.3s ease;
-        cursor: pointer;
-        overflow: hidden;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         animation: fadeInUp 1s ease-out;
         animation-fill-mode: both;
+        text-align: left;
+        line-height: 1.2;
       }
 
       .category-link:nth-child(1) { animation-delay: 0.1s; }
@@ -115,22 +110,9 @@ const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
       .category-link:nth-child(4) { animation-delay: 0.4s; }
       .category-link:nth-child(5) { animation-delay: 0.5s; }
 
-      .category-link::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(255, 255, 255, 0);
-        transition: all 0.3s ease;
-      }
-
       .category-link:hover {
-        transform: translateY(-4px);
-        border-color: rgba(255, 255, 255, 0.4);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      }
-
-      .category-link:hover::before {
-        background: rgba(255, 255, 255, 0.15);
+        transform: translateX(10px);
+        text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
       }
 
       @keyframes fadeInDown {
@@ -156,14 +138,13 @@ const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
       }
 
       @media (max-width: 768px) {
-        .grid {
-          grid-template-columns: 1fr;
-          gap: 1rem;
+        .landing-container {
+          padding-left: 2rem;
+          padding-right: 2rem;
         }
 
         .category-link {
-          padding: 2rem 1.5rem;
-          font-size: 1.25rem;
+          font-size: clamp(1.5rem, 6vw, 2.5rem);
         }
       }
     </style>
@@ -182,7 +163,7 @@ const randomPhoto = photos[Math.floor(Math.random() * photos.length)];
           <p class="subtitle">Multi-disciplinary creator based in California</p>
         </div>
 
-        <nav class="grid">
+        <nav class="nav-list">
           <a href="/music" class="category-link">
             Music
           </a>
