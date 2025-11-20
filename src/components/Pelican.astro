@@ -110,6 +110,7 @@
 
 <!-- Fisherman at bottom right -->
 <div id="fisherman-container" class="fisherman-wrapper">
+  <div id="catch-counter" class="catch-counter">0</div>
   <svg id="fisherman-svg" width="100" height="120" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
     <!-- Hat -->
     <g id="hat">
@@ -330,6 +331,22 @@
     opacity: 0;
   }
 
+  .catch-counter {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Courier New', monospace;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1F2937;
+    text-shadow: 2px 2px 0px #FCD34D;
+    image-rendering: pixelated;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    pointer-events: none;
+  }
+
   /* Confetti */
   #confetti-container {
     position: fixed;
@@ -446,6 +463,10 @@
       dropFish();
     });
 
+    // Catch counter
+    let catchCount = 0;
+    const catchCounter = document.getElementById('catch-counter');
+
     // Drop fish from pelican
     const dropFish = () => {
       if (activeFish) return; // Only one fish at a time
@@ -458,9 +479,12 @@
       const fish = document.createElement('div');
       fish.className = 'falling-fish';
 
-      // Set position immediately
+      // Set all styles explicitly
+      fish.style.position = 'fixed';
       fish.style.left = `${currentPelicanX}px`;
       fish.style.top = `${currentPelicanY}px`;
+      fish.style.pointerEvents = 'none';
+      fish.style.zIndex = '9998';
 
       fish.innerHTML = `
         <svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -482,10 +506,11 @@
       document.body.appendChild(fish);
       activeFish = fish;
 
-      // Trigger animation on next frame
-      requestAnimationFrame(() => {
-        fish.style.animation = 'fallDown 5s linear forwards';
-      });
+      // Force reflow before animation
+      fish.offsetHeight;
+
+      // Start animation
+      fish.style.animation = 'fallDown 5s linear forwards';
 
       // Remove fish after animation or if caught
       setTimeout(() => {
@@ -553,6 +578,10 @@
           // Fish caught!
           activeFish.remove();
           activeFish = null;
+          catchCount++;
+          if (catchCounter) {
+            catchCounter.textContent = catchCount.toString();
+          }
           triggerConfetti();
           fishermanActive = false;
           fishermanContainer.classList.remove('active');
