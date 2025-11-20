@@ -1,5 +1,5 @@
 ---
-// Pelican component with flying and cursor interaction animations
+// Pelican component with flying animation and fish game
 ---
 
 <div id="pelican-container" class="pelican-wrapper">
@@ -105,33 +105,112 @@
   </svg>
 </div>
 
-<!-- Hidden cursor (fish) when pelican is eating -->
-<div id="fish-cursor" class="fish-cursor">
-  <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <!-- Pixelated Fish -->
-    <rect x="8" y="10" width="2" height="2" fill="#60A5FA"/>
-    <rect x="10" y="8" width="2" height="2" fill="#60A5FA"/>
-    <rect x="12" y="8" width="2" height="2" fill="#60A5FA"/>
-    <rect x="14" y="10" width="2" height="2" fill="#60A5FA"/>
-    <rect x="10" y="10" width="2" height="2" fill="#93C5FD"/>
-    <rect x="12" y="10" width="2" height="2" fill="#93C5FD"/>
-    <rect x="12" y="12" width="2" height="2" fill="#60A5FA"/>
-    <rect x="10" y="12" width="2" height="2" fill="#60A5FA"/>
-    <!-- Tail -->
-    <rect x="6" y="8" width="2" height="2" fill="#60A5FA"/>
-    <rect x="6" y="12" width="2" height="2" fill="#60A5FA"/>
-    <rect x="4" y="10" width="2" height="2" fill="#60A5FA"/>
-    <!-- Eye -->
-    <rect x="12" y="9" width="1" height="1" fill="#1F2937"/>
+<!-- Falling fish container -->
+<div id="falling-fish-container"></div>
+
+<!-- Fisherman at bottom right -->
+<div id="fisherman-container" class="fisherman-wrapper">
+  <svg id="fisherman-svg" width="100" height="120" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+    <!-- Hat -->
+    <g id="hat">
+      <rect x="38" y="20" width="4" height="4" fill="#FCD34D"/>
+      <rect x="42" y="16" width="4" height="4" fill="#FCD34D"/>
+      <rect x="46" y="16" width="4" height="4" fill="#FCD34D"/>
+      <rect x="50" y="16" width="4" height="4" fill="#FCD34D"/>
+      <rect x="54" y="20" width="4" height="4" fill="#FCD34D"/>
+      <rect x="42" y="20" width="4" height="4" fill="#FCD34D"/>
+      <rect x="46" y="20" width="4" height="4" fill="#FCD34D"/>
+      <rect x="50" y="20" width="4" height="4" fill="#FCD34D"/>
+    </g>
+
+    <!-- Head -->
+    <g id="head">
+      <rect x="42" y="24" width="4" height="4" fill="#FBBF24"/>
+      <rect x="46" y="24" width="4" height="4" fill="#FBBF24"/>
+      <rect x="50" y="24" width="4" height="4" fill="#FBBF24"/>
+      <!-- Eyes -->
+      <rect x="44" y="26" width="2" height="2" fill="#1F2937"/>
+      <rect x="50" y="26" width="2" height="2" fill="#1F2937"/>
+    </g>
+
+    <!-- Yellow Raincoat -->
+    <g id="raincoat">
+      <!-- Shoulders -->
+      <rect x="38" y="28" width="4" height="4" fill="#FCD34D"/>
+      <rect x="42" y="28" width="4" height="4" fill="#FCD34D"/>
+      <rect x="46" y="28" width="4" height="4" fill="#FCD34D"/>
+      <rect x="50" y="28" width="4" height="4" fill="#FCD34D"/>
+      <rect x="54" y="28" width="4" height="4" fill="#FCD34D"/>
+      <!-- Body -->
+      <rect x="38" y="32" width="4" height="4" fill="#FCD34D"/>
+      <rect x="42" y="32" width="4" height="4" fill="#FCD34D"/>
+      <rect x="46" y="32" width="4" height="4" fill="#FCD34D"/>
+      <rect x="50" y="32" width="4" height="4" fill="#FCD34D"/>
+      <rect x="54" y="32" width="4" height="4" fill="#FCD34D"/>
+      <rect x="38" y="36" width="4" height="4" fill="#FCD34D"/>
+      <rect x="42" y="36" width="4" height="4" fill="#FCD34D"/>
+      <rect x="46" y="36" width="4" height="4" fill="#FCD34D"/>
+      <rect x="50" y="36" width="4" height="4" fill="#FCD34D"/>
+      <rect x="54" y="36" width="4" height="4" fill="#FCD34D"/>
+      <rect x="38" y="40" width="4" height="4" fill="#FCD34D"/>
+      <rect x="42" y="40" width="4" height="4" fill="#FCD34D"/>
+      <rect x="46" y="40" width="4" height="4" fill="#FCD34D"/>
+      <rect x="50" y="40" width="4" height="4" fill="#FCD34D"/>
+      <rect x="54" y="40" width="4" height="4" fill="#FCD34D"/>
+      <!-- Buttons -->
+      <rect x="46" y="34" width="2" height="2" fill="#F59E0B"/>
+      <rect x="46" y="38" width="2" height="2" fill="#F59E0B"/>
+    </g>
+
+    <!-- Arms -->
+    <g id="arms">
+      <rect x="34" y="32" width="4" height="4" fill="#FCD34D"/>
+      <rect x="30" y="36" width="4" height="4" fill="#FCD34D"/>
+      <rect x="58" y="32" width="4" height="4" fill="#FCD34D"/>
+      <rect x="62" y="36" width="4" height="4" fill="#FCD34D"/>
+    </g>
+
+    <!-- Legs -->
+    <g id="legs">
+      <rect x="42" y="44" width="4" height="4" fill="#92400E"/>
+      <rect x="50" y="44" width="4" height="4" fill="#92400E"/>
+      <rect x="42" y="48" width="4" height="4" fill="#92400E"/>
+      <rect x="50" y="48" width="4" height="4" fill="#92400E"/>
+      <!-- Boots -->
+      <rect x="40" y="52" width="8" height="4" fill="#1F2937"/>
+      <rect x="48" y="52" width="8" height="4" fill="#1F2937"/>
+    </g>
+
+    <!-- Fishing Net -->
+    <g id="net">
+      <!-- Handle -->
+      <rect x="26" y="40" width="2" height="16" fill="#78716C"/>
+      <!-- Net rim -->
+      <rect x="16" y="56" width="16" height="2" fill="#78716C"/>
+      <!-- Net mesh -->
+      <rect x="18" y="58" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="22" y="58" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="26" y="58" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="20" y="60" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="24" y="60" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="18" y="62" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="22" y="62" width="2" height="2" fill="#9CA3AF"/>
+      <rect x="26" y="62" width="2" height="2" fill="#9CA3AF"/>
+    </g>
   </svg>
+  <div id="fisherman-hint" class="fisherman-hint">Click me!</div>
 </div>
+
+<!-- Confetti container -->
+<div id="confetti-container"></div>
 
 <style>
   .pelican-wrapper {
     position: fixed;
     z-index: 9999;
-    pointer-events: none;
+    pointer-events: auto;
     will-change: transform;
+    cursor: pointer;
   }
 
   #pelican-svg {
@@ -141,21 +220,11 @@
     image-rendering: crisp-edges;
   }
 
-  .fish-cursor {
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    display: none;
-    transform: translate(-50%, -50%);
+  #pelican-svg:hover {
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.4));
   }
 
-  .fish-cursor svg {
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
-  }
-
-  /* Wing flap animation - slower, more visible movement */
+  /* Wing flap animation */
   @keyframes flapWings {
     0% {
       transform: translateY(0) rotate(0deg);
@@ -178,40 +247,139 @@
     transform-origin: 30% 50%;
   }
 
-  /* Scale effect for depth illusion */
-  .pelican-wrapper.in-front {
+  /* Falling fish */
+  #falling-fish-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+  }
+
+  .falling-fish {
+    position: absolute;
+    animation: fallDown 3s linear forwards;
+  }
+
+  .falling-fish svg {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  @keyframes fallDown {
+    from {
+      transform: translateY(0) rotate(0deg);
+    }
+    to {
+      transform: translateY(100vh) rotate(360deg);
+    }
+  }
+
+  /* Fisherman */
+  .fisherman-wrapper {
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    z-index: 9999;
+    cursor: pointer;
+    transition: transform 0.1s ease-out;
+  }
+
+  .fisherman-wrapper.active {
+    cursor: default;
+  }
+
+  #fisherman-svg {
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  #fisherman-svg:hover {
+    filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.4));
+  }
+
+  .fisherman-hint {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  .fisherman-wrapper:hover .fisherman-hint {
+    opacity: 1;
+  }
+
+  .fisherman-wrapper.active .fisherman-hint {
+    opacity: 0;
+  }
+
+  /* Confetti */
+  #confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
     z-index: 10000;
   }
 
-  .pelican-wrapper.behind {
-    z-index: 9997;
-    opacity: 0.7;
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    animation: confettiFall 3s linear forwards;
+  }
+
+  @keyframes confettiFall {
+    from {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100vh) rotate(720deg);
+      opacity: 0;
+    }
   }
 </style>
 
 <script>
   const pelicanContainer = document.getElementById('pelican-container');
   const pelicanSvg = document.getElementById('pelican-svg');
-  const fishCursor = document.getElementById('fish-cursor');
+  const fallingFishContainer = document.getElementById('falling-fish-container');
+  const fishermanContainer = document.getElementById('fisherman-container');
+  const fishermanSvg = document.getElementById('fisherman-svg');
+  const confettiContainer = document.getElementById('confetti-container');
 
-  if (pelicanContainer && pelicanSvg && fishCursor) {
+  if (pelicanContainer && pelicanSvg && fallingFishContainer && fishermanContainer) {
     let pelicanX = -100;
     let pelicanY = 30;
     let targetX = pelicanX;
     let targetY = pelicanY;
     let isFlying = false;
     let facingRight = true;
-    let isCircling = false;
     let headerElement: HTMLElement | null = null;
     let headerHeight = 100;
     let headerTop = 0;
 
-    // Circling animation state
-    let circleAngle = 0;
-    let circleRadius = 80;
-    let circleCenterX = 0;
-    let circleCenterY = 0;
-    let circleSpeed = 0.05; // Slower circle speed
+    // Game state
+    let fishermanActive = false;
+    let fishermanX = 0;
+    let activeFish: HTMLElement | null = null;
 
     // Find and measure the header element
     const findHeader = () => {
@@ -227,177 +395,184 @@
     findHeader();
     window.addEventListener('resize', findHeader);
 
-    // Check if cursor is in header
-    const checkCursorInHeader = (x: number, y: number) => {
-      if (!headerElement) {
-        findHeader();
-        if (!headerElement) return false;
-      }
-
-      const rect = headerElement.getBoundingClientRect();
-      return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
-    };
-
-    // Track mouse movement
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorInHeader = false;
-
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-
-      const wasInHeader = cursorInHeader;
-      cursorInHeader = checkCursorInHeader(mouseX, mouseY);
-
-      // If cursor just entered header and pelican isn't already circling
-      if (cursorInHeader && !isCircling) {
-        // Start circling around cursor
-        isCircling = true;
-        isFlying = false;
-        pelicanSvg.classList.add('flapping');
-
-        circleCenterX = mouseX;
-        circleCenterY = mouseY;
-        circleAngle = 0;
-      }
-
-      // Update circle center while cursor is in header
-      if (cursorInHeader && isCircling) {
-        // Smoothly follow cursor
-        circleCenterX += (mouseX - circleCenterX) * 0.1;
-        circleCenterY += (mouseY - circleCenterY) * 0.1;
-      }
-
-      // If cursor left header, stop circling
-      if (!cursorInHeader && wasInHeader && isCircling) {
-        // Show fish cursor momentarily before pelican flies away
-        document.body.style.cursor = 'none';
-        fishCursor.style.display = 'block';
-        fishCursor.style.left = `${mouseX}px`;
-        fishCursor.style.top = `${mouseY}px`;
-
-        // Chomp animation
-        let chompCount = 0;
-        const chompInterval = setInterval(() => {
-          if (chompCount % 2 === 0) {
-            pelicanSvg.style.transform = facingRight ? 'scaleX(1) scaleY(0.9)' : 'scaleX(-1) scaleY(0.9)';
-          } else {
-            pelicanSvg.style.transform = facingRight ? 'scaleX(1) scaleY(1.1)' : 'scaleX(-1) scaleY(1.1)';
-          }
-          chompCount++;
-
-          if (chompCount >= 2) {
-            clearInterval(chompInterval);
-
-            // Spit out cursor
-            setTimeout(() => {
-              fishCursor.style.display = 'none';
-              document.body.style.cursor = 'auto';
-
-              // Reset pelican
-              pelicanSvg.style.transform = facingRight ? 'scaleX(1)' : 'scaleX(-1)';
-              pelicanContainer.classList.remove('in-front', 'behind');
-
-              // Fly away
-              isCircling = false;
-              isFlying = true;
-
-              if (facingRight) {
-                targetX = window.innerWidth + 100;
-              } else {
-                targetX = -100;
-              }
-              targetY = headerTop + 30;
-
-              setTimeout(() => {
-                // Reset and schedule next flight
-                facingRight = !facingRight;
-                pelicanSvg.style.transform = facingRight ? 'scaleX(1)' : 'scaleX(-1)';
-
-                if (facingRight) {
-                  pelicanX = -100;
-                } else {
-                  pelicanX = window.innerWidth + 100;
-                }
-                pelicanY = headerTop + 30;
-                pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
-
-                startRandomFlight();
-              }, 2000);
-            }, 150);
-          }
-        }, 100);
-      }
-    });
+    // Flight patterns - varied angles through header
+    const flightPatterns = [
+      { startX: -100, startY: 0.8, endX: 1.2, endY: 0.2 }, // Bottom left to top right
+      { startX: -100, startY: 0.5, endX: 1.2, endY: 0.3 }, // Middle left to middle-top right
+      { startX: -100, startY: 0.3, endX: 1.2, endY: 0.7 }, // Top left to middle-bottom right
+      { startX: -100, startY: 0.6, endX: 1.2, endY: 0.4 }, // Mid-low left to mid-high right
+      { startX: 1.2, startY: 0.8, endX: -100, endY: 0.2 }, // Bottom right to top left
+      { startX: 1.2, startY: 0.5, endX: -100, endY: 0.3 }, // Middle right to middle-top left
+      { startX: 1.2, startY: 0.3, endX: -100, endY: 0.7 }, // Top right to middle-bottom left
+      { startX: 1.2, startY: 0.6, endX: -100, endY: 0.4 }, // Mid-low right to mid-high left
+    ];
 
     // Random flight pattern
     const startRandomFlight = () => {
-      if (isCircling) return;
-
       isFlying = true;
       const viewportWidth = window.innerWidth;
 
-      // Constrain Y to header area
-      const minY = headerTop + 10;
-      const maxY = headerTop + headerHeight - 100;
+      // Pick random flight pattern
+      const pattern = flightPatterns[Math.floor(Math.random() * flightPatterns.length)];
 
-      // Fly across screen within header bounds
-      if (facingRight) {
-        targetX = viewportWidth + 100;
-        targetY = minY + Math.random() * Math.max(0, maxY - minY);
-      } else {
-        targetX = -100;
-        targetY = minY + Math.random() * Math.max(0, maxY - minY);
-      }
+      // Calculate start and end positions
+      const startXPos = pattern.startX < 0 ? pattern.startX : viewportWidth * pattern.startX;
+      const endXPos = pattern.endX < 0 ? pattern.endX : viewportWidth * pattern.endX;
+      const startYPos = headerTop + (headerHeight * pattern.startY);
+      const endYPos = headerTop + (headerHeight * pattern.endY);
+
+      // Set position
+      pelicanX = startXPos;
+      pelicanY = startYPos;
+      targetX = endXPos;
+      targetY = endYPos;
+
+      // Face direction
+      facingRight = endXPos > startXPos;
+      pelicanSvg.style.transform = facingRight ? 'scaleX(1)' : 'scaleX(-1)';
 
       // Add flapping animation
       pelicanSvg.classList.add('flapping');
+
+      pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
+    };
+
+    // Click pelican to drop fish
+    pelicanContainer.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropFish();
+    });
+
+    // Drop fish from pelican
+    const dropFish = () => {
+      if (activeFish) return; // Only one fish at a time
+
+      const fish = document.createElement('div');
+      fish.className = 'falling-fish';
+      fish.style.left = `${pelicanX + 40}px`;
+      fish.style.top = `${pelicanY + 40}px`;
+
+      fish.innerHTML = `
+        <svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="10" width="2" height="2" fill="#60A5FA"/>
+          <rect x="10" y="8" width="2" height="2" fill="#60A5FA"/>
+          <rect x="12" y="8" width="2" height="2" fill="#60A5FA"/>
+          <rect x="14" y="10" width="2" height="2" fill="#60A5FA"/>
+          <rect x="10" y="10" width="2" height="2" fill="#93C5FD"/>
+          <rect x="12" y="10" width="2" height="2" fill="#93C5FD"/>
+          <rect x="12" y="12" width="2" height="2" fill="#60A5FA"/>
+          <rect x="10" y="12" width="2" height="2" fill="#60A5FA"/>
+          <rect x="6" y="8" width="2" height="2" fill="#60A5FA"/>
+          <rect x="6" y="12" width="2" height="2" fill="#60A5FA"/>
+          <rect x="4" y="10" width="2" height="2" fill="#60A5FA"/>
+          <rect x="12" y="9" width="1" height="1" fill="#1F2937"/>
+        </svg>
+      `;
+
+      fallingFishContainer.appendChild(fish);
+      activeFish = fish;
+
+      // Remove fish after animation or if caught
+      setTimeout(() => {
+        if (fish.parentElement) {
+          fish.remove();
+          activeFish = null;
+        }
+      }, 3000);
+    };
+
+    // Fisherman controls
+    fishermanContainer.addEventListener('click', () => {
+      if (!fishermanActive) {
+        fishermanActive = true;
+        fishermanContainer.classList.add('active');
+        const rect = fishermanContainer.getBoundingClientRect();
+        fishermanX = rect.left;
+      }
+    });
+
+    // Keyboard controls for fisherman
+    document.addEventListener('keydown', (e) => {
+      if (!fishermanActive) return;
+
+      const moveSpeed = 15;
+      const minX = 0;
+      const maxX = window.innerWidth - 100;
+
+      if (e.key === 'ArrowLeft') {
+        fishermanX = Math.max(minX, fishermanX - moveSpeed);
+        fishermanContainer.style.right = 'auto';
+        fishermanContainer.style.left = `${fishermanX}px`;
+      } else if (e.key === 'ArrowRight') {
+        fishermanX = Math.min(maxX, fishermanX + moveSpeed);
+        fishermanContainer.style.right = 'auto';
+        fishermanContainer.style.left = `${fishermanX}px`;
+      }
+    });
+
+    // Check for fish collision with net
+    const checkFishCatch = () => {
+      if (!fishermanActive || !activeFish) return;
+
+      const fishRect = activeFish.getBoundingClientRect();
+      const fishermanRect = fishermanContainer.getBoundingClientRect();
+
+      // Check if fish is in net area (top part of fisherman)
+      const netLeft = fishermanRect.left + 16;
+      const netRight = fishermanRect.left + 50;
+      const netTop = fishermanRect.top + 56;
+      const netBottom = fishermanRect.top + 80;
+
+      const fishCenterX = fishRect.left + fishRect.width / 2;
+      const fishCenterY = fishRect.top + fishRect.height / 2;
+
+      if (
+        fishCenterX >= netLeft &&
+        fishCenterX <= netRight &&
+        fishCenterY >= netTop &&
+        fishCenterY <= netBottom
+      ) {
+        // Fish caught!
+        activeFish.remove();
+        activeFish = null;
+        triggerConfetti();
+        fishermanActive = false;
+        fishermanContainer.classList.remove('active');
+      }
+    };
+
+    // Confetti animation
+    const triggerConfetti = () => {
+      const colors = ['#FCD34D', '#60A5FA', '#F87171', '#34D399', '#A78BFA', '#F472B6'];
+
+      for (let i = 0; i < 100; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.style.left = `${Math.random() * 100}%`;
+          confetti.style.top = '-10px';
+          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.animationDelay = `${Math.random() * 0.5}s`;
+          confetti.style.animationDuration = `${2 + Math.random() * 2}s`;
+
+          confettiContainer.appendChild(confetti);
+
+          setTimeout(() => {
+            confetti.remove();
+          }, 4000);
+        }, i * 20);
+      }
     };
 
     // Animation loop
     const animate = () => {
-      if (isCircling) {
-        // Circular motion around cursor
-        circleAngle += circleSpeed;
-
-        // Calculate position on circle
-        pelicanX = circleCenterX + Math.cos(circleAngle) * circleRadius;
-        pelicanY = circleCenterY + Math.sin(circleAngle) * circleRadius;
-
-        // Face direction of movement
-        const prevAngle = circleAngle - circleSpeed;
-        const prevX = circleCenterX + Math.cos(prevAngle) * circleRadius;
-
-        if (pelicanX > prevX) {
-          facingRight = true;
-          pelicanSvg.style.transform = 'scaleX(1)';
-        } else {
-          facingRight = false;
-          pelicanSvg.style.transform = 'scaleX(-1)';
-        }
-
-        // Create depth illusion - pelican appears behind cursor at bottom of circle
-        const normalizedAngle = ((circleAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
-        if (normalizedAngle > Math.PI * 0.5 && normalizedAngle < Math.PI * 1.5) {
-          // Bottom half of circle - behind cursor
-          pelicanContainer.classList.remove('in-front');
-          pelicanContainer.classList.add('behind');
-        } else {
-          // Top half of circle - in front of cursor
-          pelicanContainer.classList.remove('behind');
-          pelicanContainer.classList.add('in-front');
-        }
-
-        pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
-
-      } else if (isFlying) {
+      if (isFlying) {
         const dx = targetX - pelicanX;
         const dy = targetY - pelicanY;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance > 3) {
-          const speed = 2; // Much slower flight speed
+          const speed = 2;
           pelicanX += (dx / distance) * speed;
           pelicanY += (dy / distance) * speed;
 
@@ -412,12 +587,13 @@
 
           // Schedule next flight
           setTimeout(() => {
-            facingRight = !facingRight;
-            pelicanSvg.style.transform = facingRight ? 'scaleX(1)' : 'scaleX(-1)';
             startRandomFlight();
-          }, 4000 + Math.random() * 6000); // Longer pause between flights
+          }, 4000 + Math.random() * 6000);
         }
       }
+
+      // Check fish collision every frame
+      checkFishCatch();
 
       requestAnimationFrame(animate);
     };
