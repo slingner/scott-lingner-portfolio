@@ -1,8 +1,7 @@
 ---
-import Layout from "@layouts/Layout.astro";
+import SoftwareLayout from "@layouts/SoftwareLayout.astro";
 import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
-import BackToPrevious from "@components/BackToPrevious.astro";
 import { getCollection } from "astro:content";
 
 const blog = (await getCollection("blog"))
@@ -49,14 +48,62 @@ const experiences = [
 ];
 ---
 
-<Layout title="Software Engineering" description="Software engineering projects and writing by Scott Lingner.">
-  <Container>
-    <div class="animate">
-      <BackToPrevious href="/">Back to home</BackToPrevious>
-    </div>
+<SoftwareLayout title="Software Engineering" description="Software engineering projects and writing by Scott Lingner.">
+  <!-- Custom Software Header -->
+  <header class="border-b border-stone-300/50 dark:border-stone-700/50">
+    <Container>
+      <div class="flex flex-wrap items-center justify-between gap-y-4 py-6">
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-3">
+            <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-stone-700 dark:bg-stone-600">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              </svg>
+            </div>
+            <div>
+              <h1 class="text-xl font-bold text-stone-900 dark:text-stone-100">Scott Lingner</h1>
+              <p class="text-sm text-stone-600 dark:text-stone-400">Software Engineering</p>
+            </div>
+          </div>
+        </div>
+        <a
+          href="/"
+          class="group relative flex items-center gap-2 overflow-hidden rounded-lg border border-stone-300/70 px-4 py-2 text-sm font-semibold text-stone-700 transition-all duration-300 hover:border-stone-900 hover:text-stone-900 dark:border-stone-600/70 dark:text-stone-300 dark:hover:border-stone-100 dark:hover:text-stone-100"
+        >
+          <span class="absolute bottom-0 left-0 h-[1px] w-0 bg-stone-900 transition-all duration-300 group-hover:w-full dark:bg-stone-100"></span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            ></path>
+          </svg>
+          Back to scottlingner.com
+        </a>
+      </div>
+    </Container>
+  </header>
 
+  <Container>
     <!-- Navigation -->
-    <nav class="animate sticky top-0 z-10 -mx-3 mb-12 mt-8 flex gap-8 border-b border-stone-300/50 bg-white/80 px-3 pb-4 backdrop-blur-sm dark:border-stone-700/50 dark:bg-stone-900/80 md:-mx-6 md:gap-12 md:px-6">
+    <nav class="animate sticky top-0 z-10 -mx-3 mb-12 mt-8 flex gap-8 border-b border-stone-300/30 px-3 pb-4 backdrop-blur-md dark:border-stone-700/30 md:-mx-6 md:gap-12 md:px-6">
       <a href="#about" class="group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
         About
         <span class="absolute -bottom-4 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 group-hover:w-full dark:bg-stone-100"></span>
@@ -182,10 +229,79 @@ const experiences = [
       </section>
     </aside>
   </Container>
-</Layout>
+</SoftwareLayout>
 
 <style>
   html {
     scroll-behavior: smooth;
   }
+
+  /* Mouse halo effect */
+  #cursor-halo {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background: radial-gradient(circle, rgba(120, 113, 108, 0.15) 0%, rgba(120, 113, 108, 0.08) 30%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    mix-blend-mode: multiply;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    #cursor-halo {
+      background: radial-gradient(circle, rgba(245, 245, 244, 0.12) 0%, rgba(245, 245, 244, 0.06) 30%, transparent 70%);
+      mix-blend-mode: screen;
+    }
+  }
+
+  #cursor-halo.active {
+    opacity: 1;
+  }
 </style>
+
+<div id="cursor-halo"></div>
+
+<script>
+  const halo = document.getElementById('cursor-halo');
+  let mouseX = 0;
+  let mouseY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  let isMouseActive = false;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    if (!isMouseActive && halo) {
+      halo.classList.add('active');
+      isMouseActive = true;
+    }
+  });
+
+  document.addEventListener('mouseleave', () => {
+    if (halo) {
+      halo.classList.remove('active');
+      isMouseActive = false;
+    }
+  });
+
+  // Smooth animation with easing
+  function updateHaloPosition() {
+    if (halo && isMouseActive) {
+      // Easing for smooth follow
+      const ease = 0.15;
+      currentX += (mouseX - currentX) * ease;
+      currentY += (mouseY - currentY) * ease;
+
+      halo.style.left = `${currentX}px`;
+      halo.style.top = `${currentY}px`;
+    }
+    requestAnimationFrame(updateHaloPosition);
+  }
+  updateHaloPosition();
+</script>
