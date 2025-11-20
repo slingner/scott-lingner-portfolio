@@ -2,7 +2,7 @@
 // Pelican component with flying animation and fish game
 ---
 
-<div id="pelican-container" class="pelican-wrapper" style="display: none;">
+<div id="pelican-container" class="pelican-wrapper">
   <svg id="pelican-svg" width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
     <!-- Tail -->
     <g id="pelican-tail">
@@ -106,10 +106,10 @@
 </div>
 
 <!-- Falling fish container -->
-<div id="falling-fish-container" style="display: none;"></div>
+<div id="falling-fish-container"></div>
 
 <!-- Fisherman at bottom right -->
-<div id="fisherman-container" class="fisherman-wrapper" role="button" tabindex="0" aria-label="Click to start pelican fishing game. Use left and right arrow keys to move and catch fish. Press ESC to stop." style="display: none;">
+<div id="fisherman-container" class="fisherman-wrapper" role="button" tabindex="0" aria-label="Click to start pelican fishing game. Use left and right arrow keys to move and catch fish. Press ESC to stop.">
   <div id="catch-counter" class="catch-counter" aria-live="polite" aria-atomic="true">0/10</div>
   <div id="game-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
   <svg id="fisherman-svg" width="100" height="140" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
@@ -226,10 +226,10 @@
 </div>
 
 <!-- Persistent ESC message -->
-<div id="esc-message" class="esc-message" style="display: none;">Press <kbd>ESC</kbd> to exit game</div>
+<div id="esc-message" class="esc-message">Press <kbd>ESC</kbd> to exit game</div>
 
 <!-- Confetti container -->
-<div id="confetti-container" style="display: none;"></div>
+<div id="confetti-container"></div>
 
 <style>
   /* Pelican - Desktop only */
@@ -239,11 +239,16 @@
     pointer-events: auto;
     will-change: transform;
     cursor: pointer;
+    display: none; /* Hidden by default, shown via JS on /software-engineering */
+  }
+
+  .pelican-wrapper.game-visible {
+    display: block;
   }
 
   @media (max-width: 1024px) {
     .pelican-wrapper {
-      display: none;
+      display: none !important;
     }
   }
 
@@ -290,11 +295,16 @@
     height: 100%;
     pointer-events: none;
     z-index: 9998;
+    display: none; /* Hidden by default, shown via JS on /software-engineering */
+  }
+
+  #falling-fish-container.game-visible {
+    display: block;
   }
 
   @media (max-width: 1024px) {
     #falling-fish-container {
-      display: none;
+      display: none !important;
     }
   }
 
@@ -329,11 +339,16 @@
     z-index: 9999;
     cursor: pointer;
     transition: transform 0.1s ease-out;
+    display: none; /* Hidden by default, shown via JS on /software-engineering */
+  }
+
+  .fisherman-wrapper.game-visible {
+    display: block;
   }
 
   @media (max-width: 1024px) {
     .fisherman-wrapper {
-      display: none;
+      display: none !important;
     }
   }
 
@@ -399,11 +414,11 @@
 
   .catch-counter {
     position: absolute;
-    top: 142px;
+    top: 138px;
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Courier New', monospace;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     color: #1F2937;
     text-shadow: 2px 2px 0px #FCD34D;
@@ -484,13 +499,16 @@
     font-size: 13px;
     font-family: 'Courier New', monospace;
     pointer-events: none;
-    display: none;
     opacity: 0;
     transition: opacity 0.3s;
+    display: none;
+  }
+
+  .esc-message.game-visible {
+    display: block;
   }
 
   .esc-message.visible {
-    display: block;
     opacity: 1;
   }
 
@@ -520,11 +538,16 @@
     height: 100%;
     pointer-events: none;
     z-index: 10000;
+    display: none; /* Hidden by default, shown via JS on /software-engineering */
+  }
+
+  #confetti-container.game-visible {
+    display: block;
   }
 
   @media (max-width: 1024px) {
     #confetti-container {
-      display: none;
+      display: none !important;
     }
   }
 
@@ -564,10 +587,41 @@
       const currentPath = window.location.pathname;
       const shouldShow = currentPath === '/software-engineering' || currentPath === '/software-engineering/';
 
-      if (pelicanContainer) pelicanContainer.style.display = shouldShow ? 'block' : 'none';
-      if (fishermanContainer) fishermanContainer.style.display = shouldShow ? 'block' : 'none';
-      if (fallingFishContainer) fallingFishContainer.style.display = shouldShow ? 'block' : 'none';
-      if (confettiContainer) confettiContainer.style.display = shouldShow ? 'block' : 'none';
+      if (pelicanContainer) {
+        if (shouldShow) {
+          pelicanContainer.classList.add('game-visible');
+        } else {
+          pelicanContainer.classList.remove('game-visible');
+        }
+      }
+      if (fishermanContainer) {
+        if (shouldShow) {
+          fishermanContainer.classList.add('game-visible');
+        } else {
+          fishermanContainer.classList.remove('game-visible');
+        }
+      }
+      if (fallingFishContainer) {
+        if (shouldShow) {
+          fallingFishContainer.classList.add('game-visible');
+        } else {
+          fallingFishContainer.classList.remove('game-visible');
+        }
+      }
+      if (confettiContainer) {
+        if (shouldShow) {
+          confettiContainer.classList.add('game-visible');
+        } else {
+          confettiContainer.classList.remove('game-visible');
+        }
+      }
+      if (escMessage) {
+        if (shouldShow) {
+          escMessage.classList.add('game-visible');
+        } else {
+          escMessage.classList.remove('game-visible');
+        }
+      }
 
       return shouldShow;
     };
@@ -1054,10 +1108,8 @@
       // Re-measure header for new page
       findHeader();
 
-      // Check if we should show/hide the game AFTER cleanup
-      setTimeout(() => {
-        checkAndShowGame();
-      }, 0);
+      // Check if we should show/hide the game
+      checkAndShowGame();
     });
 
     // Also handle before swap to ensure clean state
