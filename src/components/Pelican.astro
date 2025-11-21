@@ -111,180 +111,13 @@
 <!-- Shark at bottom right -->
 <div id="fisherman-container" class="fisherman-wrapper" role="button" tabindex="0" aria-label="Click to start shark fishing game. Use left and right arrow keys to move the shark and catch fish. Press ESC to stop.">
   <div id="game-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
-  <svg id="fisherman-svg" width="100" height="140" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
-    <!-- Pixelated Waves (at bottom) -->
-    <g id="waves">
-      <!-- Wave row 1 -->
-      <rect x="0" y="120" width="8" height="4" fill="#60A5FA"/>
-      <rect x="8" y="118" width="8" height="4" fill="#60A5FA"/>
-      <rect x="16" y="116" width="8" height="4" fill="#60A5FA"/>
-      <rect x="24" y="118" width="8" height="4" fill="#60A5FA"/>
-      <rect x="32" y="120" width="8" height="4" fill="#60A5FA"/>
-      <rect x="40" y="118" width="8" height="4" fill="#60A5FA"/>
-      <rect x="48" y="116" width="8" height="4" fill="#60A5FA"/>
-      <rect x="56" y="118" width="8" height="4" fill="#60A5FA"/>
-      <rect x="64" y="120" width="8" height="4" fill="#60A5FA"/>
-      <rect x="72" y="118" width="8" height="4" fill="#60A5FA"/>
-      <rect x="80" y="116" width="8" height="4" fill="#60A5FA"/>
-      <rect x="88" y="118" width="8" height="4" fill="#60A5FA"/>
-      <!-- Wave row 2 -->
-      <rect x="0" y="124" width="100" height="16" fill="#3B82F6"/>
-    </g>
-
-    <!-- Pixelated Shark -->
-    <g id="shark">
-      <!-- Dorsal fin (top spike) -->
-      <rect x="44" y="10" width="4" height="4" fill="#0891B2"/>
-      <rect x="48" y="14" width="4" height="4" fill="#0891B2"/>
-      <rect x="52" y="18" width="4" height="4" fill="#0891B2"/>
-      <rect x="48" y="18" width="4" height="4" fill="#06B6D4"/>
-
-      <!-- Back spikes -->
-      <rect x="56" y="22" width="4" height="4" fill="#0891B2"/>
-      <rect x="60" y="26" width="4" height="4" fill="#0891B2"/>
-      <rect x="64" y="30" width="4" height="4" fill="#0891B2"/>
-
-      <!-- Main body - rounded triangular shape -->
-      <rect x="32" y="22" width="4" height="4" fill="#0891B2"/>
-      <rect x="36" y="22" width="4" height="4" fill="#0891B2"/>
-      <rect x="40" y="22" width="4" height="4" fill="#0891B2"/>
-      <rect x="44" y="22" width="4" height="4" fill="#06B6D4"/>
-      <rect x="48" y="22" width="4" height="4" fill="#06B6D4"/>
-      <rect x="52" y="22" width="4" height="4" fill="#06B6D4"/>
-
-      <rect x="28" y="26" width="4" height="4" fill="#0891B2"/>
-      <rect x="32" y="26" width="4" height="4" fill="#06B6D4"/>
-      <rect x="36" y="26" width="4" height="4" fill="#06B6D4"/>
-      <rect x="40" y="26" width="4" height="4" fill="#06B6D4"/>
-      <rect x="44" y="26" width="4" height="4" fill="#06B6D4"/>
-      <rect x="48" y="26" width="4" height="4" fill="#06B6D4"/>
-      <rect x="52" y="26" width="4" height="4" fill="#06B6D4"/>
-      <rect x="56" y="26" width="4" height="4" fill="#06B6D4"/>
-
-      <rect x="24" y="30" width="4" height="4" fill="#0891B2"/>
-      <rect x="28" y="30" width="4" height="4" fill="#06B6D4"/>
-      <rect x="32" y="30" width="4" height="4" fill="#06B6D4"/>
-      <rect x="36" y="30" width="4" height="4" fill="#06B6D4"/>
-      <rect x="40" y="30" width="4" height="4" fill="#06B6D4"/>
-      <rect x="44" y="30" width="4" height="4" fill="#06B6D4"/>
-      <rect x="48" y="30" width="4" height="4" fill="#06B6D4"/>
-      <rect x="52" y="30" width="4" height="4" fill="#06B6D4"/>
-      <rect x="56" y="30" width="4" height="4" fill="#06B6D4"/>
-      <rect x="60" y="30" width="4" height="4" fill="#06B6D4"/>
-
-      <rect x="20" y="34" width="4" height="4" fill="#0891B2"/>
-      <rect x="24" y="34" width="4" height="4" fill="#06B6D4"/>
-      <rect x="28" y="34" width="4" height="4" fill="#06B6D4"/>
-      <rect x="32" y="34" width="4" height="4" fill="#06B6D4"/>
-      <rect x="36" y="34" width="4" height="4" fill="#06B6D4"/>
-      <rect x="40" y="34" width="4" height="4" fill="#06B6D4"/>
-      <rect x="44" y="34" width="4" height="4" fill="#06B6D4"/>
-      <rect x="48" y="34" width="4" height="4" fill="#06B6D4"/>
-      <rect x="52" y="34" width="4" height="4" fill="#06B6D4"/>
-      <rect x="56" y="34" width="4" height="4" fill="#06B6D4"/>
-      <rect x="60" y="34" width="4" height="4" fill="#06B6D4"/>
-
-      <rect x="16" y="38" width="4" height="4" fill="#0891B2"/>
-      <rect x="20" y="38" width="4" height="4" fill="#06B6D4"/>
-      <rect x="24" y="38" width="4" height="4" fill="#06B6D4"/>
-      <rect x="28" y="38" width="4" height="4" fill="#06B6D4"/>
-      <rect x="32" y="38" width="4" height="4" fill="#06B6D4"/>
-      <rect x="36" y="38" width="4" height="4" fill="#06B6D4"/>
-      <rect x="40" y="38" width="4" height="4" fill="#06B6D4"/>
-      <rect x="44" y="38" width="4" height="4" fill="#06B6D4"/>
-      <rect x="48" y="38" width="4" height="4" fill="#06B6D4"/>
-      <rect x="52" y="38" width="4" height="4" fill="#06B6D4"/>
-      <rect x="56" y="38" width="4" height="4" fill="#06B6D4"/>
-
-      <!-- Bottom of body -->
-      <rect x="12" y="42" width="4" height="4" fill="#0891B2"/>
-      <rect x="16" y="42" width="4" height="4" fill="#06B6D4"/>
-      <rect x="20" y="42" width="4" height="4" fill="#06B6D4"/>
-      <rect x="24" y="42" width="4" height="4" fill="#06B6D4"/>
-      <rect x="28" y="42" width="4" height="4" fill="#06B6D4"/>
-      <rect x="32" y="42" width="4" height="4" fill="#06B6D4"/>
-      <rect x="36" y="42" width="4" height="4" fill="#06B6D4"/>
-      <rect x="40" y="42" width="4" height="4" fill="#06B6D4"/>
-      <rect x="44" y="42" width="4" height="4" fill="#06B6D4"/>
-      <rect x="48" y="42" width="4" height="4" fill="#06B6D4"/>
-      <rect x="52" y="42" width="4" height="4" fill="#06B6D4"/>
-
-      <rect x="8" y="46" width="4" height="4" fill="#0891B2"/>
-      <rect x="12" y="46" width="4" height="4" fill="#06B6D4"/>
-      <rect x="16" y="46" width="4" height="4" fill="#06B6D4"/>
-      <rect x="20" y="46" width="4" height="4" fill="#06B6D4"/>
-      <rect x="24" y="46" width="4" height="4" fill="#06B6D4"/>
-      <rect x="28" y="46" width="4" height="4" fill="#06B6D4"/>
-      <rect x="32" y="46" width="4" height="4" fill="#06B6D4"/>
-      <rect x="36" y="46" width="4" height="4" fill="#06B6D4"/>
-      <rect x="40" y="46" width="4" height="4" fill="#06B6D4"/>
-      <rect x="44" y="46" width="4" height="4" fill="#06B6D4"/>
-
-      <rect x="8" y="50" width="4" height="4" fill="#0891B2"/>
-      <rect x="12" y="50" width="4" height="4" fill="#06B6D4"/>
-      <rect x="16" y="50" width="4" height="4" fill="#06B6D4"/>
-      <rect x="20" y="50" width="4" height="4" fill="#06B6D4"/>
-      <rect x="24" y="50" width="4" height="4" fill="#06B6D4"/>
-      <rect x="28" y="50" width="4" height="4" fill="#06B6D4"/>
-      <rect x="32" y="50" width="4" height="4" fill="#06B6D4"/>
-      <rect x="36" y="50" width="4" height="4" fill="#06B6D4"/>
-      <rect x="40" y="50" width="4" height="4" fill="#06B6D4"/>
-
-      <rect x="8" y="54" width="4" height="4" fill="#0891B2"/>
-      <rect x="12" y="54" width="4" height="4" fill="#06B6D4"/>
-      <rect x="16" y="54" width="4" height="4" fill="#06B6D4"/>
-      <rect x="20" y="54" width="4" height="4" fill="#06B6D4"/>
-      <rect x="24" y="54" width="4" height="4" fill="#06B6D4"/>
-      <rect x="28" y="54" width="4" height="4" fill="#06B6D4"/>
-      <rect x="32" y="54" width="4" height="4" fill="#06B6D4"/>
-
-      <!-- Nose/Snout -->
-      <rect x="8" y="58" width="4" height="4" fill="#0891B2"/>
-      <rect x="12" y="58" width="4" height="4" fill="#06B6D4"/>
-      <rect x="16" y="58" width="4" height="4" fill="#06B6D4"/>
-      <rect x="20" y="58" width="4" height="4" fill="#06B6D4"/>
-      <rect x="24" y="58" width="4" height="4" fill="#06B6D4"/>
-
-      <rect x="12" y="62" width="4" height="4" fill="#0891B2"/>
-      <rect x="16" y="62" width="4" height="4" fill="#06B6D4"/>
-      <rect x="20" y="62" width="4" height="4" fill="#06B6D4"/>
-
-      <rect x="16" y="66" width="4" height="4" fill="#0891B2"/>
-      <rect x="20" y="66" width="4" height="4" fill="#06B6D4"/>
-
-      <!-- Eye - large round -->
-      <rect x="32" y="30" width="4" height="4" fill="#FFFFFF"/>
-      <rect x="36" y="30" width="4" height="4" fill="#FFFFFF"/>
-      <rect x="32" y="34" width="4" height="4" fill="#FFFFFF"/>
-      <rect x="36" y="34" width="4" height="4" fill="#FFFFFF"/>
-      <!-- Pupil -->
-      <rect x="34" y="32" width="4" height="4" fill="#1F2937"/>
-
-      <!-- Gills -->
-      <rect x="28" y="42" width="2" height="4" fill="#0891B2"/>
-      <rect x="32" y="42" width="2" height="4" fill="#0891B2"/>
-      <rect x="36" y="42" width="2" height="4" fill="#0891B2"/>
-
-      <!-- Mouth opening (for catching fish) -->
-      <rect x="8" y="62" width="4" height="4" fill="#1F2937"/>
-      <rect x="8" y="66" width="4" height="4" fill="#1F2937"/>
-      <rect x="12" y="66" width="4" height="4" fill="#1F2937"/>
-
-      <!-- Tail fin -->
-      <rect x="56" y="34" width="4" height="4" fill="#0891B2"/>
-      <rect x="60" y="38" width="4" height="4" fill="#0891B2"/>
-      <rect x="64" y="42" width="4" height="4" fill="#0891B2"/>
-      <rect x="68" y="46" width="4" height="4" fill="#0891B2"/>
-      <rect x="64" y="50" width="4" height="4" fill="#0891B2"/>
-      <rect x="60" y="54" width="4" height="4" fill="#0891B2"/>
-      <rect x="56" y="58" width="4" height="4" fill="#0891B2"/>
-
-      <!-- Pectoral fin (side fin) -->
-      <rect x="36" y="46" width="4" height="4" fill="#0891B2"/>
-      <rect x="32" y="50" width="4" height="4" fill="#0891B2"/>
-      <rect x="28" y="54" width="4" height="4" fill="#0891B2"/>
-    </g>
-  </svg>
+  <img
+    id="fisherman-svg"
+    src="/shark.png"
+    alt="Pixelated shark with waves"
+    width="150"
+    height="150"
+  />
   <div id="fisherman-hint" class="fisherman-hint">
     <div class="hint-line">Click to start game</div>
     <div class="hint-line"><kbd>←</kbd> <kbd>→</kbd> to move</div>
@@ -1039,12 +872,12 @@
 
       const fishermanRect = fishermanContainer.getBoundingClientRect();
 
-      // Shark mouth - positioned at the front-left of the shark
-      // Mouth is approximately at x="8-16" y="62-70" in viewBox 100x140
-      const mouthCenterX = fishermanRect.left + (fishermanRect.width * 0.12);  // Mouth center x (12% from left)
-      const mouthCenterY = fishermanRect.top + (fishermanRect.height * 0.49);  // Mouth center y (49% from top)
-      const mouthRadiusX = fishermanRect.width * 0.15;  // Mouth radius x (15% of width)
-      const mouthRadiusY = fishermanRect.height * 0.08; // Mouth radius y (8% of height)
+      // Shark mouth - positioned at the front-left of the shark image
+      // The mouth is on the left side of the shark, roughly center-left
+      const mouthCenterX = fishermanRect.left + (fishermanRect.width * 0.20);  // Mouth center x (20% from left)
+      const mouthCenterY = fishermanRect.top + (fishermanRect.height * 0.45);  // Mouth center y (45% from top)
+      const mouthRadiusX = fishermanRect.width * 0.18;  // Mouth radius x (18% of width)
+      const mouthRadiusY = fishermanRect.height * 0.12; // Mouth radius y (12% of height)
 
       // Check each fish for collision
       for (let i = activeFish.length - 1; i >= 0; i--) {
