@@ -535,6 +535,7 @@
     let fishermanX = 0;
     let activeFish = []; // Array to hold multiple falling fish
     let catchCount = 0;
+    let sharkFlipped = false; // Track if shark is facing right
 
     // Fisherman click handler - defined early so it can be referenced
     const handleFishermanClick = (e) => {
@@ -690,7 +691,7 @@
       // Calculate fish drops - more fish for faster gameplay
       fishDroppedCount = 0;
       dropTimes = [];
-      const numDrops = 12; // Drop 12 fish each time for faster gameplay
+      const numDrops = 100; // Drop 100 fish each time for faster gameplay
 
       for (let i = 0; i < numDrops; i++) {
         // Stagger drops across the flight
@@ -858,11 +859,17 @@
         fishermanX = Math.max(minX, fishermanX - moveSpeed);
         fishermanContainer.style.right = 'auto';
         fishermanContainer.style.left = `${fishermanX}px`;
+        // Face left (normal orientation)
+        sharkFlipped = false;
+        document.getElementById('fisherman-svg').style.transform = 'scaleX(1)';
       } else if (e.key === 'ArrowRight') {
         e.preventDefault();
         fishermanX = Math.min(maxX, fishermanX + moveSpeed);
         fishermanContainer.style.right = 'auto';
         fishermanContainer.style.left = `${fishermanX}px`;
+        // Face right (flipped)
+        sharkFlipped = true;
+        document.getElementById('fisherman-svg').style.transform = 'scaleX(-1)';
       }
     });
 
@@ -872,9 +879,11 @@
 
       const fishermanRect = fishermanContainer.getBoundingClientRect();
 
-      // Shark mouth - positioned at the front-left of the shark image
-      // The mouth is on the left side of the shark, roughly center-left
-      const mouthCenterX = fishermanRect.left + (fishermanRect.width * 0.20);  // Mouth center x (20% from left)
+      // Shark mouth - positioned at the front of the shark image
+      // When flipped, mouth moves to the right side
+      const mouthCenterX = sharkFlipped
+        ? fishermanRect.left + (fishermanRect.width * 0.80)  // Mouth on right when flipped
+        : fishermanRect.left + (fishermanRect.width * 0.20); // Mouth on left normally
       const mouthCenterY = fishermanRect.top + (fishermanRect.height * 0.45);  // Mouth center y (45% from top)
       const mouthRadiusX = fishermanRect.width * 0.18;  // Mouth radius x (18% of width)
       const mouthRadiusY = fishermanRect.height * 0.12; // Mouth radius y (12% of height)
