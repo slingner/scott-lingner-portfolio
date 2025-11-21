@@ -3,12 +3,6 @@ import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
 import Pelican from "@components/Pelican.astro";
 import { SITE } from "@consts";
-
-const currentPath = Astro.url.pathname;
-const isWorkActive = currentPath.startsWith("/software-engineering") ||
-                     currentPath.startsWith("/music") ||
-                     currentPath.startsWith("/art") ||
-                     currentPath.startsWith("/photo");
 ---
 
 <header transition:persist class="bg-stone-100 dark:bg-stone-900">
@@ -26,20 +20,20 @@ const isWorkActive = currentPath.startsWith("/software-engineering") ||
         <Link
           href="/"
           underline={false}
-          class={`nav-link !text-stone-700 dark:!text-stone-300 hover:!text-stone-900 dark:hover:!text-stone-100 text-sm font-medium ${currentPath === "/" ? "active" : ""}`}
+          class="nav-link !text-stone-700 dark:!text-stone-300 hover:!text-stone-900 dark:hover:!text-stone-100 text-sm font-medium"
         >
           Home
         </Link>
         <Link
           href="/news"
           underline={false}
-          class={`nav-link !text-stone-700 dark:!text-stone-300 hover:!text-stone-900 dark:hover:!text-stone-100 text-sm font-medium ${currentPath.startsWith("/news") ? "active" : ""}`}
+          class="nav-link !text-stone-700 dark:!text-stone-300 hover:!text-stone-900 dark:hover:!text-stone-100 text-sm font-medium"
         >
           News
         </Link>
         <div class="dropdown-wrapper group relative">
           <button
-            class={`nav-link inline-block text-sm font-medium text-stone-700 transition-all duration-300 hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100 ${isWorkActive ? "active" : ""}`}
+            class="nav-link inline-block text-sm font-medium text-stone-700 transition-all duration-300 hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
           >
             Work ▾
           </button>
@@ -83,7 +77,7 @@ const isWorkActive = currentPath.startsWith("/software-engineering") ||
         <Link
           href="/about"
           underline={false}
-          class={`nav-link !text-stone-700 dark:!text-stone-300 hover:!text-stone-900 dark:hover:!text-stone-100 text-sm font-medium ${currentPath === "/about" ? "active" : ""}`}
+          class="nav-link !text-stone-700 dark:!text-stone-300 hover:!text-stone-900 dark:hover:!text-stone-100 text-sm font-medium"
         >
           About
         </Link>
@@ -115,6 +109,44 @@ const isWorkActive = currentPath.startsWith("/software-engineering") ||
 </header>
 
 <Pelican />
+
+<script>
+  function updateActiveNavLinks() {
+    const currentPath = window.location.pathname;
+    const isWorkActive = currentPath.startsWith("/software-engineering") ||
+                         currentPath.startsWith("/music") ||
+                         currentPath.startsWith("/art") ||
+                         currentPath.startsWith("/photo");
+
+    // Get all nav links
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+    });
+
+    // Add active class based on current path
+    if (currentPath === "/") {
+      const homeLink = document.querySelector('a[href="/"].nav-link');
+      homeLink?.classList.add("active");
+    } else if (currentPath.startsWith("/news")) {
+      const newsLink = document.querySelector('a[href="/news"].nav-link');
+      newsLink?.classList.add("active");
+    } else if (isWorkActive) {
+      const workButton = document.querySelector('.dropdown-wrapper button.nav-link');
+      workButton?.classList.add("active");
+    } else if (currentPath === "/about") {
+      const aboutLink = document.querySelector('a[href="/about"].nav-link');
+      aboutLink?.classList.add("active");
+    }
+  }
+
+  // Run on initial load
+  updateActiveNavLinks();
+
+  // Run on Astro page navigation
+  document.addEventListener("astro:page-load", updateActiveNavLinks);
+</script>
 
 <style>
   .dropdown-wrapper {
