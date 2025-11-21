@@ -116,8 +116,9 @@ import { SITE } from "@consts";
   function setupDropdown() {
     const dropdownButton = document.getElementById("work-dropdown-button");
     const dropdownMenu = document.getElementById("work-dropdown-menu");
+    const dropdownWrapper = document.querySelector(".dropdown-wrapper");
 
-    if (!dropdownButton || !dropdownMenu) return;
+    if (!dropdownButton || !dropdownMenu || !dropdownWrapper) return;
 
     let isOpen = false;
 
@@ -133,8 +134,19 @@ import { SITE } from "@consts";
       dropdownMenu.classList.add("invisible", "opacity-0");
     }
 
-    // Toggle dropdown on button click
+    // Open dropdown on hover
+    dropdownWrapper.addEventListener("mouseenter", () => {
+      openDropdown();
+    });
+
+    // Close dropdown when mouse leaves
+    dropdownWrapper.addEventListener("mouseleave", () => {
+      closeDropdown();
+    });
+
+    // Also toggle on button click for mobile/touch
     dropdownButton.addEventListener("click", (e) => {
+      e.preventDefault();
       e.stopPropagation();
       if (isOpen) {
         closeDropdown();
@@ -145,21 +157,30 @@ import { SITE } from "@consts";
 
     // Close dropdown when clicking outside
     document.addEventListener("click", (e) => {
-      if (isOpen && !dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+      const target = e.target as Node;
+      if (isOpen && target && !dropdownWrapper.contains(target)) {
         closeDropdown();
       }
     });
 
-    // Close dropdown when clicking a dropdown link (to allow navigation)
+    // Close dropdown immediately when clicking a dropdown link
     const dropdownLinks = dropdownMenu.querySelectorAll(".dropdown-link");
     dropdownLinks.forEach(link => {
       link.addEventListener("click", () => {
-        closeDropdown();
+        // Close immediately without animation for instant navigation
+        isOpen = false;
+        dropdownMenu.classList.remove("visible", "opacity-100");
+        dropdownMenu.classList.add("invisible", "opacity-0");
       });
     });
 
-    // Close dropdown before navigation starts
+    // Close dropdown before any navigation starts
     document.addEventListener("astro:before-preparation", () => {
+      closeDropdown();
+    });
+
+    // Ensure dropdown is closed after navigation completes
+    document.addEventListener("astro:page-load", () => {
       closeDropdown();
     });
   }
