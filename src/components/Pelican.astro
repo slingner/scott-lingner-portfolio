@@ -724,11 +724,11 @@
     // Continuous fish dropping interval
     let fishDropInterval = null;
 
-    // Schedule next fish drop with random delay (1-4 seconds)
+    // Schedule next fish drop with random delay (0.5-2 seconds)
     const scheduleNextFishDrop = () => {
       if (!fishermanActive) return;
 
-      const delay = (1 + Math.floor(Math.random() * 4)) * 1000; // 1, 2, 3, or 4 seconds
+      const delay = 500 + Math.floor(Math.random() * 1500); // 0.5 to 2 seconds
       fishDropInterval = setTimeout(() => {
         dropFish();
         scheduleNextFishDrop(); // Schedule the next drop
@@ -892,8 +892,8 @@
         ? fishermanRect.left + (fishermanRect.width * 0.80)  // Mouth on right when flipped
         : fishermanRect.left + (fishermanRect.width * 0.20); // Mouth on left normally
       const mouthCenterY = fishermanRect.top + (fishermanRect.height * 0.45);  // Mouth center y (45% from top)
-      const mouthRadiusX = fishermanRect.width * 0.18;  // Mouth radius x (18% of width)
-      const mouthRadiusY = fishermanRect.height * 0.12; // Mouth radius y (12% of height)
+      const mouthRadiusX = fishermanRect.width * 0.28;  // Mouth radius x (28% of width - wider catch area)
+      const mouthRadiusY = fishermanRect.height * 0.20; // Mouth radius y (20% of height - wider catch area)
 
       // Check each fish for collision
       for (let i = activeFish.length - 1; i >= 0; i--) {
