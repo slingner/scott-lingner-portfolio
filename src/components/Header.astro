@@ -116,72 +116,26 @@ import { SITE } from "@consts";
   function setupDropdown() {
     const dropdownButton = document.getElementById("work-dropdown-button");
     const dropdownMenu = document.getElementById("work-dropdown-menu");
-    const dropdownWrapper = document.querySelector(".dropdown-wrapper");
+    const dropdownWrapper = document.querySelector<HTMLElement>(".dropdown-wrapper");
 
     if (!dropdownButton || !dropdownMenu || !dropdownWrapper) return;
 
-    let isOpen = false;
-
-    function openDropdown() {
-      isOpen = true;
-      dropdownMenu.classList.remove("invisible", "opacity-0");
-      dropdownMenu.classList.add("visible", "opacity-100");
-    }
-
-    function closeDropdown() {
-      isOpen = false;
-      dropdownMenu.classList.remove("visible", "opacity-100");
-      dropdownMenu.classList.add("invisible", "opacity-0");
-    }
-
     // Open dropdown on hover
     dropdownWrapper.addEventListener("mouseenter", () => {
-      openDropdown();
+      dropdownMenu.classList.remove("invisible", "opacity-0");
+      dropdownMenu.classList.add("visible", "opacity-100");
     });
 
     // Close dropdown when mouse leaves
     dropdownWrapper.addEventListener("mouseleave", () => {
-      closeDropdown();
-    });
-
-    // Also toggle on button click for mobile/touch
-    dropdownButton.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      if (isOpen) {
-        closeDropdown();
-      } else {
-        openDropdown();
-      }
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener("click", (e) => {
-      const target = e.target as Node;
-      if (isOpen && target && !dropdownWrapper.contains(target)) {
-        closeDropdown();
-      }
-    });
-
-    // Close dropdown immediately when clicking a dropdown link
-    const dropdownLinks = dropdownMenu.querySelectorAll(".dropdown-link");
-    dropdownLinks.forEach(link => {
-      link.addEventListener("click", () => {
-        // Close immediately without animation for instant navigation
-        isOpen = false;
-        dropdownMenu.classList.remove("visible", "opacity-100");
-        dropdownMenu.classList.add("invisible", "opacity-0");
-      });
+      dropdownMenu.classList.remove("visible", "opacity-100");
+      dropdownMenu.classList.add("invisible", "opacity-0");
     });
 
     // Close dropdown before any navigation starts
     document.addEventListener("astro:before-preparation", () => {
-      closeDropdown();
-    });
-
-    // Ensure dropdown is closed after navigation completes
-    document.addEventListener("astro:page-load", () => {
-      closeDropdown();
+      dropdownMenu.classList.remove("visible", "opacity-100");
+      dropdownMenu.classList.add("invisible", "opacity-0");
     });
   }
 
