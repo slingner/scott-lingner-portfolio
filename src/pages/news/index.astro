@@ -41,7 +41,7 @@ const newsItems = (await getCollection("news"))
                       <img
                         src={item.data.thumbnail}
                         alt={item.data.title}
-                        class="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                        class="h-full w-full object-cover transition-all duration-700 group-hover:scale-105"
                       />
                       <div class="absolute left-4 top-4 flex flex-col gap-2">
                         <span class="inline-block rounded-full bg-stone-900/80 px-3 py-1 font-mono text-xs text-white backdrop-blur-sm dark:bg-stone-100/80 dark:text-stone-900">

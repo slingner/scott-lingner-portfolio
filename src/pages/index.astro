@@ -18,16 +18,60 @@ const newsItems = (await getCollection("news"))
       <div class="space-y-12">
         <section>
           <article class="space-y-8">
-            <div class="animate">
-              <p
-                class="text-lg leading-relaxed text-stone-700 dark:text-stone-300"
+            <!-- container  -->
+            <div
+              class="flex flex-col items-start gap-8 md:flex-row md:items-start md:justify-between"
+            >
+              <div class="animate max-w-96">
+                <p
+                  class="m-0 text-lg leading-relaxed text-stone-700 dark:text-stone-300"
+                >
+                  Multi-disciplinary creator based in California.
+                </p>
+                <p
+                  class="max-w-fit text-lg leading-relaxed text-stone-700 dark:text-stone-300"
+                >
+                  <!-- BIO  -->
+                  I'm a frontend engineer with five years of experience building
+                  impactful applications in the EdTech space. My work at Prenda helped
+                  thousands of microschools deliver personalized education through
+                  technology. I'm passionate about clean code, thoughtful design,
+                  and building products that make a difference.
+                </p>
+                <p
+                  class="mt-4 text-lg leading-relaxed text-stone-700 dark:text-stone-300"
+                >
+                  When I'm not coding, I'm exploring the intersection of
+                  technology and creativity through music, photography, art and
+                  design.
+                </p>
+              </div>
+
+              <!-- LARGE UPPERCASE TEXT LINKS -->
+              <div
+                class="animate flex flex-col items-end gap-4 text-3xl font-semibold leading-snug text-stone-900 dark:text-stone-100 md:text-7xl"
               >
-                Multi-disciplinary creator based in California.
-              </p>
+                <Link
+                  href="/software-engineering"
+                  underline={false}
+                  class="project-link"
+                >
+                  SOFTWARE
+                </Link>
+                <Link href="/music" underline={false} class="project-link">
+                  MUSIC
+                </Link>
+                <Link href="/stationery" underline={false} class="project-link">
+                  ART
+                </Link>
+                <Link href="/photo" underline={false} class="project-link">
+                  PHOTOGRAPHY
+                </Link>
+              </div>
             </div>
 
             <!-- News Section - Editorial Style -->
-            <section class="animate mt-12 space-y-6">
+            <!-- <section class="animate mt-12 space-y-6">
               <h2 class="text-2xl font-bold text-stone-900 dark:text-stone-100">
                 Latest News
               </h2>
@@ -117,7 +161,7 @@ const newsItems = (await getCollection("news"))
                   </svg>
                 </Link>
               </div>
-            </section>
+            </section> -->
 
             <section class="animate mt-12 space-y-4">
               <h2
@@ -125,26 +169,23 @@ const newsItems = (await getCollection("news"))
               >
                 Connect
               </h2>
-              <div
-                class="rounded-lg border border-stone-300/50 bg-stone-200/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50"
+
+              <p
+                class="mb-4 text-base leading-relaxed text-stone-700 dark:text-stone-300"
               >
-                <p
-                  class="mb-4 text-base leading-relaxed text-stone-700 dark:text-stone-300"
+                Get in touch about creative work or collaborative opportunities.
+              </p>
+              <p
+                class="text-base font-semibold text-stone-900 dark:text-stone-100"
+              >
+                <Link
+                  href={`mailto:${SITE.EMAIL}`}
+                  aria-label={`Email ${SITE.TITLE}`}
                 >
-                  Get in touch about creative work or collaborative
-                  opportunities.
-                </p>
-                <p
-                  class="text-base font-semibold text-stone-900 dark:text-stone-100"
-                >
-                  <Link
-                    href={`mailto:${SITE.EMAIL}`}
-                    aria-label={`Email ${SITE.TITLE}`}
-                  >
-                    {SITE.EMAIL}
-                  </Link>
-                </p>
-              </div>
+                  {SITE.EMAIL}
+                </Link>
+              </p>
+
               <ul class="not-prose flex flex-wrap gap-2">
                 {
                   SOCIALS.map((SOCIAL) => (
@@ -173,3 +214,31 @@ const newsItems = (await getCollection("news"))
     </aside>
   </Container>
 </Layout>
+
+<style>
+  .project-link {
+    position: relative;
+    display: inline-block;
+    font-style: normal;
+    transition: font-style 0.3s ease;
+  }
+
+  .project-link:hover {
+    font-style: italic;
+  }
+
+  .project-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #3b82f6; /* blue-500 */
+    transition: width 0.3s ease;
+  }
+
+  .project-link:hover::after {
+    width: 100%;
+  }
+</style>
