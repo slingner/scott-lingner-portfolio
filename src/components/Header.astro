@@ -12,17 +12,25 @@ const currentPath = Astro.url.pathname;
     <div class="flex flex-wrap items-center gap-y-2">
       <Link href="/" underline={false}>
         <img
-          src="/logo.png"
+          src="/SCOTT1.png"
           alt={SITE.TITLE}
-          class="h-16 w-auto object-contain transition-all dark:opacity-90 dark:brightness-0 dark:invert"
+          class="h-28 w-auto object-contain transition-all dark:opacity-90 dark:brightness-0 dark:invert"
         />
       </Link>
 
       <nav class="ml-auto mr-4 hidden items-end gap-6 md:flex">
-        <Link href="/" underline={false} class={`nav-link text-sm font-medium ${currentPath === '/' ? 'active' : ''}`}>
+        <Link
+          href="/"
+          underline={false}
+          class={`nav-link text-sm font-medium ${currentPath === "/" ? "active" : ""}`}
+        >
           Home
         </Link>
-        <Link href="/news" underline={false} class={`nav-link text-sm font-medium ${currentPath.startsWith('/news') ? 'active' : ''}`}>
+        <Link
+          href="/news"
+          underline={false}
+          class={`nav-link text-sm font-medium ${currentPath.startsWith("/news") ? "active" : ""}`}
+        >
           News
         </Link>
         <div class="dropdown-wrapper group relative">
@@ -63,12 +71,16 @@ const currentPath = Astro.url.pathname;
                 underline={false}
                 class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
               >
-                Photography
+                Photo
               </Link>
             </div>
           </div>
         </div>
-        <Link href="/about" underline={false} class={`nav-link text-sm font-medium ${currentPath === '/about' ? 'active' : ''}`}>
+        <Link
+          href="/about"
+          underline={false}
+          class={`nav-link text-sm font-medium ${currentPath === "/about" ? "active" : ""}`}
+        >
           About
         </Link>
       </nav>
@@ -113,7 +125,7 @@ const currentPath = Astro.url.pathname;
   }
 
   .nav-link::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -4px;
     left: 0;

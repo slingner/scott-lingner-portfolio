@@ -11,7 +11,9 @@ demoURL: "https://www.rocketboogie.com/"
 
 ![Rocket Boogie Co.](/rocket-boogie.png)
 
-Rocket Boogie Co. is a San Francisco-based studio specializing in whimsical art and lifestyle goods designed by illustrator and designer duo, Scott Lingner and Tammy Tan. Their products include art prints, greeting cards, stickers, and enamel pins.
+Rocket Boogie Co. is a San Francisco-based studio specializing in whimsical art and lifestyle goods designed by illustrator and designer duo, Scott Lingner and Tammy Tan. Their products include art prints, greeting cards, and stickers.
+
+
 
 ## Society 6 Store
 

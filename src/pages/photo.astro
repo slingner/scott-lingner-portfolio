@@ -2,7 +2,6 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
-import BackToPrevious from "@components/BackToPrevious.astro";
 ---
 
 <Layout
@@ -10,10 +9,12 @@ import BackToPrevious from "@components/BackToPrevious.astro";
   description="Scott Lingner's photography portfolio."
 >
   <Container>
-    <div class="animate">
-      <BackToPrevious href="/">Back to home</BackToPrevious>
-    </div>
-
+    <p class="mt-8 max-w-lg text-lg text-stone-700 dark:text-stone-300">
+      I specialize in commercial and editorial photography, capturing images
+      that tell compelling stories and showcase products in their best light.
+      Explore my photography portfolio website below to see a selection of my
+      work across various industries and styles.
+    </p>
     <a
       href="https://photos.scottlingner.com"
       target="_blank"

@@ -1,61 +1,57 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
-import Link from "@components/Link.astro";
-import BackToPrevious from "@components/BackToPrevious.astro";
 ---
 
 <Layout
   title="Music - Plastic Jaguar"
-  description="Scott Lingner's music project, Plastic Jaguar."
+  description="Scott Lingner + Jordan Olberg's music project, Plastic Jaguar."
 >
   <Container>
-    <div class="animate">
-      <BackToPrevious href="/">Back to home</BackToPrevious>
-    </div>
     <aside data-pagefind-ignore>
-      <div class="space-y-8">
-        <section class="animate">
-          <div class="mb-8 mt-10 flex flex-col items-center gap-6">
-            <div class="flex h-48 w-48 items-center justify-center">
-              <img
-                src="/plastic-jaguar-logo.png"
-                alt="Plastic Jaguar"
-                class="h-full w-full rounded-lg object-contain shadow-lg dark:opacity-90 dark:brightness-0 dark:invert"
-              />
-            </div>
-            <h1
-              class="text-center text-4xl font-bold text-stone-900 dark:text-stone-100"
-            >
-              Plastic Jaguar
-            </h1>
-          </div>
-
-          <div class="space-y-6">
-            <p
-              class="text-lg leading-relaxed text-stone-700 dark:text-stone-300"
-            >
-              Plastic Jaguar is Scott Lingner & Jordan Olberg's music project .
-            </p>
-
-            <div
-              class="rounded-lg border border-stone-300/50 bg-stone-200/50 p-8 text-center dark:border-stone-700/50 dark:bg-stone-800/50"
-            >
-              <p class="mb-6 text-base text-stone-700 dark:text-stone-300">
-                Visit the official Plastic Jaguar website to listen to music,
-                learn more about the band, and explore upcoming releases.
-              </p>
-              <Link
-                href="https://plasticjaguar.com"
-                external
-                class="inline-block rounded-lg bg-stone-700 px-8 py-3 font-semibold text-white shadow-md transition-colors hover:bg-stone-800 hover:shadow-lg dark:bg-stone-600 dark:hover:bg-stone-700"
-              >
-                Visit plasticjaguar.com →
-              </Link>
-            </div>
-          </div>
-        </section>
-      </div>
+      <p class="mt-8 max-w-lg text-lg text-stone-700 dark:text-stone-300">
+        Plastic Jaguar is a music project I started with Jordan Olberg. I
+        designed and developed our website to highlight our newest tracks,
+        albums, and releases.
+      </p>
+      <a
+        href="https://plasticjaguar.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group relative mt-8 block w-full"
+        aria-label="Plastic Jaguar Music Website (external link)"
+      >
+        <img
+          src="/pj.png"
+          alt="Plastic Jaguar Music Website External Link Photo"
+          class="h-auto w-full rounded-lg border-2 border-stone-300 transition-shadow group-hover:shadow-lg dark:border-stone-700"
+        />
+        <!-- Overlay for hover effect -->
+        <span
+          class="pointer-events-none absolute inset-0 rounded-lg bg-stone-900/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100 dark:bg-stone-100/10"
+          aria-hidden="true"></span>
+        <!-- Animated arrow -->
+        <span
+          class="absolute right-2 top-2 flex items-center justify-center rounded-full bg-stone-900/80 p-1 transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1 dark:bg-stone-100/80"
+          style="pointer-events:none;"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="h-5 w-5 text-white dark:text-stone-900"
+          >
+            <path
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M7 17L17 7M17 7H9M17 7V15"></path>
+          </svg>
+        </span>
+      </a>
     </aside>
   </Container>
 </Layout>
