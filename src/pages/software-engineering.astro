@@ -159,7 +159,7 @@ const experiences = [
       <!-- Main Content -->
       <aside data-pagefind-ignore class="min-w-0 flex-1">
         <!-- About Section -->
-        <section id="about" class="animate mb-24 scroll-mt-36">
+        <section id="about" class="animate mb-24 scroll-mt-56">
           <h2
             class="mb-6 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -215,7 +215,7 @@ const experiences = [
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="animate mb-24 scroll-mt-36">
+        <section id="experience" class="animate mb-24 scroll-mt-56">
           <h2
             class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -274,7 +274,7 @@ const experiences = [
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="animate mb-24 scroll-mt-36">
+        <section id="projects" class="animate mb-24 scroll-mt-56">
           <h2
             class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -292,7 +292,7 @@ const experiences = [
         </section>
 
         <!-- Writing Section -->
-        <section id="writing" class="animate mb-24 scroll-mt-36">
+        <section id="writing" class="animate mb-24 scroll-mt-56">
           <h2
             class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -359,103 +359,112 @@ const experiences = [
 
 <div id="cursor-halo"></div>
 
-<script>
-  // Mouse halo effect
-  const halo = document.getElementById("cursor-halo");
-  let mouseX = 0;
-  let mouseY = 0;
-  let currentX = 0;
-  let currentY = 0;
-  let isMouseActive = false;
+<script is:inline>
+  function initializePage() {
+    // Mouse halo effect
+    const halo = document.getElementById("cursor-halo");
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let isMouseActive = false;
 
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
 
-    if (!isMouseActive && halo) {
-      halo.classList.add("active");
-      isMouseActive = true;
+      if (!isMouseActive && halo) {
+        halo.classList.add("active");
+        isMouseActive = true;
+      }
+    });
+
+    document.addEventListener("mouseleave", () => {
+      if (halo) {
+        halo.classList.remove("active");
+        isMouseActive = false;
+      }
+    });
+
+    // Smooth animation with easing
+    function updateHaloPosition() {
+      if (halo && isMouseActive) {
+        // Easing for smooth follow
+        const ease = 0.15;
+        currentX += (mouseX - currentX) * ease;
+        currentY += (mouseY - currentY) * ease;
+
+        halo.style.left = currentX + "px";
+        halo.style.top = currentY + "px";
+      }
+      requestAnimationFrame(updateHaloPosition);
     }
-  });
+    updateHaloPosition();
 
-  document.addEventListener("mouseleave", () => {
-    if (halo) {
-      halo.classList.remove("active");
-      isMouseActive = false;
+    // Scroll spy for navigation
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function setActiveLink(activeId) {
+      navLinks.forEach((link) => {
+        const underline = link.querySelector(".nav-underline");
+        if (link.getAttribute("data-nav-link") === activeId) {
+          link.classList.add("text-stone-900", "dark:text-stone-100");
+          link.classList.remove("text-stone-700", "dark:text-stone-300");
+          if (underline) {
+            underline.style.width = "100%";
+          }
+        } else {
+          link.classList.remove("text-stone-900", "dark:text-stone-100");
+          link.classList.add("text-stone-700", "dark:text-stone-300");
+          if (underline) {
+            underline.style.width = "0";
+          }
+        }
+      });
     }
-  });
 
-  // Smooth animation with easing
-  function updateHaloPosition() {
-    if (halo && isMouseActive) {
-      // Easing for smooth follow
-      const ease = 0.15;
-      currentX += (mouseX - currentX) * ease;
-      currentY += (mouseY - currentY) * ease;
+    // Intersection Observer for scroll spy
+    const observerOptions = {
+      root: null,
+      rootMargin: "-140px 0px -50% 0px",
+      threshold: 0.1,
+    };
 
-      halo.style.left = `${currentX}px`;
-      halo.style.top = `${currentY}px`;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveLink(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Set initial active state immediately
+    if (sections.length > 0) {
+      setActiveLink(sections[0].id);
     }
-    requestAnimationFrame(updateHaloPosition);
-  }
-  updateHaloPosition();
 
-  // Scroll spy for navigation
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  function setActiveLink(activeId: string) {
+    // Smooth scroll for nav links
     navLinks.forEach((link) => {
-      const underline = link.querySelector(".nav-underline") as HTMLElement;
-      if (link.getAttribute("data-nav-link") === activeId) {
-        link.classList.add("text-stone-900", "dark:text-stone-100");
-        link.classList.remove("text-stone-700", "dark:text-stone-300");
-        if (underline) {
-          underline.style.width = "100%";
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute("data-nav-link");
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-      } else {
-        link.classList.remove("text-stone-900", "dark:text-stone-100");
-        link.classList.add("text-stone-700", "dark:text-stone-300");
-        if (underline) {
-          underline.style.width = "0";
-        }
-      }
+      });
     });
   }
 
-  // Intersection Observer for scroll spy
-  const observerOptions = {
-    root: null,
-    rootMargin: "-120px 0px -60% 0px",
-    threshold: 0.1,
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        setActiveLink(entry.target.id);
-      }
-    });
-  }, observerOptions);
-
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
-
-  // Set initial active state
-  if (sections.length > 0) {
-    setActiveLink(sections[0].id);
+  // Run on initial load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializePage);
+  } else {
+    initializePage();
   }
-
-  // Smooth scroll for nav links
-  navLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute("data-nav-link");
-      const targetSection = document.getElementById(targetId);
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    });
-  });
 </script>
