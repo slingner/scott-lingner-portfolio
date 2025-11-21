@@ -110,7 +110,7 @@ const experiences = [
     <div class="mt-8 flex gap-12">
       <!-- Fixed Sidebar Navigation -->
       <nav class="animate hidden w-48 flex-shrink-0 lg:block">
-        <div class="sticky top-42">
+        <div class="sticky top-36">
           <div class="flex flex-col gap-4">
             <a
               href="#about"
@@ -447,6 +447,21 @@ const experiences = [
     if (sections.length > 0) {
       setActiveLink(sections[0].id);
     }
+
+    // Add dynamic padding to sticky nav when scrolling
+    const stickyNav = document.querySelector(".sticky.top-36");
+    if (stickyNav) {
+      stickyNav.style.transition = "padding-top 0.35s cubic-bezier(0.4,0,0.2,1)";
+    }
+    window.addEventListener("scroll", () => {
+      if (stickyNav) {
+        if (window.scrollY > 42) {
+          stickyNav.style.paddingTop = "112px";
+        } else {
+          stickyNav.style.paddingTop = "0";
+        }
+      }
+    });
 
     // Smooth scroll for nav links with proper offset
     navLinks.forEach((link) => {
