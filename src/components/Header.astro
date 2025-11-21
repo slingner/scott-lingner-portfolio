@@ -31,14 +31,16 @@ import { SITE } from "@consts";
         >
           News
         </Link>
-        <div class="dropdown-wrapper group relative">
+        <div class="dropdown-wrapper relative">
           <button
+            id="work-dropdown-button"
             class="nav-link inline-block text-sm font-medium text-stone-700 transition-all duration-300 hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
           >
             Work ▾
           </button>
           <div
-            class="dropdown-menu invisible absolute left-0 top-full pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100"
+            id="work-dropdown-menu"
+            class="dropdown-menu invisible absolute left-0 top-full pt-2 opacity-0 transition-all duration-200"
           >
             <div
               class="w-48 rounded-lg border border-stone-300/50 bg-white shadow-lg dark:border-stone-700/50 dark:bg-stone-800"
@@ -46,28 +48,28 @@ import { SITE } from "@consts";
               <Link
                 href="/software-engineering"
                 underline={false}
-                class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+                class="dropdown-link block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
               >
                 Software
               </Link>
               <Link
                 href="/music"
                 underline={false}
-                class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+                class="dropdown-link block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
               >
                 Music
               </Link>
               <Link
                 href="/art"
                 underline={false}
-                class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+                class="dropdown-link block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
               >
                 Art
               </Link>
               <Link
                 href="/photo"
                 underline={false}
-                class="block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
+                class="dropdown-link block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
               >
                 Photo
               </Link>
@@ -111,6 +113,57 @@ import { SITE } from "@consts";
 <Pelican />
 
 <script>
+  function setupDropdown() {
+    const dropdownButton = document.getElementById("work-dropdown-button");
+    const dropdownMenu = document.getElementById("work-dropdown-menu");
+
+    if (!dropdownButton || !dropdownMenu) return;
+
+    let isOpen = false;
+
+    function openDropdown() {
+      isOpen = true;
+      dropdownMenu.classList.remove("invisible", "opacity-0");
+      dropdownMenu.classList.add("visible", "opacity-100");
+    }
+
+    function closeDropdown() {
+      isOpen = false;
+      dropdownMenu.classList.remove("visible", "opacity-100");
+      dropdownMenu.classList.add("invisible", "opacity-0");
+    }
+
+    // Toggle dropdown on button click
+    dropdownButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (isOpen) {
+        closeDropdown();
+      } else {
+        openDropdown();
+      }
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (isOpen && !dropdownButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        closeDropdown();
+      }
+    });
+
+    // Close dropdown when clicking a dropdown link (to allow navigation)
+    const dropdownLinks = dropdownMenu.querySelectorAll(".dropdown-link");
+    dropdownLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        closeDropdown();
+      });
+    });
+
+    // Close dropdown before navigation starts
+    document.addEventListener("astro:before-preparation", () => {
+      closeDropdown();
+    });
+  }
+
   function updateActiveNavLinks() {
     const currentPath = window.location.pathname;
     const isWorkActive = currentPath.startsWith("/software-engineering") ||
@@ -142,10 +195,14 @@ import { SITE } from "@consts";
   }
 
   // Run on initial load
+  setupDropdown();
   updateActiveNavLinks();
 
   // Run on Astro page navigation
-  document.addEventListener("astro:page-load", updateActiveNavLinks);
+  document.addEventListener("astro:page-load", () => {
+    setupDropdown();
+    updateActiveNavLinks();
+  });
 </script>
 
 <style>
