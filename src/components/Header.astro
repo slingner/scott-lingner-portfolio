@@ -18,7 +18,7 @@ const currentPath = Astro.url.pathname;
         />
       </Link>
 
-      <nav class="ml-auto mr-4 hidden items-end gap-6 md:flex">
+      <nav class="ml-auto mr-4 hidden items-center gap-6 md:flex">
         <Link
           href="/"
           underline={false}
@@ -33,7 +33,7 @@ const currentPath = Astro.url.pathname;
         >
           News
         </Link>
-        <div class="dropdown-wrapper group relative self-end">
+        <div class="dropdown-wrapper group relative">
           <button
             class="nav-link inline-block text-sm font-medium text-stone-700 transition-all duration-300 hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
           >
@@ -85,6 +85,7 @@ const currentPath = Astro.url.pathname;
         </Link>
       </nav>
 
+      <!-- Search button - Commented out
       <button
         id="magnifying-glass"
         aria-label="Search"
@@ -104,6 +105,7 @@ const currentPath = Astro.url.pathname;
         >
         &nbsp;Search
       </button>
+      -->
     </div>
   </Container>
 </header>
