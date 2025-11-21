@@ -159,7 +159,7 @@ const experiences = [
       <!-- Main Content -->
       <aside data-pagefind-ignore class="min-w-0 flex-1">
         <!-- About Section -->
-        <section id="about" class="animate mb-24 scroll-mt-56">
+        <section id="about" class="animate mb-24 scroll-mt-32">
           <h2
             class="mb-6 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -215,7 +215,7 @@ const experiences = [
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="animate mb-24 scroll-mt-56">
+        <section id="experience" class="animate mb-24 scroll-mt-32">
           <h2
             class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -274,7 +274,7 @@ const experiences = [
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="animate mb-24 scroll-mt-56">
+        <section id="projects" class="animate mb-24 scroll-mt-32">
           <h2
             class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -292,7 +292,7 @@ const experiences = [
         </section>
 
         <!-- Writing Section -->
-        <section id="writing" class="animate mb-24 scroll-mt-56">
+        <section id="writing" class="animate mb-24 scroll-mt-32">
           <h2
             class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -445,19 +445,4 @@ const experiences = [
   if (sections.length > 0) {
     setActiveLink(sections[0].id);
   }
-
-  // Add padding to sticky nav when scrolling to prevent header cutoff
-  const stickyNav = document.querySelector(".sticky.top-24") as HTMLElement;
-  if (stickyNav) {
-    stickyNav.style.transition = "padding-top 0.35s cubic-bezier(0.4,0,0.2,1)";
-  }
-  window.addEventListener("scroll", () => {
-    if (stickyNav) {
-      if (window.scrollY > 42) {
-        stickyNav.style.paddingTop = "88px";
-      } else {
-        stickyNav.style.paddingTop = "0";
-      }
-    }
-  });
 </script>
