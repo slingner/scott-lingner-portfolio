@@ -110,7 +110,7 @@ const experiences = [
     <div class="mt-8 flex gap-12">
       <!-- Fixed Sidebar Navigation -->
       <nav class="animate hidden w-48 flex-shrink-0 lg:block">
-        <div class="sticky top-24">
+        <div class="sticky top-36">
           <div class="flex flex-col gap-4">
             <a
               href="#about"
@@ -159,7 +159,7 @@ const experiences = [
       <!-- Main Content -->
       <aside data-pagefind-ignore class="min-w-0 flex-1">
         <!-- About Section -->
-        <section id="about" class="animate mb-24 scroll-mt-56">
+        <section id="about" class="animate mb-24 scroll-mt-36">
           <h2
             class="mb-6 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -215,7 +215,7 @@ const experiences = [
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="animate mb-24 scroll-mt-56">
+        <section id="experience" class="animate mb-24 scroll-mt-36">
           <h2
             class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -274,7 +274,7 @@ const experiences = [
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="animate mb-24 scroll-mt-56">
+        <section id="projects" class="animate mb-24 scroll-mt-36">
           <h2
             class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -292,7 +292,7 @@ const experiences = [
         </section>
 
         <!-- Writing Section -->
-        <section id="writing" class="animate mb-24 scroll-mt-56">
+        <section id="writing" class="animate mb-24 scroll-mt-36">
           <h2
             class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -427,7 +427,7 @@ const experiences = [
     // Intersection Observer for scroll spy
     const observerOptions = {
       root: null,
-      rootMargin: "-140px 0px -50% 0px",
+      rootMargin: "-144px 0px -50% 0px",
       threshold: 0.1,
     };
 
@@ -448,14 +448,19 @@ const experiences = [
       setActiveLink(sections[0].id);
     }
 
-    // Smooth scroll for nav links
+    // Smooth scroll for nav links with proper offset
     navLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
         const targetId = link.getAttribute("data-nav-link");
         const targetSection = document.getElementById(targetId);
         if (targetSection) {
-          targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          // Calculate position with offset for header (144px to match sticky top-36)
+          const targetPosition = targetSection.offsetTop - 144;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth"
+          });
         }
       });
     });
