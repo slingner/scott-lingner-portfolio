@@ -688,16 +688,21 @@
       isFlying = true;
       const viewportWidth = window.innerWidth;
 
-      // Calculate fish drops - more fish for faster gameplay
+      // Calculate fish drops - drop in small groups sporadically
       fishDroppedCount = 0;
       dropTimes = [];
-      const numDrops = 100; // Drop 100 fish each time for faster gameplay
+      const numGroups = 35; // 35 groups of fish
+      const groupInterval = 5500; // 5.5 seconds between groups
 
-      for (let i = 0; i < numDrops; i++) {
-        // Stagger drops across the flight - spread over 15 seconds
-        const baseTime = (i / numDrops) * 15000;
-        const randomOffset = Math.random() * 400 - 200; // +/- 200ms
-        dropTimes.push(Date.now() + baseTime + randomOffset);
+      for (let group = 0; group < numGroups; group++) {
+        const groupTime = group * groupInterval;
+        const fishInGroup = 2 + Math.floor(Math.random() * 2); // 2-3 fish per group
+
+        for (let i = 0; i < fishInGroup; i++) {
+          // Small offset within the group (0-300ms)
+          const withinGroupOffset = Math.random() * 300;
+          dropTimes.push(Date.now() + groupTime + withinGroupOffset);
+        }
       }
 
       // First flight: take off from seated position and fly off screen
