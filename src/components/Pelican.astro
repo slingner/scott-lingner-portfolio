@@ -557,6 +557,9 @@
           startRandomFlight();
         }
 
+        // Start continuous fish dropping
+        scheduleNextFishDrop();
+
         if (gameStatus) {
           gameStatus.textContent = 'Game started! Use left and right arrow keys to move and catch fish. Press ESC to stop.';
         }
@@ -688,26 +691,6 @@
       isFlying = true;
       const viewportWidth = window.innerWidth;
 
-      // Calculate fish drops - drop in small groups sporadically
-      fishDroppedCount = 0;
-      dropTimes = [];
-      const numGroups = 35; // 35 groups of fish
-
-      let cumulativeTime = 0;
-      for (let group = 0; group < numGroups; group++) {
-        // Random interval between 3-5 seconds
-        const groupInterval = 3000 + Math.random() * 2000;
-        cumulativeTime += groupInterval;
-
-        const fishInGroup = 2 + Math.floor(Math.random() * 2); // 2-3 fish per group
-
-        for (let i = 0; i < fishInGroup; i++) {
-          // Spread fish within group over 0-600ms
-          const withinGroupOffset = Math.random() * 600;
-          dropTimes.push(Date.now() + cumulativeTime + withinGroupOffset);
-        }
-      }
-
       // First flight: take off from seated position and fly off screen
       if (isFirstFlight) {
         isFirstFlight = false;
@@ -738,9 +721,19 @@
       pelicanSvg.classList.add('flapping');
     };
 
-    // Track fish drops during current flight
-    let fishDroppedCount = 0;
-    let dropTimes = [];
+    // Continuous fish dropping interval
+    let fishDropInterval = null;
+
+    // Schedule next fish drop with random delay (0.5-2 seconds)
+    const scheduleNextFishDrop = () => {
+      if (!fishermanActive) return;
+
+      const delay = 500 + Math.floor(Math.random() * 1500); // 0.5 to 2 seconds
+      fishDropInterval = setTimeout(() => {
+        dropFish();
+        scheduleNextFishDrop(); // Schedule the next drop
+      }, delay);
+    };
 
     // Drop fish from pelican (only if pelican is in visible screen area)
     const dropFish = () => {
@@ -807,6 +800,12 @@
       // ESC to stop game completely
       if (e.key === 'Escape' && (isFlying || fishermanActive)) {
         e.preventDefault();
+
+        // Stop continuous fish dropping
+        if (fishDropInterval) {
+          clearTimeout(fishDropInterval);
+          fishDropInterval = null;
+        }
 
         // Stop pelican
         isFlying = false;
@@ -893,8 +892,8 @@
         ? fishermanRect.left + (fishermanRect.width * 0.80)  // Mouth on right when flipped
         : fishermanRect.left + (fishermanRect.width * 0.20); // Mouth on left normally
       const mouthCenterY = fishermanRect.top + (fishermanRect.height * 0.45);  // Mouth center y (45% from top)
-      const mouthRadiusX = fishermanRect.width * 0.18;  // Mouth radius x (18% of width)
-      const mouthRadiusY = fishermanRect.height * 0.12; // Mouth radius y (12% of height)
+      const mouthRadiusX = fishermanRect.width * 0.28;  // Mouth radius x (28% of width - wider catch area)
+      const mouthRadiusY = fishermanRect.height * 0.20; // Mouth radius y (20% of height - wider catch area)
 
       // Check each fish for collision
       for (let i = activeFish.length - 1; i >= 0; i--) {
@@ -955,6 +954,12 @@
 
           // Stop game, confetti, and reset at 10 catches
           if (catchCount === 10) {
+            // Stop continuous fish dropping
+            if (fishDropInterval) {
+              clearTimeout(fishDropInterval);
+              fishDropInterval = null;
+            }
+
             // Stop the game immediately
             isFlying = false;
             isActivated = false;
@@ -983,6 +988,12 @@
 
     // Reset game after 10 catches
     const resetGame = () => {
+      // Stop continuous fish dropping
+      if (fishDropInterval) {
+        clearTimeout(fishDropInterval);
+        fishDropInterval = null;
+      }
+
       // Stop pelican
       isFlying = false;
       isActivated = false;
@@ -1114,13 +1125,6 @@
           pelicanY += (dy / distance) * speed;
 
           pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
-
-          // Auto-drop fish at scheduled times (multiple can drop simultaneously)
-          const now = Date.now();
-          while (fishDroppedCount < dropTimes.length && now >= dropTimes[fishDroppedCount]) {
-            dropFish();
-            fishDroppedCount++;
-          }
         } else {
           pelicanX = targetX;
           pelicanY = targetY;
@@ -1157,6 +1161,12 @@
     document.addEventListener('astro:page-load', () => {
       // Refresh DOM references first - critical for fixing stale references!
       refreshDOMReferences();
+
+      // Stop continuous fish dropping
+      if (fishDropInterval) {
+        clearTimeout(fishDropInterval);
+        fishDropInterval = null;
+      }
 
       // Always reset game state on page change
       isFlying = false;
@@ -1229,6 +1239,12 @@
 
     // Also handle before swap to ensure clean state
     document.addEventListener('astro:before-swap', () => {
+      // Stop continuous fish dropping
+      if (fishDropInterval) {
+        clearTimeout(fishDropInterval);
+        fishDropInterval = null;
+      }
+
       // Force stop all game activity before page swap
       isFlying = false;
       isActivated = false;
