@@ -694,8 +694,8 @@
       const numDrops = 100; // Drop 100 fish each time for faster gameplay
 
       for (let i = 0; i < numDrops; i++) {
-        // Stagger drops across the flight
-        const baseTime = (i / numDrops) * 5000;
+        // Stagger drops across the flight - spread over 15 seconds
+        const baseTime = (i / numDrops) * 15000;
         const randomOffset = Math.random() * 400 - 200; // +/- 200ms
         dropTimes.push(Date.now() + baseTime + randomOffset);
       }
