@@ -5,6 +5,7 @@ import ArrowCard from "@components/ArrowCard.astro";
 import Pelican from "@components/Pelican.astro";
 import { getCollection } from "astro:content";
 import Link from "@components/Link.astro";
+import { SITE } from "@consts";
 
 const blog = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
@@ -20,14 +21,15 @@ const experiences = [
     company: "Prenda",
     period: "Aug 2020 - Sep 2024",
     description:
-      "Built and maintained web applications for EdTech platform serving thousands of microschools.",
+      "Developed and styled educational interactive web apps for an EdTech platform serving thousands of students. Collaborated closely with UI/UX and curriculum teams to implement new features and optimize user experience.",
     skills: [
       "React",
       "TypeScript",
       "Next.js",
-      "GraphQL",
       "Node.js",
       "Tailwind",
+      "MongoDB",
+      "GraphQL",
     ],
     url: "https://prenda.com",
   },
@@ -36,8 +38,8 @@ const experiences = [
     company: "untitled.stream",
     period: "Jun 2020 - Aug 2020",
     description:
-      "Developed frontend features for streaming platform using modern web technologies.",
-    skills: ["React", "JavaScript", "CSS", "HTML"],
+      "Built a multi-layered React desktop app that expanded mobile features and improved user experience, with UX/UI designs in Figma that guided development and ensured usability.",
+    skills: ["React", "JavaScript", "Typescript", "Figma", "CSS", "HTML"],
     url: "https://untitled.stream",
   },
   {
@@ -54,8 +56,8 @@ const experiences = [
     company: "Rocket Boogie Co",
     period: "2014 - Present",
     description:
-      "Design and develop e-commerce platform for greeting cards and art prints.",
-    skills: ["Design", "E-commerce", "Brand Development"],
+      "Founded and led a design studio specializing in whimsical art and lifestyle goods, creating and selling thousands of greeting cards, art prints, and home and apparel products while managing creative direction, producing artwork, coordinating production, and handling wholesale accounts.",
+    skills: ["Adobe", "Figma", "Shopify", "E-commerce", "Brand Development"],
     url: "https://rocketboogie.com",
   },
 ];
@@ -68,39 +70,13 @@ const experiences = [
   <!-- Custom Software Header -->
   <header class="bg-stone-100 dark:bg-stone-900">
     <Container>
-      <div class="flex flex-wrap items-center justify-between gap-y-4 py-6">
+      <div class="flex flex-wrap items-center justify-between gap-y-4">
         <Link href="/" underline={false}>
-          <div class="flex items-center gap-4">
-            <div class="flex items-center gap-3">
-              <div
-                class="flex h-12 w-12 items-center justify-center rounded-lg bg-stone-700 dark:bg-stone-600"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6 text-white"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                </svg>
-              </div>
-              <div>
-                <h1
-                  class="text-xl font-bold text-stone-900 dark:text-stone-100"
-                >
-                  Scott Lingner
-                </h1>
-                <p class="text-sm text-stone-600 dark:text-stone-400">
-                  Frontend Engineer
-                </p>
-              </div>
-            </div>
-          </div>
+          <img
+            src="/SCOTT1.png"
+            alt={SITE.TITLE}
+            class="h-24 w-auto object-contain transition-all dark:opacity-90 dark:brightness-0 dark:invert"
+          />
         </Link>
       </div>
     </Container>
@@ -163,7 +139,7 @@ const experiences = [
           <h2
             class="mb-6 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
-            About
+            Scott Lingner
           </h2>
           <div
             class="space-y-4 text-base leading-relaxed text-stone-700 dark:text-stone-300"
@@ -451,7 +427,8 @@ const experiences = [
     // Add dynamic padding to sticky nav when scrolling
     const stickyNav = document.querySelector(".sticky.top-36");
     if (stickyNav) {
-      stickyNav.style.transition = "padding-top 0.35s cubic-bezier(0.4,0,0.2,1)";
+      stickyNav.style.transition =
+        "padding-top 0.35s cubic-bezier(0.4,0,0.2,1)";
     }
     window.addEventListener("scroll", () => {
       if (stickyNav) {
@@ -474,7 +451,7 @@ const experiences = [
           const targetPosition = targetSection.offsetTop - 144;
           window.scrollTo({
             top: targetPosition,
-            behavior: "smooth"
+            behavior: "smooth",
           });
         }
       });

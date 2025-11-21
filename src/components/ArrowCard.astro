@@ -12,11 +12,11 @@ const { entry } = Astro.props as {
 
 const imgUrl: { [key: string]: string } = {
   //Prenda projects
-  "Create projects - Prenda": "/create.png",
+  "Student Learning Experience Tool - Prenda": "/create.png",
   "Checkr background check integrations - Prenda":
     "/checkr-background-checks.png",
   "Memory Challenge - Prenda": "/memory-challenge-math.png",
-  "Student portfolios - Prenda": "/portfolio.png",
+  "Student Dashboard - Prenda": "/portfolio.png",
 
   // other projects
   "Unexpected Frequency": "/unexpected-frequency-logo.png",
@@ -36,7 +36,7 @@ const imgUrl: { [key: string]: string } = {
 
 <a
   href={`/${entry.collection}/${entry.slug}`}
-  class="not-prose group relative flex flex-nowrap rounded-lg border border-stone-300/50 dark:border-stone-700/50 bg-white/80 dark:bg-stone-800/80 px-4 py-3 pr-10 shadow-sm transition-all duration-300 ease-in-out hover:shadow-md hover:border-stone-400/70 dark:hover:border-stone-600/70 focus-visible:shadow-md"
+  class="not-prose group relative flex flex-nowrap rounded-lg border border-stone-300/50 bg-white/80 px-4 py-3 pr-10 shadow-sm transition-all duration-300 ease-in-out hover:border-stone-400/70 hover:shadow-md focus-visible:shadow-md dark:border-stone-700/50 dark:bg-stone-800/80 dark:hover:border-stone-600/70"
 >
   <div class="flex flex-1 flex-row truncate">
     <img
@@ -46,13 +46,15 @@ const imgUrl: { [key: string]: string } = {
       style="object-position: center;"
     />
     <div class="flex flex-col truncate px-6">
-      <div class="font-semibold text-stone-800 dark:text-stone-100 group-hover:text-stone-900 dark:group-hover:text-stone-50 transition-colors">
+      <div
+        class="font-semibold text-stone-800 transition-colors group-hover:text-stone-900 dark:text-stone-100 dark:group-hover:text-stone-50"
+      >
         {entry.data.title}
       </div>
       <div class="text-sm text-stone-600 dark:text-stone-400">
         {entry.data.description}
       </div>
-      <div class="text-xs text-stone-700 dark:text-stone-500 font-medium mt-1">
+      <div class="mt-1 text-xs font-medium text-stone-700 dark:text-stone-500">
         <FormattedDate date={entry.data.date} />
       </div>
     </div>
@@ -60,7 +62,7 @@ const imgUrl: { [key: string]: string } = {
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    class="absolute right-2 top-1/2 size-5 -translate-y-1/2 fill-none stroke-stone-700 dark:stroke-stone-400 stroke-2"
+    class="absolute right-2 top-1/2 size-5 -translate-y-1/2 fill-none stroke-stone-700 stroke-2 dark:stroke-stone-400"
   >
     <line
       x1="5"
