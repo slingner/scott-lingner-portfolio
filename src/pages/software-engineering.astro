@@ -1,11 +1,10 @@
 ---
-import SoftwareLayout from "@layouts/SoftwareLayout.astro";
 import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import Pelican from "@components/Pelican.astro";
 import { getCollection } from "astro:content";
-import Link from "@components/Link.astro";
-import { SITE } from "@consts";
+
+import Layout from "@layouts/Layout.astro";
 
 const blog = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
@@ -63,25 +62,10 @@ const experiences = [
 ];
 ---
 
-<SoftwareLayout
+<Layout
   title="Frontend Engineer"
   description="Software engineering projects and writing by Scott Lingner."
 >
-  <!-- Custom Software Header -->
-  <header class="bg-stone-100 dark:bg-stone-900">
-    <Container>
-      <div class="flex flex-wrap items-center justify-between gap-y-4">
-        <Link href="/" underline={false}>
-          <img
-            src="/SCOTT1.png"
-            alt={SITE.TITLE}
-            class="h-24 w-auto object-contain transition-all dark:opacity-90 dark:brightness-0 dark:invert"
-          />
-        </Link>
-      </div>
-    </Container>
-  </header>
-
   <Container>
     <div class="mt-8 flex gap-12">
       <!-- Fixed Sidebar Navigation -->
@@ -139,7 +123,8 @@ const experiences = [
           <h2
             class="mb-6 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
-            Scott Lingner
+            <!-- em dash -->
+            Scott Lingner &mdash; Frontend Engineer
           </h2>
           <div
             class="space-y-4 text-base leading-relaxed text-stone-700 dark:text-stone-300"
@@ -151,10 +136,10 @@ const experiences = [
               user experiences that scale.
             </p>
             <p>
-              My work at Prenda helped thousands of microschools deliver
-              personalized education through technology. I'm passionate about
-              clean code, thoughtful design, and building products that make a
-              difference.
+              My work at Prenda, a leading edtech startup, helped thousands of
+              microschools deliver personalized education through technology.
+              I'm passionate about clean code, thoughtful design, and building
+              products that make a difference.
             </p>
             <p>
               When I'm not coding, I'm exploring the intersection of technology
@@ -287,7 +272,7 @@ const experiences = [
       </aside>
     </div>
   </Container>
-</SoftwareLayout>
+</Layout>
 
 <Pelican />
 
@@ -295,88 +280,10 @@ const experiences = [
   html {
     scroll-behavior: smooth;
   }
-
-  /* Mouse halo effect */
-  #cursor-halo {
-    position: fixed;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    background: radial-gradient(
-      circle,
-      rgba(120, 113, 108, 0.15) 0%,
-      rgba(120, 113, 108, 0.08) 30%,
-      transparent 70%
-    );
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    mix-blend-mode: multiply;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    #cursor-halo {
-      background: radial-gradient(
-        circle,
-        rgba(245, 245, 244, 0.12) 0%,
-        rgba(245, 245, 244, 0.06) 30%,
-        transparent 70%
-      );
-      mix-blend-mode: screen;
-    }
-  }
-
-  #cursor-halo.active {
-    opacity: 1;
-  }
 </style>
-
-<div id="cursor-halo"></div>
 
 <script is:inline>
   function initializePage() {
-    // Mouse halo effect
-    const halo = document.getElementById("cursor-halo");
-    let mouseX = 0;
-    let mouseY = 0;
-    let currentX = 0;
-    let currentY = 0;
-    let isMouseActive = false;
-
-    document.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-
-      if (!isMouseActive && halo) {
-        halo.classList.add("active");
-        isMouseActive = true;
-      }
-    });
-
-    document.addEventListener("mouseleave", () => {
-      if (halo) {
-        halo.classList.remove("active");
-        isMouseActive = false;
-      }
-    });
-
-    // Smooth animation with easing
-    function updateHaloPosition() {
-      if (halo && isMouseActive) {
-        // Easing for smooth follow
-        const ease = 0.15;
-        currentX += (mouseX - currentX) * ease;
-        currentY += (mouseY - currentY) * ease;
-
-        halo.style.left = currentX + "px";
-        halo.style.top = currentY + "px";
-      }
-      requestAnimationFrame(updateHaloPosition);
-    }
-    updateHaloPosition();
-
     // Scroll spy for navigation
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll(".nav-link");
@@ -433,7 +340,7 @@ const experiences = [
     window.addEventListener("scroll", () => {
       if (stickyNav) {
         if (window.scrollY > 42) {
-          stickyNav.style.paddingTop = "112px";
+          stickyNav.style.paddingTop = "50px";
         } else {
           stickyNav.style.paddingTop = "0";
         }
@@ -448,7 +355,7 @@ const experiences = [
         const targetSection = document.getElementById(targetId);
         if (targetSection) {
           // Calculate position with offset for header (144px to match sticky top-36)
-          const targetPosition = targetSection.offsetTop - 144;
+          const targetPosition = targetSection.offsetTop - 170;
           window.scrollTo({
             top: targetPosition,
             behavior: "smooth",
