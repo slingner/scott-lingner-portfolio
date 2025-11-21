@@ -159,7 +159,7 @@ const experiences = [
       <!-- Main Content -->
       <aside data-pagefind-ignore class="min-w-0 flex-1">
         <!-- About Section -->
-        <section id="about" class="animate mb-24 scroll-mt-32">
+        <section id="about" class="animate mb-24 scroll-mt-40">
           <h2
             class="mb-6 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -215,7 +215,7 @@ const experiences = [
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="animate mb-24 scroll-mt-32">
+        <section id="experience" class="animate mb-24 scroll-mt-40">
           <h2
             class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -274,7 +274,7 @@ const experiences = [
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="animate mb-24 scroll-mt-32">
+        <section id="projects" class="animate mb-24 scroll-mt-40">
           <h2
             class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -292,7 +292,7 @@ const experiences = [
         </section>
 
         <!-- Writing Section -->
-        <section id="writing" class="animate mb-24 scroll-mt-32">
+        <section id="writing" class="animate mb-24 scroll-mt-40">
           <h2
             class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
@@ -360,89 +360,92 @@ const experiences = [
 <div id="cursor-halo"></div>
 
 <script>
-  const halo = document.getElementById("cursor-halo");
-  let mouseX = 0;
-  let mouseY = 0;
-  let currentX = 0;
-  let currentY = 0;
-  let isMouseActive = false;
+  // Wait for DOM to be fully loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    const halo = document.getElementById("cursor-halo");
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let isMouseActive = false;
 
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
 
-    if (!isMouseActive && halo) {
-      halo.classList.add("active");
-      isMouseActive = true;
-    }
-  });
-
-  document.addEventListener("mouseleave", () => {
-    if (halo) {
-      halo.classList.remove("active");
-      isMouseActive = false;
-    }
-  });
-
-  // Smooth animation with easing
-  function updateHaloPosition() {
-    if (halo && isMouseActive) {
-      // Easing for smooth follow
-      const ease = 0.15;
-      currentX += (mouseX - currentX) * ease;
-      currentY += (mouseY - currentY) * ease;
-
-      halo.style.left = `${currentX}px`;
-      halo.style.top = `${currentY}px`;
-    }
-    requestAnimationFrame(updateHaloPosition);
-  }
-  updateHaloPosition();
-
-  // Scroll spy for navigation
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  function setActiveLink(activeId: string) {
-    navLinks.forEach((link) => {
-      const underline = link.querySelector(".nav-underline") as HTMLElement;
-      if (link.getAttribute("data-nav-link") === activeId) {
-        link.classList.add("text-stone-900", "dark:text-stone-100");
-        link.classList.remove("text-stone-700", "dark:text-stone-300");
-        if (underline) {
-          underline.style.width = "100%";
-        }
-      } else {
-        link.classList.remove("text-stone-900", "dark:text-stone-100");
-        link.classList.add("text-stone-700", "dark:text-stone-300");
-        if (underline) {
-          underline.style.width = "0";
-        }
+      if (!isMouseActive && halo) {
+        halo.classList.add("active");
+        isMouseActive = true;
       }
     });
-  }
 
-  // Intersection Observer for scroll spy
-  const observerOptions = {
-    root: null,
-    rootMargin: "-20% 0px -70% 0px",
-    threshold: 0,
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        setActiveLink(entry.target.id);
+    document.addEventListener("mouseleave", () => {
+      if (halo) {
+        halo.classList.remove("active");
+        isMouseActive = false;
       }
     });
-  }, observerOptions);
 
-  sections.forEach((section) => {
-    observer.observe(section);
+    // Smooth animation with easing
+    function updateHaloPosition() {
+      if (halo && isMouseActive) {
+        // Easing for smooth follow
+        const ease = 0.15;
+        currentX += (mouseX - currentX) * ease;
+        currentY += (mouseY - currentY) * ease;
+
+        halo.style.left = `${currentX}px`;
+        halo.style.top = `${currentY}px`;
+      }
+      requestAnimationFrame(updateHaloPosition);
+    }
+    updateHaloPosition();
+
+    // Scroll spy for navigation
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function setActiveLink(activeId: string) {
+      navLinks.forEach((link) => {
+        const underline = link.querySelector(".nav-underline") as HTMLElement;
+        if (link.getAttribute("data-nav-link") === activeId) {
+          link.classList.add("text-stone-900", "dark:text-stone-100");
+          link.classList.remove("text-stone-700", "dark:text-stone-300");
+          if (underline) {
+            underline.style.width = "100%";
+          }
+        } else {
+          link.classList.remove("text-stone-900", "dark:text-stone-100");
+          link.classList.add("text-stone-700", "dark:text-stone-300");
+          if (underline) {
+            underline.style.width = "0";
+          }
+        }
+      });
+    }
+
+    // Intersection Observer for scroll spy
+    const observerOptions = {
+      root: null,
+      rootMargin: "-100px 0px -66% 0px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveLink(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Set initial active state
+    if (sections.length > 0) {
+      setActiveLink(sections[0].id);
+    }
   });
-
-  // Set initial active state
-  if (sections.length > 0) {
-    setActiveLink(sections[0].id);
-  }
 </script>
