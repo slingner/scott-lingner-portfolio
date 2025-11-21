@@ -34,5 +34,3 @@ The lack of direction within the company was a major obstacle. The absence of a 
 ## Final thoughts
 
 Despite the challenges, working at an education startup was a valuable experience that taught me a lot about teamwork, problem-solving, and resilience. The ups and downs of the journey helped me grow both personally and professionally, and I'm grateful for the opportunity to have been a part of such an impactful organization.
-
-[Check out some of the educational learning tools and systems I built at the startup](/projects/project-3).
