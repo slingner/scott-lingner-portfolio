@@ -22,20 +22,20 @@ const currentPath = Astro.url.pathname;
         <Link
           href="/"
           underline={false}
-          class={`nav-link text-sm font-medium ${currentPath === "/" ? "active" : ""}`}
+          class={`nav-link !text-stone-700 dark:!text-stone-300 hover:!text-stone-900 dark:hover:!text-stone-100 text-sm font-medium ${currentPath === "/" ? "active" : ""}`}
         >
           Home
         </Link>
         <Link
           href="/news"
           underline={false}
-          class={`nav-link text-sm font-medium ${currentPath.startsWith("/news") ? "active" : ""}`}
+          class={`nav-link !text-stone-700 dark:!text-stone-300 hover:!text-stone-900 dark:hover:!text-stone-100 text-sm font-medium ${currentPath.startsWith("/news") ? "active" : ""}`}
         >
           News
         </Link>
-        <div class="dropdown-wrapper group relative">
+        <div class="dropdown-wrapper group relative self-end">
           <button
-            class="nav-link pb-0 text-sm font-medium text-stone-700 transition-all duration-300 hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            class="nav-link inline-block text-sm font-medium text-stone-700 transition-all duration-300 hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
           >
             Work ▾
           </button>
@@ -79,7 +79,7 @@ const currentPath = Astro.url.pathname;
         <Link
           href="/about"
           underline={false}
-          class={`nav-link text-sm font-medium ${currentPath === "/about" ? "active" : ""}`}
+          class={`nav-link !text-stone-700 dark:!text-stone-300 hover:!text-stone-900 dark:hover:!text-stone-100 text-sm font-medium ${currentPath === "/about" ? "active" : ""}`}
         >
           About
         </Link>
@@ -122,6 +122,8 @@ const currentPath = Astro.url.pathname;
   .nav-link {
     position: relative;
     transition: all 0.3s ease;
+    display: inline-block;
+    vertical-align: baseline;
   }
 
   .nav-link::after {
@@ -140,10 +142,6 @@ const currentPath = Astro.url.pathname;
   }
 
   .nav-link.active::after {
-    width: 100%;
-  }
-
-  .nav-link:hover {
-    transform: translateY(-2px);
+    width: 100% !important;
   }
 </style>
