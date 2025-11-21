@@ -53,24 +53,6 @@ const { Content, headings } = await post.render();
 
 <Layout title={post.data.title} description={post.data.description}>
   <Container>
-    <nav class="animate mb-2 flex items-center text-sm" aria-label="Breadcrumb">
-      <ol class="flex flex-wrap items-center gap-2">
-        <li>
-          <BackToPrevious href="/">Home</BackToPrevious>
-        </li>
-        <li aria-hidden="true" class="mx-1 text-stone-400">/</li>
-        <li>
-          <BackToPrevious href="/software-engineering">Software</BackToPrevious>
-        </li>
-        <li aria-hidden="true" class="mx-1 text-stone-400">/</li>
-        <li
-          class="truncate font-medium text-stone-700 dark:text-stone-200"
-          aria-current="page"
-        >
-          {post.data.title}
-        </li>
-      </ol>
-    </nav>
     <div class="my-10 space-y-1">
       <div class="animate flex items-center gap-1.5">
         <div class="font-base text-sm">
