@@ -692,16 +692,19 @@
       fishDroppedCount = 0;
       dropTimes = [];
       const numGroups = 35; // 35 groups of fish
-      const groupInterval = 5500; // 5.5 seconds between groups
 
+      let cumulativeTime = 0;
       for (let group = 0; group < numGroups; group++) {
-        const groupTime = group * groupInterval;
+        // Random interval between 3-5 seconds
+        const groupInterval = 3000 + Math.random() * 2000;
+        cumulativeTime += groupInterval;
+
         const fishInGroup = 2 + Math.floor(Math.random() * 2); // 2-3 fish per group
 
         for (let i = 0; i < fishInGroup; i++) {
-          // Small offset within the group (0-300ms)
-          const withinGroupOffset = Math.random() * 300;
-          dropTimes.push(Date.now() + groupTime + withinGroupOffset);
+          // Spread fish within group over 0-600ms
+          const withinGroupOffset = Math.random() * 600;
+          dropTimes.push(Date.now() + cumulativeTime + withinGroupOffset);
         }
       }
 
