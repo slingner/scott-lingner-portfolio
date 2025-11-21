@@ -3,11 +3,13 @@ import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
 import Pelican from "@components/Pelican.astro";
 import { SITE } from "@consts";
+
+const currentPath = Astro.url.pathname;
 ---
 
 <header transition:persist class="bg-stone-100 dark:bg-stone-900">
   <Container>
-    <div class="flex flex-wrap items-center justify-between gap-y-2">
+    <div class="flex flex-wrap items-center gap-y-2">
       <Link href="/" underline={false}>
         <img
           src="/logo.png"
@@ -16,16 +18,16 @@ import { SITE } from "@consts";
         />
       </Link>
 
-      <nav class="hidden items-end gap-6 md:flex">
-        <Link href="/" underline={false} class="text-sm font-medium">
+      <nav class="ml-auto mr-4 hidden items-end gap-6 md:flex">
+        <Link href="/" underline={false} class={`nav-link text-sm font-medium ${currentPath === '/' ? 'active' : ''}`}>
           Home
         </Link>
-        <Link href="/news" underline={false} class="text-sm font-medium">
+        <Link href="/news" underline={false} class={`nav-link text-sm font-medium ${currentPath.startsWith('/news') ? 'active' : ''}`}>
           News
         </Link>
         <div class="dropdown-wrapper group relative">
           <button
-            class="text-sm font-medium text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            class="nav-link text-sm font-medium text-stone-700 transition-all duration-300 hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
           >
             Projects ▾
           </button>
@@ -66,7 +68,7 @@ import { SITE } from "@consts";
             </div>
           </div>
         </div>
-        <Link href="/about" underline={false} class="text-sm font-medium">
+        <Link href="/about" underline={false} class={`nav-link text-sm font-medium ${currentPath === '/about' ? 'active' : ''}`}>
           About
         </Link>
       </nav>
@@ -103,5 +105,33 @@ import { SITE } from "@consts";
 
   .dropdown-menu {
     z-index: 50;
+  }
+
+  .nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+  .nav-link:hover {
+    transform: translateY(-2px);
   }
 </style>
