@@ -1,7 +1,7 @@
 ---
 # make sure to update this title in the image mapper on ArrowCard if changed
-title: "Student portfolios - Prenda"
-description: "Created a student portfolio dashboard to showcase work and progress."
+title: "Student Dashboard - Prenda"
+description: "Created a student dashboard to showcase work and progress."
 date: "2024-08-10"
 banner: "/prenda.png"
 demoURL: "https://www.prenda.com/"
@@ -12,30 +12,30 @@ repoURL: "https://github.com/prenda-school/prendaworld"
 
 I wanted to start with a little background into Prenda, the ed-tech company I’ve been working for for the last four years. Prenda helps adults create microschools in their homes, usually around 5-10 kids. The whole model behind Prenda is based on mastery-based learning, where kids can learn at their own pace and truly master a subject before moving on. There are four different modes in the Prenda curriculum that kids bounce around throughout their 4-hour school day, each one targeting a different aspect of learning. This approach empowers the students to want to learn.
 
-## 📚 Student Portfolios Project
+## 📚 Student Dashboard Project
 ### The problem
 
 Students' work had nowhere to live in Prenda. It was scattered between the four different learning modes (Connect, Conquer, Collaborate, Create), making it difficult to share their work with their teachers and parents.
 
 ### The solution
 
-The solution to this was to create a student portfolio that combined all of the modes into one location, where images, notes, and other stats could be stored and shared between students, guides, and parents.
+The solution to this was to create a student dashboard that combined all of the modes into one location, where images, notes, and other stats could be stored and shared between students, guides, and parents.
 
 ### 🚀 Key features
 
 This dashboard seamlessly integrates with Prenda's various learning tools and includes several key features, such as a project detail page where students can display their work through photos, videos, and written reflections. It also includes a "Favorites" section where students can explore and create a list of their favorite projects, along with filtering options by mode, subject, date, and more.
 
-The tool is accessible not only to students but also to teachers, who can approve or reject portfolio submissions and leave comments, fostering a more interactive and supportive learning environment.
+The tool is accessible not only to students but also to teachers, who can approve or reject dashboard submissions and leave comments, fostering a more interactive and supportive learning environment.
 
-![Student portfolios dashboard](/portfolio.png)
+![Student dashboard](/portfolio.png)
 Student portfolios dashboard for students to showcase their work and progress.
 
-![Student portfolios enlarged view](/portfolio-enlarged-view.png)
+![Student dashboard enlarged view](/portfolio-enlarged-view.png)
 A project detail page that showcases the student's work, including photos, videos, and written reflections.
 
 ## 🛠️ Tech stack
 
-This tool was built using React, with React Router for efficient page navigation, a customized Prenda design system for styling, and AWS for photo storage. Thousands of existing portfolio projects were stored in MongoDB before beginning this project, and we decided to retain the data there while migrating to an updated model to ensure a smooth transition.
+This tool was built using React, with React Router for efficient page navigation, a customized Prenda design system for styling, and AWS for photo storage. Thousands of existing dashboard projects were stored in MongoDB before beginning this project, and we decided to retain the data there while migrating to an updated model to ensure a smooth transition.
 
 ### Frontend
 
