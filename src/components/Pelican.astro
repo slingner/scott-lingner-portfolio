@@ -274,9 +274,9 @@
 
   .fisherman-hint {
     position: absolute;
-    top: -190px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    right: 60px;
+    transform: translateY(-50%);
     background: rgba(0, 0, 0, 0.9);
     color: white;
     padding: 8px 12px;
@@ -690,7 +690,7 @@
       // Calculate fish drops - more fish for faster gameplay
       fishDroppedCount = 0;
       dropTimes = [];
-      const numDrops = 8; // Drop 8 fish each time for faster gameplay
+      const numDrops = 12; // Drop 12 fish each time for faster gameplay
 
       for (let i = 0; i < numDrops; i++) {
         // Stagger drops across the flight
@@ -1092,7 +1092,7 @@
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance > 3) {
-          const speed = 2;
+          const speed = 4;
           pelicanX += (dx / distance) * speed;
           pelicanY += (dy / distance) * speed;
 
