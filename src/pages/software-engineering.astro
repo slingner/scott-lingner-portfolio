@@ -4,6 +4,7 @@ import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import Pelican from "@components/Pelican.astro";
 import { getCollection } from "astro:content";
+import Link from "@components/Link.astro";
 
 const blog = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
@@ -65,60 +66,42 @@ const experiences = [
   description="Software engineering projects and writing by Scott Lingner."
 >
   <!-- Custom Software Header -->
-  <header class="border-b border-stone-300/50 dark:border-stone-700/50">
+  <header class="bg-stone-100 dark:bg-stone-900">
     <Container>
       <div class="flex flex-wrap items-center justify-between gap-y-4 py-6">
-        <div class="flex items-center gap-4">
-          <div class="flex items-center gap-3">
-            <div
-              class="flex h-12 w-12 items-center justify-center rounded-lg bg-stone-700 dark:bg-stone-600"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+        <Link href="/" underline={false}>
+          <div class="flex items-center gap-4">
+            <div class="flex items-center gap-3">
+              <div
+                class="flex h-12 w-12 items-center justify-center rounded-lg bg-stone-700 dark:bg-stone-600"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-              </svg>
-            </div>
-            <div>
-              <h1 class="text-xl font-bold text-stone-900 dark:text-stone-100">
-                Scott Lingner
-              </h1>
-              <p class="text-sm text-stone-600 dark:text-stone-400">
-                Frontend Engineer
-              </p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                </svg>
+              </div>
+              <div>
+                <h1
+                  class="text-xl font-bold text-stone-900 dark:text-stone-100"
+                >
+                  Scott Lingner
+                </h1>
+                <p class="text-sm text-stone-600 dark:text-stone-400">
+                  Frontend Engineer
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <a
-          href="/"
-          class="group relative flex items-center gap-2 overflow-hidden rounded-lg border border-stone-300/70 px-4 py-2 text-sm font-semibold text-stone-700 transition-all duration-300 hover:border-stone-900 hover:text-stone-900 dark:border-stone-600/70 dark:text-stone-300 dark:hover:border-stone-100 dark:hover:text-stone-100"
-        >
-          <span
-            class="absolute bottom-0 left-0 h-[1px] w-0 bg-stone-900 transition-all duration-300 group-hover:w-full dark:bg-stone-100"
-          ></span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-          </svg>
-          Back to scottlingner.com
-        </a>
+        </Link>
       </div>
     </Container>
   </header>
