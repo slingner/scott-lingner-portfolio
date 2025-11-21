@@ -286,7 +286,7 @@ const experiences = [
   function initializePage() {
     // Scroll spy for navigation
     const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll(".nav-link");
+    const navLinks = document.querySelectorAll("[data-nav-link]");
 
     function setActiveLink(activeId) {
       navLinks.forEach((link) => {
