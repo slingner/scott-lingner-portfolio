@@ -20,17 +20,17 @@ import { SITE } from "@consts";
         <Link
           href="/"
           underline={false}
-          class="nav-link !text-stone-700 dark:!text-stone-300 hover:!text-stone-900 dark:hover:!text-stone-100 text-sm font-medium"
+          class="nav-link text-sm font-medium !text-stone-700 hover:!text-stone-900 dark:!text-stone-300 dark:hover:!text-stone-100"
         >
           Home
         </Link>
-        <Link
+        <!-- <Link
           href="/news"
           underline={false}
           class="nav-link !text-stone-700 dark:!text-stone-300 hover:!text-stone-900 dark:hover:!text-stone-100 text-sm font-medium"
         >
           News
-        </Link>
+        </Link> -->
         <div class="dropdown-wrapper relative">
           <button
             id="work-dropdown-button"
@@ -79,7 +79,7 @@ import { SITE } from "@consts";
         <Link
           href="/about"
           underline={false}
-          class="nav-link !text-stone-700 dark:!text-stone-300 hover:!text-stone-900 dark:hover:!text-stone-100 text-sm font-medium"
+          class="nav-link text-sm font-medium !text-stone-700 hover:!text-stone-900 dark:!text-stone-300 dark:hover:!text-stone-100"
         >
           About
         </Link>
@@ -116,7 +116,8 @@ import { SITE } from "@consts";
   function setupDropdown() {
     const dropdownButton = document.getElementById("work-dropdown-button");
     const dropdownMenu = document.getElementById("work-dropdown-menu");
-    const dropdownWrapper = document.querySelector<HTMLElement>(".dropdown-wrapper");
+    const dropdownWrapper =
+      document.querySelector<HTMLElement>(".dropdown-wrapper");
 
     if (!dropdownButton || !dropdownMenu || !dropdownWrapper) return;
 
@@ -141,10 +142,11 @@ import { SITE } from "@consts";
 
   function updateActiveNavLinks() {
     const currentPath = window.location.pathname;
-    const isWorkActive = currentPath.startsWith("/software-engineering") ||
-                         currentPath.startsWith("/music") ||
-                         currentPath.startsWith("/art") ||
-                         currentPath.startsWith("/photo");
+    const isWorkActive =
+      currentPath.startsWith("/software-engineering") ||
+      currentPath.startsWith("/music") ||
+      currentPath.startsWith("/art") ||
+      currentPath.startsWith("/photo");
 
     // Get all nav links
     const navLinks = document.querySelectorAll(".nav-link");
@@ -161,7 +163,9 @@ import { SITE } from "@consts";
       const newsLink = document.querySelector('a[href="/news"].nav-link');
       newsLink?.classList.add("active");
     } else if (isWorkActive) {
-      const workButton = document.querySelector('.dropdown-wrapper button.nav-link');
+      const workButton = document.querySelector(
+        ".dropdown-wrapper button.nav-link",
+      );
       workButton?.classList.add("active");
     } else if (currentPath === "/about") {
       const aboutLink = document.querySelector('a[href="/about"].nav-link');

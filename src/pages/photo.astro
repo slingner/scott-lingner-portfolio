@@ -2,6 +2,13 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import TagBadge from "@components/TagBadge.astro";
+import { getCollection } from "astro:content";
+
+const newsItems = (await getCollection("news"))
+  .filter((item) => !item.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Layout
@@ -63,7 +70,7 @@ import Link from "@components/Link.astro";
       </span>
     </a>
 
-    <h3 class="mt-8 text-xl font-semibold text-stone-800 dark:text-stone-200">
+    <h3 class="mt-8 text-2xl font-semibold text-stone-800 dark:text-stone-200">
       Featured In
     </h3>
 
