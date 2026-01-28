@@ -1,0 +1,536 @@
+---
+import Container from "@components/Container.astro";
+import Pelican from "@components/Pelican.astro";
+import Layout from "@layouts/Layout.astro";
+
+const uxProjects = [
+  {
+    title: "Picture Book Review",
+    description:
+      "Designed and developed a children's book review platform featuring a clean, family-friendly interface with intuitive navigation, book categorization, and review submission system.",
+    url: "https://picturebookreview.com",
+    images: [
+      "/design/pbr-hero.png",
+      "/design/pbr-browse.png",
+      "/design/pbr-detail.png",
+    ],
+    skills: ["UX Design", "UI Design", "Web Development", "Responsive Design"],
+    role: "Designer & Developer",
+  },
+  {
+    title: "Rocket Boogie Co.",
+    description:
+      "E-commerce website design for a whimsical art and lifestyle goods brand. Customized Shopify theme with custom Liquid code, fresh visual design, and tailored features to match the brand's playful personality.",
+    url: "https://rocketboogie.com",
+    images: ["/rbc.png", "/design/rbc-shop.png", "/design/rbc-product.png"],
+    skills: ["UX Design", "UI Design", "Shopify", "Liquid", "E-commerce"],
+    role: "Designer & Developer",
+  },
+];
+
+const infographics = [
+  {
+    title: "Pedestrian Safety Statistics",
+    description:
+      "Data visualization infographic exploring pedestrian traffic safety statistics, featuring compelling statistics about traffic fatalities and safety tips for both pedestrians and drivers.",
+    image: "/design/traffic.png",
+    skills: ["Data Visualization", "Information Design", "Adobe Illustrator"],
+  },
+  {
+    title: "Climate Change Awareness",
+    description:
+      "Educational infographic presenting scientific evidence for climate change, including temperature trends, sea level rise data, and actionable tips for reducing environmental impact.",
+    image: "/design/climate.png",
+    skills: ["Data Visualization", "Information Design", "Adobe Illustrator"],
+  },
+];
+
+const logos = [
+  {
+    title: "Better Body Concepts",
+    description:
+      "Brand identity and business card design for a personal fitness training business. Created a bold, memorable logo featuring a strong figure silhouette integrated with the company name.",
+    image: "/design/logo-bbc.png",
+    skills: ["Logo Design", "Brand Identity", "Business Card Design", "Adobe Illustrator"],
+  },
+  {
+    title: "Josh Nelson Project",
+    description:
+      "Logo design for a musician/band featuring a guitar silhouette integrated with the initials 'JNP'. Created distressed, vintage-inspired typography for a rock aesthetic.",
+    image: "/design/logo-jnp.png",
+    skills: ["Logo Design", "Music Branding", "Typography", "Adobe Illustrator"],
+  },
+];
+
+const magazineDesign = [
+  {
+    title: "Zoo Magazine Spread",
+    description:
+      "Editorial layout design for a zoo publication featuring an article about siamangs. Combined engaging typography, informative content blocks, and beautiful wildlife illustration.",
+    images: ["/design/magazine-1.png", "/design/magazine-2.png"],
+    skills: ["Editorial Design", "Layout Design", "Typography", "Adobe InDesign"],
+  },
+];
+
+const bookCovers = [
+  {
+    title: "Book Cover Design",
+    description:
+      "Cover design showcasing typography and visual composition skills for print publication.",
+    image: "/design/bookcover.png",
+    skills: ["Book Cover Design", "Typography", "Adobe Photoshop", "Adobe InDesign"],
+  },
+];
+---
+
+<Layout
+  title="Design Portfolio"
+  description="UX/UI and graphic design portfolio showcasing web design, infographics, logos, and editorial work by Scott Lingner."
+>
+  <Container>
+    <div class="mt-8 flex gap-12">
+      <!-- Fixed Sidebar Navigation -->
+      <nav class="animate hidden w-48 flex-shrink-0 lg:block">
+        <div class="sticky top-36">
+          <div class="flex flex-col gap-4">
+            <a
+              href="#about"
+              data-nav-link="about"
+              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            >
+              About
+              <span
+                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
+              ></span>
+            </a>
+            <a
+              href="#ux-ui"
+              data-nav-link="ux-ui"
+              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            >
+              UX/UI Design
+              <span
+                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
+              ></span>
+            </a>
+            <a
+              href="#infographics"
+              data-nav-link="infographics"
+              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            >
+              Infographics
+              <span
+                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
+              ></span>
+            </a>
+            <a
+              href="#logos"
+              data-nav-link="logos"
+              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            >
+              Logo Design
+              <span
+                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
+              ></span>
+            </a>
+            <a
+              href="#editorial"
+              data-nav-link="editorial"
+              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            >
+              Editorial
+              <span
+                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
+              ></span>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <aside data-pagefind-ignore class="min-w-0 flex-1">
+        <!-- About Section -->
+        <section id="about" class="animate mb-24 scroll-mt-36">
+          <h2
+            class="mb-6 text-3xl font-bold text-stone-900 dark:text-stone-100"
+          >
+            Scott Lingner &mdash; Designer
+          </h2>
+          <div
+            class="space-y-4 text-base leading-relaxed text-stone-700 dark:text-stone-300"
+          >
+            <p>
+              I'm a designer with experience spanning UX/UI design, brand identity,
+              data visualization, and editorial layout. My background combines
+              creative direction with hands-on design execution.
+            </p>
+            <p>
+              Through my work at Rocket Boogie Co. and various freelance projects,
+              I've developed expertise in translating complex information into
+              visually compelling designs that communicate effectively.
+            </p>
+            <p>
+              My approach emphasizes clean aesthetics, thoughtful typography,
+              and user-centered design principles whether working on digital
+              interfaces or print materials.
+            </p>
+            <div class="mt-6">
+              <h3
+                class="mb-3 text-lg font-semibold text-stone-900 dark:text-stone-100"
+              >
+                Design Skills
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                {
+                  [
+                    "UX Design",
+                    "UI Design",
+                    "Brand Identity",
+                    "Data Visualization",
+                    "Typography",
+                    "Adobe Creative Suite",
+                    "Figma",
+                    "Editorial Design",
+                    "Logo Design",
+                  ].map((skill) => (
+                    <span class="rounded-full bg-stone-200 px-3 py-1 text-sm font-medium text-stone-700 dark:bg-stone-800 dark:text-stone-300">
+                      {skill}
+                    </span>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- UX/UI Design Section -->
+        <section id="ux-ui" class="animate mb-24 scroll-mt-36">
+          <h2
+            class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
+          >
+            UX/UI Design
+          </h2>
+          <div class="space-y-16">
+            {
+              uxProjects.map((project) => (
+                <div class="rounded-xl border border-stone-300/50 bg-stone-100/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50 md:p-8">
+                  <div class="mb-6 flex flex-wrap items-start justify-between gap-4">
+                    <div>
+                      <h3 class="text-2xl font-bold text-stone-900 dark:text-stone-100">
+                        {project.title}
+                      </h3>
+                      <p class="mt-1 text-sm text-stone-600 dark:text-stone-400">
+                        {project.role}
+                      </p>
+                    </div>
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="group flex items-center gap-2 rounded-full bg-stone-900 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-stone-700 dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-300"
+                    >
+                      Visit Site
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      >
+                        <path d="M7 17L17 7" />
+                        <path d="M7 7h10v10" />
+                      </svg>
+                    </a>
+                  </div>
+                  <p class="mb-6 text-base leading-relaxed text-stone-700 dark:text-stone-300">
+                    {project.description}
+                  </p>
+                  <div class="mb-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    {project.images.map((img, idx) => (
+                      <div class="overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-stone-600/50 dark:bg-stone-900">
+                        <img
+                          src={img}
+                          alt={`${project.title} screenshot ${idx + 1}`}
+                          class="h-auto w-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    {project.skills.map((skill) => (
+                      <span class="rounded bg-stone-300/50 px-2 py-1 text-xs font-medium text-stone-700 dark:bg-stone-700/50 dark:text-stone-300">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+
+        <!-- Infographics Section -->
+        <section id="infographics" class="animate mb-24 scroll-mt-36">
+          <h2
+            class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
+          >
+            Infographics
+          </h2>
+          <div class="space-y-12">
+            {
+              infographics.map((item) => (
+                <div class="rounded-xl border border-stone-300/50 bg-stone-100/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50 md:p-8">
+                  <h3 class="mb-4 text-xl font-bold text-stone-900 dark:text-stone-100">
+                    {item.title}
+                  </h3>
+                  <p class="mb-6 text-base leading-relaxed text-stone-700 dark:text-stone-300">
+                    {item.description}
+                  </p>
+                  <div class="mb-6 overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm dark:border-stone-600/50 dark:bg-stone-900">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      class="h-auto w-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    {item.skills.map((skill) => (
+                      <span class="rounded bg-stone-300/50 px-2 py-1 text-xs font-medium text-stone-700 dark:bg-stone-700/50 dark:text-stone-300">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+
+        <!-- Logo Design Section -->
+        <section id="logos" class="animate mb-24 scroll-mt-36">
+          <h2
+            class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
+          >
+            Logo Design
+          </h2>
+          <div class="grid gap-8 md:grid-cols-2">
+            {
+              logos.map((item) => (
+                <div class="rounded-xl border border-stone-300/50 bg-stone-100/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50">
+                  <div class="mb-4 overflow-hidden rounded-lg border border-stone-300/50 bg-white p-4 dark:border-stone-600/50 dark:bg-stone-900">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      class="h-auto w-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                  <h3 class="mb-2 text-xl font-bold text-stone-900 dark:text-stone-100">
+                    {item.title}
+                  </h3>
+                  <p class="mb-4 text-sm leading-relaxed text-stone-700 dark:text-stone-300">
+                    {item.description}
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    {item.skills.map((skill) => (
+                      <span class="rounded bg-stone-300/50 px-2 py-1 text-xs font-medium text-stone-700 dark:bg-stone-700/50 dark:text-stone-300">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+
+        <!-- Editorial Design Section -->
+        <section id="editorial" class="animate mb-24 scroll-mt-36">
+          <h2
+            class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
+          >
+            Editorial Design
+          </h2>
+
+          <!-- Magazine Design -->
+          <div class="mb-12">
+            <h3 class="mb-6 text-xl font-semibold text-stone-800 dark:text-stone-200">
+              Magazine Layout
+            </h3>
+            {
+              magazineDesign.map((item) => (
+                <div class="rounded-xl border border-stone-300/50 bg-stone-100/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50 md:p-8">
+                  <h4 class="mb-4 text-lg font-bold text-stone-900 dark:text-stone-100">
+                    {item.title}
+                  </h4>
+                  <p class="mb-6 text-base leading-relaxed text-stone-700 dark:text-stone-300">
+                    {item.description}
+                  </p>
+                  <div class="mb-6 grid gap-4 md:grid-cols-2">
+                    {item.images.map((img, idx) => (
+                      <div class="overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm dark:border-stone-600/50 dark:bg-stone-900">
+                        <img
+                          src={img}
+                          alt={`${item.title} page ${idx + 1}`}
+                          class="h-auto w-full object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    {item.skills.map((skill) => (
+                      <span class="rounded bg-stone-300/50 px-2 py-1 text-xs font-medium text-stone-700 dark:bg-stone-700/50 dark:text-stone-300">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+
+          <!-- Book Cover Design -->
+          <div>
+            <h3 class="mb-6 text-xl font-semibold text-stone-800 dark:text-stone-200">
+              Book Cover
+            </h3>
+            {
+              bookCovers.map((item) => (
+                <div class="rounded-xl border border-stone-300/50 bg-stone-100/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50 md:p-8">
+                  <h4 class="mb-4 text-lg font-bold text-stone-900 dark:text-stone-100">
+                    {item.title}
+                  </h4>
+                  <p class="mb-6 text-base leading-relaxed text-stone-700 dark:text-stone-300">
+                    {item.description}
+                  </p>
+                  <div class="mb-6 max-w-md overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm dark:border-stone-600/50 dark:bg-stone-900">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      class="h-auto w-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    {item.skills.map((skill) => (
+                      <span class="rounded bg-stone-300/50 px-2 py-1 text-xs font-medium text-stone-700 dark:bg-stone-700/50 dark:text-stone-300">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+      </aside>
+    </div>
+  </Container>
+</Layout>
+
+<Pelican />
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<script is:inline>
+  function initializePage() {
+    // Scroll spy for navigation
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("[data-nav-link]");
+
+    function setActiveLink(activeId) {
+      navLinks.forEach((link) => {
+        const underline = link.querySelector(".nav-underline");
+        if (link.getAttribute("data-nav-link") === activeId) {
+          link.classList.add("text-stone-900", "dark:text-stone-100");
+          link.classList.remove("text-stone-700", "dark:text-stone-300");
+          if (underline) {
+            underline.style.width = "100%";
+          }
+        } else {
+          link.classList.remove("text-stone-900", "dark:text-stone-100");
+          link.classList.add("text-stone-700", "dark:text-stone-300");
+          if (underline) {
+            underline.style.width = "0";
+          }
+        }
+      });
+    }
+
+    // Intersection Observer for scroll spy
+    const observerOptions = {
+      root: null,
+      rootMargin: "-144px 0px -50% 0px",
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveLink(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Set initial active state immediately
+    if (sections.length > 0) {
+      setActiveLink(sections[0].id);
+    }
+
+    // Add dynamic padding to sticky nav when scrolling
+    const stickyNav = document.querySelector(".sticky.top-36");
+    if (stickyNav) {
+      stickyNav.style.transition =
+        "padding-top 0.35s cubic-bezier(0.4,0,0.2,1)";
+    }
+    window.addEventListener("scroll", () => {
+      if (stickyNav) {
+        if (window.scrollY > 42) {
+          stickyNav.style.paddingTop = "50px";
+        } else {
+          stickyNav.style.paddingTop = "0";
+        }
+      }
+    });
+
+    // Smooth scroll for nav links with proper offset
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute("data-nav-link");
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          // Calculate position with offset for header (144px to match sticky top-36)
+          const targetPosition = targetSection.offsetTop - 170;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+  }
+
+  // Run on initial load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializePage);
+  } else {
+    initializePage();
+  }
+</script>
