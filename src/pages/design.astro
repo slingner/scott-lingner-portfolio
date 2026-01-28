@@ -9,11 +9,7 @@ const uxProjects = [
     description:
       "Designed and developed a children's book review platform featuring a clean, family-friendly interface with intuitive navigation, book categorization, and review submission system.",
     url: "https://picturebookreview.com",
-    images: [
-      "/design/pbr-hero.png",
-      "/design/pbr-browse.png",
-      "/design/pbr-detail.png",
-    ],
+    images: ["/pbr.png"],
     skills: ["UX Design", "UI Design", "Web Development", "Responsive Design"],
     role: "Designer & Developer",
   },
@@ -22,7 +18,7 @@ const uxProjects = [
     description:
       "E-commerce website design for a whimsical art and lifestyle goods brand. Customized Shopify theme with custom Liquid code, fresh visual design, and tailored features to match the brand's playful personality.",
     url: "https://rocketboogie.com",
-    images: ["/rbc.png", "/design/rbc-shop.png", "/design/rbc-product.png"],
+    images: ["/rbc.png", "/rbc-1.png", "/rbc-2.png"],
     skills: ["UX Design", "UI Design", "Shopify", "Liquid", "E-commerce"],
     role: "Designer & Developer",
   },
@@ -33,14 +29,14 @@ const infographics = [
     title: "Pedestrian Safety Statistics",
     description:
       "Data visualization infographic exploring pedestrian traffic safety statistics, featuring compelling statistics about traffic fatalities and safety tips for both pedestrians and drivers.",
-    image: "/design/traffic.png",
+    image: "traffic.webp",
     skills: ["Data Visualization", "Information Design", "Adobe Illustrator"],
   },
   {
     title: "Climate Change Awareness",
     description:
       "Educational infographic presenting scientific evidence for climate change, including temperature trends, sea level rise data, and actionable tips for reducing environmental impact.",
-    image: "/design/climate.png",
+    image: "climate.webp",
     skills: ["Data Visualization", "Information Design", "Adobe Illustrator"],
   },
 ];
@@ -50,15 +46,25 @@ const logos = [
     title: "Better Body Concepts",
     description:
       "Brand identity and business card design for a personal fitness training business. Created a bold, memorable logo featuring a strong figure silhouette integrated with the company name.",
-    image: "/design/logo-bbc.png",
-    skills: ["Logo Design", "Brand Identity", "Business Card Design", "Adobe Illustrator"],
+    image: "logo-1.webp",
+    skills: [
+      "Logo Design",
+      "Brand Identity",
+      "Business Card Design",
+      "Adobe Illustrator",
+    ],
   },
   {
     title: "Josh Nelson Project",
     description:
       "Logo design for a musician/band featuring a guitar silhouette integrated with the initials 'JNP'. Created distressed, vintage-inspired typography for a rock aesthetic.",
-    image: "/design/logo-jnp.png",
-    skills: ["Logo Design", "Music Branding", "Typography", "Adobe Illustrator"],
+    image: "/logo-2.webp",
+    skills: [
+      "Logo Design",
+      "Music Branding",
+      "Typography",
+      "Adobe Illustrator",
+    ],
   },
 ];
 
@@ -67,8 +73,13 @@ const magazineDesign = [
     title: "Zoo Magazine Spread",
     description:
       "Editorial layout design for a zoo publication featuring an article about siamangs. Combined engaging typography, informative content blocks, and beautiful wildlife illustration.",
-    images: ["/design/magazine-1.png", "/design/magazine-2.png"],
-    skills: ["Editorial Design", "Layout Design", "Typography", "Adobe InDesign"],
+    images: ["magazine.jpg", "magazine-1.jpg"],
+    skills: [
+      "Editorial Design",
+      "Layout Design",
+      "Typography",
+      "Adobe InDesign",
+    ],
   },
 ];
 
@@ -77,8 +88,13 @@ const bookCovers = [
     title: "Book Cover Design",
     description:
       "Cover design showcasing typography and visual composition skills for print publication.",
-    image: "/design/bookcover.png",
-    skills: ["Book Cover Design", "Typography", "Adobe Photoshop", "Adobe InDesign"],
+    image: "/book-cover-design.webp",
+    skills: [
+      "Book Cover Design",
+      "Typography",
+      "Adobe Photoshop",
+      "Adobe InDesign",
+    ],
   },
 ];
 ---
@@ -160,14 +176,15 @@ const bookCovers = [
             class="space-y-4 text-base leading-relaxed text-stone-700 dark:text-stone-300"
           >
             <p>
-              I'm a designer with experience spanning UX/UI design, brand identity,
-              data visualization, and editorial layout. My background combines
-              creative direction with hands-on design execution.
+              I'm a designer with experience spanning UX/UI design, brand
+              identity, data visualization, and editorial layout. My background
+              combines creative direction with hands-on design execution.
             </p>
             <p>
-              Through my work at Rocket Boogie Co. and various freelance projects,
-              I've developed expertise in translating complex information into
-              visually compelling designs that communicate effectively.
+              Through my work at Rocket Boogie Co. and various freelance
+              projects, I've developed expertise in translating complex
+              information into visually compelling designs that communicate
+              effectively.
             </p>
             <p>
               My approach emphasizes clean aesthetics, thoughtful typography,
@@ -252,11 +269,11 @@ const bookCovers = [
                   </p>
                   <div class="mb-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {project.images.map((img, idx) => (
-                      <div class="overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-stone-600/50 dark:bg-stone-900">
+                      <div class="h-48 overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-stone-600/50 dark:bg-stone-900">
                         <img
                           src={img}
                           alt={`${project.title} screenshot ${idx + 1}`}
-                          class="h-auto w-full object-cover"
+                          class="lightbox-trigger h-full w-full cursor-zoom-in object-cover"
                           loading="lazy"
                         />
                       </div>
@@ -292,11 +309,11 @@ const bookCovers = [
                   <p class="mb-6 text-base leading-relaxed text-stone-700 dark:text-stone-300">
                     {item.description}
                   </p>
-                  <div class="mb-6 overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm dark:border-stone-600/50 dark:bg-stone-900">
+                  <div class="mx-auto mb-6 h-36 max-w-md overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm dark:border-stone-600/50 dark:bg-stone-900">
                     <img
                       src={item.image}
                       alt={item.title}
-                      class="h-auto w-full object-contain"
+                      class="lightbox-trigger h-full w-full cursor-zoom-in object-cover"
                       loading="lazy"
                     />
                   </div>
@@ -324,11 +341,11 @@ const bookCovers = [
             {
               logos.map((item) => (
                 <div class="rounded-xl border border-stone-300/50 bg-stone-100/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50">
-                  <div class="mb-4 overflow-hidden rounded-lg border border-stone-300/50 bg-white p-4 dark:border-stone-600/50 dark:bg-stone-900">
+                  <div class="mb-4 h-40 overflow-hidden rounded-lg border border-stone-300/50 bg-white p-4 dark:border-stone-600/50 dark:bg-stone-900">
                     <img
                       src={item.image}
                       alt={item.title}
-                      class="h-auto w-full object-contain"
+                      class="lightbox-trigger h-full w-full cursor-zoom-in object-cover"
                       loading="lazy"
                     />
                   </div>
@@ -361,7 +378,9 @@ const bookCovers = [
 
           <!-- Magazine Design -->
           <div class="mb-12">
-            <h3 class="mb-6 text-xl font-semibold text-stone-800 dark:text-stone-200">
+            <h3
+              class="mb-6 text-xl font-semibold text-stone-800 dark:text-stone-200"
+            >
               Magazine Layout
             </h3>
             {
@@ -375,11 +394,11 @@ const bookCovers = [
                   </p>
                   <div class="mb-6 grid gap-4 md:grid-cols-2">
                     {item.images.map((img, idx) => (
-                      <div class="overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm dark:border-stone-600/50 dark:bg-stone-900">
+                      <div class="h-48 overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm dark:border-stone-600/50 dark:bg-stone-900">
                         <img
                           src={img}
                           alt={`${item.title} page ${idx + 1}`}
-                          class="h-auto w-full object-contain"
+                          class="lightbox-trigger h-full w-full cursor-zoom-in object-cover"
                           loading="lazy"
                         />
                       </div>
@@ -399,7 +418,9 @@ const bookCovers = [
 
           <!-- Book Cover Design -->
           <div>
-            <h3 class="mb-6 text-xl font-semibold text-stone-800 dark:text-stone-200">
+            <h3
+              class="mb-6 text-xl font-semibold text-stone-800 dark:text-stone-200"
+            >
               Book Cover
             </h3>
             {
@@ -411,11 +432,11 @@ const bookCovers = [
                   <p class="mb-6 text-base leading-relaxed text-stone-700 dark:text-stone-300">
                     {item.description}
                   </p>
-                  <div class="mb-6 max-w-md overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm dark:border-stone-600/50 dark:bg-stone-900">
+                  <div class="mx-auto mb-6 h-72 max-w-md overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm dark:border-stone-600/50 dark:bg-stone-900">
                     <img
                       src={item.image}
                       alt={item.title}
-                      class="h-auto w-full object-contain"
+                      class="lightbox-trigger h-full w-full cursor-zoom-in object-cover"
                       loading="lazy"
                     />
                   </div>
@@ -438,9 +459,69 @@ const bookCovers = [
 
 <Pelican />
 
+<!-- Lightbox modal for image preview -->
+<div
+  id="lightbox"
+  class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black/70 p-4"
+  role="dialog"
+  aria-modal="true"
+>
+  <button
+    id="lightbox-close"
+    type="button"
+    aria-label="Close image preview"
+    class="absolute right-6 top-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-stone-900 shadow-md hover:bg-white focus:outline-none focus:ring-2 focus:ring-stone-300"
+  >
+    ×
+  </button>
+  <div
+    class="relative flex max-h-full max-w-full items-center justify-center overflow-auto rounded"
+  >
+    <img
+      id="lightbox-image"
+      src=""
+      alt=""
+      class="max-h-[85vh] max-w-[95vw] object-contain"
+    />
+  </div>
+  <!-- Zoom controls: positioned relative to the overlay so they remain fixed while image scrolls -->
+  <div
+    class="z-60 absolute right-6 top-1/2 flex -translate-y-1/2 flex-col items-center gap-3 rounded-md bg-white/95 p-2 shadow-lg dark:bg-stone-900/90"
+    style="min-width:44px;"
+  >
+    <button
+      id="zoom-in"
+      type="button"
+      aria-label="Zoom in"
+      title="Zoom in"
+      class="rounded px-3 py-1.5 text-base text-stone-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-stone-300 dark:text-white"
+      >+</button
+    >
+    <button
+      id="zoom-fit"
+      type="button"
+      aria-label="Fit image to screen"
+      title="Fit to screen"
+      class="rounded px-3 py-1 text-sm text-stone-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-stone-300 dark:text-white"
+      >Fit</button
+    >
+    <button
+      id="zoom-out"
+      type="button"
+      aria-label="Zoom out"
+      title="Zoom out"
+      class="rounded px-3 py-1.5 text-base text-stone-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-stone-300 dark:text-white"
+      >−</button
+    >
+  </div>
+</div>
+
 <style>
   html {
     scroll-behavior: smooth;
+  }
+  .cursor-zoom-in {
+    cursor: zoom-in;
   }
 </style>
 
@@ -516,14 +597,206 @@ const bookCovers = [
         const targetId = link.getAttribute("data-nav-link");
         const targetSection = document.getElementById(targetId);
         if (targetSection) {
-          // Calculate position with offset for header (144px to match sticky top-36)
-          const targetPosition = targetSection.offsetTop - 170;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth",
-          });
+          // Calculate position using actual header height so the section title isn't hidden
+          const headerEl = document.querySelector("header");
+          const headerHeight = headerEl
+            ? headerEl.getBoundingClientRect().height
+            : 0;
+          const extraGap = 16; // small spacing so header doesn't touch section title
+          const offset = headerHeight + extraGap;
+          const targetPosition =
+            targetSection.getBoundingClientRect().top +
+            window.pageYOffset -
+            offset;
+          window.scrollTo({ top: targetPosition, behavior: "smooth" });
         }
       });
+    });
+
+    // Lightbox / image preview
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const lightboxClose = document.getElementById("lightbox-close");
+    // Remember the page scroll before opening the lightbox so we can restore it on close
+    let _savedScrollY = 0;
+    // Remember previously focused element so we can restore focus without scrolling
+    let _prevActiveElement = null;
+    // Feature-detect whether `focus({ preventScroll: true })` is supported
+    let _supportsPreventScroll = false;
+    try {
+      const _testEl = document.createElement("div");
+      _testEl.tabIndex = -1;
+      document.body.appendChild(_testEl);
+      _testEl.focus({ preventScroll: true });
+      _supportsPreventScroll = true;
+      document.body.removeChild(_testEl);
+    } catch (e) {
+      _supportsPreventScroll = false;
+    }
+
+    function openLightbox(src, alt, defaultScale = 1) {
+      if (!lightbox || !lightboxImage) return;
+      // save currently focused element
+      _prevActiveElement = document.activeElement;
+      // save scroll position but avoid modifying body styles here to prevent layout shifts
+      _savedScrollY =
+        window.pageYOffset || document.documentElement.scrollTop || 0;
+      console.debug("lightbox: opening, savedScrollY=", _savedScrollY);
+
+      // Set image and show lightbox. Avoid calling focus() in a way that
+      // causes browsers to scroll. We'll restore focus on close when safe.
+      lightboxImage.src = src;
+      lightboxImage.alt = alt || "";
+      lightbox.classList.remove("hidden");
+      // set initial zoom (allow infographics to open zoomed)
+      currentScale = defaultScale || 1;
+      applyScale();
+    }
+
+    function closeLightbox() {
+      if (!lightbox || !lightboxImage) return;
+      lightbox.classList.add("hidden");
+      lightboxImage.src = "";
+
+      // Restore focus to previous element if we can prevent scrolling.
+      try {
+        if (_prevActiveElement && _prevActiveElement.focus) {
+          if (_supportsPreventScroll) {
+            _prevActiveElement.focus({ preventScroll: true });
+          } else {
+            // If preventScroll isn't supported, skip focusing to avoid jump.
+          }
+        }
+      } catch (e) {
+        // ignore
+      }
+
+      _savedScrollY = 0;
+      _prevActiveElement = null;
+    }
+
+    // Zoom handling: change image size (not transform) so container scrolls when zoomed
+    let currentScale = 1;
+    const ZOOM_STEP = 0.25;
+    const ZOOM_MIN = 0.25;
+    const ZOOM_MAX = 5;
+
+    function applyScale() {
+      if (!lightboxImage) return;
+      const apply = () => {
+        if (currentScale === 1) {
+          // restore fit-to-screen behavior
+          lightboxImage.style.width = "auto";
+          lightboxImage.style.maxWidth = "95vw";
+          lightboxImage.style.maxHeight = "85vh";
+        } else {
+          // set explicit pixel width based on natural size and scale so container becomes scrollable
+          const naturalW = lightboxImage.naturalWidth || lightboxImage.width;
+          const newW = Math.round(naturalW * currentScale);
+          lightboxImage.style.width = newW + "px";
+          lightboxImage.style.maxWidth = "none";
+          lightboxImage.style.maxHeight = "none";
+        }
+      };
+
+      // If naturalWidth not loaded yet, wait for load
+      if (!lightboxImage.naturalWidth) {
+        lightboxImage.onload = () => {
+          // ensure we only call the handler once
+          lightboxImage.onload = null;
+          apply();
+        };
+      } else {
+        apply();
+      }
+    }
+
+    function zoomIn() {
+      currentScale = Math.min(ZOOM_MAX, +(currentScale + ZOOM_STEP).toFixed(2));
+      applyScale();
+    }
+
+    function zoomOut() {
+      currentScale = Math.max(ZOOM_MIN, +(currentScale - ZOOM_STEP).toFixed(2));
+      applyScale();
+    }
+
+    function fitToScreen() {
+      currentScale = 1;
+      applyScale();
+    }
+
+    // Attach control handlers
+    const zoomInBtn = document.getElementById("zoom-in");
+    const zoomOutBtn = document.getElementById("zoom-out");
+    const zoomFitBtn = document.getElementById("zoom-fit");
+    if (zoomInBtn) zoomInBtn.addEventListener("click", zoomIn);
+    if (zoomOutBtn) zoomOutBtn.addEventListener("click", zoomOut);
+    if (zoomFitBtn) zoomFitBtn.addEventListener("click", fitToScreen);
+
+    // Mouse wheel to zoom when Ctrl/Meta is pressed
+    lightbox?.addEventListener(
+      "wheel",
+      (e) => {
+        if (e.ctrlKey || e.metaKey) {
+          e.preventDefault();
+          if (e.deltaY < 0) zoomIn();
+          else zoomOut();
+        }
+      },
+      { passive: false },
+    );
+
+    // Ensure lightbox is hidden on load (guard against stuck open state)
+    if (lightbox) {
+      lightbox.classList.add("hidden");
+    }
+
+    try {
+      const triggers = document.querySelectorAll(".lightbox-trigger");
+      console.log(
+        "lightbox: found triggers",
+        triggers.length,
+        "lightbox element:",
+        !!lightbox,
+      );
+      triggers.forEach((img) => {
+        img.addEventListener("click", () => {
+          try {
+            // prefer data-fullsrc if provided
+            const full = img.getAttribute("data-fullsrc") || img.src;
+            const isInfographic = img.dataset.type === "infographic";
+            // default zoom for infographics; change value if you want stronger/weaker zoom
+            openLightbox(
+              full,
+              img.alt || "Image preview",
+              isInfographic ? 1.5 : 1,
+            );
+          } catch (err) {
+            console.error("lightbox click handler error:", err);
+          }
+        });
+      });
+    } catch (err) {
+      console.error("error attaching lightbox handlers:", err);
+    }
+
+    if (lightbox) {
+      // Close when clicking on overlay (but not when clicking the image)
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      // Close via close button
+      if (lightboxClose) {
+        lightboxClose.addEventListener("click", closeLightbox);
+      }
+    }
+
+    // Defensive: ensure closed state after wiring handlers
+    closeLightbox();
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeLightbox();
     });
   }
 

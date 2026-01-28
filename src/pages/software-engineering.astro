@@ -354,12 +354,18 @@ const experiences = [
         const targetId = link.getAttribute("data-nav-link");
         const targetSection = document.getElementById(targetId);
         if (targetSection) {
-          // Calculate position with offset for header (144px to match sticky top-36)
-          const targetPosition = targetSection.offsetTop - 170;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth",
-          });
+          // Calculate position using actual header height so the section title isn't hidden
+          const headerEl = document.querySelector("header");
+          const headerHeight = headerEl
+            ? headerEl.getBoundingClientRect().height
+            : 0;
+          const extraGap = 16; // small spacing so header doesn't touch section title
+          const offset = headerHeight + extraGap;
+          const targetPosition =
+            targetSection.getBoundingClientRect().top +
+            window.pageYOffset -
+            offset;
+          window.scrollTo({ top: targetPosition, behavior: "smooth" });
         }
       });
     });
