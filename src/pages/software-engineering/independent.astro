@@ -1,0 +1,90 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
+
+const projectSlugs = [
+  "unexpected-frequency",
+  "ghostmail",
+  "rocket-boogie",
+  "picture-book-review",
+];
+
+const independentProjects = allProjects
+  .filter((p) => !p.data.draft && projectSlugs.includes(p.slug))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const skills = [
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Astro",
+  "Sanity",
+  "Liquid",
+  "Node.js",
+];
+---
+
+<Layout
+  title="Independent Product Engineer"
+  description="Scott Lingner's independent software work, including commercial projects, plugins, and personal products."
+>
+  <Container>
+    <div class="animate mt-8">
+      <BackToPrevious href="/software-engineering">
+        Software Engineering
+      </BackToPrevious>
+    </div>
+
+    <div class="animate my-10 space-y-4">
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <h1 class="text-3xl font-bold text-stone-900 dark:text-stone-100">
+          Independent Product Engineer
+        </h1>
+        <span class="font-mono text-sm text-stone-500 dark:text-stone-400"
+          >Sep 2024 – Present</span
+        >
+      </div>
+
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">
+        Building commercial software independently across a range of clients and
+        personal projects. Current work includes an Adobe Illustrator plugin for
+        fashion brands that automates color palette extraction and matching from
+        garment and brand references — streamlining a tedious manual step in the
+        design workflow.
+      </p>
+
+      <div class="flex flex-wrap gap-2 pt-1">
+        {
+          skills.map((skill) => (
+            <span class="rounded bg-stone-200/70 px-2 py-1 text-xs font-medium text-stone-700 dark:bg-stone-800/70 dark:text-stone-300">
+              {skill}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    {
+      independentProjects.length > 0 && (
+        <div class="animate">
+          <h2 class="mb-6 text-xl font-semibold text-stone-900 dark:text-stone-100">
+            Projects
+          </h2>
+          <ul class="not-prose flex flex-col gap-4">
+            {independentProjects.map((project) => (
+              <li>
+                <ArrowCard entry={project} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </Container>
+</Layout>

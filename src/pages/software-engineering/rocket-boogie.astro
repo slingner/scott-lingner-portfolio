@@ -1,0 +1,105 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
+const rbcProject = allProjects.find((p) => p.slug === "rocket-boogie");
+
+const skills = [
+  "Adobe Illustrator",
+  "Figma",
+  "Shopify",
+  "Liquid",
+  "E-commerce",
+  "Brand Development",
+];
+---
+
+<Layout
+  title="Designer / Co-Founder — Rocket Boogie Co"
+  description="Scott Lingner's work co-founding Rocket Boogie Co, a design studio specializing in whimsical art and lifestyle goods."
+>
+  <Container>
+    <div class="animate mt-8">
+      <BackToPrevious href="/software-engineering">
+        Software Engineering
+      </BackToPrevious>
+    </div>
+
+    <div class="animate my-10 space-y-4">
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <h1 class="text-3xl font-bold text-stone-900 dark:text-stone-100">
+          Designer / Co-Founder
+        </h1>
+        <span class="font-mono text-sm text-stone-500 dark:text-stone-400"
+          >2014 – Present</span
+        >
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="text-lg font-semibold text-stone-700 dark:text-stone-300"
+          >Rocket Boogie Co</span
+        >
+        <a
+          href="https://rocketboogie.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1 rounded border border-stone-300 px-2 py-0.5 text-xs font-medium text-stone-600 transition-colors hover:border-stone-500 hover:text-stone-900 dark:border-stone-600 dark:text-stone-400 dark:hover:border-stone-400 dark:hover:text-stone-100"
+        >
+          rocketboogie.com
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="10"
+            height="10"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M7 17L17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </a>
+      </div>
+
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">
+        Co-founded and led a design studio specializing in whimsical art and
+        lifestyle goods — greeting cards, art prints, home goods, and apparel.
+        Managed creative direction, produced all original artwork, coordinated
+        production, and handled wholesale accounts. On the technical side, built
+        and customized the Shopify storefront using Liquid to give the shop a
+        distinct handcrafted identity that matched the brand.
+      </p>
+
+      <div class="flex flex-wrap gap-2 pt-1">
+        {
+          skills.map((skill) => (
+            <span class="rounded bg-stone-200/70 px-2 py-1 text-xs font-medium text-stone-700 dark:bg-stone-800/70 dark:text-stone-300">
+              {skill}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    {
+      rbcProject && (
+        <div class="animate">
+          <h2 class="mb-6 text-xl font-semibold text-stone-900 dark:text-stone-100">
+            Projects
+          </h2>
+          <ul class="not-prose flex flex-col gap-4">
+            <li>
+              <ArrowCard entry={rbcProject} />
+            </li>
+          </ul>
+        </div>
+      )
+    }
+  </Container>
+</Layout>

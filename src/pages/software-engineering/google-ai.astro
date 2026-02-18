@@ -1,0 +1,78 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+
+const skills = ["AI/ML", "Data Analysis", "Quality Assurance", "Photography"];
+---
+
+<Layout
+  title="Photography Consultant for Google AI — Filter"
+  description="Scott Lingner's consulting work on AI training data and quality assurance for Google's machine learning initiatives."
+>
+  <Container>
+    <div class="animate mt-8">
+      <BackToPrevious href="/software-engineering">
+        Software Engineering
+      </BackToPrevious>
+    </div>
+
+    <div class="animate my-10 space-y-4">
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <h1 class="text-3xl font-bold text-stone-900 dark:text-stone-100">
+          Photography Consultant for Google AI
+        </h1>
+        <span class="font-mono text-sm text-stone-500 dark:text-stone-400"
+          >Feb 2017 – May 2020</span
+        >
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="text-lg font-semibold text-stone-700 dark:text-stone-300"
+          >Filter, A Merkle Company</span
+        >
+        <a
+          href="https://research.google/blog/using-deep-learning-to-create-professional-level-photographs/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1 rounded border border-stone-300 px-2 py-0.5 text-xs font-medium text-stone-600 transition-colors hover:border-stone-500 hover:text-stone-900 dark:border-stone-600 dark:text-stone-400 dark:hover:border-stone-400 dark:hover:text-stone-100"
+        >
+          Google Research post
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="10"
+            height="10"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M7 17L17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </a>
+      </div>
+
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">
+        Provided photography domain expertise to support Google's AI training
+        data initiatives. This work involved evaluating image quality,
+        identifying aesthetic and technical attributes, and contributing to
+        quality assurance pipelines used to train deep learning models for
+        computational photography — work that fed into research on
+        professional-level image generation.
+      </p>
+
+      <div class="flex flex-wrap gap-2 pt-1">
+        {
+          skills.map((skill) => (
+            <span class="rounded bg-stone-200/70 px-2 py-1 text-xs font-medium text-stone-700 dark:bg-stone-800/70 dark:text-stone-300">
+              {skill}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</Layout>

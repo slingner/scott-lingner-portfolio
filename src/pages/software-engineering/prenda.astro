@@ -1,0 +1,151 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
+const prendaProjects = allProjects
+  .filter((p) => !p.data.draft && p.slug.startsWith("prenda-"))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const skills = [
+  "React",
+  "TypeScript",
+  "Next.js",
+  "Node.js",
+  "Tailwind",
+  "MongoDB",
+  "GraphQL",
+];
+---
+
+<Layout
+  title="Frontend Engineer — Prenda"
+  description="Scott Lingner's work as a Frontend Engineer at Prenda, an EdTech platform serving thousands of students."
+>
+  <Container>
+    <div class="animate mt-8">
+      <BackToPrevious href="/software-engineering">
+        Software Engineering
+      </BackToPrevious>
+    </div>
+
+    <div class="animate my-10 space-y-4">
+      <div
+        class="flex flex-wrap items-baseline justify-between gap-2"
+      >
+        <h1 class="text-3xl font-bold text-stone-900 dark:text-stone-100">
+          Frontend Engineer
+        </h1>
+        <span class="font-mono text-sm text-stone-500 dark:text-stone-400"
+          >Aug 2020 – Sep 2024</span
+        >
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="text-lg font-semibold text-stone-700 dark:text-stone-300"
+          >Prenda</span
+        >
+        <a
+          href="https://prenda.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1 rounded border border-stone-300 px-2 py-0.5 text-xs font-medium text-stone-600 transition-colors hover:border-stone-500 hover:text-stone-900 dark:border-stone-600 dark:text-stone-400 dark:hover:border-stone-400 dark:hover:text-stone-100"
+        >
+          prenda.com
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="10"
+            height="10"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M7 17L17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </a>
+      </div>
+
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">
+        Developed and styled educational interactive web apps for an EdTech
+        platform serving thousands of students across hundreds of microschools.
+        Collaborated closely with UI/UX and curriculum teams to ship new
+        features and optimize user experience from onboarding through daily
+        student use.
+      </p>
+
+      <div class="flex flex-wrap gap-2 pt-1">
+        {
+          skills.map((skill) => (
+            <span class="rounded bg-stone-200/70 px-2 py-1 text-xs font-medium text-stone-700 dark:bg-stone-800/70 dark:text-stone-300">
+              {skill}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="animate">
+      <h2
+        class="mb-6 text-xl font-semibold text-stone-900 dark:text-stone-100"
+      >
+        Projects
+      </h2>
+      <ul class="not-prose flex flex-col gap-4">
+        {
+          prendaProjects.map((project) => (
+            <li>
+              <ArrowCard entry={project} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="animate mt-12">
+      <h2
+        class="mb-6 text-xl font-semibold text-stone-900 dark:text-stone-100"
+      >
+        Writing
+      </h2>
+      <a
+        href="/blog/02-working-at-an-education-startup"
+        class="not-prose group relative flex flex-nowrap rounded-lg border border-stone-300/50 bg-white/80 px-4 py-3 pr-10 shadow-sm transition-all duration-300 ease-in-out hover:border-stone-400/70 hover:shadow-md dark:border-stone-700/50 dark:bg-stone-800/80 dark:hover:border-stone-600/70"
+      >
+        <div class="flex flex-col gap-1">
+          <div
+            class="font-semibold text-stone-800 transition-colors group-hover:text-stone-900 dark:text-stone-100 dark:group-hover:text-stone-50"
+          >
+            Working at an EdTech startup
+          </div>
+          <div class="text-sm text-stone-600 dark:text-stone-400">
+            The ups and downs of working at an education startup.
+          </div>
+        </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          class="absolute right-2 top-1/2 size-5 -translate-y-1/2 fill-none stroke-stone-700 stroke-2 dark:stroke-stone-400"
+        >
+          <line
+            x1="5"
+            y1="12"
+            x2="19"
+            y2="12"
+            class="translate-x-3 scale-x-0 transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-hover:scale-x-100"
+          ></line>
+          <polyline
+            points="12 5 19 12 12 19"
+            class="-translate-x-1 transition-transform duration-300 ease-in-out group-hover:translate-x-0"
+          ></polyline>
+        </svg>
+      </a>
+    </div>
+  </Container>
+</Layout>

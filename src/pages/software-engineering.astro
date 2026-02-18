@@ -1,26 +1,33 @@
 ---
 import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
 import Pelican from "@components/Pelican.astro";
-import { getCollection } from "astro:content";
-
 import Layout from "@layouts/Layout.astro";
-
-const blog = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
-const projects = (await getCollection("projects"))
-  .filter((project) => !project.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const experiences = [
   {
+    title: "Independent Product Engineer",
+    company: "Freelance",
+    period: "Sep 2024 – Present",
+    description:
+      "Building commercial software independently, including an Adobe Illustrator plugin for fashion brands that automates color palette extraction and matching from garment and brand references.",
+    skills: [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Astro",
+      "Sanity",
+      "Node.js",
+    ],
+    url: "/software-engineering/independent",
+    internal: true,
+  },
+  {
     title: "Frontend Engineer",
     company: "Prenda",
-    period: "Aug 2020 - Sep 2024",
+    period: "Aug 2020 – Sep 2024",
     description:
-      "Developed and styled educational interactive web apps for an EdTech platform serving thousands of students. Collaborated closely with UI/UX and curriculum teams to implement new features and optimize user experience.",
+      "Developed and styled educational interactive web apps for an EdTech platform serving thousands of students across hundreds of microschools. Collaborated closely with UI/UX and curriculum teams to ship new features and optimize user experience.",
     skills: [
       "React",
       "TypeScript",
@@ -30,40 +37,51 @@ const experiences = [
       "MongoDB",
       "GraphQL",
     ],
-    url: "https://prenda.com",
+    url: "/software-engineering/prenda",
+    internal: true,
   },
   {
     title: "Frontend Engineer Intern",
     company: "untitled.stream",
-    period: "Jun 2020 - Aug 2020",
+    period: "Jun 2020 – Aug 2020",
     description:
       "Built a multi-layered React desktop app that expanded mobile features and improved user experience, with UX/UI designs in Figma that guided development and ensured usability.",
-    skills: ["React", "JavaScript", "Typescript", "Figma", "CSS", "HTML"],
-    url: "https://untitled.stream",
+    skills: ["React", "JavaScript", "TypeScript", "Figma", "CSS", "HTML"],
+    url: "/software-engineering/untitled-stream",
+    internal: true,
   },
   {
     title: "Photography Consultant for Google AI",
     company: "Filter, A Merkle Company",
-    period: "Feb 2017 - May 2020",
+    period: "Feb 2017 – May 2020",
     description:
-      "Provided expertise on AI training data and quality assurance for Google's machine learning initiatives.",
-    skills: ["AI/ML", "Data Analysis", "Quality Assurance"],
-    url: "https://research.google/blog/using-deep-learning-to-create-professional-level-photographs/",
+      "Provided photography domain expertise to support Google's AI training data initiatives, contributing to quality assurance pipelines for deep learning models in computational photography.",
+    skills: ["AI/ML", "Data Analysis", "Quality Assurance", "Photography"],
+    url: "/software-engineering/google-ai",
+    internal: true,
   },
   {
-    title: "Designer/Co Founder",
+    title: "Designer / Co-Founder",
     company: "Rocket Boogie Co",
-    period: "2014 - Present",
+    period: "2014 – Present",
     description:
-      "Founded and led a design studio specializing in whimsical art and lifestyle goods, creating and selling thousands of greeting cards, art prints, and home and apparel products while managing creative direction, producing artwork, coordinating production, and handling wholesale accounts.",
-    skills: ["Adobe", "Figma", "Shopify", "E-commerce", "Brand Development"],
-    url: "https://rocketboogie.com",
+      "Co-founded a design studio specializing in whimsical art and lifestyle goods. Managed creative direction, produced original artwork, and built a custom Shopify storefront using Liquid.",
+    skills: [
+      "Adobe",
+      "Figma",
+      "Shopify",
+      "Liquid",
+      "E-commerce",
+      "Brand Development",
+    ],
+    url: "/software-engineering/rocket-boogie",
+    internal: true,
   },
 ];
 ---
 
 <Layout
-  title="Frontend Engineer"
+  title="Product Engineer"
   description="Software engineering projects and writing by Scott Lingner."
 >
   <Container>
@@ -92,26 +110,6 @@ const experiences = [
                 class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
               ></span>
             </a>
-            <a
-              href="#projects"
-              data-nav-link="projects"
-              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
-            >
-              Projects
-              <span
-                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
-              ></span>
-            </a>
-            <a
-              href="#writing"
-              data-nav-link="writing"
-              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
-            >
-              Writing
-              <span
-                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
-              ></span>
-            </a>
           </div>
         </div>
       </nav>
@@ -123,23 +121,24 @@ const experiences = [
           <h2
             class="mb-6 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
-            <!-- em dash -->
-            Scott Lingner &mdash; Frontend Engineer
+            Scott Lingner &mdash; Product Engineer
           </h2>
           <div
             class="space-y-4 text-base leading-relaxed text-stone-700 dark:text-stone-300"
           >
             <p>
-              I'm a frontend engineer with five years of experience building
-              impactful applications in the EdTech space. I specialize in
-              frontend development with React and TypeScript, creating intuitive
-              user experiences that scale.
+              I'm a product engineer with five years of professional experience
+              building impactful applications, currently working independently
+              on commercial software. I specialize in frontend development with
+              React and TypeScript, with a growing focus on full-stack and
+              product work across a range of domains.
             </p>
             <p>
-              My work at Prenda, a leading edtech startup, helped thousands of
-              microschools deliver personalized education through technology.
-              I'm passionate about clean code, thoughtful design, and building
-              products that make a difference.
+              My work at Prenda helped thousands of microschools deliver
+              personalized education through technology. Since then I've been
+              building independently — shipping client tools, exploring new
+              stacks, and working on products at the intersection of software
+              and design.
             </p>
             <p>
               When I'm not coding, I'm exploring the intersection of technology
@@ -154,15 +153,17 @@ const experiences = [
               <div class="flex flex-wrap gap-2">
                 {
                   [
-                    "JavaScript ES2015",
+                    "JavaScript",
                     "TypeScript",
                     "HTML",
                     "CSS",
                     "GraphQL",
                     "React",
                     "Next.js",
+                    "Astro",
                     "Node.js",
                     "Tailwind",
+                    "Sanity",
                     "Git",
                   ].map((skill) => (
                     <span class="rounded-full bg-stone-200 px-3 py-1 text-sm font-medium text-stone-700 dark:bg-stone-800 dark:text-stone-300">
@@ -187,11 +188,11 @@ const experiences = [
               experiences.map((exp) => (
                 <a
                   href={exp.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={exp.internal ? "_self" : "_blank"}
+                  rel={exp.internal ? undefined : "noopener noreferrer"}
                   class="group relative block rounded-lg border border-stone-300/50 bg-stone-100/50 p-6 transition-all duration-300 hover:border-stone-400/50 hover:bg-stone-200/50 hover:shadow-lg dark:border-stone-700/50 dark:bg-stone-800/50 dark:hover:border-stone-600/50 dark:hover:bg-stone-700/50"
                 >
-                  <div class="absolute right-6 top-6 text-stone-400 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-stone-900 dark:text-stone-600 dark:group-hover:text-stone-100">
+                  <div class="absolute right-6 top-6 text-stone-400 transition-all duration-300 group-hover:translate-x-1 group-hover:text-stone-900 dark:text-stone-600 dark:group-hover:text-stone-100">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20"
@@ -203,8 +204,8 @@ const experiences = [
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     >
-                      <path d="M7 17L17 7" />
-                      <path d="M7 7h10v10" />
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
                     </svg>
                   </div>
                   <div class="mb-2 flex flex-wrap items-baseline justify-between gap-2 pr-8">
@@ -233,42 +234,6 @@ const experiences = [
             }
           </div>
         </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="animate mb-24 scroll-mt-36">
-          <h2
-            class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
-          >
-            Software Projects
-          </h2>
-          <ul class="not-prose flex flex-col gap-4">
-            {
-              projects.map((project) => (
-                <li>
-                  <ArrowCard entry={project} />
-                </li>
-              ))
-            }
-          </ul>
-        </section>
-
-        <!-- Writing Section -->
-        <section id="writing" class="animate mb-24 scroll-mt-36">
-          <h2
-            class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
-          >
-            Software Writing
-          </h2>
-          <ul class="not-prose flex flex-col gap-4">
-            {
-              blog.map((post) => (
-                <li>
-                  <ArrowCard entry={post} />
-                </li>
-              ))
-            }
-          </ul>
-        </section>
       </aside>
     </div>
   </Container>
@@ -284,7 +249,6 @@ const experiences = [
 
 <script is:inline>
   function initializePage() {
-    // Scroll spy for navigation
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll("[data-nav-link]");
 
@@ -294,84 +258,53 @@ const experiences = [
         if (link.getAttribute("data-nav-link") === activeId) {
           link.classList.add("text-stone-900", "dark:text-stone-100");
           link.classList.remove("text-stone-700", "dark:text-stone-300");
-          if (underline) {
-            underline.style.width = "100%";
-          }
+          if (underline) underline.style.width = "100%";
         } else {
           link.classList.remove("text-stone-900", "dark:text-stone-100");
           link.classList.add("text-stone-700", "dark:text-stone-300");
-          if (underline) {
-            underline.style.width = "0";
-          }
+          if (underline) underline.style.width = "0";
         }
       });
     }
 
-    // Intersection Observer for scroll spy
-    const observerOptions = {
-      root: null,
-      rootMargin: "-144px 0px -50% 0px",
-      threshold: 0.1,
-    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveLink(entry.target.id);
+        });
+      },
+      { root: null, rootMargin: "-144px 0px -50% 0px", threshold: 0.1 }
+    );
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveLink(entry.target.id);
-        }
-      });
-    }, observerOptions);
+    sections.forEach((section) => observer.observe(section));
+    if (sections.length > 0) setActiveLink(sections[0].id);
 
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-
-    // Set initial active state immediately
-    if (sections.length > 0) {
-      setActiveLink(sections[0].id);
-    }
-
-    // Add dynamic padding to sticky nav when scrolling
     const stickyNav = document.querySelector(".sticky.top-36");
     if (stickyNav) {
-      stickyNav.style.transition =
-        "padding-top 0.35s cubic-bezier(0.4,0,0.2,1)";
+      stickyNav.style.transition = "padding-top 0.35s cubic-bezier(0.4,0,0.2,1)";
     }
     window.addEventListener("scroll", () => {
       if (stickyNav) {
-        if (window.scrollY > 42) {
-          stickyNav.style.paddingTop = "50px";
-        } else {
-          stickyNav.style.paddingTop = "0";
-        }
+        stickyNav.style.paddingTop = window.scrollY > 42 ? "50px" : "0";
       }
     });
 
-    // Smooth scroll for nav links with proper offset
     navLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
         const targetId = link.getAttribute("data-nav-link");
         const targetSection = document.getElementById(targetId);
         if (targetSection) {
-          // Calculate position using actual header height so the section title isn't hidden
           const headerEl = document.querySelector("header");
-          const headerHeight = headerEl
-            ? headerEl.getBoundingClientRect().height
-            : 0;
-          const extraGap = 16; // small spacing so header doesn't touch section title
-          const offset = headerHeight + extraGap;
+          const headerHeight = headerEl ? headerEl.getBoundingClientRect().height : 0;
           const targetPosition =
-            targetSection.getBoundingClientRect().top +
-            window.pageYOffset -
-            offset;
+            targetSection.getBoundingClientRect().top + window.pageYOffset - (headerHeight + 16);
           window.scrollTo({ top: targetPosition, behavior: "smooth" });
         }
       });
     });
   }
 
-  // Run on initial load
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initializePage);
   } else {
