@@ -2,7 +2,7 @@
 # make sure to update this title in the image mapper on ArrowCard if changed
 title: "SwatchMill"
 description: "Adobe Illustrator plugin for fashion color palette extraction and mill sheet generation"
-date: "2024-09-01"
+date: "2026-03-01"
 banner: "/swatchmill.png"
 demoURL: "https://www.swatchmill.com/"
 ---

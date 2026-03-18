@@ -1,7 +1,7 @@
 ---
 title: "Picture Book Review"
 description: "A publishing and review platform for picture books, built with Astro and Sanity CMS"
-date: "2024-03-01"
+date: "2025-10-01"
 demoURL: "https://picturebookreview.com"
 ---
 
