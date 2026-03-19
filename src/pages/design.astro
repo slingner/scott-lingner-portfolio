@@ -26,10 +26,10 @@ const uxProjects = [
   {
     title: "Rocket Boogie Co.",
     description:
-      "E-commerce website design for a whimsical art and lifestyle goods brand. Customized Shopify theme with custom Liquid code, fresh visual design, and tailored features to match the brand's playful personality.",
+      "Website design for a whimsical art and lifestyle goods brand. Fresh visual design with tailored features to match the brand's playful personality.",
     url: "https://rocketboogie.com",
-    images: ["/rbc.png", "/rbc-1.png", "/rbc-2.png"],
-    skills: ["UX Design", "UI Design", "Shopify", "Liquid", "E-commerce"],
+    images: ["/rbc-1.png"],
+    skills: ["UX Design", "UI Design", "Web Development", "E-commerce"],
     role: "Designer & Developer",
   },
 ];
@@ -266,9 +266,9 @@ const logos = [
                       ></iframe>
                     </div>
                   )}
-                  <div class="mb-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  <div class={`mb-6 grid gap-4 ${project.images.length === 1 ? '' : 'md:grid-cols-2 lg:grid-cols-3'}`}>
                     {project.images.map((img, idx) => (
-                      <div class="h-48 overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-stone-600/50 dark:bg-stone-900">
+                      <div class={`overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-stone-600/50 dark:bg-stone-900 ${project.images.length === 1 ? 'h-72 md:h-96' : 'h-48'}`}>
                         <img
                           src={img}
                           alt={`${project.title} screenshot ${idx + 1}`}
