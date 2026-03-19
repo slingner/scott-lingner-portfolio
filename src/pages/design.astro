@@ -5,6 +5,16 @@ import Layout from "@layouts/Layout.astro";
 
 const uxProjects = [
   {
+    title: "SwatchMill",
+    description:
+      "Designed the UI for an Adobe Illustrator plugin that streamlines production workflows. SwatchMill lets designers extract color palettes from artwork, match them against swatch libraries, and generate mill sheets, repeat fills, and swatch artboards in a single click.",
+    url: "https://swatchmill.com",
+    images: ["/swatchmill.png"],
+    video: "https://www.youtube.com/embed/lTGUOlAuOYw?si=DWYet81Mg5e0FKQu",
+    skills: ["UI Design", "Plugin Design", "Adobe Illustrator", "CEP"],
+    role: "Designer & Developer",
+  },
+  {
     title: "Picture Book Review",
     description:
       "Designed and developed a children's book review platform featuring a clean, family-friendly interface with intuitive navigation, book categorization, and review submission system.",
@@ -43,6 +53,19 @@ const infographics = [
 
 const logos = [
   {
+    title: "Plastic Jaguar",
+    description:
+      "Brand identity for a bi-coastal psych-pop and post-punk band. Developed the logo, dark moody visual identity, and web presence to match the group's emotionally dynamic and sonically adventurous sound.",
+    url: "https://plasticjaguar.com",
+    image: "/plastic-jaguar-logo.png",
+    skills: [
+      "Brand Identity",
+      "Logo Design",
+      "Web Design",
+      "Typography",
+    ],
+  },
+  {
     title: "Better Body Concepts",
     description:
       "Brand identity and business card design for a personal fitness training business. Created a bold, memorable logo featuring a strong figure silhouette integrated with the company name.",
@@ -68,35 +91,6 @@ const logos = [
   },
 ];
 
-const magazineDesign = [
-  {
-    title: "Zoo Magazine Spread",
-    description:
-      "Editorial layout design for a zoo publication featuring an article about siamangs. Combined engaging typography, informative content blocks, and beautiful wildlife illustration.",
-    images: ["magazine.jpg", "magazine-1.jpg"],
-    skills: [
-      "Editorial Design",
-      "Layout Design",
-      "Typography",
-      "Adobe InDesign",
-    ],
-  },
-];
-
-const bookCovers = [
-  {
-    title: "Book Cover Design",
-    description:
-      "Cover design showcasing typography and visual composition skills for print publication.",
-    image: "/book-cover-design.webp",
-    skills: [
-      "Book Cover Design",
-      "Typography",
-      "Adobe Photoshop",
-      "Adobe InDesign",
-    ],
-  },
-];
 ---
 
 <Layout
@@ -144,17 +138,7 @@ const bookCovers = [
               data-nav-link="logos"
               class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
             >
-              Logo Design
-              <span
-                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
-              ></span>
-            </a>
-            <a
-              href="#editorial"
-              data-nav-link="editorial"
-              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
-            >
-              Editorial
+              Branding & Logo
               <span
                 class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
               ></span>
@@ -267,6 +251,21 @@ const bookCovers = [
                   <p class="mb-6 text-base leading-relaxed text-stone-700 dark:text-stone-300">
                     {project.description}
                   </p>
+                  {project.video && (
+                    <div class="mb-6 overflow-hidden rounded-lg border border-stone-300/50 shadow-sm dark:border-stone-600/50">
+                      <iframe
+                        width="100%"
+                        height="315"
+                        src={project.video}
+                        title={`${project.title} video`}
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                        class="aspect-video w-full"
+                      ></iframe>
+                    </div>
+                  )}
                   <div class="mb-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {project.images.map((img, idx) => (
                       <div class="h-48 overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm transition-shadow hover:shadow-md dark:border-stone-600/50 dark:bg-stone-900">
@@ -335,7 +334,7 @@ const bookCovers = [
           <h2
             class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
           >
-            Logo Design
+            Branding & Logo Design
           </h2>
           <div class="grid gap-8 md:grid-cols-2">
             {
@@ -349,9 +348,22 @@ const bookCovers = [
                       loading="lazy"
                     />
                   </div>
-                  <h3 class="mb-2 text-xl font-bold text-stone-900 dark:text-stone-100">
-                    {item.title}
-                  </h3>
+                  <div class="mb-2 flex items-center justify-between gap-2">
+                    <h3 class="text-xl font-bold text-stone-900 dark:text-stone-100">
+                      {item.title}
+                    </h3>
+                    {item.url && (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group flex items-center gap-1 rounded-full bg-stone-900 px-3 py-1 text-xs font-medium text-white transition-all hover:bg-stone-700 dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-300"
+                      >
+                        Visit Site
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"><path d="M7 17L17 7" /><path d="M7 7h10v10" /></svg>
+                      </a>
+                    )}
+                  </div>
                   <p class="mb-4 text-sm leading-relaxed text-stone-700 dark:text-stone-300">
                     {item.description}
                   </p>
@@ -368,90 +380,6 @@ const bookCovers = [
           </div>
         </section>
 
-        <!-- Editorial Design Section -->
-        <section id="editorial" class="animate mb-24 scroll-mt-36">
-          <h2
-            class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
-          >
-            Editorial Design
-          </h2>
-
-          <!-- Magazine Design -->
-          <div class="mb-12">
-            <h3
-              class="mb-6 text-xl font-semibold text-stone-800 dark:text-stone-200"
-            >
-              Magazine Layout
-            </h3>
-            {
-              magazineDesign.map((item) => (
-                <div class="rounded-xl border border-stone-300/50 bg-stone-100/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50 md:p-8">
-                  <h4 class="mb-4 text-lg font-bold text-stone-900 dark:text-stone-100">
-                    {item.title}
-                  </h4>
-                  <p class="mb-6 text-base leading-relaxed text-stone-700 dark:text-stone-300">
-                    {item.description}
-                  </p>
-                  <div class="mb-6 grid gap-4 md:grid-cols-2">
-                    {item.images.map((img, idx) => (
-                      <div class="h-48 overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm dark:border-stone-600/50 dark:bg-stone-900">
-                        <img
-                          src={img}
-                          alt={`${item.title} page ${idx + 1}`}
-                          class="lightbox-trigger h-full w-full cursor-zoom-in object-cover"
-                          loading="lazy"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                  <div class="flex flex-wrap gap-2">
-                    {item.skills.map((skill) => (
-                      <span class="rounded bg-stone-300/50 px-2 py-1 text-xs font-medium text-stone-700 dark:bg-stone-700/50 dark:text-stone-300">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-
-          <!-- Book Cover Design -->
-          <div>
-            <h3
-              class="mb-6 text-xl font-semibold text-stone-800 dark:text-stone-200"
-            >
-              Book Cover
-            </h3>
-            {
-              bookCovers.map((item) => (
-                <div class="rounded-xl border border-stone-300/50 bg-stone-100/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50 md:p-8">
-                  <h4 class="mb-4 text-lg font-bold text-stone-900 dark:text-stone-100">
-                    {item.title}
-                  </h4>
-                  <p class="mb-6 text-base leading-relaxed text-stone-700 dark:text-stone-300">
-                    {item.description}
-                  </p>
-                  <div class="mx-auto mb-6 h-72 max-w-md overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm dark:border-stone-600/50 dark:bg-stone-900">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      class="lightbox-trigger h-full w-full cursor-zoom-in object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div class="flex flex-wrap gap-2">
-                    {item.skills.map((skill) => (
-                      <span class="rounded bg-stone-300/50 px-2 py-1 text-xs font-medium text-stone-700 dark:bg-stone-700/50 dark:text-stone-300">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-        </section>
       </aside>
     </div>
   </Container>
