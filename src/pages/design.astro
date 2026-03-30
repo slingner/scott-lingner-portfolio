@@ -34,22 +34,7 @@ const uxProjects = [
   },
 ];
 
-const infographics = [
-  {
-    title: "Pedestrian Safety Statistics",
-    description:
-      "Data visualization infographic exploring pedestrian traffic safety statistics, featuring compelling statistics about traffic fatalities and safety tips for both pedestrians and drivers.",
-    image: "traffic.webp",
-    skills: ["Data Visualization", "Information Design", "Adobe Illustrator"],
-  },
-  {
-    title: "Climate Change Awareness",
-    description:
-      "Educational infographic presenting scientific evidence for climate change, including temperature trends, sea level rise data, and actionable tips for reducing environmental impact.",
-    image: "climate.webp",
-    skills: ["Data Visualization", "Information Design", "Adobe Illustrator"],
-  },
-];
+
 
 const logos = [
   {
@@ -95,7 +80,7 @@ const logos = [
 
 <Layout
   title="Design Portfolio"
-  description="UX/UI and graphic design portfolio showcasing web design, infographics, logos, and editorial work by Scott Lingner."
+  description="UX/UI and graphic design portfolio showcasing web design, logos, and editorial work by Scott Lingner."
 >
   <Container>
     <div class="mt-8 flex gap-12">
@@ -123,16 +108,7 @@ const logos = [
                 class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
               ></span>
             </a>
-            <a
-              href="#infographics"
-              data-nav-link="infographics"
-              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
-            >
-              Infographics
-              <span
-                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
-              ></span>
-            </a>
+        
             <a
               href="#logos"
               data-nav-link="logos"
@@ -291,44 +267,7 @@ const logos = [
           </div>
         </section>
 
-        <!-- Infographics Section -->
-        <section id="infographics" class="animate mb-24 scroll-mt-36">
-          <h2
-            class="mb-8 text-3xl font-bold text-stone-900 dark:text-stone-100"
-          >
-            Infographics
-          </h2>
-          <div class="space-y-12">
-            {
-              infographics.map((item) => (
-                <div class="rounded-xl border border-stone-300/50 bg-stone-100/50 p-6 dark:border-stone-700/50 dark:bg-stone-800/50 md:p-8">
-                  <h3 class="mb-4 text-xl font-bold text-stone-900 dark:text-stone-100">
-                    {item.title}
-                  </h3>
-                  <p class="mb-6 text-base leading-relaxed text-stone-700 dark:text-stone-300">
-                    {item.description}
-                  </p>
-                  <div class="mx-auto mb-6 h-36 max-w-md overflow-hidden rounded-lg border border-stone-300/50 bg-white shadow-sm dark:border-stone-600/50 dark:bg-stone-900">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      class="lightbox-trigger h-full w-full cursor-zoom-in object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div class="flex flex-wrap gap-2">
-                    {item.skills.map((skill) => (
-                      <span class="rounded bg-stone-300/50 px-2 py-1 text-xs font-medium text-stone-700 dark:bg-stone-700/50 dark:text-stone-300">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-        </section>
-
+    
         <!-- Logo Design Section -->
         <section id="logos" class="animate mb-24 scroll-mt-36">
           <h2
@@ -576,7 +515,7 @@ const logos = [
       lightboxImage.src = src;
       lightboxImage.alt = alt || "";
       lightbox.classList.remove("hidden");
-      // set initial zoom (allow infographics to open zoomed)
+      // set initial zoom
       currentScale = defaultScale || 1;
       applyScale();
     }
@@ -693,12 +632,11 @@ const logos = [
           try {
             // prefer data-fullsrc if provided
             const full = img.getAttribute("data-fullsrc") || img.src;
-            const isInfographic = img.dataset.type === "infographic";
-            // default zoom for infographics; change value if you want stronger/weaker zoom
+          
             openLightbox(
               full,
               img.alt || "Image preview",
-              isInfographic ? 1.5 : 1,
+              1,
             );
           } catch (err) {
             console.error("lightbox click handler error:", err);
