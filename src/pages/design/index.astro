@@ -1,0 +1,354 @@
+---
+import Container from "@components/Container.astro";
+import Layout from "@layouts/Layout.astro";
+import Pelican from "@components/Pelican.astro";
+
+const projects = [
+  {
+    id: "01",
+    title: "SwatchMill",
+    category: "UX · UI Design",
+    description: "Adobe Illustrator plugin for streamlined production workflows — color extraction, swatch matching, and automated mill sheet generation.",
+    href: "/design/swatchmill",
+    image: "/swatch-mill-ss.png",
+    skills: ["UI Design", "Plugin Design", "Adobe Illustrator", "CEP"],
+    span: 2,
+  },
+  {
+    id: "02",
+    title: "Picture Book Review",
+    category: "UX · UI Design",
+    description: "Children's book review platform with a clean, family-friendly interface and intuitive navigation.",
+    href: "/design/picture-book-review",
+    image: "/pbr.png",
+    skills: ["UX Design", "Web Development", "Responsive Design"],
+    span: 1,
+  },
+  {
+    id: "03",
+    title: "Rocket Boogie Co.",
+    category: "UX · UI Design",
+    description: "Website for a whimsical art and lifestyle goods brand, with tailored e-commerce and brand-forward design.",
+    href: "/design/rocket-boogie",
+    image: "/rbc-1.png",
+    skills: ["UX Design", "UI Design", "E-commerce"],
+    span: 1,
+  },
+  {
+    id: "04",
+    title: "Plastic Jaguar",
+    category: "Brand Identity",
+    description: "Dark, moody visual identity for a bi-coastal psych-pop band — logo, web presence, and art direction.",
+    href: "/design/plastic-jaguar",
+    image: "/plastic-jaguar-ss.png",
+    skills: ["Logo Design", "Brand Identity", "Typography"],
+    span: 1,
+  },
+  {
+    id: "05",
+    title: "Logo Design",
+    category: "Brand Identity",
+    description: "Better Body Concepts — bold fitness brand identity. Josh Nelson Project — vintage-inspired rock logo with distressed typography.",
+    href: "/design/logo-design",
+    images: ["/logo-1.webp", "/logo-2.webp"],
+    skills: ["Logo Design", "Brand Identity", "Typography"],
+    span: 1,
+    duo: true,
+  },
+];
+---
+
+<Layout
+  title="Design Portfolio"
+  description="UX/UI and graphic design portfolio showcasing web design, logos, and brand identity by Scott Lingner."
+>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400;1,600&display=swap"
+    rel="stylesheet"
+  />
+
+  <Container>
+    <!-- Page heading — matches other pages in the site -->
+    <div class="animate mb-8 mt-8" data-pagefind-ignore>
+      <h1 class="text-4xl font-bold text-stone-900 dark:text-stone-100 md:text-5xl">
+        Design
+      </h1>
+      <p class="mt-2 text-sm text-stone-500 dark:text-stone-400">
+        UX/UI design, brand identity &amp; web — selected work.
+      </p>
+    </div>
+
+    <!-- Projects grid -->
+    <div class="project-grid animate" data-pagefind-ignore>
+      {
+        projects.map((p) => (
+          <a href={p.href} class={`project-card${p.span === 2 ? " card-wide" : ""}`}>
+            {p.duo ? (
+              <div class="card-img-wrap card-img-duo">
+                {p.images!.map((img, i) => (
+                  <img src={img} alt={`${p.title} ${i + 1}`} class="card-img" style="object-fit:contain;padding:1.25rem;" loading="lazy" />
+                ))}
+              </div>
+            ) : (
+              <div class="card-img-wrap">
+                <img src={p.image} alt={p.title} class="card-img" loading="lazy" />
+              </div>
+            )}
+            <div class="card-body">
+              <p class="card-cat">{p.category}</p>
+              <div class="card-title-row">
+                <h2 class="card-title">{p.title}</h2>
+                <span class="card-arrow">→</span>
+              </div>
+              <p class="card-desc">{p.description}</p>
+              <div class="card-tags">
+                {p.skills.map((s) => <span class="card-tag">{s}</span>)}
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </Container>
+</Layout>
+
+<Pelican />
+
+<style>
+  /* Scoped to this page only — no global overrides */
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    align-items: stretch;
+    margin-bottom: 4rem;
+  }
+
+  /* Cards — whole card is a link */
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border: 1px solid rgb(214 211 208 / 0.5);
+    background: rgb(231 229 228 / 0.4);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  :global(html.dark) .project-card {
+    background: rgb(41 37 36 / 0.45);
+    border-color: rgb(68 64 60 / 0.5);
+  }
+
+  .project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgb(28 25 23 / 0.09);
+  }
+
+  :global(html.dark) .project-card:hover {
+    box-shadow: 0 10px 32px rgb(0 0 0 / 0.28);
+  }
+
+  .card-wide { grid-column: span 2; }
+
+  /* Duo card — two logos side by side */
+  .card-img-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .card-img-duo .card-img {
+    border-right: 1px solid rgb(214 211 208 / 0.4);
+  }
+
+  .card-img-duo .card-img:last-child {
+    border-right: none;
+  }
+
+  :global(html.dark) .card-img-duo .card-img {
+    border-color: rgb(68 64 60 / 0.4);
+  }
+
+  /* Image */
+  .card-img-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 220px;
+    background: rgb(245 245 244);
+  }
+
+  :global(html.dark) .card-img-wrap {
+    background: rgb(28 25 23);
+  }
+
+  .img-dark { background: rgb(18 16 14) !important; }
+
+  .card-wide .card-img-wrap { height: 220px; }
+
+  .card-landscape .card-img-wrap {
+    height: 100%;
+    min-height: 220px;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+
+  .project-card:hover .card-img { transform: scale(1.04); }
+
+  /* Card text */
+  .card-body {
+    padding: 0.875rem 1.125rem 1.125rem;
+    flex: 1;
+  }
+
+  .card-cat {
+    font-size: 0.575rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgb(120 113 108);
+    font-weight: 500;
+    margin: 0 0 0.3rem;
+  }
+
+  .card-title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-title {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.625rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.1;
+    color: rgb(28 25 23);
+    margin: 0;
+  }
+
+  :global(html.dark) .card-title { color: rgb(231 229 228); }
+
+  .card-wide .card-title { font-size: 2rem; }
+
+  .card-arrow {
+    font-size: 1rem;
+    color: rgb(168 162 158);
+    transition: transform 0.2s ease, color 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .project-card:hover .card-arrow {
+    transform: translateX(3px);
+    color: rgb(87 83 78);
+  }
+
+  :global(html.dark) .project-card:hover .card-arrow {
+    color: rgb(214 211 208);
+  }
+
+  .card-desc {
+    font-size: 0.775rem;
+    line-height: 1.65;
+    color: rgb(120 113 108);
+    margin: 0 0 0.875rem;
+  }
+
+  :global(html.dark) .card-desc { color: rgb(168 162 158); }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .card-tag {
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid rgb(214 211 208 / 0.8);
+    color: rgb(120 113 108);
+    white-space: nowrap;
+  }
+
+  :global(html.dark) .card-tag {
+    border-color: rgb(68 64 60 / 0.8);
+    color: rgb(168 162 158);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .project-grid { grid-template-columns: repeat(2, 1fr); }
+    .card-wide { grid-column: span 2; }
+    .card-landscape { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .project-grid { grid-template-columns: 1fr; }
+    .card-wide, .card-landscape { grid-column: span 1; grid-template-columns: 1fr; }
+    .card-landscape .card-img-wrap { height: 200px; min-height: unset; }
+    .card-wide .card-img-wrap { height: 220px; }
+    .card-landscape .card-body { padding: 0.875rem 1.125rem 1.125rem; }
+  }
+</style>
+
+<script is:inline>
+  function initPage() {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const lightboxClose = document.getElementById("lightbox-close");
+    let _prev = null, _ps = false;
+    try {
+      const t = document.createElement("div"); t.tabIndex = -1;
+      document.body.appendChild(t); t.focus({ preventScroll: true }); _ps = true;
+      document.body.removeChild(t);
+    } catch (e) {}
+
+    let scale = 1;
+    function applyScale() {
+      if (!lightboxImage) return;
+      const go = () => {
+        if (scale === 1) { lightboxImage.style.width = "auto"; lightboxImage.style.maxWidth = "95vw"; lightboxImage.style.maxHeight = "85vh"; }
+        else { lightboxImage.style.width = Math.round((lightboxImage.naturalWidth || lightboxImage.width) * scale) + "px"; lightboxImage.style.maxWidth = "none"; lightboxImage.style.maxHeight = "none"; }
+      };
+      lightboxImage.naturalWidth ? go() : (lightboxImage.onload = () => { lightboxImage.onload = null; go(); });
+    }
+    function open(src, alt) {
+      if (!lightbox || !lightboxImage) return;
+      _prev = document.activeElement; lightboxImage.src = src; lightboxImage.alt = alt || "";
+      lightbox.classList.remove("hidden"); scale = 1; applyScale();
+    }
+    function close() {
+      if (!lightbox || !lightboxImage) return;
+      lightbox.classList.add("hidden"); lightboxImage.src = "";
+      try { if (_prev?.focus && _ps) _prev.focus({ preventScroll: true }); } catch (e) {}
+      _prev = null;
+    }
+    const zoomIn  = () => { scale = Math.min(5, +(scale + 0.25).toFixed(2)); applyScale(); };
+    const zoomOut = () => { scale = Math.max(0.25, +(scale - 0.25).toFixed(2)); applyScale(); };
+    document.getElementById("zoom-in")?.addEventListener("click", zoomIn);
+    document.getElementById("zoom-out")?.addEventListener("click", zoomOut);
+    document.getElementById("zoom-fit")?.addEventListener("click", () => { scale = 1; applyScale(); });
+    lightbox?.addEventListener("wheel", (e) => { if (e.ctrlKey || e.metaKey) { e.preventDefault(); e.deltaY < 0 ? zoomIn() : zoomOut(); } }, { passive: false });
+    if (lightbox) lightbox.classList.add("hidden");
+    document.querySelectorAll(".lightbox-trigger").forEach(img => img.addEventListener("click", () => open(img.getAttribute("data-fullsrc") || img.src, img.alt || "")));
+    lightbox?.addEventListener("click", e => { if (e.target === lightbox) close(); });
+    lightboxClose?.addEventListener("click", close);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initPage);
+  else initPage();
+  document.addEventListener("astro:after-swap", initPage);
+</script>

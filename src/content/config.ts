@@ -34,4 +34,21 @@ const news = defineCollection({
   }),
 });
 
-export const collections = { blog, projects, news };
+const design = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    draft: z.boolean().optional(),
+    category: z.string(),
+    role: z.string().optional(),
+    skills: z.array(z.string()),
+    image: z.string(),
+    images: z.array(z.string()).optional(),
+    url: z.string().optional(),
+    video: z.string().optional(),
+  }),
+});
+
+export const collections = { blog, projects, news, design };

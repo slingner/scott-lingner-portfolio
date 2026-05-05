@@ -1,0 +1,266 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+
+export async function getStaticPaths() {
+  const projects = (await getCollection("design")).filter(
+    (p) => !p.data.draft
+  );
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: project,
+  }));
+}
+
+type Props = CollectionEntry<"design">;
+const project = Astro.props;
+const { Content } = await project.render();
+const { title, description, category, role, skills, image, images, url, video } = project.data;
+---
+
+<Layout title={title} description={description}>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400;1,600&display=swap"
+    rel="stylesheet"
+  />
+
+  <Container>
+    <div class="animate mt-8">
+      <BackToPrevious href="/design">Design</BackToPrevious>
+    </div>
+
+    <div class="animate mt-6 mb-10">
+      <p class="detail-cat">{category}</p>
+      <h1 class="detail-title">{title}</h1>
+      {role && <p class="detail-role">{role}</p>}
+      <div class="mt-4 flex flex-wrap gap-2">
+        {skills.map((s) => (
+          <span class="detail-tag">{s}</span>
+        ))}
+      </div>
+      {url && (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="detail-visit-btn mt-5 inline-flex items-center gap-2"
+        >
+          Visit Site
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      )}
+    </div>
+
+    <!-- Primary image or video -->
+    <div class="animate mb-8">
+      {video ? (
+        <div class="detail-video-wrap">
+          <iframe
+            src={video}
+            title={`${title} video`}
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            class="detail-video"
+          ></iframe>
+        </div>
+      ) : (
+        <img
+          src={image}
+          alt={title}
+          class="detail-hero-img"
+          loading="eager"
+        />
+      )}
+    </div>
+
+    <!-- Additional images -->
+    {images && images.length > 1 && (
+      <div class="animate mb-10 grid gap-4 md:grid-cols-2">
+        {images.slice(1).map((img) => (
+          <img
+            src={img}
+            alt={title}
+            class="detail-secondary-img"
+            loading="lazy"
+          />
+        ))}
+      </div>
+    )}
+
+    <!-- Body content -->
+    <article class="animate detail-body">
+      <Content />
+    </article>
+  </Container>
+</Layout>
+
+<style>
+  .detail-cat {
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgb(120 113 108);
+    font-weight: 500;
+    margin: 0 0 0.4rem;
+  }
+
+  .detail-title {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: rgb(28 25 23);
+    margin: 0 0 0.35rem;
+  }
+
+  :global(html.dark) .detail-title {
+    color: rgb(231 229 228);
+  }
+
+  .detail-role {
+    font-size: 0.8rem;
+    color: rgb(120 113 108);
+    margin: 0;
+  }
+
+  .detail-tag {
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid rgb(214 211 208 / 0.8);
+    color: rgb(120 113 108);
+    white-space: nowrap;
+  }
+
+  :global(html.dark) .detail-tag {
+    border-color: rgb(68 64 60 / 0.8);
+    color: rgb(168 162 158);
+  }
+
+  .detail-visit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 0.5rem 1.125rem;
+    background: rgb(28 25 23);
+    color: rgb(245 245 244);
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .detail-visit-btn:hover {
+    background: rgb(68 64 60);
+  }
+
+  :global(html.dark) .detail-visit-btn {
+    background: rgb(231 229 228);
+    color: rgb(28 25 23);
+  }
+
+  :global(html.dark) .detail-visit-btn:hover {
+    background: rgb(214 211 208);
+  }
+
+  .detail-video-wrap {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border: 1px solid rgb(214 211 208 / 0.5);
+  }
+
+  .detail-video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+  }
+
+  .detail-hero-img {
+    width: 100%;
+    max-height: 520px;
+    object-fit: cover;
+    border: 1px solid rgb(214 211 208 / 0.5);
+    display: block;
+  }
+
+  :global(html.dark) .detail-hero-img,
+  :global(html.dark) .detail-secondary-img {
+    border-color: rgb(68 64 60 / 0.5);
+  }
+
+  .detail-secondary-img {
+    width: 100%;
+    object-fit: cover;
+    border: 1px solid rgb(214 211 208 / 0.5);
+    display: block;
+  }
+
+  /* Body prose */
+  .detail-body {
+    max-width: 65ch;
+    margin-bottom: 5rem;
+  }
+
+  .detail-body :global(h2) {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.625rem;
+    font-weight: 400;
+    font-style: italic;
+    color: rgb(28 25 23);
+    margin: 2rem 0 0.5rem;
+  }
+
+  :global(html.dark) .detail-body :global(h2) {
+    color: rgb(231 229 228);
+  }
+
+  .detail-body :global(p) {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: rgb(87 83 78);
+    margin: 0 0 1rem;
+  }
+
+  :global(html.dark) .detail-body :global(p) {
+    color: rgb(168 162 158);
+  }
+
+  .detail-body :global(ul),
+  .detail-body :global(ol) {
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: rgb(87 83 78);
+    padding-left: 1.25rem;
+    margin: 0 0 1rem;
+  }
+
+  :global(html.dark) .detail-body :global(ul),
+  :global(html.dark) .detail-body :global(ol) {
+    color: rgb(168 162 158);
+  }
+
+  .detail-body :global(li) {
+    margin-bottom: 0.25rem;
+  }
+
+  .detail-body :global(strong) {
+    color: rgb(28 25 23);
+    font-weight: 600;
+  }
+
+  :global(html.dark) .detail-body :global(strong) {
+    color: rgb(231 229 228);
+  }
+</style>
