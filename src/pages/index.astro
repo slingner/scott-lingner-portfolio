@@ -313,6 +313,16 @@ const jobs = [
       if (stickyNav) {
         stickyNav.style.paddingTop = window.scrollY > 42 ? "50px" : "0";
       }
+
+      // The last section is often too short to cross the observer's
+      // "-50% 0px" bottom margin once the page hits max scroll, so it
+      // never registers as intersecting on its own - force it active
+      // once the user has scrolled to (or near) the bottom of the page.
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atBottom && sections.length > 0) {
+        setActiveLink(sections[sections.length - 1].id);
+      }
     });
 
     navLinks.forEach((link) => {
