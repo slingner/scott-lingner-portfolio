@@ -1,0 +1,52 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import ExperienceHero from "@components/ExperienceHero.astro";
+
+const skills = ["LLM Evaluation", "Prompt Engineering", "Software Engineering", "2D Graphics"];
+---
+
+<Layout
+  title="AI Trainer — Software + 2D Graphics Expert at Handshake AI"
+  description="Scott Lingner's work as an AI Trainer for Handshake AI, developing adversarial prompts and rubric-based evaluations to improve LLM reliability."
+>
+  <Container>
+    <div class="animate mt-8">
+      <BackToPrevious href="/">Home</BackToPrevious>
+    </div>
+
+    <div class="animate my-10">
+      <ExperienceHero
+        company="Handshake AI"
+        role="AI Trainer — Software + 2D Graphics Expert"
+        period="May 2026 – Present"
+        accent="handshake"
+        siteLabel="joinhandshake.com"
+        siteHref="https://joinhandshake.com"
+        description="Improved LLM reliability in software engineering by developing hundreds of adversarial prompts designed to expose model weaknesses and edge case failures. Developed rubric-based evaluation prompts for 2D graphics and visual art assessment, creating structured criteria for measuring LLM output quality in subjective creative domains."
+        skills={skills}
+        image="/handshake.jpg"
+        imagePosition="center"
+      />
+    </div>
+
+    <div class="animate mb-10 space-y-4">
+      <h2 class="text-xl font-semibold text-stone-900 dark:text-stone-100">
+        What I worked on
+      </h2>
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">
+        As part of the Handshake AI Fellowship, I worked as an AI Trainer
+        specializing in software engineering and 2D graphics. I developed
+        hundreds of adversarial prompts designed to expose model weaknesses
+        and edge case failures, improving LLM reliability in real-world
+        software engineering scenarios.
+      </p>
+      <p class="text-base leading-relaxed text-stone-600 dark:text-stone-400">
+        I also developed rubric-based evaluation prompts for 2D graphics and
+        visual art assessment, creating structured criteria for measuring
+        LLM output quality in subjective creative domains.
+      </p>
+    </div>
+  </Container>
+</Layout>

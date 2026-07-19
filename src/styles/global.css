@@ -124,7 +124,7 @@ pre {
  * Shared venture accent colors, used by [data-accent] on ExperienceCard
  * and ExperienceHero so both stay in sync: Prenda navy/mint, Rocket
  * Boogie marigold, Swatch Mill terracotta-on-black, untitled.stream
- * indigo, Google AI warm gold.
+ * indigo, Google AI warm gold, Handshake AI teal.
  */
 [data-accent] {
   --accent: #57534e;
@@ -150,6 +150,10 @@ pre {
 [data-accent="google"] {
   --accent: #78350f;
   --accent-2: #b45309;
+}
+[data-accent="handshake"] {
+  --accent: #0f766e;
+  --accent-2: #14b8a6;
 }
 
 /* Remove top margin from h3 in article */

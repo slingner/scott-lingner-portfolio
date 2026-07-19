@@ -5,6 +5,7 @@ type Props = {
   company: string;
   role: string;
   period: string;
+  showPeriod?: boolean;
   description: string;
   skills: string[];
   url: string;
@@ -14,8 +15,19 @@ type Props = {
   cta: string;
 };
 
-const { company, role, period, description, skills, url, accent, image, imagePosition, cta } =
-  Astro.props;
+const {
+  company,
+  role,
+  period,
+  showPeriod = true,
+  description,
+  skills,
+  url,
+  accent,
+  image,
+  imagePosition,
+  cta,
+} = Astro.props;
 ---
 
 <a
@@ -24,7 +36,7 @@ const { company, role, period, description, skills, url, accent, image, imagePos
   class="exp-card group grid overflow-hidden rounded-xl border transition-all duration-300 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
 >
   <div class="exp-panel relative z-10 flex flex-col justify-center gap-3 p-7">
-    <span class="font-mono text-xs text-white/60">{period}</span>
+    {showPeriod && <span class="font-mono text-xs text-white/60">{period}</span>}
     <h3 class="text-3xl font-extrabold leading-none tracking-tight text-white">
       {company}
     </h3>

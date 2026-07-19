@@ -35,12 +35,24 @@ const projects = [
 
 const jobs = [
   {
+    company: "Handshake AI",
+    role: "AI Trainer — Software + 2D Graphics Expert",
+    period: "May 2026 – Present",
+    description:
+      "Improving LLM reliability in software engineering and 2D graphics through adversarial prompt design and rubric-based evaluation.",
+    skills: ["LLM Evaluation", "Prompt Engineering", "Software Engineering", "2D Graphics"],
+    url: "/software-engineering/handshake-ai",
+    accent: "handshake",
+    image: "/handshake.jpg",
+    imagePosition: "center",
+  },
+  {
     company: "Prenda",
     role: "Frontend Engineer",
     period: "Aug 2020 – Sep 2024",
     description:
       "Educational web apps for an EdTech platform serving thousands of students across hundreds of microschools.",
-    skills: ["React", "TypeScript", "Next.js", "Node.js", "Tailwind", "MongoDB", "GraphQL"],
+    skills: ["React", "TypeScript", "Next.js", "Node.js", "Tailwind", "MongoDB"],
     url: "/software-engineering/prenda",
     accent: "prenda",
     image: "/prenda.png",
@@ -136,20 +148,20 @@ const jobs = [
           <div
             class="mt-8 max-w-2xl space-y-4 text-lg leading-relaxed text-stone-700 dark:text-stone-300"
           >
-            <p>
-              Five years of professional experience building impactful
-              applications, currently working independently on commercial
-              software. I specialize in frontend development with React and
-              TypeScript, with a growing focus on full-stack and product work
-              across a range of domains.
-            </p>
-            <p>
-              My work at Prenda helped thousands of microschools deliver
-              personalized education through technology. Since then I've been
-              building independently — shipping client tools, exploring new
-              stacks, and working on products at the intersection of software
-              and design.
-            </p>
+           <p>
+  I build frontend-first products with React and TypeScript, and the work
+  I like most is the kind people open every day without thinking about it.
+</p>
+<p>
+  At Prenda I worked on both the frontend and the backend of an edtech
+  platform used by microschools, building education tools and student
+  dashboards. I also automated a background check process that had been
+  manual before that.
+</p>
+<p>
+  Since then I've been building independently, mostly client work alongside
+  my own products like Swatch Mill and Rocket Boogie.
+</p>
           </div>
           <div class="mt-8">
             <h3
@@ -164,14 +176,24 @@ const jobs = [
                   "TypeScript",
                   "HTML",
                   "CSS",
-                  "GraphQL",
                   "React",
                   "Next.js",
                   "Astro",
                   "Node.js",
+                  "PostgreSQL",
+                  "AWS",
+                  "Docker",
                   "Tailwind",
                   "Sanity",
                   "Git",
+                  "GitHub Actions",
+                  "RESTful APIs",
+                  "CI/CD",
+                  "Agile Development",
+                  "AI-assisted development",
+                  "Figma",
+                  "Adobe Creative Suite",
+                  "Illustration",
                 ].map((skill) => (
                   <span class="rounded-full bg-stone-200 px-3 py-1 text-sm font-medium text-stone-700 dark:bg-stone-800 dark:text-stone-300">
                     {skill}
@@ -195,7 +217,7 @@ const jobs = [
           <div class="flex flex-col gap-5">
             {
               projects.map((project) => (
-                <ExperienceCard {...project} cta={project.company} />
+                <ExperienceCard {...project} cta={project.company} showPeriod={false} />
               ))
             }
           </div>
@@ -214,7 +236,7 @@ const jobs = [
           <div class="flex flex-col gap-5">
             {
               jobs.map((job) => (
-                <ExperienceCard {...job} cta="See the role" />
+                <ExperienceCard {...job} cta={job.company} />
               ))
             }
           </div>
