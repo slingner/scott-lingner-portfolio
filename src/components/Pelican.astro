@@ -103,6 +103,9 @@
       <rect x="30" y="54" width="6" height="2" fill="#FFA500"/>
     </g>
   </svg>
+  <div id="pelican-hint" class="pelican-hint">
+    <div class="hint-line">Click the shark below to start</div>
+  </div>
 </div>
 
 <!-- Falling fish container -->
@@ -148,6 +151,11 @@
   }
 
   .pelican-wrapper.game-visible {
+    display: none;
+  }
+
+  /* Pelican stays hidden until the shark is clicked and the game starts */
+  .pelican-wrapper.game-visible.activated {
     display: block;
   }
 
@@ -158,6 +166,8 @@
   }
 
   #pelican-svg {
+    width: 240px;
+    height: 240px;
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
@@ -166,6 +176,33 @@
 
   #pelican-svg:hover {
     filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.4));
+  }
+
+  /* Beak opens briefly each time the pelican drops a fish */
+  @keyframes beakOpenUpper {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-3px);
+    }
+  }
+
+  @keyframes beakOpenLower {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(3px);
+    }
+  }
+
+  .dropping-fish #pelican-beak {
+    animation: beakOpenUpper 0.4s ease-out;
+  }
+
+  .dropping-fish #pelican-pouch {
+    animation: beakOpenLower 0.4s ease-out;
   }
 
   /* Wing flap animation */
@@ -189,6 +226,32 @@
   .flapping #wing-back {
     animation: flapWings 0.6s ease-in-out infinite 0.15s;
     transform-origin: 30% 50%;
+  }
+
+  .pelican-hint {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    margin-left: 8px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    font-family: 'Courier New', monospace;
+  }
+
+  .pelican-wrapper:hover .pelican-hint {
+    opacity: 1;
+  }
+
+  .pelican-wrapper.flying .pelican-hint {
+    opacity: 0;
   }
 
   /* Falling fish - Desktop only */
@@ -236,6 +299,81 @@
     }
   }
 
+  /* Catch/miss reaction bursts */
+  .catch-burst {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10001;
+    animation: catchPop 0.7s ease-out forwards;
+  }
+
+  .catch-burst .catch-label {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 18px;
+    color: #FDE047;
+    -webkit-text-stroke: 2px #78350f;
+    paint-order: stroke fill;
+  }
+
+  @keyframes catchPop {
+    0% {
+      transform: scale(0.5) translateY(0);
+      opacity: 1;
+    }
+    40% {
+      transform: scale(1.5) translateY(-20px);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.7) translateY(-60px);
+      opacity: 0;
+    }
+  }
+
+  /* Shark chomp reaction on catch */
+  .fisherman-wrapper.chomp {
+    animation: chompBounce 0.35s ease-out;
+  }
+
+  @keyframes chompBounce {
+    0% {
+      transform: scale(1);
+    }
+    30% {
+      transform: scale(1.25);
+    }
+    60% {
+      transform: scale(0.95);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .miss-splash {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9997;
+    animation: missFade 0.6s ease-out forwards;
+  }
+
+  @keyframes missFade {
+    0% {
+      transform: scale(0.6);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1.4);
+      opacity: 0;
+    }
+  }
+
   /* Shark - Desktop only */
   .fisherman-wrapper {
     position: fixed;
@@ -266,6 +404,15 @@
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
+    transition: width 0.2s ease-out, height 0.2s ease-out;
+  }
+
+  /* Bigger shark (and bigger mouth catch radius, since the collision
+     math is a percentage of the shark's own rendered size) while the
+     game is active, so catching fish is easier. */
+  .fisherman-wrapper.active #fisherman-svg {
+    width: 150px;
+    height: 150px;
   }
 
   #fisherman-svg:hover {
@@ -319,8 +466,8 @@
 
   .catch-counter {
     position: fixed;
-    top: 60px;
-    right: 20px;
+    bottom: 234px;
+    right: 40px;
     font-family: 'Courier New', monospace;
     font-size: 14px;
     font-weight: bold;
@@ -345,8 +492,8 @@
 
   .fish-icons {
     position: fixed;
-    top: 92px;
-    right: 20px;
+    bottom: 196px;
+    right: 40px;
     display: flex;
     gap: 4px;
     z-index: 9999;
@@ -421,8 +568,8 @@
 
   .esc-message {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    bottom: 272px;
+    right: 40px;
     z-index: 9999;
     background: rgba(0, 0, 0, 0.85);
     color: white;
@@ -538,7 +685,7 @@
     let sharkFlipped = false; // Track if shark is facing right
 
     // Fisherman click handler - defined early so it can be referenced
-    const handleFishermanClick = (e) => {
+    const handleFishermanClick = () => {
       if (!fishermanActive) {
         fishermanActive = true;
         fishermanContainer.classList.add('active');
@@ -550,9 +697,10 @@
           escMessage.classList.add('visible');
         }
 
-        // Also activate pelican flight
+        // Reveal the pelican and activate its flight
         if (!isActivated) {
           isActivated = true;
+          pelicanContainer.classList.add('activated');
           pelicanContainer.classList.add('flying');
           startRandomFlight();
         }
@@ -602,7 +750,7 @@
     // Check if we should show the game (only on /software-engineering page)
     const checkAndShowGame = () => {
       const currentPath = window.location.pathname;
-      const shouldShow = currentPath === '/software-engineering' || currentPath === '/software-engineering/';
+      const shouldShow = currentPath === '/';
 
       if (pelicanContainer) {
         if (shouldShow) {
@@ -721,6 +869,58 @@
       pelicanSvg.classList.add('flapping');
     };
 
+    // Pop + shark chomp bounce where a fish is caught
+    const spawnCatchBurst = (x, y) => {
+      const burst = document.createElement('div');
+      burst.className = 'catch-burst';
+      burst.style.left = `${x - 16}px`;
+      burst.style.top = `${y - 16}px`;
+      burst.innerHTML = `
+        <svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="11" y="2" width="2" height="2" fill="#FDE047"/>
+          <rect x="11" y="20" width="2" height="2" fill="#FDE047"/>
+          <rect x="2" y="11" width="2" height="2" fill="#FDE047"/>
+          <rect x="20" y="11" width="2" height="2" fill="#FDE047"/>
+          <rect x="5" y="5" width="2" height="2" fill="#FDE047"/>
+          <rect x="17" y="5" width="2" height="2" fill="#FDE047"/>
+          <rect x="5" y="17" width="2" height="2" fill="#FDE047"/>
+          <rect x="17" y="17" width="2" height="2" fill="#FDE047"/>
+        </svg>
+        <div class="catch-label">+1</div>
+      `;
+      document.body.appendChild(burst);
+      setTimeout(() => burst.remove(), 700);
+
+      // Bounce the shark itself so the reaction reads even if the
+      // burst above is easy to miss
+      if (fishermanContainer) {
+        fishermanContainer.classList.remove('chomp');
+        // Force reflow so re-adding the class restarts the animation
+        // even on back-to-back catches
+        void fishermanContainer.offsetWidth;
+        fishermanContainer.classList.add('chomp');
+        setTimeout(() => fishermanContainer.classList.remove('chomp'), 350);
+      }
+    };
+
+    // Small splash where a fish is missed (falls past the shark uncaught)
+    const spawnMissSplash = (x, y) => {
+      const splash = document.createElement('div');
+      splash.className = 'miss-splash';
+      splash.style.left = `${x - 12}px`;
+      splash.style.top = `${y - 12}px`;
+      splash.innerHTML = `
+        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <rect x="9" y="3" width="2" height="2" fill="#94A3B8"/>
+          <rect x="3" y="9" width="2" height="2" fill="#94A3B8"/>
+          <rect x="19" y="9" width="2" height="2" fill="#94A3B8"/>
+          <rect x="9" y="19" width="2" height="2" fill="#94A3B8"/>
+        </svg>
+      `;
+      document.body.appendChild(splash);
+      setTimeout(() => splash.remove(), 600);
+    };
+
     // Continuous fish dropping interval
     let fishDropInterval = null;
 
@@ -739,7 +939,7 @@
     const dropFish = () => {
       const viewportWidth = window.innerWidth;
       const pelicanRect = pelicanContainer.getBoundingClientRect();
-      const currentPelicanX = pelicanRect.left + 40;
+      const currentPelicanX = pelicanRect.left + 120;
 
       // Only drop fish if pelican is between 15% and 85% of screen width
       const pelicanScreenPercent = currentPelicanX / viewportWidth;
@@ -747,7 +947,15 @@
         return; // Skip this drop, pelican is too far to the edge
       }
 
-      const currentPelicanY = pelicanRect.top + 40;
+      const currentPelicanY = pelicanRect.top + 120;
+
+      // Open the beak briefly for the drop
+      if (pelicanSvg) {
+        pelicanSvg.classList.remove('dropping-fish');
+        void pelicanSvg.offsetWidth;
+        pelicanSvg.classList.add('dropping-fish');
+        setTimeout(() => pelicanSvg.classList.remove('dropping-fish'), 400);
+      }
 
       const fish = document.createElement('div');
       fish.className = 'falling-fish';
@@ -759,7 +967,7 @@
       fish.style.zIndex = '9998';
 
       fish.innerHTML = `
-        <svg width="32" height="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <rect x="8" y="10" width="2" height="2" fill="#60A5FA"/>
           <rect x="10" y="8" width="2" height="2" fill="#60A5FA"/>
           <rect x="12" y="8" width="2" height="2" fill="#60A5FA"/>
@@ -786,6 +994,8 @@
 
       setTimeout(() => {
         if (fish.parentElement) {
+          const fishRect = fish.getBoundingClientRect();
+          spawnMissSplash(fishRect.left + fishRect.width / 2, fishRect.top + fishRect.height / 2);
           fish.remove();
           const index = activeFish.indexOf(fish);
           if (index > -1) {
@@ -813,6 +1023,7 @@
         isFirstFlight = true;
         pelicanSvg.classList.remove('flapping');
         pelicanContainer.classList.remove('flying');
+        pelicanContainer.classList.remove('activated');
         pelicanX = 80;
         pelicanY = 88;
         pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
@@ -859,7 +1070,7 @@
 
       const moveSpeed = 35;
       const minX = 0;
-      const maxX = window.innerWidth - 120;
+      const maxX = window.innerWidth - 220;
 
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
@@ -908,6 +1119,7 @@
         const inEllipse = (normalizedX * normalizedX + normalizedY * normalizedY) <= 1;
 
         if (inEllipse) {
+          spawnCatchBurst(fishCenterX, fishCenterY);
           fish.remove();
           activeFish.splice(i, 1);
 
@@ -960,11 +1172,14 @@
               fishDropInterval = null;
             }
 
-            // Stop the game immediately
+            // Stop the game immediately, but keep the shark big (still
+            // 'active') through the confetti celebration below - it only
+            // shrinks back down once resetGame() returns it to its
+            // resting spot
             isFlying = false;
             isActivated = false;
             fishermanActive = false;
-            fishermanContainer.classList.remove('active');
+            pelicanContainer.classList.remove('activated');
 
             // Remove all remaining fish
             activeFish.forEach(fish => {
@@ -1000,11 +1215,13 @@
       isFirstFlight = true;
       pelicanSvg.classList.remove('flapping');
       pelicanContainer.classList.remove('flying');
+      pelicanContainer.classList.remove('activated');
       pelicanX = 80;
       pelicanY = 88;
       pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
 
-      // Stop fisherman and reset position
+      // Stop fisherman and reset position (shrinks back down here, not
+      // at the moment of the 10th catch, so it stays big through confetti)
       fishermanActive = false;
       fishermanContainer.classList.remove('active');
       fishermanContainer.style.right = '40px';
@@ -1179,6 +1396,7 @@
       if (pelicanSvg && pelicanContainer) {
         pelicanSvg.classList.remove('flapping');
         pelicanContainer.classList.remove('flying');
+        pelicanContainer.classList.remove('activated');
         pelicanX = 80;
         pelicanY = 88;
         pelicanContainer.style.transform = `translate(${pelicanX}px, ${pelicanY}px)`;
@@ -1261,6 +1479,7 @@
       // Clean up all visual states
       if (pelicanSvg) pelicanSvg.classList.remove('flapping');
       if (pelicanContainer) pelicanContainer.classList.remove('flying');
+      if (pelicanContainer) pelicanContainer.classList.remove('activated');
       if (fishermanContainer) fishermanContainer.classList.remove('active');
       if (escMessage) escMessage.classList.remove('visible');
       if (catchCounter) catchCounter.classList.remove('visible');

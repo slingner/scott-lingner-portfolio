@@ -1,0 +1,124 @@
+---
+type Props = {
+  company: string;
+  role: string;
+  period: string;
+  accent: "prenda" | "independent" | "rocket" | "stream" | "google";
+  siteLabel?: string;
+  siteHref?: string;
+  description: string;
+  skills: string[];
+  image?: string;
+  imagePosition?: string;
+};
+
+const {
+  company,
+  role,
+  period,
+  accent,
+  siteLabel,
+  siteHref,
+  description,
+  skills,
+  image,
+  imagePosition,
+} = Astro.props;
+---
+
+<div class="exp-hero" data-accent={accent}>
+  {
+    image && (
+      <img
+        src={image}
+        alt=""
+        aria-hidden="true"
+        class="absolute inset-0 h-full w-full object-cover"
+        style={`object-position: ${imagePosition ?? "center"};`}
+      />
+    )
+  }
+  {image && <div class="exp-hero-scrim absolute inset-0" />}
+  <div class="relative z-10 flex flex-col gap-4 p-8 md:p-12">
+    <div class="flex flex-wrap items-baseline justify-between gap-2">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-white/60">
+        {role}
+      </p>
+      <span class="font-mono text-xs text-white/60">{period}</span>
+    </div>
+
+    <h1 class="text-4xl font-extrabold leading-none tracking-tight text-white md:text-6xl">
+      {company}
+    </h1>
+
+    {
+      siteHref && (
+        <a
+          href={siteHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex w-fit items-center gap-1 rounded border border-white/30 px-2 py-0.5 text-xs font-medium text-white/80 transition-colors hover:border-white/60 hover:text-white"
+        >
+          {siteLabel}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="10"
+            height="10"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M7 17L17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </a>
+      )
+    }
+
+    <p class="max-w-2xl text-base leading-relaxed text-white/90">
+      {description}
+    </p>
+
+    <div class="flex flex-wrap gap-2 pt-1">
+      {
+        skills.map((skill) => (
+          <span class="rounded bg-white/15 px-2 py-1 text-xs font-medium text-white">
+            {skill}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  /*
+   * Accent colors come from the shared [data-accent] rules in
+   * global.css, so a page hero always matches its homepage card.
+   */
+  .exp-hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background: linear-gradient(160deg, var(--accent), var(--accent-2));
+  }
+
+  /*
+   * When a photo is present, the scrim leans on the venture's own accent
+   * (strong at the text-bearing left/bottom, fading toward the photo)
+   * rather than a generic black wash — keeps the card's brand color
+   * legible instead of just darkening everything uniformly.
+   */
+  .exp-hero-scrim {
+    background: linear-gradient(
+      100deg,
+      var(--accent) 0%,
+      color-mix(in srgb, var(--accent) 85%, transparent) 35%,
+      color-mix(in srgb, var(--accent) 35%, transparent) 60%,
+      transparent 90%
+    );
+  }
+</style>

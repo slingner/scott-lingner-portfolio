@@ -2,6 +2,7 @@
 title: "Working at an EdTech startup"
 description: "The ups and downs of working at an education startup."
 date: "2024-08-06"
+draft: true
 ---
 
 ---

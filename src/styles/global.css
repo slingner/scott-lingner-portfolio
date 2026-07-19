@@ -120,6 +120,38 @@ pre {
   @apply scale-90 transition-transform;
 }
 
+/*
+ * Shared venture accent colors, used by [data-accent] on ExperienceCard
+ * and ExperienceHero so both stay in sync: Prenda navy/mint, Rocket
+ * Boogie marigold, Swatch Mill terracotta-on-black, untitled.stream
+ * indigo, Google AI warm gold.
+ */
+[data-accent] {
+  --accent: #57534e;
+  --accent-2: #78716c;
+}
+
+[data-accent="prenda"] {
+  --accent: #1a3a5c;
+  --accent-2: #14532d;
+}
+[data-accent="rocket"] {
+  --accent: #c65d2e;
+  --accent-2: #e8a33d;
+}
+[data-accent="independent"] {
+  --accent: #161311;
+  --accent-2: #c2571f;
+}
+[data-accent="stream"] {
+  --accent: #312e81;
+  --accent-2: #4338ca;
+}
+[data-accent="google"] {
+  --accent: #78350f;
+  --accent-2: #b45309;
+}
+
 /* Remove top margin from h3 in article */
 article h3 {
   margin-top: 0 !important;

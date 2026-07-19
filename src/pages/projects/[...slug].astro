@@ -8,6 +8,7 @@ import BackToPrevious from "@components/BackToPrevious.astro";
 import Link from "@components/Link.astro";
 import TableOfContents from "@components/TableOfContents.astro";
 import SuggestedContent from "@components/SuggestedContent.astro";
+import ExperienceHero from "@components/ExperienceHero.astro";
 
 export async function getStaticPaths() {
   const projects = (await getCollection("projects"))
@@ -26,6 +27,38 @@ const projects = (await getCollection("projects"))
 
 const project = Astro.props;
 const { Content, headings } = await project.render();
+
+// Ventures featured on the homepage get the colored hero treatment;
+// the rest keep the plain header.
+const heroData: Record<
+  string,
+  {
+    role: string;
+    period: string;
+    accent: "prenda" | "independent" | "rocket" | "stream" | "google";
+    skills: string[];
+    image: string;
+    imagePosition?: string;
+  }
+> = {
+  swatchmill: {
+    role: "Adobe Illustrator Plugin",
+    period: "Sep 2024 – Present",
+    accent: "independent",
+    skills: ["TypeScript", "React", "Next.js", "Astro", "Sanity", "Node.js"],
+    image: "/swatch-mill.png",
+    imagePosition: "center 20%",
+  },
+  "rocket-boogie": {
+    role: "Custom E-Commerce Platform",
+    period: "2014 – Present",
+    accent: "rocket",
+    skills: ["Next.js", "Supabase", "Stripe", "Tailwind CSS", "Vercel"],
+    image: "/rbc.png",
+    imagePosition: "center 30%",
+  },
+};
+const hero = heroData[project.slug];
 ---
 
 <Layout title={project.data.title} description={project.data.description}>
@@ -39,10 +72,6 @@ const { Content, headings } = await project.render();
           <BackToPrevious href="/">Home</BackToPrevious>
         </li>
         <li aria-hidden="true" class="mx-1 text-stone-400">/</li>
-        <li>
-          <BackToPrevious href="/software-engineering">Software</BackToPrevious>
-        </li>
-        <li aria-hidden="true" class="mx-1 text-stone-400">/</li>
         <li
           class="truncate font-medium text-stone-700 dark:text-stone-200"
           aria-current="page"
@@ -51,37 +80,54 @@ const { Content, headings } = await project.render();
         </li>
       </ol>
     </nav>
-    <div class="animate my-10 space-y-1">
-      <div class="flex items-center gap-1.5">
-        <div class="font-base text-sm">
-          <FormattedDate date={project.data.date} />
+    {
+      hero ? (
+        <div class="animate my-10">
+          <ExperienceHero
+            company={project.data.title}
+            role={hero.role}
+            period={hero.period}
+            accent={hero.accent}
+            siteLabel={project.data.demoURL ? new URL(project.data.demoURL).hostname : undefined}
+            siteHref={project.data.demoURL}
+            description={project.data.description}
+            skills={hero.skills}
+            image={hero.image}
+            imagePosition={hero.imagePosition}
+          />
         </div>
-        &bull;
-        <div class="font-base text-sm">
-          {readingTime(project.body)}
+      ) : (
+        <div class="animate my-10 space-y-1">
+          <div class="flex items-center gap-1.5">
+            <div class="font-base text-sm">
+              <FormattedDate date={project.data.date} />
+            </div>
+            &bull;
+            <div class="font-base text-sm">
+              {readingTime(project.body)}
+            </div>
+          </div>
+          <h1 class="text-3xl font-semibold text-black dark:text-white">
+            {project.data.title}
+          </h1>
+          {(project.data.demoURL || project.data.repoURL) && (
+            <nav class="flex gap-1">
+              {project.data.demoURL && (
+                <Link href={project.data.demoURL} external>
+                  website
+                </Link>
+              )}
+              {project.data.demoURL && project.data.repoURL && <span>/</span>}
+              {project.data.repoURL && (
+                <Link href={project.data.repoURL} external>
+                  repo
+                </Link>
+              )}
+            </nav>
+          )}
         </div>
-      </div>
-      <h1 class="text-3xl font-semibold text-black dark:text-white">
-        {project.data.title}
-      </h1>
-      {
-        (project.data.demoURL || project.data.repoURL) && (
-          <nav class="flex gap-1">
-            {project.data.demoURL && (
-              <Link href={project.data.demoURL} external>
-                website
-              </Link>
-            )}
-            {project.data.demoURL && project.data.repoURL && <span>/</span>}
-            {project.data.repoURL && (
-              <Link href={project.data.repoURL} external>
-                repo
-              </Link>
-            )}
-          </nav>
-        )
-      }
-    </div>
+      )
+    }
     <TableOfContents headings={headings} />
     <article class="animate">
       <Content />

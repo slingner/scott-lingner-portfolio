@@ -3,7 +3,6 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
-import BackToPrevious from "@components/BackToPrevious.astro";
 
 export async function getStaticPaths() {
   const newsItems = (await getCollection("news"))

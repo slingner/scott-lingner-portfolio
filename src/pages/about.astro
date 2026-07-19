@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import { SITE } from "@consts";
-import BackToPrevious from "@components/BackToPrevious.astro";
+import Link from "@components/Link.astro";
 ---
 
 <Layout
@@ -23,7 +23,7 @@ import BackToPrevious from "@components/BackToPrevious.astro";
             <p
               class="text-lg leading-relaxed text-stone-700 dark:text-stone-300"
             >
-              I'm a frontend engineer with five years of experience building
+              I'm a product engineer with five years of experience building
               impactful applications in the EdTech space. My work at Prenda, a
               leading edtech startup, helped thousands of microschools deliver
               personalized education through technology. I'm passionate about
@@ -34,25 +34,38 @@ import BackToPrevious from "@components/BackToPrevious.astro";
               class="text-base leading-relaxed text-stone-700 dark:text-stone-300"
             >
               When I'm not coding, I'm exploring the intersection of technology
-              and creativity through music, art, and photo .
+              and creativity through <Link href="/music">music</Link>, <Link
+                href="/art">art</Link
+              >, and <Link href="/photo">photo</Link>.
             </p>
 
             <p
               class="text-base leading-relaxed text-stone-700 dark:text-stone-300"
             >
               As a musician and artist, I've created experimental bespoke
-              instruments that have been featured on CNET and BOOOOOOOM. My work
+              instruments that have been featured on <Link
+                href="https://www.cnet.com/pictures/homemade-instruments-worth-singing-about-pictures/"
+                external
+              >CNET</Link> and <Link
+                href="https://www.booooooom.com/2012/09/05/made-of-imagination-homemade-instrument-submissions/"
+                external
+              >BOOOOOOOM</Link>. My work
               explores the relationship between mathematics, nature, and
-              sound—from Fibonacci spiral guitars to sculptural pigeon habitats.
+              sound—from Fibonacci spiral guitars to a sculptural spiral
+              pigeon habitat created in connection with the <Link
+                href="https://www.sdvisualarts.net/sdvan_new/pdf/dnacat.pdf"
+                external
+              >San Diego Visual Arts Network</Link>.
             </p>
 
             <p
               class="text-base leading-relaxed text-stone-700 dark:text-stone-300"
             >
-              I founded a design studio specializing in whimsical art and
-              lifestyle goods. Each project, whether digital or physical,
-              reflects my belief that craft and creativity can bridge
-              traditional techniques with modern innovation.
+              I founded <Link href="/projects/rocket-boogie">Rocket Boogie Co</Link>,
+              a design studio specializing in whimsical art and lifestyle goods.
+              Each project, whether digital or physical, reflects my belief that
+              craft and creativity can bridge traditional techniques with modern
+              innovation.
             </p>
 
             <p

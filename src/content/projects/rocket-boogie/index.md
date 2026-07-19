@@ -7,8 +7,6 @@ demoURL: "https://rocketboogie.com"
 
 ## Rocket Boogie Co
 
-![Rocket Boogie Co](/rbc-logo.png)
-
 Rocket Boogie is a design studio I co-founded that specializes in whimsical art and lifestyle goods: greeting cards, art prints, home goods, and apparel. I built a fully custom e-commerce platform from scratch using Next.js with a Supabase backend and Stripe for payments.
 
 ![Rocket Boogie Shop](/rbc-1.png)

@@ -59,5 +59,3 @@ For testing, we decided as a team that every new command or query should have an
 ## Performance Improvements
 
 One issue we discovered right before releasing this product was related to performance. Initially, we decided to grab the images on the client side, but through testing, we realized this approach was a mistake. It led to performance issues and slow loading times. To resolve this, we rewrote the logic to pull images on the server side and implemented pagination, so that only the first 8 images would show up initially. This change significantly improved the performance and user experience.
-
-Want to read a more detailed account of my work at Prenda? [Check out my post here](/blog/02-working-at-an-education-startup).

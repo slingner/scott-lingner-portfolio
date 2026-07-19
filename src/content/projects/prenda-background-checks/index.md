@@ -33,5 +33,3 @@ I also created a dashboard for users to add other adults to their account after 
 ### 🛠️ Tech stack
 
 On the frontend, I leveraged React along with a custom Material UI design system for seamless styling, while on the backend, I implemented Node.js and PostgreSQL for robust performance. The integration with Checkr's API was achieved using RESTful API calls and webhooks.
-
-Want to read a more detailed account of my work at Prenda? [Check out my post here](/blog/02-working-at-an-education-startup).

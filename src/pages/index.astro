@@ -1,159 +1,339 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
+import Pelican from "@components/Pelican.astro";
+import ExperienceCard from "@components/ExperienceCard.astro";
 import { SITE, HOME, SOCIALS } from "@consts";
 import Link from "@components/Link.astro";
-import TagBadge from "@components/TagBadge.astro";
-import { getCollection } from "astro:content";
 
-const newsItems = (await getCollection("news"))
-  .filter((item) => !item.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 4);
+const projects = [
+  {
+    company: "Swatch Mill",
+    role: "Adobe Illustrator Plugin",
+    period: "Sep 2024 – Present",
+    description:
+      "A commercial Illustrator plugin for fashion brands that automates color palette extraction and matching from garment and brand references.",
+    skills: ["TypeScript", "React", "Next.js", "Astro", "Sanity", "Node.js"],
+    url: "/projects/swatchmill",
+    accent: "independent",
+    image: "/swatch-mill.png",
+    imagePosition: "center 20%",
+  },
+  {
+    company: "Rocket Boogie Co",
+    role: "Custom E-Commerce Platform",
+    period: "2014 – Present",
+    description:
+      "A design studio making whimsical art and lifestyle goods, with a fully custom e-commerce platform I built from scratch on Next.js and Supabase.",
+    skills: ["Next.js", "Supabase", "Stripe", "Tailwind CSS", "Vercel"],
+    url: "/projects/rocket-boogie",
+    accent: "rocket",
+    image: "/rbc.png",
+    imagePosition: "center 30%",
+  },
+];
+
+const jobs = [
+  {
+    company: "Prenda",
+    role: "Frontend Engineer",
+    period: "Aug 2020 – Sep 2024",
+    description:
+      "Educational web apps for an EdTech platform serving thousands of students across hundreds of microschools.",
+    skills: ["React", "TypeScript", "Next.js", "Node.js", "Tailwind", "MongoDB", "GraphQL"],
+    url: "/software-engineering/prenda",
+    accent: "prenda",
+    image: "/prenda.png",
+    imagePosition: "right",
+  },
+  {
+    company: "untitled.stream",
+    role: "Frontend Engineer Intern",
+    period: "Jun 2020 – Aug 2020",
+    description:
+      "A multi-layered React desktop app expanding mobile features, built from UX/UI designs in Figma.",
+    skills: ["React", "JavaScript", "Figma", "CSS"],
+    url: "/software-engineering/untitled-stream",
+    accent: "stream",
+    image: "/untitled-steam.png",
+    imagePosition: "center 45%",
+  },
+  {
+    company: "Google AI",
+    role: "Photography Consultant",
+    period: "Feb 2017 – May 2020",
+    description:
+      "Photography domain expertise for Google's AI training data, contributing to QA pipelines for computational photography models.",
+    skills: ["AI/ML", "Data Analysis", "Photography"],
+    url: "/software-engineering/google-ai",
+    accent: "google",
+    image: "/google-ai.png",
+    imagePosition: "80% 60%",
+  },
+];
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <aside data-pagefind-ignore>
-      <div class="space-y-12">
-        <section>
-          <article class="space-y-8">
-            <!-- container  -->
-            <div
-              class="mt-24 flex flex-col items-start gap-8 md:flex-row md:items-start md:justify-between"
+    <div class="mt-8 flex gap-12">
+      <!-- Fixed Sidebar Navigation -->
+      <nav class="animate hidden w-48 flex-shrink-0 lg:block">
+        <div class="sticky top-36">
+          <div class="flex flex-col gap-4">
+            <a
+              href="#about"
+              data-nav-link="about"
+              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
             >
-              <div class="animate max-w-96">
-                <p
-                  class="mt-0 max-w-fit text-lg leading-relaxed text-stone-700 dark:text-stone-300"
-                >
-                  <!-- BIO  -->
-                  I'm a frontend engineer with five years of experience building
-                  impactful applications in the EdTech space. My work at Prenda,
-                  a leading edtech startup, helped thousands of microschools deliver
-                  personalized education through technology. I'm passionate about
-                  clean code, thoughtful design, and building products that make
-                  a difference.
-                </p>
-                <p
-                  class="mt-4 text-lg leading-relaxed text-stone-700 dark:text-stone-300"
-                >
-                  When I'm not coding, I'm exploring the intersection of
-                  technology and creativity through
-                  <Link href="/music" underline={false}>music</Link>,
-                  <Link href="/art" underline={false}>art</Link>, and <Link
-                    href="/photo"
-                    underline={false}>photo</Link
-                  >
-                  .
-                </p>
-              </div>
+              About
+              <span
+                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
+              ></span>
+            </a>
+            <a
+              href="#projects"
+              data-nav-link="projects"
+              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            >
+              Projects
+              <span
+                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
+              ></span>
+            </a>
+            <a
+              href="#experience"
+              data-nav-link="experience"
+              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            >
+              Experience
+              <span
+                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
+              ></span>
+            </a>
+            <a
+              href="#connect"
+              data-nav-link="connect"
+              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            >
+              Connect
+              <span
+                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
+              ></span>
+            </a>
+          </div>
+        </div>
+      </nav>
 
-              <!-- LARGE UPPERCASE TEXT LINKS -->
-              <div
-                class="animate flex flex-col items-start gap-4 text-6xl font-semibold leading-snug text-stone-900 dark:text-stone-100 md:items-end md:text-7xl"
-              >
-                <Link
-                  href="/software-engineering"
-                  underline={false}
-                  class="project-link"
-                >
-                  SOFTWARE
-                </Link>
-                <Link href="/music" underline={false} class="project-link">
-                  MUSIC
-                </Link>
-                <Link href="/art" underline={false} class="project-link">
-                  ART
-                </Link>
-                <Link href="/photo" underline={false} class="project-link">
-                  PHOTO
-                </Link>
-              </div>
+      <!-- Main Content -->
+      <aside data-pagefind-ignore class="min-w-0 flex-1">
+        <!-- About / Hero Section -->
+        <section id="about" class="animate mb-28 scroll-mt-36">
+          <h1
+            class="mb-3 font-mono text-sm font-medium uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400"
+          >
+            Product Engineer
+          </h1>
+          <div
+            class="mt-8 max-w-2xl space-y-4 text-lg leading-relaxed text-stone-700 dark:text-stone-300"
+          >
+            <p>
+              Five years of professional experience building impactful
+              applications, currently working independently on commercial
+              software. I specialize in frontend development with React and
+              TypeScript, with a growing focus on full-stack and product work
+              across a range of domains.
+            </p>
+            <p>
+              My work at Prenda helped thousands of microschools deliver
+              personalized education through technology. Since then I've been
+              building independently — shipping client tools, exploring new
+              stacks, and working on products at the intersection of software
+              and design.
+            </p>
+          </div>
+          <div class="mt-8">
+            <h3
+              class="mb-3 text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-500"
+            >
+              Skills
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {
+                [
+                  "JavaScript",
+                  "TypeScript",
+                  "HTML",
+                  "CSS",
+                  "GraphQL",
+                  "React",
+                  "Next.js",
+                  "Astro",
+                  "Node.js",
+                  "Tailwind",
+                  "Sanity",
+                  "Git",
+                ].map((skill) => (
+                  <span class="rounded-full bg-stone-200 px-3 py-1 text-sm font-medium text-stone-700 dark:bg-stone-800 dark:text-stone-300">
+                    {skill}
+                  </span>
+                ))
+              }
             </div>
-
-            <section class="animate mt-12 space-y-4">
-              <h2
-                class="mb-4 text-2xl font-bold text-stone-900 dark:text-stone-100"
-              >
-                Connect
-              </h2>
-
-              <p
-                class="mb-4 text-base leading-relaxed text-stone-700 dark:text-stone-300"
-              >
-                Get in touch about creative work, frontend engineering, or
-                anything we might build together.
-              </p>
-              <p
-                class="text-base font-semibold text-stone-900 dark:text-stone-100"
-              >
-                <Link
-                  href={`mailto:${SITE.EMAIL}`}
-                  aria-label={`Email ${SITE.TITLE}`}
-                >
-                  {SITE.EMAIL}
-                </Link>
-              </p>
-
-              <ul class="not-prose flex flex-wrap gap-2">
-                {
-                  SOCIALS.map((SOCIAL) => (
-                    <li class="flex gap-x-2 text-nowrap pb-4">
-                      <Link
-                        href={SOCIAL.HREF}
-                        external
-                        aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
-                      >
-                        {SOCIAL.NAME}
-                      </Link>
-                      {"/"}
-                    </li>
-                  ))
-                }
-                <li class="line-clamp-1">
-                  <Link href="/rss.xml" aria-label="Scott Lingner RSS feed">
-                    RSS
-                  </Link>
-                </li>
-              </ul>
-            </section>
-          </article>
+          </div>
         </section>
-      </div>
-    </aside>
+
+        <!-- Projects Section -->
+        <section id="projects" class="animate mb-24 scroll-mt-36">
+          <h2
+            class="mb-2 text-3xl font-bold text-stone-900 dark:text-stone-100"
+          >
+            Projects
+          </h2>
+          <p class="mb-8 text-base text-stone-500 dark:text-stone-400">
+            Things I've built and own end to end.
+          </p>
+          <div class="flex flex-col gap-5">
+            {
+              projects.map((project) => (
+                <ExperienceCard {...project} cta={project.company} />
+              ))
+            }
+          </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="animate mb-24 scroll-mt-36">
+          <h2
+            class="mb-2 text-3xl font-bold text-stone-900 dark:text-stone-100"
+          >
+            Experience
+          </h2>
+          <p class="mb-8 text-base text-stone-500 dark:text-stone-400">
+            Where I've worked, and what I shipped while I was there.
+          </p>
+          <div class="flex flex-col gap-5">
+            {
+              jobs.map((job) => (
+                <ExperienceCard {...job} cta="See the role" />
+              ))
+            }
+          </div>
+        </section>
+
+        <!-- Connect Section -->
+        <section id="connect" class="animate mt-12 scroll-mt-36 space-y-4">
+          <h2
+            class="mb-4 text-2xl font-bold text-stone-900 dark:text-stone-100"
+          >
+            Connect
+          </h2>
+
+          <p class="mb-4 text-base leading-relaxed text-stone-700 dark:text-stone-300">
+            Get in touch about frontend engineering, product work, or
+            anything we might build together.
+          </p>
+          <p class="text-base font-semibold text-stone-900 dark:text-stone-100">
+            <Link href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.TITLE}`}>
+              {SITE.EMAIL}
+            </Link>
+          </p>
+
+          <ul class="not-prose flex flex-wrap gap-2">
+            {
+              SOCIALS.map((SOCIAL) => (
+                <li class="flex gap-x-2 text-nowrap pb-4">
+                  <Link
+                    href={SOCIAL.HREF}
+                    external
+                    aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
+                  >
+                    {SOCIAL.NAME}
+                  </Link>
+                  {"/"}
+                </li>
+              ))
+            }
+            <li class="line-clamp-1">
+              <Link href="/rss.xml" aria-label="Scott Lingner RSS feed">
+                RSS
+              </Link>
+            </li>
+          </ul>
+        </section>
+      </aside>
+    </div>
   </Container>
 </Layout>
 
+<Pelican />
+
 <style>
-  .project-link {
-    position: relative;
-    display: inline-block;
-    font-style: normal;
-    transition: font-style 0.1s ease;
-    text-decoration: underline;
-    text-underline-offset: 10px;
-    text-decoration-thickness: 3px;
-  }
-
-  .project-link:hover {
-    font-style: italic;
-  }
-
-  .project-link::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    /* background-color: #3b82f6; blue-500 */
-    transition: width 0.3s ease;
-    /* change the built in Link Underline color */
-    background-color: #3b82f6;
-    color: #3b82f6;
-  }
-
-  .project-link:hover::after {
-    width: 100%;
+  html {
+    scroll-behavior: smooth;
   }
 </style>
+
+<script is:inline>
+  function initializePage() {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("[data-nav-link]");
+
+    function setActiveLink(activeId) {
+      navLinks.forEach((link) => {
+        const underline = link.querySelector(".nav-underline");
+        if (link.getAttribute("data-nav-link") === activeId) {
+          link.classList.add("text-stone-900", "dark:text-stone-100");
+          link.classList.remove("text-stone-700", "dark:text-stone-300");
+          if (underline) underline.style.width = "100%";
+        } else {
+          link.classList.remove("text-stone-900", "dark:text-stone-100");
+          link.classList.add("text-stone-700", "dark:text-stone-300");
+          if (underline) underline.style.width = "0";
+        }
+      });
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveLink(entry.target.id);
+        });
+      },
+      { root: null, rootMargin: "-144px 0px -50% 0px", threshold: 0.1 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    if (sections.length > 0) setActiveLink(sections[0].id);
+
+    const stickyNav = document.querySelector(".sticky.top-36");
+    if (stickyNav) {
+      stickyNav.style.transition = "padding-top 0.35s cubic-bezier(0.4,0,0.2,1)";
+    }
+    window.addEventListener("scroll", () => {
+      if (stickyNav) {
+        stickyNav.style.paddingTop = window.scrollY > 42 ? "50px" : "0";
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute("data-nav-link");
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          const headerEl = document.querySelector("header");
+          const headerHeight = headerEl ? headerEl.getBoundingClientRect().height : 0;
+          const targetPosition =
+            targetSection.getBoundingClientRect().top + window.pageYOffset - (headerHeight + 16);
+          window.scrollTo({ top: targetPosition, behavior: "smooth" });
+        }
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializePage);
+  } else {
+    initializePage();
+  }
+</script>

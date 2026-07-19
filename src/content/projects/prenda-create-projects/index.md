@@ -37,5 +37,3 @@ Additionally, I added a “Favorites” section for students to explore and crea
 I utilized Cloudinary and AWS for photo storage and editing. This integration provided robust and scalable solutions for managing and editing project images.
 
 I also used React for the frontend, and Node.js and PostgreSQL for the backend.
-
-Want to read a more detailed account of my work at Prenda? [Check out my post here](/blog/02-working-at-an-education-startup).

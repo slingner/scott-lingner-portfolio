@@ -2,18 +2,13 @@
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
 import Pelican from "@components/Pelican.astro";
-import { SITE } from "@consts";
 ---
 
 <header transition:persist class="bg-stone-100 dark:bg-stone-900">
   <Container>
     <div class="flex flex-wrap items-center gap-y-2">
-      <Link href="/" underline={false}>
-        <img
-          src="/SCOTT1.png"
-          alt={SITE.TITLE}
-          class="h-28 w-auto object-contain transition-all dark:opacity-90 dark:brightness-0 dark:invert"
-        />
+      <Link href="/" underline={false} class="brand-mark">
+        Scott Lingner
       </Link>
 
       <nav class="ml-auto mr-4 hidden items-center gap-6 md:flex">
@@ -24,58 +19,6 @@ import { SITE } from "@consts";
         >
           Home
         </Link>
-        <!-- <Link
-          href="/news"
-          underline={false}
-          class="nav-link !text-stone-700 dark:!text-stone-300 hover:!text-stone-900 dark:hover:!text-stone-100 text-sm font-medium"
-        >
-          News
-        </Link> -->
-        <div class="dropdown-wrapper relative">
-          <button
-            id="work-dropdown-button"
-            class="nav-link inline-block text-sm font-medium text-stone-700 transition-all duration-300 hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
-          >
-            Work ▾
-          </button>
-          <div
-            id="work-dropdown-menu"
-            class="dropdown-menu invisible absolute left-0 top-full pt-2 opacity-0 transition-all duration-200"
-          >
-            <div
-              class="w-48 rounded-lg border border-stone-300/50 bg-white shadow-lg dark:border-stone-700/50 dark:bg-stone-800"
-            >
-              <Link
-                href="/software-engineering"
-                underline={false}
-                class="dropdown-link block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
-              >
-                Software
-              </Link>
-              <Link
-                href="/music"
-                underline={false}
-                class="dropdown-link block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
-              >
-                Music
-              </Link>
-              <Link
-                href="/art"
-                underline={false}
-                class="dropdown-link block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
-              >
-                Art
-              </Link>
-              <Link
-                href="/photo"
-                underline={false}
-                class="dropdown-link block px-4 py-2 text-sm hover:bg-stone-100 dark:hover:bg-stone-700"
-              >
-                Photo
-              </Link>
-            </div>
-          </div>
-        </div>
         <Link
           href="/about"
           underline={false}
@@ -113,60 +56,17 @@ import { SITE } from "@consts";
 <Pelican />
 
 <script>
-  function setupDropdown() {
-    const dropdownButton = document.getElementById("work-dropdown-button");
-    const dropdownMenu = document.getElementById("work-dropdown-menu");
-    const dropdownWrapper =
-      document.querySelector<HTMLElement>(".dropdown-wrapper");
-
-    if (!dropdownButton || !dropdownMenu || !dropdownWrapper) return;
-
-    // Open dropdown on hover
-    dropdownWrapper.addEventListener("mouseenter", () => {
-      dropdownMenu.classList.remove("invisible", "opacity-0");
-      dropdownMenu.classList.add("visible", "opacity-100");
-    });
-
-    // Close dropdown when mouse leaves
-    dropdownWrapper.addEventListener("mouseleave", () => {
-      dropdownMenu.classList.remove("visible", "opacity-100");
-      dropdownMenu.classList.add("invisible", "opacity-0");
-    });
-
-    // Close dropdown before any navigation starts
-    document.addEventListener("astro:before-preparation", () => {
-      dropdownMenu.classList.remove("visible", "opacity-100");
-      dropdownMenu.classList.add("invisible", "opacity-0");
-    });
-  }
-
   function updateActiveNavLinks() {
     const currentPath = window.location.pathname;
-    const isWorkActive =
-      currentPath.startsWith("/software-engineering") ||
-      currentPath.startsWith("/music") ||
-      currentPath.startsWith("/art") ||
-      currentPath.startsWith("/photo");
 
-    // Get all nav links
     const navLinks = document.querySelectorAll(".nav-link");
-
     navLinks.forEach((link) => {
       link.classList.remove("active");
     });
 
-    // Add active class based on current path
     if (currentPath === "/") {
       const homeLink = document.querySelector('a[href="/"].nav-link');
       homeLink?.classList.add("active");
-    } else if (currentPath.startsWith("/news")) {
-      const newsLink = document.querySelector('a[href="/news"].nav-link');
-      newsLink?.classList.add("active");
-    } else if (isWorkActive) {
-      const workButton = document.querySelector(
-        ".dropdown-wrapper button.nav-link",
-      );
-      workButton?.classList.add("active");
     } else if (currentPath === "/about") {
       const aboutLink = document.querySelector('a[href="/about"].nav-link');
       aboutLink?.classList.add("active");
@@ -174,25 +74,15 @@ import { SITE } from "@consts";
   }
 
   // Run on initial load
-  setupDropdown();
   updateActiveNavLinks();
 
   // Run on Astro page navigation
   document.addEventListener("astro:page-load", () => {
-    setupDropdown();
     updateActiveNavLinks();
   });
 </script>
 
 <style>
-  .dropdown-wrapper {
-    position: relative;
-  }
-
-  .dropdown-menu {
-    z-index: 50;
-  }
-
   .nav-link {
     position: relative;
     transition: all 0.3s ease;
@@ -217,5 +107,52 @@ import { SITE } from "@consts";
 
   .nav-link.active::after {
     width: 100% !important;
+  }
+
+  /*
+   * Wordmark replaces the old illustrated PNG logo with the site's real
+   * name, using the same multi-brand gradient underline that ties the
+   * homepage's experience cards together (Prenda mint, sky blue, Rocket
+   * Boogie marigold/terracotta) as the one signature accent of the nav.
+   */
+  .brand-mark {
+    position: relative;
+    display: inline-block;
+    font-family: theme("fontFamily.sans");
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: theme("colors.stone.900");
+  }
+
+  :global(html.dark) .brand-mark {
+    color: theme("colors.stone.100");
+  }
+
+  .brand-mark::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.05em;
+    height: 0.2em;
+    background: linear-gradient(
+      90deg,
+      #5fb88a 0%,
+      #3b82f6 25%,
+      #e8a33d 50%,
+      #c65d2e 75%,
+      #5fb88a 100%
+    );
+    background-size: 200% 100%;
+    background-position: 0% 0%;
+    z-index: -1;
+    border-radius: 2px;
+    transition: background-position 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .brand-mark:hover::after {
+    background-position: 100% 0%;
   }
 </style>

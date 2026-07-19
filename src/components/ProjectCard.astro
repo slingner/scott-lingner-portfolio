@@ -1,0 +1,61 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ArrowIcon from "./ArrowIcon.astro";
+import FormattedDate from "./FormattedDate.astro";
+
+type Props = {
+  entry: CollectionEntry<"projects">;
+  image: string;
+  imagePosition?: string;
+};
+
+const { entry, image, imagePosition } = Astro.props;
+---
+
+<a
+  href={`/${entry.collection}/${entry.slug}`}
+  class="project-card group relative flex min-h-[9rem] items-end overflow-hidden rounded-xl border border-black/10 transition-all duration-300 hover:-translate-y-0.5"
+>
+  <img
+    src={image}
+    alt=""
+    aria-hidden="true"
+    class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+    style={`object-position: ${imagePosition ?? "center"};`}
+    loading="lazy"
+  />
+  <div class="project-scrim absolute inset-0" />
+  <div class="relative z-10 flex flex-1 flex-col gap-1 p-5 pr-12">
+    <div class="font-bold text-white">
+      {entry.data.title}
+    </div>
+    <div class="max-w-lg text-sm leading-snug text-white/85">
+      {entry.data.description}
+    </div>
+    <div class="mt-1 font-mono text-xs text-white/60">
+      <FormattedDate date={entry.data.date} />
+    </div>
+  </div>
+  <div
+    class="absolute right-4 top-1/2 z-10 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/25 backdrop-blur-sm transition-transform duration-300 group-hover:translate-x-1"
+  >
+    <ArrowIcon class="size-4 stroke-white" />
+  </div>
+</a>
+
+<style>
+  /* Prenda navy/mint, same accent family as the homepage's Prenda card */
+  .project-scrim {
+    background: linear-gradient(
+      100deg,
+      #1a3a5c 0%,
+      rgba(26, 58, 92, 0.85) 40%,
+      rgba(26, 58, 92, 0.35) 70%,
+      transparent 100%
+    );
+  }
+
+  .project-card:hover {
+    box-shadow: 0 12px 28px -14px rgba(26, 58, 92, 0.6);
+  }
+</style>

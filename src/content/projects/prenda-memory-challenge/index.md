@@ -37,5 +37,3 @@ The tool captures detailed data on student learning progress, providing insights
 ### 🛠️ Tech stack
 
 I used React for the frontend and MongoDB for the backend.
-
-Want to read a more detailed account of my work at Prenda? [Check out my post here](/blog/02-working-at-an-education-startup).

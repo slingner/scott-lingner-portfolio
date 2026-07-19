@@ -3,6 +3,7 @@
 title: "Ghostmail.dev"
 description: "A simple mail server for developers"
 date: "2020-08-01"
+draft: true
 banner: "/ghostmail-dark.png"
 demoURL: "https://ghostmail.dev/"
 repoURL: "https://github.com/jb-1980/ghostmail"
