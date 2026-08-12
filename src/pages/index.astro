@@ -103,21 +103,21 @@ const jobs = [
               ></span>
             </a>
             <a
-              href="#projects"
-              data-nav-link="projects"
-              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
-            >
-              Projects
-              <span
-                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
-              ></span>
-            </a>
-            <a
               href="#experience"
               data-nav-link="experience"
               class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
             >
               Experience
+              <span
+                class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
+              ></span>
+            </a>
+            <a
+              href="#projects"
+              data-nav-link="projects"
+              class="nav-link group relative text-sm font-semibold text-stone-700 transition-colors hover:text-stone-900 dark:text-stone-300 dark:hover:text-stone-100"
+            >
+              Projects
               <span
                 class="nav-underline absolute -bottom-1 left-0 h-0.5 w-0 bg-stone-900 transition-all duration-300 dark:bg-stone-100"
               ></span>
@@ -165,25 +165,6 @@ const jobs = [
           </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="animate mb-24 scroll-mt-36">
-          <h2
-            class="mb-2 text-3xl font-bold text-stone-900 dark:text-stone-100"
-          >
-            Projects
-          </h2>
-          <p class="mb-8 text-base text-stone-500 dark:text-stone-400">
-            Things I've built and own end to end.
-          </p>
-          <div class="flex flex-col gap-5">
-            {
-              projects.map((project) => (
-                <ExperienceCard {...project} cta={project.company} showPeriod={false} />
-              ))
-            }
-          </div>
-        </section>
-
         <!-- Experience Section -->
         <section id="experience" class="animate mb-24 scroll-mt-36">
           <h2
@@ -198,6 +179,25 @@ const jobs = [
             {
               jobs.map((job) => (
                 <ExperienceCard {...job} cta={job.company} />
+              ))
+            }
+          </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="animate mb-24 scroll-mt-36">
+          <h2
+            class="mb-2 text-3xl font-bold text-stone-900 dark:text-stone-100"
+          >
+            Projects
+          </h2>
+          <p class="mb-8 text-base text-stone-500 dark:text-stone-400">
+            Things I've built and own end to end.
+          </p>
+          <div class="flex flex-col gap-5">
+            {
+              projects.map((project) => (
+                <ExperienceCard {...project} cta={project.company} showPeriod={false} />
               ))
             }
           </div>
